@@ -46,6 +46,8 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://visionarydynamicsas.com",
   "https://www.visionarydynamicsas.com",
+
+  "https://vd-next.vercel.app",
 ];
 
 app.use(
