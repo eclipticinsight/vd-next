@@ -325,7 +325,7 @@ export default function Testimonials() {
           </button>
 
           {/* 3 Cards Layout - Reduced Height */}
-          <div className="relative h-[340px] md:h-[390px] lg:h-[420px] overflow-visible">
+          <div className="relative h-[280px] md:h-[320px] lg:h-[350px] overflow-visible">
             {/* Left Card (Previous) */}
             <div
               className="absolute left-[4%] top-6 w-[24%] md:w-[26%] h-[78%] transition-all duration-700 ease-out"

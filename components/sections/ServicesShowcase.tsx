@@ -366,7 +366,7 @@ style={{
                   whileHover={{ opacity: active !== index ? 0.85 : 1 }}
                   transition={{ duration: 0.2 }}
                   onClick={() => handleProcessClick(index)}
-                  className={`cursor-pointer p-4 sm:p-5 lg:p-8 rounded-3xl border transition-all backdrop-blur-xl ${
+                  className={`cursor-pointer min-h-[220px] lg:min-h-[230px] p-6 lg:p-8 rounded-3xl border transition-all backdrop-blur-xl flex items-center ${
                     active === index
                       ? "bg-white/20 shadow-2xl border-white/30"
                       : "bg-white/10 border-white/20 hover:bg-white/20 hover:shadow-xl"
