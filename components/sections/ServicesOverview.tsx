@@ -38,7 +38,7 @@ export default function ServicesOverview() {
     {
       title: "Accounting Services",
       route: "/accounting",
-      showButton: true,
+      showButton: false,
       description:
         "Accurate financial reporting and strategic insights to manage cash flow and reduce costs.",
 
