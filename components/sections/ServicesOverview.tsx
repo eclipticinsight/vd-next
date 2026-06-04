@@ -217,14 +217,7 @@ export default function ServicesOverview() {
 
     </div>
 
-    {active.showButton && (
-      <button
-        onClick={() => router.push(active.route)}
-        className="mt-10 bg-blue-600 text-white px-10 py-4 rounded-2xl font-semibold text-lg"
-      >
-        Learn More
-      </button>
-    )}
+    
 
   </div>
 
