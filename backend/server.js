@@ -148,15 +148,12 @@ app.use(
   })
 );
 
-// Frontend Build
-const distPath = path.join(__dirname, "dist");
-
-app.use(
-  express.static(distPath, {
-    maxAge: "1y",
-    etag: false,
-  })
-);
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "Visionary Dynamics API Running",
+  });
+});
 
 // ========================
 // 🧠 SITEMAP
@@ -208,17 +205,7 @@ app.get("/sitemap.xml", async (req, res) => {
 // ========================
 // 🌐 FRONTEND ROUTE
 // ========================
-app.use((req, res, next) => {
 
-  if (req.path.startsWith("/api")) {
-    return next();
-  }
-
-  res.sendFile(
-    path.resolve(distPath, "index.html")
-  );
-
-});
 
 // ========================
 // 🚀 START SERVER
