@@ -46,7 +46,6 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://visionarydynamicsas.com",
   "https://www.visionarydynamicsas.com",
-
   "https://vd-next.vercel.app",
 ];
 
@@ -56,11 +55,19 @@ app.use(
       if (!origin) {
         return callback(null, true);
       }
+
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
-      callback(new Error("Not allowed by CORS"));
+
+      // Allow all Vercel preview URLs
+      if (origin.endsWith(".vercel.app")) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
     },
+
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
     allowedHeaders: [
@@ -70,7 +77,6 @@ app.use(
       "Accept",
       "Origin",
     ],
-    exposedHeaders: ["Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"],
   })
 );
 
