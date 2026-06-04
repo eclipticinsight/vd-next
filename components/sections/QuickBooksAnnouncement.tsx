@@ -250,7 +250,6 @@ const QuickBooksAnnouncement = () => {
       desc:
         "Authorized professionals with proven QuickBooks implementation experience.",
       features: [
-        "QuickBooks Certified",
         "GHL Expert",
         "Continuous Training",
         "Audit-Ready Reporting",
