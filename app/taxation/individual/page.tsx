@@ -2,46 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  User,
   Calculator,
-  FileText,
-  Calendar,
   CheckCircle,
-  ChevronDown,
-  ArrowRight,
-  Download,
-  Mail,
+  ChevronDown, 
   Phone,
-  MapPin,
   Clock,
   Shield,
   Percent,
   Home,
   GraduationCap,
   Heart,
-  Car,
-  Briefcase,
-  TrendingUp,
-  PieChart,
-  DollarSign,
   Users,
-  Award,
-  MessageCircle,
   Headphones,
-  FileCheck,
-  AlertCircle,
-  Upload,
-  Search,
-  Lock,
-  Globe,
-  BarChart,
-  CreditCard,
-  Building,
-  UserCheck,
-  UserX,
-  FilePlus,
-  FileMinus,
-  FileWarning
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -398,18 +370,26 @@ flex items-center text-white overflow-hidden">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => {
               const gradients = [
-                "from-blue-500 to-cyan-500",
-                "from-cyan-500 to-teal-500",
-                "from-indigo-500 to-blue-500",
-                "from-sky-500 to-indigo-500"
-              ];
-              
-              const bgGradients = [
-                "bg-gradient-to-br from-blue-100/80 to-cyan-100/60",
-                "bg-gradient-to-br from-cyan-100/80 to-teal-100/60",
-                "bg-gradient-to-br from-indigo-100/80 to-blue-100/60",
-                "bg-gradient-to-br from-sky-100/80 to-indigo-100/60"
-              ];
+  "from-blue-500 to-cyan-500",
+  "from-cyan-500 to-teal-500",
+
+  // Fast Processing - Purple
+  "from-purple-500 to-pink-500",
+
+  // Year-Round Support - Orange
+  "from-orange-500 to-red-500"
+];
+
+const bgGradients = [
+  "bg-gradient-to-br from-blue-100/80 to-cyan-100/60",
+  "bg-gradient-to-br from-cyan-100/80 to-teal-100/60",
+
+  // Fast Processing
+  "bg-gradient-to-br from-purple-100/80 to-pink-100/60",
+
+  // Year-Round Support
+  "bg-gradient-to-br from-orange-100/80 to-red-100/60"
+];
               
               const gradient = gradients[index % gradients.length];
               const bgGradient = bgGradients[index % bgGradients.length];
@@ -767,7 +747,7 @@ flex items-center text-white overflow-hidden">
       </section>
 
       {/* CTA Section with Dark Overlay */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-28 relative overflow-hidden">
         {/* Top Wave */}
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />
@@ -807,11 +787,7 @@ flex items-center text-white overflow-hidden">
               Call Now: +1(727) 564-9476
             </a>
           </div>
-          <div className="mt-8 flex items-center justify-center gap-6 text-sm text-gray-400">
-            <span>✓ Free Consultation</span>
-            <span>✓ Secure Upload</span>
-            <span>✓ Maximum Refund Guarantee</span>
-          </div>
+         
         </div>
       </section>
     </div>

@@ -701,7 +701,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16 overflow-hidden">
+      <section className="relative py-28 overflow-hidden">
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />
         </div>

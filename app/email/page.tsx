@@ -1156,7 +1156,7 @@ style={{
       </section>
 
       {/* CTA Section */}
-      <div className="relative py-16 text-blue-100 overflow-hidden">
+      <div className="relative py-28 text-blue-100 overflow-hidden">
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />
         </div>

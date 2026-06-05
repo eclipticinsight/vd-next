@@ -329,9 +329,7 @@ export default function MDMPage() {
               </div>
             </div>
             
-            <div className="absolute -top-4 left-4 bg-red-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs font-bold shadow-lg">
-              3
-            </div>
+
           </div>
         </div>
       </section>
@@ -420,7 +418,7 @@ export default function MDMPage() {
       </section>
       
       {/* Microsoft Intune & Azure IoT Section */}
-      <section className="py-24 bg-blue-100 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="py-12 bg-blue-100 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100"></div>
         <div className="absolute top-20 left-20 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-sky-200/30 rounded-full blur-3xl"></div>
@@ -435,7 +433,7 @@ export default function MDMPage() {
             </p>
           </div>
           
-          <div className="relative flex justify-center items-center min-h-[750px] lg:min-h-[850px] overflow-hidden">
+          <div className="relative flex justify-center items-center min-h-[450px] lg:min-h-[500px] overflow-hidden">
             {/* Central Circle - Microsoft Intune */}
             <div className="relative z-20 flex justify-center items-center">
               <div className="absolute inset-0 bg-blue-400 rounded-full blur-3xl opacity-20 animate-pulse"></div>
@@ -695,7 +693,7 @@ export default function MDMPage() {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />
         </div>

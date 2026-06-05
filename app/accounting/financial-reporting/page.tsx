@@ -488,7 +488,7 @@ const FinancialReportingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20 px-6 overflow-hidden">
+      <section className="relative py-30 px-6 overflow-hidden">
         {/* Top Wave */}
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />

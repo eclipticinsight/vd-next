@@ -684,7 +684,7 @@ export default function MS365ManagementPage() {
         </section>
  
         {/* Contact/CTA Section */}
-        <section className="py-20 px-6 relative overflow-hidden">
+        <section className="py-28 px-6 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full -mt-1 z-10">
             <WaveTransition direction="top" />
           </div>

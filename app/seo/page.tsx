@@ -484,7 +484,7 @@ const SEOPage = () => {
             </h1>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
+              {/* <button
                 onClick={() =>
                   window.open(
                     "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
@@ -494,7 +494,7 @@ const SEOPage = () => {
                 className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-yellow-300 transition-colors text-lg"
               >
                 Get Free SEO Audit
-              </button>
+              </button> */}
             </div>
           </motion.div>
         </div>
@@ -1048,21 +1048,16 @@ const SEOPage = () => {
                     </div>
                     
                     {/* Content */}
-                    <h3 className={`text-xl font-bold text-white mb-3 group-hover:${colors.text} transition-colors duration-300`}>
-                      {reason.title}
-                    </h3>
+                   <h3 className="text-xl font-bold text-white mb-3 transition-colors duration-300">
+  {reason.title}
+</h3>
                     
                     <p className="text-gray-300 leading-relaxed mb-6">
                       {reason.description}
                     </p>
 
                     {/* Feature indicator */}
-                    <div className="flex items-center gap-2">
-                      <div className={`w-8 h-1 bg-gradient-to-r ${colors.gradient} rounded-full`}></div>
-                      <span className={`text-xs font-semibold ${colors.text} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
-                        EXCLUSIVE FEATURE
-                      </span>
-                    </div>
+                    
 
                     {/* Corner accent */}
                     <div className={`absolute top-0 right-0 w-16 h-16 bg-gradient-to-br ${colors.gradient} opacity-10 rounded-bl-3xl transform rotate-12 translate-x-8 -translate-y-8 group-hover:opacity-20 transition-opacity`}></div>
@@ -1195,7 +1190,7 @@ const SEOPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-28 overflow-hidden">
         {/* Top Wave */}
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />

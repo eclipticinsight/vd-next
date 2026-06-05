@@ -583,7 +583,7 @@ left: particle.left,
       </section>
 
       {/* CTA Section - Dark Background (No Objects) */}
-      <section className="py-20 relative z-10">
+      <section className="py-24 relative z-10">
         {/* Top Wave */}
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />

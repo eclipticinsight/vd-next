@@ -300,9 +300,7 @@ export default function MDMPage() {
                       <span className={`text-xs font-semibold px-3 py-1 bg-gradient-to-r ${item.gradient} text-white rounded-full transform transition-all duration-300 group-hover/card:scale-105`}>
                         Active
                       </span>
-                      <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${item.gradient} flex items-center justify-center opacity-0 group-hover/card:opacity-100 transform translate-x-2 group-hover/card:translate-x-0 transition-all duration-500`}>
-                        <i className="fas fa-arrow-right text-white text-xs"></i>
-                      </div>
+                     
                     </div>
                     
                     <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-100">
@@ -407,12 +405,7 @@ export default function MDMPage() {
             ))}
           </div>
           
-          <div className="mt-16 flex flex-wrap justify-center items-center gap-8 opacity-60">
-            <span className="text-white/40 text-lg">Trusted by companies using</span>
-            {['AWS', 'Azure', 'Google Cloud', 'Cisco'].map((company, i) => (
-              <span key={i} className="text-white/60 font-semibold">{company}</span>
-            ))}
-          </div>
+         
         </div>
         <div className="absolute bottom-0 left-0 w-full z-30">
           <WaveTransition />
@@ -485,7 +478,7 @@ export default function MDMPage() {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />
         </div>

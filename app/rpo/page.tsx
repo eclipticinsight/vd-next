@@ -378,7 +378,7 @@ transform: isVisible[`service-${idx}` as keyof typeof isVisible]
     {/* Circular Process - Cards on Circle Surface */}
     <div className="relative max-w-7xl mx-auto">
       {/* Main Circle */}
-      <div className="relative w-[900px] h-[900px] mx-auto hidden md:block">
+      <div className="relative w-[750px] h-[750px] mx-auto hidden md:block">
         
         {/* Rotating Dashed Circle Line */}
         <div className="absolute inset-0 rounded-full pointer-events-none rotating-border"></div>
@@ -704,7 +704,7 @@ transform: isVisible[`service-${idx}` as keyof typeof isVisible]
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative bg-cover bg-center bg-no-repeat"
+      <section className="py-28 relative bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: "url('https://www.smart-manpower.com/Content/Home1/RPO_Images-02.jpg')"
         }}>
