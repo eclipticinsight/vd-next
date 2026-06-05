@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -15,6 +15,8 @@ import {
   Phone,
   MapPin
 } from 'lucide-react';
+
+
 
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
@@ -35,8 +37,15 @@ export const WaveTransition = ({ direction = "bottom" }) => {
 };
 
 const BusinessAnalystPage = () => {
+  const [mounted, setMounted] = useState(false);
   // Add animation styles
+
   useEffect(() => {
+  setMounted(true);
+}, []);
+
+  useEffect(() => {
+    
     const style = document.createElement('style');
     style.textContent = `
       @keyframes float {
@@ -156,7 +165,7 @@ const BusinessAnalystPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-x-hidden">
       {/* Hero Section - Responsive */}
-      <section className="relative bg-cover bg-center bg-no-repeat text-white overflow-hidden pt-20 lg:pt-16">
+<section className="relative bg-cover bg-center bg-no-repeat text-white overflow-hidden pt-20 lg:pt-16">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://tse1.mm.bing.net/th/id/OIP.GmzeuKcTXVM4aCBWFgbkRAHaE7?w=626&h=417&rs=1&pid=ImgDetMain&o=7&rm=3" 
@@ -166,7 +175,7 @@ const BusinessAnalystPage = () => {
         </div>
         <div className="absolute inset-0 bg-black/80 z-0"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
             <div className="text-center lg:text-left lg:w-1/2">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 drop-shadow-lg">
@@ -215,18 +224,19 @@ const BusinessAnalystPage = () => {
           <div className="absolute bottom-20 left-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-indigo-200/20 rounded-full blur-3xl animate-float-fast"></div>
           
           {/* Floating particles - reduced count for mobile */}
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400/20 rounded-full animate-float-particle"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${4 + Math.random() * 6}s`
-              }}
-            />
-          ))}
+          {mounted &&
+  [...Array(8)].map((_, i) => (
+    <div
+      key={i}
+      className="absolute w-1 h-1 bg-blue-400/20 rounded-full animate-float-particle"
+      style={{
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 5}s`,
+        animationDuration: `${4 + Math.random() * 6}s`,
+      }}
+    />
+  ))}
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -286,18 +296,19 @@ const BusinessAnalystPage = () => {
       {/* Stats Section - Responsive */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden bg-gradient-to-br from-blue-100 via-blue-50 to-blue-100">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(12)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400/20 rounded-full animate-float-particle"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${4 + Math.random() * 6}s`
-              }}
-            />
-          ))}
+         {mounted &&
+  [...Array(12)].map((_, i) => (
+    <div
+      key={i}
+      className="absolute w-1 h-1 bg-blue-400/20 rounded-full animate-float-particle"
+      style={{
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 5}s`,
+        animationDuration: `${4 + Math.random() * 6}s`,
+      }}
+    />
+  ))}
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -223,7 +223,7 @@ export default function Industries() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white text-slate-800">
       {/* ================= HERO ================= */}
-      <div className="relative h-[50vh] flex items-center overflow-hidden isolate">
+      <div className="relative h-[60vh] flex items-center overflow-hidden isolate">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroBg})` }}
@@ -243,7 +243,7 @@ export default function Industries() {
       </div>
  
       {/* ================= 3D SECTION ================= */}
-      <div className="relative overflow-hidden py-32 bg-sky-100">
+      <div className="relative overflow-hidden py-20 bg-sky-100">
         <Parallax3DBackground />
  
         <div className="absolute inset-0 z-20 bg-gradient-to-b from-transparent via-white/10 to-white/30" />

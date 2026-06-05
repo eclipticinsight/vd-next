@@ -101,7 +101,7 @@ const KEY_COMPONENTS = [
     icon: Activity,
     title: "Continuous Monitoring and Support",
     desc: "Regularly oversee system performance, provide user training, and adapt to evolving needs.",
-    stats: "24/7 Support",
+    stats: "100% Support",
     color: "purple",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80"
   }
@@ -187,7 +187,7 @@ export default function MS365ManagementPage() {
             </p>
             <div className="flex items-center gap-2 text-sm font-semibold text-blue-600 mt-auto">
               <span>{component.stats}</span>
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
+             
             </div>
           </div>
         </motion.div>
@@ -277,7 +277,7 @@ export default function MS365ManagementPage() {
         </div>
  
         {/* Main Content */}
-        <div className="max-w-7xl mx-auto relative z-10 px-6 min-h-[750px] flex items-center">
+        <div className="max-w-7xl mx-auto relative z-10 px-6 min-h-[680px] flex items-center">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* LEFT TEXT */}
             <motion.div

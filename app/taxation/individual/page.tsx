@@ -322,7 +322,7 @@ const IndividualTaxationPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Dark Overlay */}
-      <section className="relative min-h-[550px]
+      <section className="relative min-h-[650px]
 pt-28 md:pt-28 lg:pt-32
 pb-28 md:pb-28 lg:pb-32
 flex items-center text-white overflow-hidden">

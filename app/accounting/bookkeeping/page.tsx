@@ -285,7 +285,7 @@ const particles: Particle[] = [];
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-[400px] sm:min-h-[450px] md:min-h-[500px] flex items-center justify-center text-center z-10">
+      <section className="relative min-h-[550px] sm:min-h-[600px] md:min-h-[650px] flex items-center justify-center text-center z-10">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{

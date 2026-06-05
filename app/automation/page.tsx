@@ -96,7 +96,7 @@ export default function AutomationIntegrationPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100 font-sans">
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-white border-b border-gray-200 min-h-[750px] flex items-center">
+      <div className="relative overflow-hidden bg-white border-b border-gray-200 min-h-[700px] flex items-center">
         <div className="absolute inset-0">
           <img
             src="https://static.vecteezy.com/system/resources/previews/021/538/318/non_2x/increasing-automation-level-rpa-robotic-process-automation-innovation-technology-concept-wireframe-hand-is-pulling-up-to-the-maximum-position-circle-progress-bar-with-the-gears-icon-vector.jpg"

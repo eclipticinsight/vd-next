@@ -143,7 +143,7 @@ const FinancialReportingPage = () => {
   return (
     <div className="min-h-screen bg-blue-50">  
       {/* Hero Section */}
-      <section className="relative pt-32 pb-28 md:pb-32 lg:pb-36 px-6 overflow-hidden">
+      <section className="relative pt-28 pb-22 md:pb-28 lg:pb-36 px-6 overflow-hidden">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"

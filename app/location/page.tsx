@@ -262,7 +262,8 @@ export default function Locations() {
   return (
     <div className="min-h-screen overflow-x-hidden">
       {/* HERO SECTION */}
-      <section className="relative min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] w-full overflow-hidden flex items-center justify-center">
+      <section className="relative min-h-[55vh] sm:min-h-[60vh] md:min-h-[65vh] lg:min-h-[70vh] w-full overflow-hidden flex items-center justify-center">
+        
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -282,9 +283,9 @@ export default function Locations() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 text-center px-4 sm:px-6 max-w-4xl"
+          className="relative z-10 text-center px-4 sm:px-6 max-w-4xl py-24"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide text-white drop-shadow-lg">
             Our Locations
           </h1>
         </motion.div>

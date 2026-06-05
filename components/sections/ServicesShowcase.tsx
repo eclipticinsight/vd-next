@@ -10,7 +10,9 @@ import {
   Calculator,
   CheckCircle,
   ChevronRight,
+   Hand,
 } from "lucide-react";
+
 
 export const WaveTransition = ({ direction = "bottom" }: { direction?: "top" | "bottom" }) => {
   const isTop = direction === "top";
@@ -474,10 +476,10 @@ style={{
                 </div>
 
                 <button
-                  onClick={() => setShowContactForm(true)}
-                  className="w-full py-4 rounded-2xl font-bold text-lg text-white shadow-[0_10px_30px_rgba(16,185,129,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 relative overflow-hidden"
-                  style={{ backgroundColor: current.color }}
-                >
+  onClick={() => setShowContactForm(true)}
+  className="w-full py-4 rounded-2xl font-bold text-lg text-white shadow-[0_10px_30px_rgba(16,185,129,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 relative overflow-hidden cursor-pointer"
+  style={{ backgroundColor: current.color }}
+>
                   <div className="flex items-center justify-center gap-3 relative z-10">
                     <span>Start This Process</span>
                     <ChevronRight className="w-5 h-5" />

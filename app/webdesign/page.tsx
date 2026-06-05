@@ -400,11 +400,7 @@ const Services = () => (
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
       {/* Section Header - Enhanced */}
       <div className="text-center mb-16 md:mb-24">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-gray-200 mb-6 shadow-sm">
-          <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full animate-pulse"></div>
-          <span className="text-sm font-semibold text-gray-700">Our Expertise</span>
-          <div className="w-1.5 h-1.5 bg-purple-600 rounded-full animate-pulse"></div>
-        </div>
+       
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
           <span className="text-gray-900">
             Comprehensive

@@ -230,7 +230,7 @@ export default function AIConsultingPage() {
     <div className="min-h-screen bg-white">
      
       {/* Hero Section */}
-      <section className="relative overflow-hidden text-white min-h-[750px] pt-20 lg:pt-16 flex items-center">
+      <section className="relative overflow-hidden text-white min-h-[680px] pt-16 lg:pt-12 flex items-center">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://static.vecteezy.com/system/resources/previews/029/922/756/original/artificial-intelligence-landing-page-ai-banner-website-template-for-deep-learning-concept-stock-illustration-vector.jpg" 

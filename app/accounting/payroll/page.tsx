@@ -82,7 +82,8 @@ export default function PayrollPage() {
     <div className="bg-white text-gray-800 relative min-h-screen overflow-x-hidden">
 
       {/* Hero Section - Light Blue with Objects */}
-      <section className="relative pt-46 pb-42 md:pt-44 md:pb-40 bg-blue-50 overflow-hidden z-10">
+      <section className="relative pt-66 pb-66 md:pt-70 md:pb-66 bg-blue-50 overflow-hidden z-10">
+        
         {/* Background Shapes - Visible but professional */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="float-shape absolute top-10 left-[5%] w-64 h-64 bg-blue-200/50 rounded-full blur-xl" 

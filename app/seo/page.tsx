@@ -458,7 +458,7 @@ const SEOPage = () => {
   return (
     <main className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden pt-32 md:pt-40 lg:pt-48 pb-[10px] md:pb-[12px] lg:pb-[14px]">  
+      <section className="relative text-white overflow-hidden pt-28 md:pt-36 lg:pt-44 pb-[10px] md:pb-[12px] lg:pb-[14px]">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
           <img

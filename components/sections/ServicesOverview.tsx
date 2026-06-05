@@ -127,8 +127,26 @@ export default function ServicesOverview() {
 >
 
    {/* DARK BLUE OVERLAY */}
-<div className="absolute inset-0 bg-black/60" />
+ <div className="absolute inset-0 bg-gradient-to-b from-[#020b1c] via-[#071b33]/60 to-transparent" />
 
+ {/* Background */}
+      <div className="absolute inset-0 transition-all duration-1000 z-[1]">
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
+          style={{
+            backgroundImage: `url(${active.backgroundImage})`,
+            opacity: 1,
+          }}
+        />
+
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.80) 50%, rgba(51, 65, 85, 0.85) 100%)",
+          }}
+        />
+      </div>
 {/* CONTENT LAYER */}
 <div className="relative z-10">
 
@@ -158,24 +176,36 @@ export default function ServicesOverview() {
         </p>
       </motion.div>
 
-      <div className="flex justify-center gap-4 pb-10">
+<div className="flex justify-center gap-4 pb-10 flex-wrap">
+  {services.map((service, index) => {
+    const isActive = activeService === index;
 
-        {services.map((service, index) => (
+    return (
+      <button
+  key={index}
+  onClick={() => setActiveService(index)}
+  className={`
+    flex items-center gap-2 px-8 py-4 rounded-2xl
+    font-semibold text-white
+    border border-white/20
+    backdrop-blur-md
+    transition-all duration-300
+    hover:scale-105 hover:-translate-y-1
+    cursor-pointer
 
-          <button
-            key={index}
-            onClick={() => setActiveService(index)}
-            className="px-6 py-3 rounded-xl bg-white/10 text-white"
-          >
-            <service.icon className="w-5 h-5 inline mr-2" />
-
-            {service.title}
-
-          </button>
-
-        ))}
-
-      </div>
+    ${
+      isActive
+        ? `bg-gradient-to-r ${service.color} shadow-xl`
+        : "bg-white/10 hover:bg-white/20"
+    }
+  `}
+>
+        <service.icon className="w-5 h-5" />
+        {service.title}
+      </button>
+    );
+  })}
+</div>
 
       <div
   ref={ref}

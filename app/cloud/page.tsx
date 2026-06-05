@@ -148,7 +148,7 @@ const [hoveredStep, setHoveredStep] = useState<number | null>(null);
       </div>
 
       {/* HERO Section */}
-      <div className="relative w-full overflow-hidden min-h-[580px] flex items-center justify-center">
+      <div className="relative w-full overflow-hidden min-h-[600px] flex items-center justify-center">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{

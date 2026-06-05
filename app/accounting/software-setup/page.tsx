@@ -152,7 +152,7 @@ const SoftwareMigrationPage = () => {
   return (
     <div className="bg-white font-sans antialiased overflow-x-hidden">
       {/* Hero Section - More dramatic gradient */}
-      <section className="relative text-white overflow-hidden pt-12 md:pt-20 lg:pt-28 pb-40">
+      <section className="relative text-white overflow-hidden pt-6 md:pt-10 lg:pt-12 pb-20">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
