@@ -90,7 +90,7 @@ export default function CreateBlog() {
   const token =
     localStorage.getItem("token");
 
-  console.log("TOKEN:", token);
+  
 
   if (!token) {
     return alert("Login required");
