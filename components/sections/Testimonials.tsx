@@ -302,27 +302,55 @@ export default function Testimonials() {
         {/* 3-Card Slider Container */}
         <div className="relative px-4 md:px-8 lg:px-12">
           {/* Navigation Arrows */}
-          <button
-            onClick={handlePrev}
-            disabled={isAnimating}
-            className="absolute left-0 md:-left-8 top-1/2 -translate-y-1/2 z-30 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/20 backdrop-blur-md border border-cyan-500/40 shadow-lg flex items-center justify-center hover:scale-110 hover:bg-white/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-label="Previous testimonial"
-          >
-            <svg className="w-4 h-4 md:w-5 md:h-5 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+         <button
+  onClick={handlePrev}
+  disabled={isAnimating}
+  className="group absolute left-0 md:-left-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-md border border-cyan-500/40 shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 hover:bg-cyan-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+  aria-label="Previous testimonial"
+>
+  <svg
+    className="w-5 h-5 text-cyan-300 transition-transform duration-300 group-hover:-translate-x-1"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M15 19l-7-7 7-7"
+    />
+  </svg>
+
+  <span className="absolute left-14 opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap bg-black/80 text-white text-xs px-3 py-1 rounded-lg">
+    Previous
+  </span>
+</button>
 
           <button
-            onClick={handleNext}
-            disabled={isAnimating}
-            className="absolute right-0 md:-right-8 top-1/2 -translate-y-1/2 z-30 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/20 backdrop-blur-md border border-cyan-500/40 shadow-lg flex items-center justify-center hover:scale-110 hover:bg-white/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-label="Next testimonial"
-          >
-            <svg className="w-4 h-4 md:w-5 md:h-5 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+  onClick={handleNext}
+  disabled={isAnimating}
+  className="group absolute right-0 md:-right-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-md border border-cyan-500/40 shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 hover:bg-cyan-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+  aria-label="Next testimonial"
+>
+  <svg
+    className="w-5 h-5 text-cyan-300 transition-transform duration-300 group-hover:translate-x-1"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M9 5l7 7-7 7"
+    />
+  </svg>
+
+  <span className="absolute right-14 opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap bg-black/80 text-white text-xs px-3 py-1 rounded-lg">
+    Next
+  </span>
+</button>
 
           {/* 3 Cards Layout - Reduced Height */}
           <div className="relative h-[280px] md:h-[320px] lg:h-[350px] overflow-visible">

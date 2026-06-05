@@ -13,7 +13,8 @@ import Image from "next/image";
 // Wave Transition Component
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
- 
+
+  
   return (
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
@@ -31,6 +32,43 @@ export const WaveTransition = ({ direction = "bottom" }) => {
 
 export default function PayrollPage() {
   const sectionRef = useRef(null);
+
+  const heroParticles = [
+  { top: "10%", left: "20%" },
+  { top: "25%", left: "80%" },
+  { top: "40%", left: "15%" },
+  { top: "60%", left: "70%" },
+  { top: "80%", left: "35%" },
+  { top: "15%", left: "60%" },
+  { top: "70%", left: "90%" },
+  { top: "50%", left: "45%" },
+];
+
+const serviceParticles = [
+  { top: "15%", left: "10%" },
+  { top: "30%", left: "25%" },
+  { top: "45%", left: "60%" },
+  { top: "65%", left: "80%" },
+  { top: "80%", left: "20%" },
+  { top: "20%", left: "90%" },
+  { top: "55%", left: "40%" },
+  { top: "75%", left: "55%" },
+  { top: "35%", left: "75%" },
+  { top: "90%", left: "35%" },
+];
+
+const whyChooseParticles = [
+  { top: "10%", left: "15%" },
+  { top: "20%", left: "70%" },
+  { top: "35%", left: "30%" },
+  { top: "50%", left: "85%" },
+  { top: "65%", left: "25%" },
+  { top: "75%", left: "60%" },
+  { top: "85%", left: "45%" },
+  { top: "40%", left: "10%" },
+  { top: "25%", left: "90%" },
+];
+ 
   
   // Add floating animation on scroll
   useEffect(() => {
@@ -94,16 +132,16 @@ export default function PayrollPage() {
                style={{ animation: 'drift 18s ease-in-out infinite' }} />
           <div className="absolute top-[30%] right-[15%] w-16 h-16 border-2 border-blue-300/40 rotate-12" />
           <div className="absolute bottom-[20%] left-[20%] w-24 h-24 border-2 border-indigo-300/40 rounded-lg rotate-45" />
-          {[...Array(8)].map((_, i) => (
+         {heroParticles.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1.5 h-1.5 bg-blue-400/60 rounded-full"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `float-particle ${10 + i * 2}s ease-in-out infinite`,
-                animationDelay: `${i * 0.3}s`
-              }}
+             style={{
+  top: particle.top,
+  left: particle.left,
+  animation: `float-particle ${10 + i * 2}s ease-in-out infinite`,
+  animationDelay: `${i * 0.3}s`
+}}
             />
           ))}
         </div>
@@ -145,16 +183,16 @@ export default function PayrollPage() {
           <div className="absolute top-[20%] left-[30%] w-32 h-32 border-2 border-dashed border-blue-300/50 rounded-full" 
                style={{ animation: 'spin-very-slow 30s linear infinite' }} />
           <div className="absolute top-[70%] right-[25%] w-40 h-40 bg-gradient-to-br from-blue-200/40 to-indigo-200/40 rounded-full blur-lg" />
-          {[...Array(10)].map((_, i) => (
+          {serviceParticles.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1.5 h-1.5 bg-indigo-400/60 rounded-full"
               style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `float-particle ${12 + i * 2}s ease-in-out infinite`,
-                animationDelay: `${i * 0.4}s`
-              }}
+  top: particle.top,
+  left: particle.left,
+  animation: `float-particle ${10 + i * 2}s ease-in-out infinite`,
+  animationDelay: `${i * 0.3}s`
+}}
             />
           ))}
         </div>
@@ -339,13 +377,13 @@ export default function PayrollPage() {
       <section className="relative py-20 bg-blue-100 overflow-hidden z-10">
         {/* Background Shapes - Visible but professional */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {[...Array(9)].map((_, i) => (
+          {whyChooseParticles.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1.5 h-1.5 bg-blue-400/60 rounded-full"
               style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
+                top: particle.top,
+left: particle.left,
                 animation: `float-particle ${11 + i * 2}s ease-in-out infinite`,
                 animationDelay: `${i * 0.5}s`
               }}

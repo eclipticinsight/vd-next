@@ -729,7 +729,7 @@ const JourneySection = () => {
       className="relative w-full pt-16 pb-32 overflow-hidden bg-cover bg-center"
       style={{
   backgroundImage:
-    "url('https://static.vecteezy.com/system/resources/previews/056/546/949/non_2x/success-roadmap-journey-milestone.jpg')",
+    "url('https://static.vecteezy.com/system/resources/previews/056/546/949/non_2x/success-roadmap-journey-milestone-or-career-path-achievement-route-or-pathway-to-achieve-goals-accomplishment-assessment-or-way-to-success-businessman-look-at-achievement-milestone-to-success-vector.jpg')",
 }}
     >
       <div className="absolute top-0 left-0 w-full -mt-1 z-10">
