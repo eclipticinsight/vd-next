@@ -56,16 +56,7 @@ export default function LoginPage() {
       "true"
     );
 
-    console.log(
-      "TOKEN:",
-      loginData.token
-    );
-
-    console.log(
-      "USER:",
-      loginData.user
-    );
-
+   
     if(
       loginData.user.role === "admin"
     ){
