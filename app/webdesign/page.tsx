@@ -35,7 +35,7 @@ export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
  
   return (
-    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+    <div className={`relative w-full overflow-hidden pointer-events-none ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
         viewBox="0 0 1440 320"
         className="w-full h-[150px] md:h-[220px]"
@@ -981,11 +981,7 @@ const CTA = () => (
         viewport={{ once: true }}
         className="relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
       >
-        <a
-          href="https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="/contact">
           <button className="group bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-indigo-500/30 flex items-center gap-3 text-lg">
             Get Free Consultation
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

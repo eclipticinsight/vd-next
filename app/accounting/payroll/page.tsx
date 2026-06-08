@@ -136,9 +136,7 @@ export default function PayrollPage() {
             Outsourced Payroll Services
           </h1>
           <a
-            href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
             className="inline-block bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold shadow-lg transition transform hover:scale-105"
           >
             Get a Free Consultation
@@ -441,12 +439,9 @@ left: particle.left,
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() =>
-                  window.open(
-                    "https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk",
-                    "_blank"
-                  )
-                }
+                onClick={() => {
+                  window.location.href = "/contact";
+                }}
                 className="group bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 flex items-center justify-center"
               >
                 <Phone className="mr-3 w-5 h-5" /> 

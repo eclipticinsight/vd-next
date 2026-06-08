@@ -75,7 +75,7 @@ const SocialMediaMarketingPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  onClick={() => window.open("https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn", "_blank")}
+                  onClick={() => window.location.href = "/contact"}
                   className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 flex items-center gap-2"
                 >
                   Get Started
@@ -193,7 +193,7 @@ const SocialMediaMarketingPage = () => {
               Not sure which service is right for you?
             </p>
             <button
-              onClick={() => window.open("https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn", "_blank")}
+              onClick={() => window.location.href = "/contact"}
               className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-200 transition-all duration-300 inline-flex items-center gap-2"
             >
               Get a Free Consultation
@@ -387,7 +387,7 @@ const SocialMediaMarketingPage = () => {
           </p>
 
           <button
-            onClick={() => window.open("https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn", "_blank")}
+            onClick={() => window.location.href = "/contact"}
             className="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-300 transition-all duration-300 hover:scale-105"
           >
             Start Your Free Consultation

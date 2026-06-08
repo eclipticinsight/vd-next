@@ -59,7 +59,7 @@ export default function AIConsultingPage() {
   const [activeService, setActiveService] = useState(0);
 
   const handleScheduleClick = () => {
-    window.open("https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw", "_blank");
+    window.location.href = "/contact";
   };
 
   return (

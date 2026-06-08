@@ -127,7 +127,7 @@ const BusinessAnalystPage = () => {
         </div>
         <div className="absolute inset-0 bg-black/80 z-0"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24">
+        <div className="relative z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
             <div className="text-center lg:text-left lg:w-1/2">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 drop-shadow-lg">
@@ -142,9 +142,7 @@ const BusinessAnalystPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <a
-                  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/contact"
                   className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg text-sm sm:text-base"
                 >
                   Schedule Consultation
@@ -162,7 +160,7 @@ const BusinessAnalystPage = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full z-30">
+        <div className="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
           <WaveTransition />
         </div>
       </section>

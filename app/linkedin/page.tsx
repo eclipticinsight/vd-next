@@ -26,7 +26,7 @@ export default function Home() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
   const handleStartTrial = () => {
-    window.open("https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn", "_blank");
+    window.location.href = "/contact";
   };
 
   return (

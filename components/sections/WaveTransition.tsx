@@ -11,7 +11,7 @@ export default function WaveTransition({
   const isTop = direction === "top";
 
   return (
-    <div className={`relative w-full overflow-hidden ${
+    <div className={`relative w-full overflow-hidden pointer-events-none ${
       isTop ? "rotate-180 -mb-1" : "-mt-1"
     }`}>
       <svg

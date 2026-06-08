@@ -413,12 +413,9 @@ const EmailMarketingPage = () => {
           {/* Bottom CTA */}
           <div className="mt-16 text-center">
             <button
-              onClick={() =>
-                window.open(
-                  "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
-                  "_blank"
-                )
-              }
+              onClick={() => {
+                window.location.href = "/contact";
+              }}
               className="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl hover:shadow-2xl transition-all transform hover:-translate-y-1 overflow-hidden"
             >
               <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500"></span>

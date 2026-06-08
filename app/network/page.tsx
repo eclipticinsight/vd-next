@@ -69,9 +69,7 @@ export default function MDMPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contact"
                 className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
               >
                 Start Your Consultation
@@ -117,9 +115,7 @@ export default function MDMPage() {
             </p>
             
             <a
-              href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact"
               className="group inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:scale-105 transition-all"
             >
               Free Consultation
@@ -451,9 +447,7 @@ export default function MDMPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact"
               className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition"
             >
               Start Your Free Trial

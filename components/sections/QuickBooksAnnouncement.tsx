@@ -58,9 +58,9 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     transition: {
-  duration: 0.6,
-  ease: "easeOut" as const,
-},
+      duration: 0.6,
+      ease: "easeOut" as const,
+    },
   },
 };
 
@@ -251,6 +251,7 @@ const QuickBooksAnnouncement = () => {
         "Authorized professionals with proven QuickBooks implementation experience.",
       features: [
         "GHL Expert",
+        "Quickbook Expert",
         "Continuous Training",
         "Audit-Ready Reporting",
       ],
@@ -316,7 +317,7 @@ const QuickBooksAnnouncement = () => {
       <div className="absolute inset-0 pointer-events-none">
         {/* Sky Base Gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-sky-200 via-blue-100 to-blue-100" />
-        
+
         {/* Sun/Light Source */}
         <motion.div
           className="absolute top-1/4 right-1/4 w-48 h-48 rounded-full bg-gradient-to-r from-amber-200/80 to-yellow-200/60 blur-3xl"

@@ -449,12 +449,9 @@ const particles: Particle[] = [];
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <button
-                onClick={() =>
-                  window.open(
-                    "https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk",
-                    "_blank"
-                  )
-                }
+                onClick={() => {
+                  window.location.href = "/contact";
+                }}
                 className="group bg-white text-blue-600 px-5 sm:px-6 md:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center text-sm sm:text-base"
               >
                 <Phone className="mr-2 sm:mr-3 w-4 h-4 sm:w-5 sm:h-5" />

@@ -29,7 +29,7 @@ export const WaveTransition = ({
   const isTop = direction === "top";
  
   return (
-    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+    <div className={`relative w-full overflow-hidden pointer-events-none ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
         viewBox="0 0 1440 320"
         className="w-full h-[150px] md:h-[220px]"
@@ -639,9 +639,7 @@ const bgGradients = [
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all transform hover:scale-105"
             >
               <Calculator className="w-5 h-5" />

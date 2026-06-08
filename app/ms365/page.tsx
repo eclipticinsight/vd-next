@@ -256,9 +256,7 @@ export default function MS365ManagementPage() {
  
               <div className="flex gap-4">
                 <motion.a
-                  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition-all duration-300 font-semibold"
@@ -675,9 +673,7 @@ export default function MS365ManagementPage() {
  
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <motion.a
-                  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transition flex items-center justify-center gap-2 group"

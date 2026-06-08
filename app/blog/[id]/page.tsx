@@ -336,9 +336,7 @@ export default function BlogDetails() {
 
             <div className="mt-10 flex flex-wrap gap-5">
               <a
-                href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contact"
                 className="inline-block"
               >
                 <button className="px-8 py-4 rounded-2xl bg-gradient-to-r from-[#f4a522] to-[#ffbf47] text-[#0b1f3a] font-bold text-lg shadow-2xl hover:scale-105 transition duration-300">

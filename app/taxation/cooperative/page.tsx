@@ -52,7 +52,7 @@ export const WaveTransition = ({
   const isTop = direction === "top";
  
   return (
-    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+    <div className={`relative w-full overflow-hidden pointer-events-none ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
         viewBox="0 0 1440 320"
         className="w-full h-[60px] sm:h-[100px] md:h-[150px] lg:h-[180px] xl:h-[200px]"
@@ -179,9 +179,7 @@ py-10 sm:py-12 md:py-14 lg:py-16 xl:py-18">
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <a
-                  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/contact"
                   className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg text-center"
                 >
                   Schedule Free Consultation
@@ -677,9 +675,7 @@ py-10 sm:py-12 md:py-14 lg:py-16 xl:py-18">
           
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <a
-              href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact"
               className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg text-center"
             >
               Schedule Free Consultation

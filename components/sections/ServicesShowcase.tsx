@@ -18,7 +18,7 @@ export const WaveTransition = ({ direction = "bottom" }: { direction?: "top" | "
   const isTop = direction === "top";
   
   return (
-    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+    <div className={`relative w-full overflow-hidden pointer-events-none ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
         viewBox="0 0 1440 320"
         className="w-full h-[150px] md:h-[220px]"

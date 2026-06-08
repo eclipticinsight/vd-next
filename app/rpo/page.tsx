@@ -57,9 +57,7 @@ export default function RPOShowcase() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
                 <a
-                  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/contact"
                   className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all flex items-center justify-center group"
                 >
                   Start Free Consultation
@@ -572,9 +570,7 @@ transform: isVisible[`service-${idx}` as keyof typeof isVisible]
             <p className="text-blue-100 text-lg mb-8">Join 500+ companies that have optimized their hiring with our RPO solutions</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contact"
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all flex items-center justify-center group"
               >
                 Start Free Consultation

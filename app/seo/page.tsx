@@ -24,7 +24,7 @@ export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
  
   return (
-    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+    <div className={`relative w-full overflow-hidden pointer-events-none ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
         viewBox="0 0 1440 320"
         className="w-full h-[150px] md:h-[220px]"
@@ -338,12 +338,9 @@ const SEOPage = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {/* <button
-                onClick={() =>
-                  window.open(
-                    "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
-                    "_blank"
-                  )
-                }
+                onClick={() => {
+                  window.location.href = "/contact";
+                }}
                 className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-yellow-300 transition-colors text-lg"
               >
                 Get Free SEO Audit
@@ -1106,21 +1103,13 @@ const SEOPage = () => {
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row gap-5 justify-center"
           >
-            <a
-              href="https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="/contact">
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition shadow-lg hover:shadow-blue-500/40">
                 Get Free SEO Audit
               </button>
             </a>
 
-            <a
-              href="https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="/contact">
               <button className="border-2 border-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-gray-900 transition">
                 Contact Our Experts
               </button>

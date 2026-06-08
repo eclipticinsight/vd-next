@@ -45,7 +45,7 @@ export default function AutomationIntegrationPage() {
   const techTools = AUTOMATION_PAGE_TECH;
 
   const handleContactClick = () => {
-    window.open("https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw", "_blank");
+    window.location.href = "/contact";
   };
 
   return (
