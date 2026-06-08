@@ -62,7 +62,7 @@ const SocialMediaMarketingPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-5xl lg:text-6xl font-bold text-white leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
               >
                 Grow Your Brand
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
@@ -92,7 +92,7 @@ const SocialMediaMarketingPage = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur-3xl opacity-30"></div>
               <div className="relative bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-8 border border-white/20">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {platforms.map((platform, index) => (
                     <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/10">
                       <div className="flex items-center gap-3 mb-2">
@@ -127,7 +127,7 @@ const SocialMediaMarketingPage = () => {
               Our Services
             </div>
             
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Comprehensive{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
                 Social Media
@@ -244,7 +244,7 @@ const SocialMediaMarketingPage = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {stats.map((stat, index) => (
                 <motion.div 
                   key={index}
@@ -286,7 +286,7 @@ const SocialMediaMarketingPage = () => {
             <span className="text-purple-600 font-semibold text-sm uppercase tracking-wider">
               Testimonials
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mt-4 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-4 mb-6">
               Loved by businesses everywhere
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto rounded-full"></div>
@@ -378,7 +378,7 @@ const SocialMediaMarketingPage = () => {
 
         {/* Content */}
         <div className="relative container mx-auto px-4 text-center z-10">
-          <h2 className="text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to Grow Your Social Media Presence?
           </h2>
 

@@ -242,7 +242,7 @@ export default function MS365ManagementPage() {
                 Microsoft 365 Management
               </span>
  
-              <motion.h1 variants={fadeInUp} className="text-5xl lg:text-6xl font-bold">
+              <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
                 Efficiently navigating the
                 <br />
                 <span className="text-blue-400">digital landscape</span>

@@ -46,11 +46,26 @@ export default function ServicesOverview() {
       iconLarge: Calculator,
 
       features: [
-        "Bookkeeping & Accounting",
-        "AR, AP and Bank Reconcilitions",
-        "Payroll",
-        "Auditing",
-        "Financial Reporting & Analysis",
+        {
+          title: "Bookkeeping & Accounting",
+          route: "/accounting/bookkeeping",
+        },
+        {
+          title: "AR, AP and Bank Reconciliations",
+          route: "/accounting/bookkeeping",
+        },
+        {
+          title: "Payroll",
+          route: "/accounting/payroll",
+        },
+        {
+          title: "Auditing",
+          route: "/accounting/auditing",
+        },
+        {
+          title: "Financial Reporting & Analysis",
+          route: "/accounting/financial-reporting",
+        },
       ],
 
       color: "from-blue-600 to-cyan-500",
@@ -73,11 +88,26 @@ export default function ServicesOverview() {
       iconLarge: Megaphone,
 
       features: [
-        "SEO Optimization",
-        "Social Media Management",
-        "Email Marketing",
-        "Content Strategy",
-        "Web Design & Development",
+        {
+          title: "SEO Optimization",
+          route: "/seo",
+        },
+        {
+          title: "Social Media Management",
+          route: "/social",
+        },
+        {
+          title: "Email Marketing",
+          route: "/email",
+        },
+        {
+          title: "LinkedIn Marketing",
+          route: "/linkedin",
+        },
+        {
+          title: "Web Design & Development",
+          route: "/webdesign",
+        },
       ],
 
       color: "from-purple-600 to-pink-500",
@@ -100,11 +130,26 @@ export default function ServicesOverview() {
       iconLarge: Cpu,
 
       features: [
-        "Microsoft 365 Management",
-        "Managed Network Services",
-        "Microsoft Azure",
-        "Microsoft Intune",
-        "Mobile Device Management",
+        {
+          title: "Microsoft 365 Management",
+          route: "/ms365",
+        },
+        {
+          title: "Managed Network Services",
+          route: "/network",
+        },
+        {
+          title: "Microsoft Azure",
+          route: "/it-asset-management/microsoft-azure",
+        },
+        {
+          title: "Microsoft Intune",
+          route: "/it-asset-management/microsoft-intune",
+        },
+        {
+          title: "Mobile Device Management",
+          route: "/mobile",
+        },
       ],
 
       color: "from-emerald-600 to-green-500",
@@ -117,19 +162,19 @@ export default function ServicesOverview() {
 
   return (
     <section
-  className="relative min-h-screen py-16 overflow-hidden"
-  style={{
-    backgroundImage: `url(${active.backgroundImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  }}
->
+      className="relative min-h-screen py-16 overflow-hidden"
+      style={{
+        backgroundImage: `url(${active.backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
 
-   {/* DARK BLUE OVERLAY */}
- <div className="absolute inset-0 bg-gradient-to-b from-[#020b1c] via-[#071b33]/60 to-transparent" />
+      {/* DARK BLUE OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#020b1c] via-[#071b33]/60 to-transparent" />
 
- {/* Background */}
+      {/* Background */}
       <div className="absolute inset-0 transition-all duration-1000 z-[1]">
         <div
           className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
@@ -147,44 +192,44 @@ export default function ServicesOverview() {
           }}
         />
       </div>
-{/* CONTENT LAYER */}
-<div className="relative z-10">
+      {/* CONTENT LAYER */}
+      <div className="relative z-10">
 
 
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center py-20"
-      >
-        <h1 className="text-5xl font-bold text-white mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center py-20"
+        >
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
 
-          Smart, Scalable{" "}
+            Smart, Scalable{" "}
 
-          <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
 
-            Business Solutions
+              Business Solutions
 
-          </span>
+            </span>
 
-        </h1>
+          </h1>
 
-        <p className="text-slate-300">
+          <p className="text-slate-300">
 
-          Tailored services designed to optimize operations.
+            Tailored services designed to optimize operations.
 
-        </p>
-      </motion.div>
+          </p>
+        </motion.div>
 
-<div className="flex justify-center gap-4 pb-10 flex-wrap">
-  {services.map((service, index) => {
-    const isActive = activeService === index;
+        <div className="flex justify-center gap-4 pb-10 flex-wrap">
+          {services.map((service, index) => {
+            const isActive = activeService === index;
 
-    return (
-      <button
-  key={index}
-  onClick={() => setActiveService(index)}
-  className={`
+            return (
+              <button
+                key={index}
+                onClick={() => setActiveService(index)}
+                className={`
     flex items-center gap-2 px-8 py-4 rounded-2xl
     font-semibold text-white
     border border-white/20
@@ -193,109 +238,117 @@ export default function ServicesOverview() {
     hover:scale-105 hover:-translate-y-1
     cursor-pointer
 
-    ${
-      isActive
-        ? `bg-gradient-to-r ${service.color} shadow-xl`
-        : "bg-white/10 hover:bg-white/20"
-    }
+    ${isActive
+                    ? `bg-gradient-to-r ${service.color} shadow-xl`
+                    : "bg-white/10 hover:bg-white/20"
+                  }
   `}
->
-        <service.icon className="w-5 h-5" />
-        {service.title}
-      </button>
-    );
-  })}
-</div>
+              >
+                <service.icon className="w-5 h-5" />
+                {service.title}
+              </button>
+            );
+          })}
+        </div>
 
-      <div
-  ref={ref}
-  onMouseEnter={() => setIsHovered(true)}
-  onMouseLeave={() => setIsHovered(false)}
-  className="max-w-[1800px] mx-auto px-10 pb-6"
->
-  <motion.div
-    key={active.title}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    className="bg-[#F5F5F5] rounded-[50px] px-16 py-14 w-full"
-  >
-<div className="grid lg:grid-cols-[42%_58%] gap-14 items-start">
-  {/* LEFT */}
-  <div>
+        <div
+          ref={ref}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="max-w-[1800px] mx-auto px-4 sm:px-6 md:px-10 pb-6"
+        >
+          <motion.div
+            key={active.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-[#F5F5F5] rounded-2xl md:rounded-[50px] px-4 sm:px-8 md:px-12 lg:px-16 py-6 sm:py-8 md:py-10 lg:py-14 w-full"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-8 lg:gap-14 items-start">
+              {/* LEFT */}
+              <div>
 
-    {/* ICON */}
-    <div className="w-[105px] h-[105px] rounded-[28px] bg-[#EEF8FF] flex items-center justify-center mb-8 shadow-md">
+                {/* ICON */}
+                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-[105px] lg:h-[105px] rounded-2xl lg:rounded-[28px] bg-[#EEF8FF] flex items-center justify-center mb-6 lg:mb-8 shadow-md">
 
-      <active.iconLarge className="w-10 h-10 text-blue-500" />
+                  <active.iconLarge className="w-10 h-10 text-blue-500" />
 
-    </div>
+                </div>
 
-    {/* TITLE */}
-                      <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-8 tracking-tight">
-                    {active.title}
-                  </h2>
+                {/* TITLE */}
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 md:mb-8 tracking-tight">
+                  {active.title}
+                </h2>
 
-    {/* DESCRIPTION */}
-    <div className="bg-[#F0ECE8] border border-[#E7DDD1] rounded-[24px] px-8 py-7 max-w-[620px]">
+                {/* DESCRIPTION */}
+                <div className="bg-[#F0ECE8] border border-[#E7DDD1] rounded-[24px] px-8 py-7 max-w-[620px]">
 
-      <p className="text-[#475467] text-[18px] leading-10">
+                  <p className="text-[#475467] text-[18px] leading-10">
 
-        {active.description}
+                    {active.description}
 
-      </p>
+                  </p>
 
-    </div>
+                </div>
 
-    
 
-  </div>
 
-  {/* RIGHT */}
-  <div>
+              </div>
 
-    {/* INCLUDED TITLE */}
-    <div className="flex items-center gap-3 mb-8">
+              {/* RIGHT */}
+              <div>
 
-      <CheckCircle className="w-7 h-7 text-emerald-500" />
+                {/* INCLUDED TITLE */}
+                <div className="flex items-center gap-3 mb-8">
 
-      <h3 className="text-[56px] font-bold text-[#071133]">
+                  <CheckCircle className="w-7 h-7 text-emerald-500" />
 
-        What's Included
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-[56px] font-bold text-[#071133]">
 
-      </h3>
+                    What's Included
 
-    </div>
+                  </h3>
 
-    {/* LIST */}
-    <div className="space-y-5">
+                </div>
 
-      {active.features.map((feature, idx) => (
+                {/* LIST */}
+                <div className="space-y-5">
 
-<div
- key={idx}
- className="flex items-center gap-4 bg-white border border-[#E2E8F0] rounded-[24px] px-8 py-5 shadow-sm w-full"
->
+                  {active.features.map((feature, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => router.push(feature.route)}
+                      className="
+      flex items-center justify-between
+      gap-4 bg-white border border-[#E2E8F0]
+      rounded-[24px] px-8 py-5 shadow-sm w-full
+      cursor-pointer
+      hover:shadow-lg
+      hover:-translate-y-1
+      transition-all duration-300
+    "
+                    >
+                      <div className="flex items-center gap-4">
+                        <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
 
- <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
+                        <span className="text-[18px] text-slate-700 font-medium">
+                          {feature.title}
+                        </span>
+                      </div>
 
- <span className="text-[18px] text-slate-700 font-medium">
-   {feature}
- </span>
 
-</div>
+                    </div>
+                  ))}
 
-      ))}
+                </div>
 
-    </div>
+              </div>
 
-  </div>
+            </div>
+          </motion.div>
+        </div>
 
-</div>
-  </motion.div>
-</div>
-
-     </div>
+      </div>
 
     </section>
   );

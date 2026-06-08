@@ -106,7 +106,7 @@ export default function AIConsultingPage() {
       <section id="services" className="bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100 py-24 relative overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 relative">
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">What Our AI Can Do</span>
             </h2>
           </div>

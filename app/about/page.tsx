@@ -559,13 +559,13 @@ const MissionVisionSection = () => {
                     {currentData.icon}
                   </div>
                 </motion.div>
-                <h3 className="text-5xl font-bold mb-8">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8">
                   <span className="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
                     {currentData.title}
                   </span>
                 </h3>
                 <div className="rounded-3xl bg-white/80 backdrop-blur-sm border border-white/40 p-8 mb-12 shadow-xl">
-                  <p className="text-2xl text-slate-800 leading-relaxed font-light">{currentData.text}</p>
+                  <p className="text-lg sm:text-xl md:text-2xl text-slate-800 leading-relaxed font-light">{currentData.text}</p>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {currentData.stats.map((stat, idx) => (

@@ -22,40 +22,40 @@ const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-  setMounted(true);
-}, []);
+    setMounted(true);
+  }, []);
 
   const router = useRouter();
   const pathname = usePathname();
 
   /* 🛒 CART COUNT */
-useEffect(() => {
+  useEffect(() => {
 
-  const updateCartCount = () => {
+    const updateCartCount = () => {
 
-    const cart =
-      JSON.parse(
-        localStorage.getItem("cart") || "[]"
-      );
+      const cart =
+        JSON.parse(
+          localStorage.getItem("cart") || "[]"
+        );
 
-    setCartCount(cart.length);
-  };
+      setCartCount(cart.length);
+    };
 
-  updateCartCount();
+    updateCartCount();
 
-  window.addEventListener(
-    "cartUpdated",
-    updateCartCount
-  );
-
-  return () => {
-    window.removeEventListener(
+    window.addEventListener(
       "cartUpdated",
       updateCartCount
     );
-  };
 
-}, []);
+    return () => {
+      window.removeEventListener(
+        "cartUpdated",
+        updateCartCount
+      );
+    };
+
+  }, []);
 
   /* 🔐 USER LOAD */
   useEffect(() => {
@@ -95,27 +95,22 @@ useEffect(() => {
     <>
       <header className="sticky top-0 left-0 w-full h-20 lg:h-16 z-[9999] bg-[#0B1F3A] backdrop-blur-md">
         <div
-          className={`h-full px-6 flex items-center justify-between ${
-            isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
-          }`}
+          className={`h-full px-6 flex items-center justify-between ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+            }`}
         >
           {/* LOGO */}
           <Link
-  href="/"
-  className="inline-flex items-center cursor-pointer"
->
-  <Image
-  src="/VD-Logo-e1737873827576.png"
-  alt="Visionary Dynamics"
-  width={120}
-  height={56}
-  loading="eager"
-  style={{
-    width: "auto",
-    height: "auto",
-  }}
-/>
-</Link>
+            href="/"
+            className="inline-flex items-center cursor-pointer"
+          >
+            <Image
+              src="/VD-Logo-e1737873827576.png"
+              alt="Visionary Dynamics"
+              width={240}
+              height={112}
+              loading="eager"
+            />
+          </Link>
 
           {/* MENU */}
           <nav className="hidden lg:flex items-center gap-8 whitespace-nowrap text-white">
@@ -174,14 +169,14 @@ useEffect(() => {
             <div className="flex flex-col h-screen">
               {/* TOP HEADER */}
               <div className="flex items-center justify-between px-5 h-20 border-b border-white/10 flex-shrink-0">
-<Image
-  src="/VD-Logo-e1737873827576.png"
-  alt="Logo"
-  width={180}
-  height={80}
-  loading="eager"
-  priority
-/>
+                <Image
+                  src="/VD-Logo-e1737873827576.png"
+                  alt="Logo"
+                  width={180}
+                  height={80}
+                  loading="eager"
+                  priority
+                />
                 <button
                   onClick={() => setIsOpen(false)}
                   className="text-purple-400 text-4xl leading-none"
@@ -239,10 +234,10 @@ useEffect(() => {
                     <>
                       <Link
                         href={
-  user?.role === "admin"
-    ? "/dashboard/admin"
-    : "/dashboard/user"
-}
+                          user?.role === "admin"
+                            ? "/dashboard/admin"
+                            : "/dashboard/user"
+                        }
                         className="block mt-3 bg-green-500 px-4 py-3 rounded-lg text-center text-lg font-semibold hover:bg-green-600 transition-colors"
                         onClick={() => setIsOpen(false)}
                       >
@@ -310,10 +305,10 @@ const UserDropdown = ({ user, handleLogout }: { user: User; handleLogout: () => 
         <div className="absolute right-0 mt-3 w-44 bg-white rounded-xl shadow-lg overflow-hidden z-50">
           <Link
             href={
-  user?.role === "admin"
-    ? "/dashboard/admin"
-    : "/dashboard/user"
-}
+              user?.role === "admin"
+                ? "/dashboard/admin"
+                : "/dashboard/user"
+            }
             className="block px-4 py-3 hover:bg-green-100 text-green-600 transition-colors"
             onClick={() => setOpen(false)}
           >
@@ -335,14 +330,14 @@ const UserDropdown = ({ user, handleLogout }: { user: User; handleLogout: () => 
 };
 
 /* ================= MENU ================= */
-const MenuWithSub = ({ 
-  menu, 
-  data = {}, 
+const MenuWithSub = ({
+  menu,
+  data = {},
   isMobile = false,
-  onClose 
-}: { 
-  menu: string; 
-  data: Record<string, string[]>; 
+  onClose
+}: {
+  menu: string;
+  data: Record<string, string[]>;
   isMobile?: boolean;
   onClose?: () => void;
 }) => {
@@ -363,7 +358,7 @@ const MenuWithSub = ({
   // CLOSE ON OUTSIDE CLICK (desktop only)
   useEffect(() => {
     if (isMobile) return;
-    
+
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setOpen(false);
@@ -386,9 +381,8 @@ const MenuWithSub = ({
 
       {/* DROPDOWN */}
       <div
-        className={`${
-          open ? "block" : "hidden"
-        } ${!isMobile ? "lg:absolute lg:top-full lg:left-0" : ""} w-full lg:min-w-[240px] bg-[#0f172a] z-[999] rounded-lg`}
+        className={`${open ? "block" : "hidden"
+          } ${!isMobile ? "lg:absolute lg:top-full lg:left-0" : ""} w-full lg:min-w-[240px] bg-[#0f172a] z-[999] rounded-lg`}
       >
         {Object.keys(data).map((item) => (
           <div key={item} className="relative group/item">
@@ -413,9 +407,8 @@ const MenuWithSub = ({
                 >
                   <ChevronRight
                     size={14}
-                    className={`transition-transform duration-300 ${
-                      activeSub === item ? "rotate-90" : ""
-                    }`}
+                    className={`transition-transform duration-300 ${activeSub === item ? "rotate-90" : ""
+                      }`}
                   />
                 </button>
               )}

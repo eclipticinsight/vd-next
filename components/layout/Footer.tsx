@@ -61,7 +61,7 @@ export default function Footer() {
 
 </div>
           {/* QUICK LINKS */}
-          <div className="lg:ml-36">
+          <div>
             <h4 className="font-semibold mb-5 text-white">Quick Links</h4>
             <ul className="space-y-2 text-white/70 text-sm">
               {FOOTER_QUICK_LINKS.map((link, index) => (

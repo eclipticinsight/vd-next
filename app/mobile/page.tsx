@@ -58,7 +58,7 @@ export default function MDMPage() {
         {/* Content */}
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
               Secure Mobile Devices.{" "}
               <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
                 Smarter Business Management.
@@ -94,7 +94,7 @@ export default function MDMPage() {
               VISIONARY DYNAMICS
             </div> */}
             
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Mobile Device Management
               </span>

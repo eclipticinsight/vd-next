@@ -191,7 +191,7 @@ export default function WhyChooseUs() {
   return (
     <section 
       ref={sectionRef}
-      className="relative w-screen min-h-screen py-28 overflow-hidden bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100"
+      className="relative w-full min-h-screen py-16 md:py-28 overflow-hidden bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100"
     >
       {/* =========================
           TRANSPARENT BASE LAYER - Clean, minimal, no heavy colors

@@ -266,7 +266,7 @@ const EmailMarketingPage = () => {
         
         {/* Content - No boxes, no cards, just text */}
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4">
             Master Email Marketing
           </h1>
           
@@ -288,7 +288,7 @@ const EmailMarketingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
               Email Marketing
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
