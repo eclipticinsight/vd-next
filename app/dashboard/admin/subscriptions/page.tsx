@@ -142,14 +142,12 @@ export default function AdminSubscriptions() {
 
   const handleManage = (subscription: Subscription) => {
     // Implement manage functionality
-    console.log("Manage subscription:", subscription);
     // You can open a modal or navigate to edit page
     alert(`Managing subscription for ${subscription.user}`);
   };
 
   const handleView = (subscription: Subscription) => {
     // Implement view functionality
-    console.log("View subscription:", subscription);
     alert(`Viewing details for ${subscription.user}`);
   };
 

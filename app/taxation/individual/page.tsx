@@ -2,18 +2,20 @@
 
 import React, { useState, useEffect } from 'react';
 import {
+  CONTACT_INFO,
+  INDIVIDUAL_TAX_BENEFITS as benefits,
+  INDIVIDUAL_TAX_FILING_STATUSES as filingStatuses,
+  INDIVIDUAL_TAX_DEDUCTIONS as deductions,
+  INDIVIDUAL_TAX_CREDITS as credits,
+  INDIVIDUAL_TAX_DOCUMENTS as documents,
+  INDIVIDUAL_TAX_FAQS as faqs,
+  INDIVIDUAL_TAX_BRACKETS as brackets
+} from '@/utils/constants';
+import {
   Calculator,
   CheckCircle,
   ChevronDown, 
   Phone,
-  Clock,
-  Shield,
-  Percent,
-  Home,
-  GraduationCap,
-  Heart,
-  Users,
-  Headphones,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -155,141 +157,7 @@ const IndividualTaxationPage = () => {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
-  const benefits = [
-    {
-      icon: <Percent className="w-8 h-8" />,
-      title: "Maximum Refunds",
-      description: "We identify every deduction and credit you qualify for to maximize your tax refund."
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Audit Protection",
-      description: "Complete audit support and representation if the IRS has questions about your return."
-    },
-    {
-      icon: <Clock className="w-8 h-8" />,
-      title: "Fast Processing",
-      description: "Average 3-5 day turnaround with electronic filing and direct deposit options."
-    },
-    {
-      icon: <Headphones className="w-8 h-8" />,
-      title: "Year-Round Support",
-      description: "Access to tax professionals whenever you have questions, not just during tax season."
-    }
-  ];
 
-  const filingStatuses = [
-    { status: "Single", description: "Unmarried individuals", percentage: "35%" },
-    { status: "Married Filing Jointly", description: "Married couples filing together", percentage: "45%" },
-    { status: "Married Filing Separately", description: "Married couples filing separately", percentage: "5%" },
-    { status: "Head of Household", description: "Unmarried with dependents", percentage: "12%" },
-    { status: "Qualifying Widow(er)", description: "With dependent child", percentage: "3%" }
-  ];
-
-  const deductions = [
-    { name: "Standard Deduction 2024", amount: "$14,600", type: "Single" },
-    { name: "Standard Deduction 2024", amount: "$29,200", type: "Married Joint" },
-    { name: "Standard Deduction 2024", amount: "$21,900", type: "Head of Household" },
-    { name: "Medical Expenses", amount: "7.5% of AGI", type: "Itemized" },
-    { name: "State & Local Taxes", amount: "$10,000 limit", type: "Itemized" },
-    { name: "Mortgage Interest", amount: "Up to $750,000", type: "Itemized" }
-  ];
-
-  const credits = [
-    {
-      icon: <Users className="w-6 h-6" />,
-      name: "Child Tax Credit",
-      amount: "Up to $2,000 per child",
-      description: "For qualifying children under 17"
-    },
-    {
-      icon: <GraduationCap className="w-6 h-6" />,
-      name: "Education Credits",
-      amount: "Up to $2,500",
-      description: "American Opportunity & Lifetime Learning"
-    },
-    {
-      icon: <Home className="w-6 h-6" />,
-      name: "Earned Income Credit",
-      amount: "Up to $7,430",
-      description: "For low to moderate income workers"
-    },
-    {
-      icon: <Heart className="w-6 h-6" />,
-      name: "Child & Dependent Care",
-      amount: "Up to $3,000",
-      description: "For care expenses while working"
-    }
-  ];
-
-  const documents = [
-    {
-      category: "Income Documents",
-      items: [
-        "W-2 forms from all employers",
-        "1099-NEC for freelance work",
-        "1099-INT for interest income",
-        "1099-DIV for dividends",
-        "K-1 forms for partnerships",
-        "Social Security benefits statement"
-      ]
-    },
-    {
-      category: "Deduction Documents",
-      items: [
-        "Mortgage interest statement (1098)",
-        "Property tax receipts",
-        "Charitable donation receipts",
-        "Medical expense records",
-        "Student loan interest statement",
-        "IRA contribution records"
-      ]
-    },
-    {
-      category: "Personal Documents",
-      items: [
-        "Social Security cards",
-        "Driver's licenses/ID",
-        "Previous year's tax return",
-        "Identity Protection PIN",
-        "Bank account/routing numbers",
-        "Health insurance statements"
-      ]
-    }
-  ];
-
-  const faqs = [
-    {
-      question: "When is the tax filing deadline for 2024?",
-      answer: "The tax filing deadline for 2023 returns is April 15, 2024. You can request an automatic 6-month extension to October 15, 2024, but any taxes owed are still due by April 15."
-    },
-    {
-      question: "What's the difference between a tax credit and a tax deduction?",
-      answer: "A tax credit directly reduces your tax bill dollar-for-dollar, while a tax deduction reduces your taxable income. For example, a $1,000 tax credit saves you $1,000 in taxes, while a $1,000 deduction saves you $220-370 depending on your tax bracket."
-    },
-    {
-      question: "How long should I keep my tax records?",
-      answer: "Generally, keep tax records for 3-7 years. The IRS can audit returns for up to 3 years, or 6 years if you underreport income by more than 25%. Keep records related to property indefinitely until you sell it."
-    },
-    {
-      question: "What if I can't pay my tax bill?",
-      answer: "The IRS offers payment plans including short-term extensions (up to 120 days) and long-term installment agreements. You can also apply for an Offer in Compromise if you qualify based on your financial situation."
-    },
-    {
-      question: "Do I need to file if I didn't earn much income?",
-      answer: "Filing requirements depend on your age, filing status, and income type. For 2023, single filers under 65 generally need to file if gross income exceeds $13,850. Even if not required, you may want to file to claim refundable credits."
-    }
-  ];
-
-  const brackets = [
-    { rate: "10%", single: "$0 - $11,000", married: "$0 - $22,000", head: "$0 - $15,700" },
-    { rate: "12%", single: "$11,001 - $44,725", married: "$22,001 - $89,450", head: "$15,701 - $59,850" },
-    { rate: "22%", single: "$44,726 - $95,375", married: "$89,451 - $190,750", head: "$59,851 - $95,350" },
-    { rate: "24%", single: "$95,376 - $182,100", married: "$190,751 - $364,200", head: "$95,351 - $182,100" },
-    { rate: "32%", single: "$182,101 - $231,250", married: "$364,201 - $462,500", head: "$182,101 - $231,250" },
-    { rate: "35%", single: "$231,251 - $578,125", married: "$462,501 - $693,750", head: "$231,251 - $578,100" },
-    { rate: "37%", single: "$578,126+", married: "$693,751+", head: "$578,101+" }
-  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -784,7 +652,7 @@ const bgGradients = [
               className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105"
             >
               <Phone className="w-5 h-5 mr-2" />
-              Call Now: +1(727) 564-9476
+              Call Now: {CONTACT_INFO.phone}
             </a>
           </div>
          

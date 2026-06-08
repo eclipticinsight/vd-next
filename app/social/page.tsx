@@ -4,17 +4,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaTiktok } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import {
-  MessageCircle,
-  Video,
   TrendingUp,
-  Users,
-  Target,
-  BarChart3,
   ChevronRight,
-  Play,
   CheckCircle,
   Star
 } from "lucide-react";
@@ -29,108 +21,15 @@ const gridPatternStyle = {
   backgroundSize: '40px 40px'
 };
 
+import {
+  SOCIAL_PAGE_SERVICES as services,
+  SOCIAL_PAGE_STATS as stats,
+  SOCIAL_PAGE_TESTIMONIALS as testimonials,
+  SOCIAL_PAGE_PLATFORMS as platforms
+} from "@/utils/constants";
+
 const SocialMediaMarketingPage = () => {
-  const services = [
-{
-  icon: <FaFacebook className="w-8 h-8" />,
-      title: "Facebook Marketing",
-      description: "Targeted campaigns that reach your ideal audience and drive engagement.",
-      color: "bg-blue-100 text-blue-600",
-      features: ["Audience Targeting", "Engagement Boost", "Lead Generation"]
-    },
-{
-  icon: <FaInstagram className="w-8 h-8" />,
-      title: "Instagram Growth",
-      description: "Creative visual strategies to build your brand presence and following.",
-      color: "bg-pink-100 text-pink-600",
-      features: ["Visual Storytelling", "Hashtag Strategy", "Reel Optimization"]
-    },
-    {
-      icon: <FaXTwitter className="w-8 h-8" />,
-      title: "Twitter Marketing",
-      description: "Build brand conversations and grow your audience on X.",
-      color: "bg-gray-100 text-black",
-      features: ["Trend Analysis", "Engagement Strategy", "Brand Voice"]
-    },
-    {
-      icon: <FaTiktok className="w-8 h-8" />,
-      title: "TikTok Marketing",
-      description: "Viral video content and trends to capture the attention of Gen Z and millennials.",
-      color: "bg-black text-white",
-      features: ["Viral Trends", "Creator Collabs", "Hashtag Challenges"]
-    },
-    {
-      icon: <FaYoutube className="w-8 h-8" />,
-      title: "Video Marketing",
-      description: "Compelling video content that tells your story and converts viewers.",
-      color: "bg-red-100 text-red-600",
-      features: ["Video Production", "YouTube SEO", "Channel Growth"]
-    },
-    {
-      icon: <Target className="w-8 h-8" />,
-      title: "Targeted Advertising",
-      description: "Data-driven ad campaigns across all major social platforms.",
-      color: "bg-purple-100 text-purple-600",
-      features: ["Precise Targeting", "A/B Testing", "ROI Optimization"]
-    }
-  ];
 
-  const stats = [
-    { value: "500+", label: "Happy Clients", icon: <Users className="w-6 h-6" /> },
-    { value: "10M+", label: "People Reached", icon: <TrendingUp className="w-6 h-6" /> },
-    { value: "98%", label: "Client Retention", icon: <Star className="w-6 h-6" /> },
-    { value: "24/7", label: "Support Available", icon: <BarChart3 className="w-6 h-6" /> }
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart",
-      content: "Their social media strategy increased our engagement by 300% in just 3 months. Absolutely phenomenal work!",
-      rating: 5,
-      image: "https://randomuser.me/api/portraits/women/1.jpg"
-    },
-    {
-      name: "Michael Chen",
-      role: "Marketing Director",
-      content: "The team understands our brand perfectly. Our social presence has never been stronger.",
-      rating: 5,
-      image: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-      name: "Emma Davis",
-      role: "Small Business Owner",
-      content: "Finally found a social media partner that delivers real results. Highly recommended!",
-      rating: 5,
-      image: "https://randomuser.me/api/portraits/women/2.jpg"
-    }
-  ];
-
-  const platforms = [
-  {
-    name:'Facebook',
-    icon:<FaFacebook className="w-5 h-5 text-blue-400" />,
-    growth:'+156%'
-  },
-
-  {
-    name:'Instagram',
-    icon:<FaInstagram className="w-5 h-5 text-pink-400" />,
-    growth:'+189%'
-  },
-
-  {
-    name:'Twitter',
-    icon:<FaXTwitter className="w-5 h-5 text-sky-400" />,
-    growth:'+124%'
-  },
-
-  {
-    name:'LinkedIn',
-    icon:<FaLinkedin className="w-5 h-5 text-blue-400" />,
-    growth:'+142%'
-  }
-];
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

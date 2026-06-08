@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState, ChangeEvent } from "react";
+import { CONTACT_INFO } from "@/utils/constants";
 import axios from "axios";
 import {
   Phone,
@@ -94,7 +95,6 @@ const UserPanel = () => {
         }
       } catch (error) {
         const err = error as any;
-        console.log("Profile fetch error", err);
         if (err.response?.status === 401) {
           handleLogout();
         }
@@ -109,7 +109,6 @@ const UserPanel = () => {
         setOffers(Array.isArray(res.data) ? res.data : res.data.offers || []);
       } catch (error) {
         const err = error as any;
-        console.log("Error fetching offers", err);
         setOffers([]);
       }
     };
@@ -149,7 +148,6 @@ const UserPanel = () => {
           setPayments(Array.isArray(res.data) ? res.data : res.data.payments || []);
         } catch (error) {
           const err = error as any;
-          console.log("Error fetching payments", err);
           setPayments([]);
         }
       };
@@ -187,7 +185,6 @@ const UserPanel = () => {
       alert("✅ Profile updated successfully!");
     } catch (error) {
       const err = error as any;
-      console.log("PROFILE UPDATE ERROR:", err.response?.data || err);
       alert("❌ Failed to update profile");
     }
   };
@@ -656,15 +653,15 @@ Save Changes
                   <div className="rounded-3xl border border-slate-800 bg-slate-900/90 p-6">
                     <h3 className="text-lg font-semibold text-white">Email Support</h3>
                     <p className="mt-2 text-slate-400">For account help, billing, or general questions.</p>
-                    <a href="mailto:connect@visionarydynamicsas.com" className="mt-4 inline-flex text-violet-300 hover:text-violet-200">
-                      connect@visionarydynamicsas.com
+                    <a href={`mailto:${CONTACT_INFO.email}`} className="mt-4 inline-flex text-violet-300 hover:text-violet-200">
+                      {CONTACT_INFO.email}
                     </a>
                   </div>
                   <div className="rounded-3xl border border-slate-800 bg-slate-900/90 p-6">
                     <h3 className="text-lg font-semibold text-white">Phone Support</h3>
                     <p className="mt-2 text-slate-400">Available Monday to Friday.</p>
-                    <a href="tel:+17275649476" className="mt-4 inline-flex text-violet-300 hover:text-violet-200">
-                      +1 (727) 564-9476
+                    <a href={`tel:${CONTACT_INFO.phoneClean}`} className="mt-4 inline-flex text-violet-300 hover:text-violet-200">
+                      {CONTACT_INFO.phone}
                     </a>
                   </div>
                 </div>

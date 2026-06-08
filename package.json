@@ -26,6 +26,7 @@
     "react-leaflet": "^5.0.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
+    "sharp": "^0.34.5",
     "tinymce": "^8.5.1"
   },
   "devDependencies": {

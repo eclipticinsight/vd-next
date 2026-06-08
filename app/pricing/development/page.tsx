@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import toast from "react-hot-toast";
 
+import { DEVELOPMENT_PRICING_CMS_PLANS, DEVELOPMENT_PRICING_CODING_PLANS } from '@/utils/constants';
+
 type PricingType = 'cms' | 'coding';
- 
+
 type Plan = {
   id: string;
   name: string;
@@ -27,194 +29,49 @@ type Plan = {
   guestPost?: number;
   pressRelease?: number;
 };
- 
+
 type CartItem = Plan & {
   service: PricingType;
 };
- 
+
 type PricingCardProps = {
   plan: Plan;
   type: PricingType;
   isHovered: boolean;
   onHover: (id: string | null) => void;
 };
- 
+
 type SectionHeaderProps = {
   title: string;
   description: string;
   badge: string;
   icon: string;
 };
- 
+
+const SectionHeader = ({ title, description, badge, icon }: SectionHeaderProps) => (
+  <div className="text-center mb-16">
+    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 text-transparent bg-clip-text px-6 py-2 rounded-full text-sm font-bold mb-4 border border-blue-200">
+      <span className="text-2xl">{icon}</span>
+      <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        {badge}
+      </span>
+    </div>
+    <h2 className="text-4xl font-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent sm:text-5xl">
+      {title}
+    </h2>
+    <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
+    <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+      {description}
+    </p>
+  </div>
+);
+
 const PricingPage = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
- 
-  // ========== SECTION 2: CMS WEBSITE PRICING (3 tiers) ==========
-  const cmsPlans = [
-    {
-      id: 'cms-basic',
-      name: 'Basic CMS',
-      priceType: 'one-time',
-      price: 1499,
-      pages: 'Up to 5',
-      platform: 'WordPress / Webflow',
-      turnaround: '7-10 days',
-      icon: '🌱',
-      gradient: 'from-blue-50 to-cyan-50',
-      borderColor: 'border-blue-200',
-      features: [
-        'Pre-built responsive theme',
-        '5 pages (Home, About, Services, Blog, Contact)',
-        'Basic contact form',
-        'Mobile optimized design',
-        'SEO-friendly URL structure',
-        'Google Analytics integration',
-        'Social media links',
-        '1 month basic support',
-        'Free SSL certificate',
-      ],
-      support: ['Email Support', 'Documentation'],
-      buttonText: 'Start Basic CMS',
-      popular: false,
-    },
-    {
-      id: 'cms-business',
-      name: 'Business CMS',
-      priceType: 'one-time',
-      price: 2999,
-      pages: 'Up to 15',
-      platform: 'WordPress / Webflow / Shopify',
-      turnaround: '14-21 days',
-      icon: '🚀',
-      gradient: 'from-indigo-50 to-blue-50',
-      borderColor: 'border-indigo-300',
-      features: [
-        'Everything in Basic, plus:',
-        'Custom theme customization',
-        '15 pages + blog section',
-        '3 premium plugins/modules',
-        'E-commerce ready (up to 50 products)',
-        'Advanced contact forms',
-        'Newsletter integration',
-        'Speed optimization',
-        '3 months priority support',
-        '1 hour free training',
-      ],
-      support: ['Email', 'Chat', 'Phone Support'],
-      buttonText: 'Start Business CMS',
-      popular: true,
-    },
-    {
-      id: 'cms-enterprise',
-      name: 'Enterprise CMS',
-      priceType: 'one-time',
-      price: 4999,
-      pages: 'Up to 25',
-      platform: 'WordPress / Webflow / Custom CMS',
-      turnaround: '21-30 days',
-      icon: '🏢',
-      gradient: 'from-violet-50 to-purple-50',
-      borderColor: 'border-violet-200',
-      features: [
-        'Everything in Business, plus:',
-        'Full e-commerce store (unlimited products)',
-        'Payment gateway integration',
-        'Inventory management',
-        'Membership/user login system',
-        'Custom post types & taxonomies',
-        'Advanced security setup',
-        'CDN integration',
-        '6 months priority support',
-        '2 hours training + video tutorials',
-      ],
-      support: ['24/7 Priority Support', 'Dedicated Account Manager'],
-      buttonText: 'Start Enterprise CMS',
-      popular: false,
-    },
-  ];
- 
-  // ========== SECTION 3: CODING WEBSITE PRICING (3 tiers) ==========
-  const codingPlans = [
-    {
-      id: 'coding-static',
-      name: 'Static Custom Site',
-      priceType: 'one-time',
-      price: 3999,
-      tech: 'HTML5, CSS3, JavaScript',
-      pages: 'Up to 10',
-      turnaround: '14-21 days',
-      icon: '🎨',
-      gradient: 'from-gray-50 to-slate-50',
-      borderColor: 'border-gray-300',
-      features: [
-        'Fully hand-coded, no CMS',
-        'Responsive design (all devices)',
-        '10 static pages',
-        'Contact form with backend',
-        'Basic animations & interactions',
-        'Custom 404 page',
-        'Performance optimized',
-        '1 month technical support',
-        '1 year hosting credit ($100 value)',
-      ],
-      support: ['Email Support', 'Ticket System'],
-      buttonText: 'Get Static Site',
-      popular: false,
-    },
-    {
-      id: 'coding-dynamic',
-      name: 'Dynamic Web App',
-      priceType: 'one-time',
-      price: 8999,
-      tech: 'React / Next.js, Node.js / Python',
-      pages: 'Dynamic + Up to 20 pages',
-      turnaround: '30-45 days',
-      icon: '⚙️',
-      gradient: 'from-slate-50 to-gray-50',
-      borderColor: 'border-slate-400',
-      features: [
-        'Full-stack custom web application',
-        'User authentication (login/signup/roles)',
-        'Database integration (PostgreSQL/MongoDB)',
-        'Admin dashboard',
-        'RESTful API endpoints',
-        'Real-time features (optional)',
-        'File upload capability',
-        '3 months support',
-        'Deployment assistance',
-      ],
-      support: ['Priority Email', 'Chat', 'Phone'],
-      buttonText: 'Build Dynamic App',
-      popular: true,
-    },
-    {
-      id: 'coding-enterprise',
-      name: 'Enterprise Solution',
-      priceType: 'one-time',
-      price: 19999,
-      tech: 'React/Next.js, Python/Django, AWS/Azure',
-      pages: 'Unlimited + Microservices',
-      turnaround: '60-90 days',
-      icon: '🏗️',
-      gradient: 'from-zinc-50 to-stone-50',
-      borderColor: 'border-zinc-400',
-      features: [
-        'Scalable, high-performance architecture',
-        'Advanced security (SSL, encryption, rate limiting)',
-        'Third-party API integrations (payment, CRM, etc.)',
-        'WebSockets for real-time data',
-        'Automated testing & CI/CD pipeline',
-        'Multi-tenant support',
-        'Analytics dashboard',
-        '6 months priority support',
-        '5 hours training + documentation',
-      ],
-      support: ['24/7 Dedicated Support', 'SLA Agreement'],
-      buttonText: 'Contact Enterprise Sales',
-      popular: false,
-    },
-  ];
+
+  const cmsPlans = DEVELOPMENT_PRICING_CMS_PLANS;
+  const codingPlans = DEVELOPMENT_PRICING_CODING_PLANS;
  
   const PricingCard = ({ plan, type, isHovered, onHover }: PricingCardProps) => {
     const getPriceDisplay = () => {
@@ -285,10 +142,7 @@ const PricingPage = () => {
 
     const data = await res.json();
 
-    console.log(
-      "PAYMENT RESPONSE:",
-      data
-    );
+    // Payment response logged removed
 
     if (data.url) {
 
@@ -461,23 +315,7 @@ toast.success(`${plan.name} added 🛒`);
     );
   };
  
-  const SectionHeader = ({ title, description, badge, icon }: SectionHeaderProps) => (
-    <div className="text-center mb-16">
-      <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 text-transparent bg-clip-text px-6 py-2 rounded-full text-sm font-bold mb-4 border border-blue-200">
-        <span className="text-2xl">{icon}</span>
-        <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          {badge}
-        </span>
-      </div>
-      <h2 className="text-4xl font-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent sm:text-5xl">
-        {title}
-      </h2>
-      <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
-      <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-        {description}
-      </p>
-    </div>
-  );
+
  
   return (
     <div className="bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100 min-h-screen">

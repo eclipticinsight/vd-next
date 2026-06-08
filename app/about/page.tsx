@@ -4,6 +4,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
+  ABOUT_PAGE_MISSION_DATA,
+  ABOUT_PAGE_VISION_DATA,
+  ABOUT_PAGE_JOURNEY_DATA
+} from "@/utils/constants";
+import {
   HeartHandshake,
   Pause,
   Play,
@@ -269,7 +274,7 @@ const AboutUs = () => {
                 <div className="relative bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 sm:p-2 rounded-2xl sm:rounded-3xl shadow-2xl transition-all duration-500 group-hover:scale-[1.02]">
                   <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border-2 sm:border-4 border-white shadow-xl bg-white">
                     <Image
-                      src="/images/ceoimage.png"
+                      src="/images/ceoimage.webp"
                       alt="Aakash Dhandhania"
                       width={500}
                       height={700}
@@ -426,45 +431,7 @@ const MissionVisionSection = () => {
     return () => clearInterval(interval);
   }, [isPlaying, images.length]);
  
-  const missionData = {
-    title: "Our Mission",
-    icon: <Target className="w-10 h-10" />,
-    gradient: "from-blue-600 via-cyan-500 to-teal-500",
-    text: "To empower businesses with secure, scalable and innovative technology solutions that accelerate growth, enhance efficiency, and drive meaningful digital transformation across industries.",
-    pillars: [
-      { icon: <Zap className="w-6 h-6" />, title: "Innovation Excellence", stat: "50+ Innovative Projects", description: "Pioneering cutting-edge solutions" },
-      { icon: <HeartHandshake className="w-6 h-6" />, title: "Client Partnership", stat: "98% Satisfaction Rate", description: "Building lasting relationships" },
-      { icon: <Cpu className="w-6 h-6" />, title: "Technical Mastery", stat: "500+ Solutions Built", description: "Engineering excellence" },
-      { icon: <ShieldCheck className="w-6 h-6" />, title: "Security First", stat: "Zero Major Breaches", description: "Enterprise-grade protection" },
-    ],
-    stats: [
-      { value: "1+", label: "Years Excellence", icon: <Award className="w-5 h-5" /> },
-      { value: "50+", label: "Global Clients", icon: <Globe className="w-5 h-5" /> },
-      { value: "99.9%", label: "Uptime SLA", icon: <Server className="w-5 h-5" /> },
-      { value: "Team", label: "Support Coverage", icon: <Clock className="w-5 h-5" /> },
-    ],
-  };
- 
-  const visionData = {
-    title: "Our Vision",
-    icon: <Brain className="w-10 h-10" />,
-    gradient: "from-purple-600 via-pink-500 to-rose-500",
-    text: "To become the world's most trusted technology partner, recognized for transforming businesses through innovation, strategic leadership, and sustainable technological advancement that shapes the digital future.",
-    pillars: [
-      { icon: <Globe className="w-6 h-6" />, title: "Global Leadership", stat: "25+ Countries Served", description: "Worldwide impact" },
-      { icon: <TrendingUp className="w-6 h-6" />, title: "Sustainable Growth", stat: "50+ Industry Awards", description: "Responsible innovation" },
-      { icon: <Brain className="w-6 h-6" />, title: "AI-First Future", stat: "Future Ready Solutions", description: "Intelligent automation" },
-      { icon: <Users className="w-6 h-6" />, title: "Strategic Partnerships", stat: "92% Client Retention", description: "Long-term collaboration" },
-    ],
-    stats: [
-      { value: "2028", label: "Growth Target", icon: <Target className="w-5 h-5" /> },
-      { value: "80+", label: "Tech Experts", icon: <Users className="w-5 h-5" /> },
-      { value: "1M+", label: "Lives Impacted", icon: <HeartHandshake className="w-5 h-5" /> },
-      { value: "AI/ML", label: "Core Focus", icon: <Lightbulb className="w-5 h-5" /> },
-    ],
-  };
- 
-  const currentData = activeTab === "mission" ? missionData : visionData;
+  const currentData = activeTab === "mission" ? ABOUT_PAGE_MISSION_DATA : ABOUT_PAGE_VISION_DATA;
  
   // FIXED: Static particles data (NO Math.random())
   const floatingParticles = [
@@ -711,18 +678,7 @@ const MissionVisionSection = () => {
  
 // ==================== JOURNEY TIMELINE SECTION ====================
 const JourneySection = () => {
-  const journeyData = [
-    { year: "2023", title: "Idealisation", desc: "The vision was born - conceptualizing innovative solutions for businesses." },
-    { year: "2024", title: "Founded", desc: "Visionary Dynamics was officially established with a mission to transform businesses." },
-    { year: "Jan 2025", title: "First Office", desc: "Opened our first corporate office, marking the beginning of our physical presence." },
-    { year: "March 2025", title: "Reached 10 Clients", desc: "Achieved milestone of 10 satisfied clients across diverse industries." },
-    { year: "May 2025", title: "Expanded to Global Presence", desc: "Extended our operations internationally, serving clients worldwide." },
-    { year: "Jun 2025", title: "Launched Marketing Services", desc: "Introduced comprehensive digital marketing solutions to our portfolio." },
-    { year: "Jul 2025", title: "First Development Team", desc: "Assembled our core development team, enhancing technical capabilities." },
-    { year: "Oct 2025", title: "Launched Virtual Assistant Services", desc: "Added AI-powered virtual assistant services to streamline operations." },
-    { year: "Nov 2025", title: "Reached 50+ Clients", desc: "Crossed 50 client milestone, demonstrating rapid growth and trust." },
-    { year: "Dec 2025", title: "Launched RPO Services", desc: "Expanded into Recruitment Process Outsourcing services." },
-  ];
+
  
   return (
     <section
@@ -754,7 +710,7 @@ const JourneySection = () => {
           <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-500 transform -translate-x-1/2 hidden md:block" />
          
           <div className="space-y-8 md:space-y-12">
-            {journeyData.map((item, index) => (
+            {ABOUT_PAGE_JOURNEY_DATA.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}

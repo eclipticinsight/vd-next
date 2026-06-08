@@ -34,3 +34,7 @@ backend/.env
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# ESLint reports (generated, not source)
+eslint_*.txt
+eslint_*.json

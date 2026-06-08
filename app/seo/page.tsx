@@ -5,19 +5,20 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import {
+  ChevronDownIcon,
   MagnifyingGlassIcon,
-  ChartBarIcon,
-  LinkIcon,
   DocumentTextIcon,
   GlobeAltIcon,
-  ArrowTrendingUpIcon,
-  ShieldCheckIcon,
-  ClockIcon,
-  UsersIcon,
-  CurrencyDollarIcon,
-  LifebuoyIcon,
-  ChevronDownIcon
+  LinkIcon,
+  ChartBarIcon
 } from "@heroicons/react/24/outline";
+import {
+  SEO_SERVICES as services,
+  SEO_STEPS as steps,
+  SEO_REASONS as reasons,
+  SEO_TECHNOLOGIES as technologies,
+  SEO_FAQS as faqs
+} from "@/utils/constants";
 
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
@@ -94,157 +95,7 @@ const SEOPage = () => {
     };
   }, []);
 
-  // Services data
-  const services = [
-    {
-      icon: <MagnifyingGlassIcon className="h-8 w-8" />,
-      title: "Keyword Research",
-      description: "Identify high-value keywords that your target audience is searching for to drive qualified traffic."
-    },
-    {
-      icon: <ChartBarIcon className="h-8 w-8" />,
-      title: "On-Page SEO",
-      description: "Optimize your website content, meta tags, and structure for better search engine visibility."
-    },
-    {
-      icon: <LinkIcon className="h-8 w-8" />,
-      title: "Link Building",
-      description: "Build high-quality backlinks from authoritative websites to boost your domain authority."
-    },
-    {
-      icon: <DocumentTextIcon className="h-8 w-8" />,
-      title: "Content Strategy",
-      description: "Create engaging, SEO-optimized content that resonates with your audience and search engines."
-    },
-    {
-      icon: <GlobeAltIcon className="h-8 w-8" />,
-      title: "Local SEO",
-      description: "Dominate local search results and attract customers in your geographical area."
-    },
-    {
-      icon: <ArrowTrendingUpIcon className="h-8 w-8" />,
-      title: "Technical SEO",
-      description: "Optimize your website's technical aspects for better crawlability and user experience."
-    }
-  ];
 
-  // Process steps data
-  const steps = [
-    {
-      number: "01",
-      title: "Discovery & Analysis",
-      description: "We analyze your website, competitors, and target audience to create a customized SEO strategy.",
-      shortDesc: "Initial research & planning"
-    },
-    {
-      number: "02",
-      title: "Keyword Research",
-      description: "Identify high-value keywords and search terms that your ideal customers are using.",
-      shortDesc: "Finding target keywords"
-    },
-    {
-      number: "03",
-      title: "On-Page Optimization",
-      description: "Optimize your website content, meta tags, and structure for search engines.",
-      shortDesc: "Optimizing content"
-    },
-    {
-      number: "04",
-      title: "Content Creation",
-      description: "Develop engaging, SEO-optimized content that attracts and retains visitors.",
-      shortDesc: "Creating valuable content"
-    },
-    {
-      number: "05",
-      title: "Link Building",
-      description: "Build quality backlinks to improve your website authority and rankings.",
-      shortDesc: "Building authority"
-    },
-    {
-      number: "06",
-      title: "Monitoring & Reporting",
-      description: "Track progress, analyze results, and continuously optimize for better performance.",
-      shortDesc: "Tracking & improving"
-    }
-  ];
-
-  // Why choose us data
-  const reasons = [
-    {
-      icon: <ShieldCheckIcon className="h-8 w-8" />,
-      title: "100% White Hat SEO",
-      description: "We follow ethical SEO practices that deliver sustainable, long-term results."
-    },
-    {
-      icon: <ChartBarIcon className="h-8 w-8" />,
-      title: "Data-Driven Approach",
-      description: "All our strategies are backed by thorough data analysis and research."
-    },
-    {
-      icon: <UsersIcon className="h-8 w-8" />,
-      title: "Expert Team",
-      description: "Certified SEO professionals with years of industry experience."
-    },
-    {
-      icon: <ClockIcon className="h-8 w-8" />,
-      title: "Timely Delivery",
-      description: "We respect your time and deliver results within agreed timelines."
-    },
-    {
-      icon: <CurrencyDollarIcon className="h-8 w-8" />,
-      title: "Transparent Pricing",
-      description: "No hidden costs, clear pricing with detailed breakdowns."
-    },
-    {
-      icon: <LifebuoyIcon className="h-8 w-8" />,
-      title: "24/7 Support",
-      description: "Round-the-clock support for all your SEO queries and concerns."
-    }
-  ];
-
-  // Technologies data
-  const technologies = [
-    { name: "Google Analytics", category: "Analytics", icon: "📊" },
-    { name: "Google Search Console", category: "Analytics", icon: "🔍" },
-    { name: "SEMrush", category: "SEO Tools", icon: "📈" },
-    { name: "Ahrefs", category: "SEO Tools", icon: "🔗" },
-    { name: "Moz Pro", category: "SEO Tools", icon: "📉" },
-    { name: "Yoast SEO", category: "CMS Tools", icon: "⚡" },
-    { name: "Screaming Frog", category: "Technical SEO", icon: "🐸" },
-    { name: "Majestic", category: "Link Building", icon: "🔗" },
-    { name: "Google PageSpeed", category: "Performance", icon: "⚡" },
-    { name: "GTmetrix", category: "Performance", icon: "📊" },
-    { name: "Hotjar", category: "UX Analytics", icon: "🔥" },
-    { name: "WordPress", category: "CMS", icon: "📝" }
-  ];
-
-  // FAQ data
-  const faqs = [
-    {
-      question: "How long does it take to see SEO results?",
-      answer: "SEO is a long-term strategy. While some improvements can be seen in 3-6 months, significant results typically take 6-12 months depending on competition, industry, and current website status."
-    },
-    {
-      question: "What is included in your SEO services?",
-      answer: "Our comprehensive SEO services include keyword research, on-page optimization, content strategy, link building, technical SEO audits, local SEO optimization, and monthly performance reporting."
-    },
-    {
-      question: "Do you guarantee first-page rankings?",
-      answer: "We cannot guarantee specific rankings as search engines use complex algorithms. However, we guarantee to implement proven strategies that improve your visibility and drive organic traffic."
-    },
-    {
-      question: "How do you measure SEO success?",
-      answer: "We track multiple metrics including organic traffic, keyword rankings, conversion rates, bounce rates, domain authority, and ROI through tools like Google Analytics and Search Console."
-    },
-    {
-      question: "What is the cost of your SEO services?",
-      answer: "Our pricing varies based on your specific needs, competition level, and goals. We offer customized packages starting from $X/month. Contact us for a personalized quote."
-    },
-    {
-      question: "Do you work with local businesses?",
-      answer: "Yes, we specialize in local SEO for businesses looking to attract customers in their geographical area. We optimize Google My Business profiles and local citations."
-    }
-  ];
 
   const categories = [...new Set(technologies.map(tech => tech.category))];
 
@@ -461,9 +312,11 @@ const SEOPage = () => {
       <section className="relative text-white overflow-hidden pt-28 md:pt-36 lg:pt-44 pb-[10px] md:pb-[12px] lg:pb-[14px]">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="/images/seo1img.png"
+          <Image
+            src="/images/seo1img.webp"
             alt="Digital marketing analytics"
+            fill
+            priority
             className="w-full h-full object-cover"
           />
         </div>
@@ -525,9 +378,11 @@ const SEOPage = () => {
             <div className="flex flex-col lg:flex-row gap-12 items-center">
               <div className="flex-1 w-full">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation">
-                  <img 
-                    src="/images/searchengine.png"
+                  <Image 
+                    src="/images/searchengine.webp"
                     alt="Keyword Research"
+                    width={600}
+                    height={400}
                     className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20"></div>
@@ -573,9 +428,11 @@ const SEOPage = () => {
             <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
               <div className="flex-1 w-full">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-1000">
-                  <img 
-                    src="/images/Onpageseo.png"
+                  <Image 
+                    src="/images/Onpageseo.webp"
                     alt="On-Page SEO"
+                    width={600}
+                    height={400}
                     className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-pink-600/20"></div>
@@ -621,9 +478,11 @@ const SEOPage = () => {
             <div className="flex flex-col lg:flex-row gap-12 items-center">
               <div className="flex-1 w-full">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-2000">
-                  <img 
-                    src="/images/Techincalseo.png"
+                  <Image 
+                    src="/images/Techincalseo.webp"
                     alt="Technical SEO"
+                    width={600}
+                    height={400}
                     className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-green-600/20 to-teal-600/20"></div>
@@ -669,9 +528,11 @@ const SEOPage = () => {
             <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
               <div className="flex-1 w-full">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation">
-                  <img 
-                    src="/images/Linkbuilding.png"
+                  <Image 
+                    src="/images/Linkbuilding.webp"
                     alt="Link Building"
+                    width={600}
+                    height={400}
                     className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-orange-600/20 to-red-600/20"></div>
@@ -717,9 +578,11 @@ const SEOPage = () => {
             <div className="flex flex-col lg:flex-row gap-12 items-center">
               <div className="flex-1 w-full">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-1000">
-                  <img 
-                    src="/images/Localseo.png"
+                  <Image 
+                    src="/images/Localseo.webp"
                     alt="Local SEO"
+                    width={600}
+                    height={400}
                     className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-cyan-600/20 to-blue-600/20"></div>
@@ -765,9 +628,11 @@ const SEOPage = () => {
             <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
               <div className="flex-1 w-full">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-2000">
-                  <img 
-                    src="/images/seoanalytics.png"
+                  <Image 
+                    src="/images/seoanalytics.webp"
                     alt="Analytics & Reporting"
+                    width={600}
+                    height={400}
                     className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/20 to-purple-600/20"></div>

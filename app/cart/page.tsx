@@ -66,11 +66,6 @@ const startPayment = async (
   const data =
     await res.json();
 
-  console.log(
-    "PAYMENT:",
-    data
-  );
-
   if (!data.url) {
     throw new Error(
       data.error ||

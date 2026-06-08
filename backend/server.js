@@ -49,6 +49,13 @@ const allowedOrigins = [
   "https://vd-next.vercel.app",
 ];
 
+if (process.env.FRONTEND_URL) {
+  const normalizedUrl = process.env.FRONTEND_URL.trim().replace(/\/$/, "");
+  if (!allowedOrigins.includes(normalizedUrl)) {
+    allowedOrigins.push(normalizedUrl);
+  }
+}
+
 app.use(
   cors({
     origin: (origin, callback) => {

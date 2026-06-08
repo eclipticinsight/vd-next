@@ -2,6 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import {
+  CONTACT_INFO,
+  COOPERATIVE_TAX_BENEFITS as taxBenefits,
+  COOPERATIVE_TAX_REQUIREMENTS as requirements,
+  COOPERATIVE_TAX_SERVICES as services,
+  COOPERATIVE_TAX_FAQS as faqs,
+  COOPERATIVE_TAX_HIGHLIGHTS as benefits
+} from '@/utils/constants';
+import {
   Building2,
   Calculator,
   FileCheck,
@@ -134,102 +142,7 @@ const CooperativeTaxPage = () => {
     };
   }, []);
 
-  const taxBenefits = [
-    {
-      icon: <Percent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-      title: "Reduced Tax Rates",
-      description: "Cooperatives often qualify for special reduced corporate tax rates, typically 15-25% lower than standard rates."
-    },
-    {
-      icon: <PiggyBank className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-      title: "Exempt Income",
-      description: "Patronage dividends and certain member transactions may be tax-exempt under specific conditions."
-    },
-    {
-      icon: <Scale className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-      title: "Deductions",
-      description: "Special deductions for member dividends, reserves, and operational expenses unique to cooperatives."
-    },
-    {
-      icon: <FileCheck className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-      title: "Tax Credits",
-      description: "Eligibility for various tax credits including renewable energy, low-income housing, and community development."
-    }
-  ];
 
-  const requirements = [
-    {
-      title: "Registration Documents",
-      items: ["Cooperative Articles of Incorporation", "Bylaws and amendments", "Certificate of Registration", "Board resolutions"]
-    },
-    {
-      title: "Financial Records",
-      items: ["Audited financial statements", "Member transaction records", "Patronage dividend records", "Reserve fund statements"]
-    },
-    {
-      title: "Tax Forms",
-      items: ["Form 1120-C (U.S. Income Tax Return for Cooperatives)", "Form 1099-PATR (Patronage Dividends)", "Form 990 (if exempt)", "State-specific tax forms"]
-    },
-    {
-      title: "Compliance Documents",
-      items: ["Member meeting minutes", "Board meeting records", "Operational policies", "Compliance certificates"]
-    }
-  ];
-
-  const services = [
-    {
-      icon: <Calculator className="w-5 h-5 sm:w-6 sm:h-6" />,
-      title: "Tax Planning",
-      description: "Strategic tax planning to maximize benefits and minimize liabilities for your cooperative."
-    },
-    {
-      icon: <FileText className="w-5 h-5 sm:w-6 sm:h-6" />,
-      title: "Return Preparation",
-      description: "Comprehensive preparation and filing of all cooperative-specific tax forms."
-    },
-    {
-      icon: <Shield className="w-5 h-5 sm:w-6 sm:h-6" />,
-      title: "Compliance Review",
-      description: "Regular compliance checks to ensure adherence to cooperative tax regulations."
-    },
-    {
-      icon: <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6" />,
-      title: "Audit Support",
-      description: "Expert representation and support during tax audits and inquiries."
-    }
-  ];
-
-  const faqs = [
-    {
-      question: "What makes cooperative taxation different from regular corporations?",
-      answer: "Cooperatives have unique tax treatment under Subchapter T of the Internal Revenue Code. They can exclude patronage dividends from taxable income and have special rules for calculating taxable income based on member transactions."
-    },
-    {
-      question: "How are patronage dividends taxed?",
-      answer: "Patronage dividends are generally tax-deductible for the cooperative when properly allocated to members. Members then report these dividends as income, creating a single level of taxation."
-    },
-    {
-      question: "What tax forms do cooperatives need to file?",
-      answer: "Most cooperatives file Form 1120-C, the special income tax return for cooperatives. Exempt cooperatives may file Form 990 series, and all cooperatives must file information returns for patronage dividends."
-    },
-    {
-      question: "Are all cooperatives tax-exempt?",
-      answer: "No, most cooperatives are taxable entities. However, certain types like rural electric cooperatives and some agricultural cooperatives may qualify for tax-exempt status under specific sections of the tax code."
-    },
-    {
-      question: "What are the deadlines for cooperative tax filing?",
-      answer: "Form 1120-C is generally due by the 15th day of the 4th month after the end of the tax year. For calendar year cooperatives, this is April 15th, with extensions available."
-    }
-  ];
-
-  const benefits = [
-    "15+ Years Industry Experience",
-    "Cooperative Tax Specialists",
-    "100% Compliance Focus",
-    "Dedicated Expert Support",
-    "Maximum Tax Optimization",
-    "Fast & Accurate Filing"
-  ];
 
   const toggleFaq = (index: number) => {
   setActiveFaq(
@@ -274,11 +187,11 @@ py-10 sm:py-12 md:py-14 lg:py-16 xl:py-18">
                   Schedule Free Consultation
                 </a>
                 <a
-                  href="tel:+17275649476"
+                  href={`tel:${CONTACT_INFO.phoneClean}`}
                   className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105 gap-2"
                 >
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-                  Call Now: +1(727) 564-9476
+                  Call Now: {CONTACT_INFO.phone}
                 </a>
               </div>
             </div>
@@ -773,11 +686,11 @@ py-10 sm:py-12 md:py-14 lg:py-16 xl:py-18">
             </a>
             
             <a
-              href="tel:+17275649476"
+              href={`tel:${CONTACT_INFO.phoneClean}`}
               className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105 gap-2"
             >
               <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-              Call Now: +1(727) 564-9476
+              Call Now: {CONTACT_INFO.phone}
             </a>
           </div>
         </div>

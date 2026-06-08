@@ -1,15 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { 
-  BarChart3, 
-  TrendingUp, 
-  Users, 
-  Target, 
-  Lightbulb,
-  CheckCircle,
-  Clock,
-  Award,
+import {
+  CONTACT_INFO,
+  BUSINESS_ANALYTICS_SERVICES as services,
+  BUSINESS_ANALYTICS_SKILLS as skills,
+  BUSINESS_ANALYTICS_STATS as stats
+} from '@/utils/constants';
+import {
   ArrowRight,
   Mail,
   Phone,
@@ -114,53 +112,7 @@ const BusinessAnalystPage = () => {
     };
   }, []);
 
-  const services = [
-    {
-      icon: <BarChart3 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-      title: "Data Analysis",
-      description: "Transform raw data into actionable insights with advanced analytics and visualization techniques."
-    },
-    {
-      icon: <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-      title: "Market Research",
-      description: "Comprehensive market analysis to identify opportunities and optimize business strategies."
-    },
-    {
-      icon: <Users className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-      title: "Stakeholder Management",
-      description: "Bridge the gap between technical teams and business stakeholders for seamless communication."
-    },
-    {
-      icon: <Target className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-      title: "Process Optimization",
-      description: "Streamline business processes to increase efficiency and reduce operational costs."
-    },
-    {
-      icon: <Lightbulb className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-      title: "Strategic Planning",
-      description: "Develop data-driven strategies that align with your business goals and objectives."
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-      title: "Requirements Analysis",
-      description: "Gather and document precise business requirements for successful project delivery."
-    }
-  ];
 
-  const skills = [
-    { name: "Data Analysis", percentage: 95 },
-    { name: "Business Strategy", percentage: 90 },
-    { name: "Requirements Gathering", percentage: 92 },
-    { name: "Process Modeling", percentage: 88 },
-    { name: "Stakeholder Management", percentage: 94 }
-  ];
-
-  const stats = [
-    { icon: <Award className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" />, value: "50+", label: "Projects Completed" },
-    { icon: <Users className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" />, value: "30+", label: "Happy Clients" },
-    { icon: <Clock className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" />, value: "5+", label: "Years Experience" },
-    { icon: <TrendingUp className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" />, value: "95%", label: "Success Rate" }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-x-hidden">
@@ -482,28 +434,28 @@ const BusinessAnalystPage = () => {
               <div className="space-y-5 sm:space-y-6 text-lg">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
-                  <a href="mailto:connect@visionarydynamicsas.com" className="text-sm sm:text-base hover:text-white break-all">
-                    connect@visionarydynamicsas.com
+                  <a href={`mailto:${CONTACT_INFO.email}`} className="text-sm sm:text-base hover:text-white break-all">
+                    {CONTACT_INFO.email}
                   </a>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
                   <a
-                    href="tel:+17275649476"
+                    href={`tel:${CONTACT_INFO.phoneClean}`}
                     className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105 text-sm sm:text-base"
                   >
                     <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                    Call Now: +1(727) 564-9476
+                    Call Now: {CONTACT_INFO.phone}
                   </a>
                 </div>
                 <div className="flex items-start gap-2 sm:gap-3">
                   <MapPin size={16} className="text-sky-400 mt-1 flex-shrink-0" />
                   <a
-                    href="https://www.google.com/maps?q=7901+4th+St+N+STE+300+St+Petersburg+Florida+33702+USA"
+                    href={`https://www.google.com/maps?q=${encodeURIComponent(CONTACT_INFO.address)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-base sm:text-lg hover:text-white"
                   >
-                    7901 4th St N STE 300 St. Petersburg, Florida-33702 USA
+                    {CONTACT_INFO.address}
                   </a>
                 </div>
               </div>

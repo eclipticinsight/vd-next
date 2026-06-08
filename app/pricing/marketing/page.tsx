@@ -5,8 +5,10 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import toast from "react-hot-toast";
  
+import { MARKETING_PRICING_SEO_PLANS, MARKETING_PRICING_SMO_PLANS } from '@/utils/constants';
+
 type PricingType = 'seo' | 'smo';
- 
+
 type Plan = {
   id: string;
   name: string;
@@ -27,30 +29,44 @@ type Plan = {
   postsPerMonth?: number;
   engagement?: string;
 };
- 
+
 type CartItem = Plan & {
   service: PricingType;
 };
- 
+
 type PricingCardProps = {
   plan: Plan;
   type: PricingType;
   isHovered: boolean;
   onHover: (id: string | null) => void;
 };
- 
+
 type SectionHeaderProps = {
   title: string;
   description: string;
   badge: string;
   icon: string;
 };
- 
+
+const SectionHeader = ({ title, description, badge, icon }: SectionHeaderProps) => (
+  <div className="text-center mb-16">
+    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 text-transparent bg-clip-text px-6 py-2 rounded-full text-sm font-bold mb-4 border border-blue-200">
+      <span className="text-2xl">{icon}</span>
+      <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{badge}</span>
+    </div>
+    <h2 className="text-4xl font-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent sm:text-5xl">
+      {title}
+    </h2>
+    <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
+    <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{description}</p>
+  </div>
+);
+
 const PricingPage = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
   const router = useRouter();
- 
+
   // Load cart from localStorage on component mount
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
@@ -58,184 +74,9 @@ const PricingPage = () => {
       setCart(JSON.parse(savedCart));
     }
   }, []);
- 
-  // ========== SECTION 1: SEO PRICING (3 tiers) ==========
-  const seoPlans = [
-    {
-      id: 'seo-growth',
-      name: 'Growth',
-      price: 599,
-      keywordLimit: 150,
-      backlinks: 500,
-      gmb: 12,
-      guestPost: 4,
-      pressRelease: 2,
-      icon: '📈',
-      gradient: 'from-emerald-50 to-teal-50',
-      borderColor: 'border-emerald-200',
-      features: [
-        'Website Review & Analysis',
-        'Competitor Analysis',
-        'Keyword Research & Analysis',
-        'Title & META Tags Optimization',
-        'Heading & Image Alt Tags Optimization',
-        'Content Optimization',
-        'SEO Friendly URL Setup',
-        '404 Page & Broken Links Check',
-        'Website Speed Check',
-        'Robots.txt & XML Sitemap Creation',
-        'Google Webmasters & Analytics Setup',
-        'Structured Data & Schema Implementation',
-        'Monthly Keyword Ranking Report',
-        'Monthly Website Analytics Report',
-        '6 Article Postings',
-        '60 Social Bookmarking',
-        'Facebook, Instagram, Twitter Setup'
-      ],
-      support: ['Email Support', 'Chat Support'],
-      buttonText: 'Get Growth SEO',
-      popular: false
-    },
-    {
-      id: 'seo-turbo',
-      name: 'Turbo',
-      price: 899,
-      keywordLimit: 200,
-      backlinks: 650,
-      gmb: 14,
-      guestPost: 6,
-      pressRelease: 3,
-      icon: '⚡',
-      gradient: 'from-orange-50 to-red-50',
-      borderColor: 'border-orange-300',
-      features: [
-        'Everything in Growth, plus:',
-        'Video Marketing',
-        'Press Release Writing & Distribution',
-        'Quora Answering',
-        'PPT Submissions',
-        '8 Article Postings & Bookmarkings',
-        '80 Social Bookmarking',
-        '16 Facebook/Instagram/Twitter Posts',
-        'Priority Support',
-        'Quarterly Competitor Conquest Reports'
-      ],
-      support: ['Email Support', 'Chat Support', 'Phone Support'],
-      buttonText: 'Get Turbo SEO',
-      popular: true
-    },
-    {
-      id: 'seo-custom',
-      name: 'Custom',
-      price: 1299,
-      keywordLimit: 250,
-      backlinks: 800,
-      gmb: 16,
-      guestPost: 8,
-      pressRelease: 4,
-      icon: '👑',
-      gradient: 'from-purple-50 to-indigo-50',
-      borderColor: 'border-purple-200',
-      features: [
-        'Everything in Turbo, plus:',
-        '10 Article Postings & Bookmarkings',
-        '25 Image & PDF Sharing',
-        '100+ Social Bookmarking',
-        'Video Submissions',
-        'Premium Guest Blog',
-        'Advanced Schema Tags',
-        'Open Graph & Twitter Tags',
-        'Site Navigation Analysis',
-        'Ongoing UX Reporting'
-      ],
-      support: ['24/7 Email', 'Priority Phone', 'Dedicated Chat', 'WhatsApp'],
-      buttonText: 'Get Custom SEO',
-      popular: false
-    }
-  ];
- 
-  // ========== SECTION 2: SMO PRICING (3 tiers) ==========
-  const smoPlans = [
-    {
-      id: 'smo-starter',
-      name: 'Starter SMO',
-      price: 399,
-      platforms: ['Facebook', 'Instagram', 'Twitter'],
-      postsPerMonth: 30,
-      engagement: 'Basic',
-      icon: '📱',
-      gradient: 'from-pink-50 to-rose-50',
-      borderColor: 'border-pink-200',
-      features: [
-        'Profile Setup & Optimization',
-        'Cover Photo & Branding Design',
-        'Page & Username Optimization',
-        '30 Engaging Posts (images + captions)',
-        'Hashtag Research & Strategy',
-        'Competitor Analysis (Basic)',
-        'Weekly Engagement (comments, likes)',
-        'Monthly Performance Report',
-        'Basic Ad Campaign Setup (1 platform)'
-      ],
-      support: ['Email Support', 'Chat Support'],
-      buttonText: 'Start SMO Starter',
-      popular: false
-    },
-    {
-      id: 'smo-professional',
-      name: 'Professional SMO',
-      price: 699,
-      platforms: ['Facebook', 'Instagram', 'Twitter', 'LinkedIn', 'Pinterest'],
-      postsPerMonth: 60,
-      engagement: 'Advanced',
-      icon: '🚀',
-      gradient: 'from-rose-50 to-red-50',
-      borderColor: 'border-rose-300',
-      features: [
-        'Everything in Starter, plus:',
-        '5 Social Platforms Management',
-        '60 High-Quality Posts (carousels + videos)',
-        'Advanced Hashtag & SEO Research',
-        'Content Calendar Strategy',
-        'Daily Engagement & Community Management',
-        'Influencer Outreach (3 per month)',
-        'Bi-Weekly Performance & Insights Report',
-        'Ad Campaign Management (up to $500 ad spend)',
-        'Social Listening & Brand Mentions',
-        'Custom Graphics & Video Editing (5 videos)'
-      ],
-      support: ['Priority Email', 'Chat', 'Phone Support'],
-      buttonText: 'Start Professional SMO',
-      popular: true
-    },
-    {
-      id: 'smo-enterprise',
-      name: 'Enterprise SMO',
-      price: 1199,
-      platforms: ['All Major Platforms + YouTube'],
-      postsPerMonth: 120,
-      engagement: 'Full-Service',
-      icon: '👑',
-      gradient: 'from-red-50 to-orange-50',
-      borderColor: 'border-red-200',
-      features: [
-        'Everything in Professional, plus:',
-        'All Platforms + YouTube Optimization',
-        '120 Premium Posts (stories + reels + long-form)',
-        'Full-Service Community Management',
-        'Paid Social Strategy & Ad Management',
-        'Monthly Influencer & Partnership Campaigns',
-        'Viral Content Strategy & A/B Testing',
-        'Custom Animations & Motion Graphics',
-        'Weekly In-Depth Analytics & ROI Tracking',
-        'Dedicated Social Media Manager',
-        'Crisis Management & 24/7 Monitoring'
-      ],
-      support: ['24/7 Priority Support', 'Dedicated Account Manager', 'SLA Agreement'],
-      buttonText: 'Start Enterprise SMO',
-      popular: false
-    }
-  ];
+
+  const seoPlans = MARKETING_PRICING_SEO_PLANS;
+  const smoPlans = MARKETING_PRICING_SMO_PLANS;
  
   const handleBuyNow = async (plan: Plan) => {
 
@@ -289,10 +130,7 @@ const PricingPage = () => {
 
     const data = await res.json();
 
-    console.log(
-      "PAYMENT RESPONSE:",
-      data
-    );
+    // Payment response logged removed
 
     if (data.url) {
 
@@ -478,19 +316,7 @@ toast.success(`${plan.name} added 🛒`);
     );
   };
  
-  const SectionHeader = ({ title, description, badge, icon }: SectionHeaderProps) => (
-    <div className="text-center mb-16">
-      <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 text-transparent bg-clip-text px-6 py-2 rounded-full text-sm font-bold mb-4 border border-blue-200">
-        <span className="text-2xl">{icon}</span>
-        <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{badge}</span>
-      </div>
-      <h2 className="text-4xl font-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent sm:text-5xl">
-        {title}
-      </h2>
-      <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
-      <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{description}</p>
-    </div>
-  );
+
  
   return (
     <div className="bg-gradient-to-br from-blue-100 via-blue to-blue-100 min-h-screen">

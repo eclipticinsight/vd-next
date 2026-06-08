@@ -46,181 +46,17 @@ import {
 } from "lucide-react";
 
 import WaveTransition from '@/components/sections/WaveTransition';
+import {
+  AI_PAGE_NAVIGATION,
+  AI_PAGE_SERVICES,
+  AI_PAGE_METHODOLOGY,
+  AI_PAGE_EXPERTISE_AREAS
+} from "@/utils/constants";
 
 export default function AIConsultingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
   const [activeService, setActiveService] = useState(0);
-
-  const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '#services' },
-    { name: 'Methodology', href: '#methodology' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
-  const services = [
-    {
-      icon: <BarChart3 className="w-10 h-10" />,
-      title: "Data Analytics & Insights",
-      description: "Transform raw data into actionable intelligence with AI-powered analytics that predict trends and optimize decision-making.",
-      features: [
-        "Predictive analytics & forecasting",
-        "Real-time data visualization",
-        "Automated reporting & dashboards",
-        "Customer behavior analysis"
-      ],
-      color: "blue"
-    },
-    {
-      icon: <MessageSquare className="w-10 h-10" />,
-      title: "Intelligent Customer Support",
-      description: "Deliver exceptional customer experiences with AI-enhanced support systems that understand context and provide instant solutions.",
-      features: [
-        "AI-powered chatbots & virtual assistants",
-        "Sentiment analysis & customer insights",
-        "Automated ticket routing & prioritization",
-        "24/7 multilingual support"
-      ],
-      color: "purple"
-    },
-    {
-      icon: <Smartphone className="w-10 h-10" />,
-      title: "Smart Automation Solutions",
-      description: "Streamline operations and reduce manual effort with intelligent automation that learns and adapts to your workflows.",
-      features: [
-        "Robotic process automation (RPA)",
-        "Intelligent document processing",
-        "Workflow optimization",
-        "Automated quality assurance"
-      ],
-      color: "green"
-    },
-    {
-      icon: <TrendingUp className="w-10 h-10" />,
-      title: "Marketing Intelligence",
-      description: "Supercharge your marketing efforts with AI-driven insights that optimize campaigns and maximize ROI.",
-      features: [
-        "Personalized content recommendations",
-        "Campaign performance prediction",
-        "Customer segmentation & targeting",
-        "Social media sentiment analysis"
-      ],
-      color: "orange"
-    },
-    {
-      icon: <Shield className="w-10 h-10" />,
-      title: "AI-Enhanced Security",
-      description: "Protect your digital assets with intelligent security systems that detect and respond to threats in real-time.",
-      features: [
-        "Threat detection & prevention",
-        "Anomaly detection algorithms",
-        "Automated incident response",
-        "Compliance monitoring"
-      ],
-      color: "red"
-    },
-    {
-      icon: <Code className="w-10 h-10" />,
-      title: "Smart Development",
-      description: "Accelerate software development with AI-assisted coding, testing, and deployment tools that boost productivity.",
-      features: [
-        "AI-powered code assistance",
-        "Automated testing & QA",
-        "Intelligent deployment pipelines",
-        "Performance optimization"
-      ],
-      color: "indigo"
-    }
-  ];
-
-  const methodology = [
-    {
-      phase: "1. Automation",
-      icon: <Search className="w-8 h-8" />,
-      description: "AI helps automate repetitive and time-consuming tasks like data entry, reports, and routine operations.",
-      steps: [
-        "Reduce manual effort",
-        "Save time",
-        "Automate routine tasks",
-        "Improve workflow efficiency",
-        "Focus on high-value work"
-      ],
-      duration: "Efficiency Boost"
-    },
-    {
-      phase: "2. Data Analysis",
-      icon: <Target className="w-8 h-8" />,
-      description: "AI processes large amounts of data quickly and accurately to generate valuable insights.",
-      steps: [
-        "Fast data processing",
-        "Identify patterns",
-        "Generate insights",
-        "Better decision-making",
-        "Smart strategies"
-      ],
-      duration: "Smart Insights"
-    },
-    {
-      phase: "3. Accuracy & Error Reduction",
-      icon: <Rocket className="w-8 h-8" />,
-      description: "AI minimizes human errors and ensures more reliable and consistent results across services.",
-      steps: [
-        "Reduce human errors",
-        "Improve consistency",
-        "Ensure accuracy",
-        "Reliable outputs",
-        "Quality improvement"
-      ],
-      duration: "High Accuracy"
-    },
-    {
-      phase: "4. Speed & Efficiency",
-      icon: <TrendingUp className="w-8 h-8" />,
-      description: "AI speeds up workflows and enhances productivity, enabling faster service delivery.",
-      steps: [
-        "Faster execution",
-        "Boost productivity",
-        "Optimize workflows",
-        "Quick turnaround",
-        "Maintain quality"
-      ],
-      duration: "Faster Delivery"
-    }
-  ];
-
-  const expertiseAreas = [
-    {
-      title: "Financial Services",
-      description: "Using AI to automate financial processes, detect anomalies, and generate faster, data-driven insights for better decision-making.",
-      icon: "💰",
-    },
-    {
-      title: "Healthcare",
-      description: "Applying AI to streamline patient data management, support clinical decisions, and improve operational efficiency.",
-      icon: "🏥",
-    },
-    {
-      title: "Retail & CPG",
-      description: "Leveraging AI for demand forecasting, customer behavior analysis, and personalized experiences to boost sales and efficiency.",
-      icon: "🛒",
-    },
-    {
-      title: "Manufacturing",
-      description: "Integrating AI to monitor production, predict maintenance needs, and enhance quality control processes.",
-      icon: "🏭",
-    },
-    {
-      title: "Technology",
-      description: "Enhancing development workflows with AI-driven automation, faster debugging, and smarter product optimization.",
-      icon: "💻",
-    },
-    {
-      title: "Energy & Utilities",
-      description: "Utilizing AI for system monitoring, demand prediction, and efficient resource management to support sustainable operations.",
-      icon: "⚡",
-    }
-  ];
 
   const handleScheduleClick = () => {
     window.open("https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw", "_blank");
@@ -276,7 +112,7 @@ export default function AIConsultingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
+            {AI_PAGE_SERVICES.map((service, index) => {
               const iconStyles = {
                 purple: { bg: 'bg-purple-100', text: 'text-purple-600', gradient: 'from-purple-500 to-purple-600', light: 'bg-purple-50' },
                 blue: { bg: 'bg-blue-100', text: 'text-blue-600', gradient: 'from-blue-500 to-blue-600', light: 'bg-blue-50' },
@@ -364,7 +200,7 @@ export default function AIConsultingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {methodology.map((phase, index) => {
+            {AI_PAGE_METHODOLOGY.map((phase, index) => {
               const colors = [
                 { bg: 'bg-purple-500/10', border: 'border-purple-500/20', icon: 'bg-purple-500', text: 'text-purple-300', gradient: 'from-purple-500 to-purple-600', iconBg: 'bg-purple-500/20' },
                 { bg: 'bg-blue-500/10', border: 'border-blue-500/20', icon: 'bg-blue-500', text: 'text-blue-300', gradient: 'from-blue-500 to-blue-600', iconBg: 'bg-blue-500/20' },
@@ -410,7 +246,7 @@ export default function AIConsultingPage() {
                     <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${color.gradient} rounded-b-2xl scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
                   </div>
                   
-                  {index < methodology.length - 1 && (
+                  {index < AI_PAGE_METHODOLOGY.length - 1 && (
                     <div className="hidden lg:block absolute top-1/2 -right-3 z-10">
                       <div className="relative">
                         <div className="w-6 h-0.5 bg-gradient-to-r from-gray-600 to-gray-500"></div>
@@ -446,7 +282,7 @@ export default function AIConsultingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {expertiseAreas.map((area, index) => {
+            {AI_PAGE_EXPERTISE_AREAS.map((area, index) => {
               const colors = [
                 { bg: 'bg-purple-100', text: 'text-purple-600', light: 'bg-purple-50', border: 'border-purple-200', hover: 'hover:border-purple-300', gradient: 'from-purple-600 to-purple-700' },
                 { bg: 'bg-blue-100', text: 'text-blue-600', light: 'bg-blue-50', border: 'border-blue-200', hover: 'hover:border-blue-300', gradient: 'from-blue-600 to-blue-700' },

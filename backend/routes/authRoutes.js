@@ -47,7 +47,7 @@ const normalizedEmail = email.toLowerCase().trim();
     });
 
   } catch (err) {
-    console.log("REGISTER ERROR:", err);
+    console.error("REGISTER ERROR:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -95,7 +95,7 @@ const user = await User.findOne({
     });
 
   } catch (err) {
-    console.log("LOGIN ERROR:", err);
+    console.error("LOGIN ERROR:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -106,7 +106,7 @@ router.get("/users", auth, roleMiddleware("admin"), async (req, res) => {
     const users = await User.find().select("-password");
     res.json(users);
   } catch (err) {
-    console.log("GET USERS ERROR:", err);
+    console.error("GET USERS ERROR:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -151,7 +151,7 @@ router.get(
 
 res.redirect(`${FRONTEND_URL}/dashboard`);
     } catch (err) {
-      console.log("GOOGLE CALLBACK ERROR:", err);
+      console.error("GOOGLE CALLBACK ERROR:", err);
       res.status(500).json({ message: "Google login failed" });
     }
   }

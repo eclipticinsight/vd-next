@@ -2,11 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { 
-  Users, TrendingUp, Clock, Award, ChevronRight, CheckCircle, Star,
-  Briefcase, Search, FileText, BarChart3, MessageSquare, Calendar,
-  Building2, Globe2
+  ChevronRight, Star
 } from 'lucide-react';
 import WaveTransition from '@/components/sections/WaveTransition';
+import {
+  RPO_SERVICES as services,
+  RPO_STATS as stats,
+  RPO_WHY_CHOOSE_US as whyChooseUs,
+  RPO_INDUSTRIES as industries
+} from '@/utils/constants';
 
 export default function RPOShowcase() {
   const [isVisible, setIsVisible] = useState({});
@@ -26,91 +30,7 @@ export default function RPOShowcase() {
     return () => observer.disconnect();
   }, []);
 
-  const services = [
-    { 
-      icon: Search, 
-      title: 'Sourcing & Screening', 
-      desc: 'AI-powered candidate matching and thorough vetting process', 
-      longDesc: 'Leverage advanced AI algorithms to find and screen the best candidates quickly and efficiently.',
-      color: 'from-blue-500 to-cyan-500',
-      iconBg: 'bg-blue-100',
-      stats: '95% match rate',
-      delay: 0
-    },
-    { 
-      icon: FileText, 
-      title: 'Talent Pipeline Management', 
-      desc: 'Build and nurture a robust talent pool for future needs', 
-      longDesc: 'Create and maintain a sustainable pipeline of qualified candidates for upcoming positions.',
-      color: 'from-indigo-500 to-purple-500',
-      iconBg: 'bg-indigo-100',
-      stats: '50k+ candidates',
-      delay: 1
-    },
-    { 
-      icon: BarChart3, 
-      title: 'Analytics & Reporting', 
-      desc: 'Data-driven insights to optimize recruitment strategies', 
-      longDesc: 'Real-time analytics and customizable reports to track and improve your hiring metrics.',
-      color: 'from-green-500 to-teal-500',
-      iconBg: 'bg-green-100',
-      stats: 'Real-time metrics',
-      delay: 2
-    },
-    { 
-      icon: MessageSquare, 
-      title: 'Candidate Experience', 
-      desc: 'Seamless communication and engagement throughout', 
-      longDesc: 'Exceptional candidate journey with personalized communication and feedback at every stage.',
-      color: 'from-orange-500 to-red-500',
-      iconBg: 'bg-orange-100',
-      stats: '98% satisfaction',
-      delay: 3
-    },
-    { 
-      icon: Calendar, 
-      title: 'Onboarding Support', 
-      desc: 'Smooth transition from offer acceptance to day one', 
-      longDesc: 'Comprehensive onboarding programs to ensure new hires integrate seamlessly into your team.',
-      color: 'from-pink-500 to-rose-500',
-      iconBg: 'bg-pink-100',
-      stats: '48hr turnaround',
-      delay: 4
-    },
-    { 
-      icon: Building2, 
-      title: 'Employer Branding', 
-      desc: 'Enhance your company image to attract top talent', 
-      longDesc: 'Strategic employer branding solutions to position your company as an employer of choice.',
-      color: 'from-purple-500 to-indigo-500',
-      iconBg: 'bg-purple-100',
-      stats: '3x more reach',
-      delay: 5
-    }
-  ];
 
-  const stats = [
-    { number: '40%', label: 'Faster Time-to-Hire', icon: Clock, trend: '+12%', color: 'from-blue-500 to-cyan-500' },
-    { number: '95%', label: 'Client Retention', icon: Award, trend: '+8%', color: 'from-indigo-500 to-purple-500' },
-    { number: '10k+', label: 'Qualified Candidates', icon: Users, trend: '+15k', color: 'from-green-500 to-teal-500' },
-    { number: '85%', label: 'Cost Savings', icon: TrendingUp, trend: '+22%', color: 'from-orange-500 to-red-500' }
-  ];
-
-  const whyChooseUs = [
-    { icon: Users, title: 'Dedicated Teams', desc: 'Industry-specific recruitment experts who understand your domain', color: 'from-blue-500 to-cyan-500' },
-    { icon: TrendingUp, title: 'AI-Powered Matching', desc: 'Proprietary algorithm with 94% accuracy', color: 'from-indigo-500 to-purple-500' },
-    { icon: Globe2, title: 'Global Network', desc: 'Access to top talent across 50+ countries', color: 'from-green-500 to-teal-500' },
-    { icon: Building2, title: 'Scalable Solutions', desc: 'Flexible models that grow with you', color: 'from-orange-500 to-red-500' }
-  ];
-
-  const industries = [
-    { name: 'Technology & IT', icon: '💻', color: 'from-blue-500 to-cyan-500', roles: ['Full-Stack', 'DevOps', 'Cloud', 'AI/ML'] },
-    { name: 'Healthcare & Life Sciences', icon: '🏥', color: 'from-green-500 to-teal-500', roles: ['Physicians', 'Nurses', 'Researchers', 'Administration'] },
-    { name: 'Finance & Banking', icon: '💰', color: 'from-purple-500 to-pink-500', roles: ['Analysts', 'Accountants', 'Compliance', 'Risk Mgmt'] },
-    { name: 'Manufacturing & Engineering', icon: '🏭', color: 'from-orange-500 to-red-500', roles: ['Engineers', 'Production', 'QC', 'Supply Chain'] },
-    { name: 'Retail & E-commerce', icon: '🛍️', color: 'from-pink-500 to-rose-500', roles: ['Store Mgmt', 'Merchandising', 'Digital', 'Logistics'] },
-    { name: 'Energy & Utilities', icon: '⚡', color: 'from-emerald-500 to-green-500', roles: ['Renewable', 'Oil & Gas', 'Utilities', 'Sustainability'] }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -180,74 +100,7 @@ export default function RPOShowcase() {
 
     {/* Enhanced Services Grid */}
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {[
-        { 
-          icon: Search, 
-          title: 'Sourcing & Screening', 
-          desc: 'AI-powered candidate matching and thorough vetting process', 
-          longDesc: 'Leverage advanced AI algorithms to find and screen the best candidates quickly and efficiently.',
-          color: 'from-blue-500 to-cyan-500',
-          bgColor: 'bg-blue-50',
-          iconBg: 'bg-blue-100',
-          stats: '95% match rate',
-          delay: 0
-        },
-        { 
-          icon: FileText, 
-          title: 'Talent Pipeline Management', 
-          desc: 'Build and nurture a robust talent pool for future needs', 
-          longDesc: 'Create and maintain a sustainable pipeline of qualified candidates for upcoming positions.',
-          color: 'from-indigo-500 to-purple-500',
-          bgColor: 'bg-indigo-50',
-          iconBg: 'bg-indigo-100',
-          stats: '50k+ candidates',
-          delay: 1
-        },
-        { 
-          icon: BarChart3, 
-          title: 'Analytics & Reporting', 
-          desc: 'Data-driven insights to optimize recruitment strategies', 
-          longDesc: 'Real-time analytics and customizable reports to track and improve your hiring metrics.',
-          color: 'from-green-500 to-teal-500',
-          bgColor: 'bg-green-50',
-          iconBg: 'bg-green-100',
-          stats: 'Real-time metrics',
-          delay: 2
-        },
-        { 
-          icon: MessageSquare, 
-          title: 'Candidate Experience', 
-          desc: 'Seamless communication and engagement throughout', 
-          longDesc: 'Exceptional candidate journey with personalized communication and feedback at every stage.',
-          color: 'from-orange-500 to-red-500',
-          bgColor: 'bg-orange-50',
-          iconBg: 'bg-orange-100',
-          stats: '98% satisfaction',
-          delay: 3
-        },
-        { 
-          icon: Calendar, 
-          title: 'Onboarding Support', 
-          desc: 'Smooth transition from offer acceptance to day one', 
-          longDesc: 'Comprehensive onboarding programs to ensure new hires integrate seamlessly into your team.',
-          color: 'from-pink-500 to-rose-500',
-          bgColor: 'bg-pink-50',
-          iconBg: 'bg-pink-100',
-          stats: '48hr turnaround',
-          delay: 4
-        },
-        { 
-          icon: Building2, 
-          title: 'Employer Branding', 
-          desc: 'Enhance your company image to attract top talent', 
-          longDesc: 'Strategic employer branding solutions to position your company as an employer of choice.',
-          color: 'from-purple-500 to-indigo-500',
-          bgColor: 'bg-purple-50',
-          iconBg: 'bg-purple-100',
-          stats: '3x more reach',
-          delay: 5
-        }
-      ].map((service, idx) => (
+      {services.map((service, idx) => (
         <div 
           key={idx} 
           className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 cursor-pointer"

@@ -41,10 +41,6 @@ export default function AdminOffers() {
 
   const getToken = () => (typeof window !== "undefined" ? localStorage.getItem("token") : null);
 
-  useEffect(() => {
-    fetchOffers();
-  }, []);
-
   const fetchOffers = async () => {
     try {
       setLoading(true);
@@ -79,6 +75,10 @@ export default function AdminOffers() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchOffers();
+  }, []);
 
   const deleteOffer = async (id: string) => {
     const confirmDelete = window.confirm("Delete this offer?");

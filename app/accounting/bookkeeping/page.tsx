@@ -14,6 +14,12 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import {
+  BOOKKEEPING_PAGE_SERVICES,
+  BOOKKEEPING_PAGE_BENEFITS,
+  BOOKKEEPING_PAGE_FEATURES,
+  BOOKKEEPING_PAGE_VALUE_PROPS
+} from "@/utils/constants";
 
 // Wave Transition Component
 interface WaveProps {
@@ -159,116 +165,6 @@ const particles: Particle[] = [];
     };
   }, []);
 
-  const services = [
-    {
-      title: "Bank Reconciliation",
-      icon: "💰",
-      color: "from-blue-500 to-cyan-400",
-      description: "We match your bank and credit card transactions to ensure accurate, error-free financial records."
-    },
-    {
-      title: "Accounts Payable/Receivable",
-      icon: "📊",
-      color: "from-emerald-500 to-teal-400",
-      description: "Track invoices, manage payments, and maintain healthy cash flow with organized AR and AP processes."
-    },
-    {
-      title: "Day to Day Transaction Records",
-      icon: "📈",
-      color: "from-amber-500 to-orange-400",
-      description: "We record and organize your daily financial transactions accurately, ensuring your books stay updated and error-free"
-    },
-    {
-      title: "Data Migration",
-      icon: "📋",
-      color: "from-red-500 to-rose-400",
-      description: "We securely transfer your financial data from legacy systems or spreadsheets into modern accounting platforms without data loss."
-    },
-    {
-      title: "Backlog Cleanup",
-      icon: "🧹",
-      color: "from-gray-500 to-gray-400",
-      description: "We organize and update your past transactions so your books are accurate and up to date."
-    },
-    {
-      title: "Reliable Month-End and Fiscal Year-End Closing Support",
-      icon: "📅",
-      color: "from-blue-600 to-blue-400",
-      description: "Comprehensive year-end adjustments and reports to prepare your business for tax season and planning."
-    }
-  ];
-
-  const benefits = [
-    {
-      title: "Time Savings",
-      description: "Focus on your core business while we handle the books",
-      icon: <Clock className="w-5 h-5 sm:w-6 sm:h-6" />,
-      stats: "Save 15+ hrs/month",
-    },
-    {
-      title: "Improved Cash Flow",
-      description: "Real-time tracking and better financial management",
-      icon: <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6" />,
-      stats: "Up to 30% improvement",
-    },
-    {
-      title: "Expert Team",
-      description: "Certified bookkeepers with industry experience",
-      icon: <Users className="w-5 h-5 sm:w-6 sm:h-6" />,
-      stats: "5+ years experience",
-    },
-    {
-      title: "Data Security",
-      description: "Enterprise-grade security and confidentiality",
-      icon: <Shield className="w-5 h-5 sm:w-6 sm:h-6" />,
-      stats: "256-bit encryption",
-    },
-  ];
-
-  const features = [
-  {
-    title: "Precise Accounting",
-    desc:
-      "Rely on our outsourced accounting services and let us take care of your finances with ease.",
-    image: "/images/precise-accounting.png",
-    reverse: false,
-    bg: "bg-blue-100",
-
-    darkOverlay:false,
-    imageBg:false,
-  },
-
-  {
-    title: "Time-Consuming Bookkeeping Tasks",
-    desc:
-      "Manual data entry and reconciliations take valuable time away from your core business operations.",
-    image: "/images/financial-reporting.png",
-    reverse:true,
-    bgImage:"bg-blue-100",
-
-    darkOverlay:false,
-    imageBg:false,
-  },
-
-  {
-    title: "Lack of Real-Time Financial Insights",
-    desc:
-      "Delayed or outdated financial reports make it difficult to make informed decisions.",
-    image:"/images/tax-support.png",
-    reverse:false,
-    bg:"bg-blue-100",
-
-    darkOverlay:false,
-    imageBg:false,
-  },
-];
-
-  const valueProps = [
-    { img: "/animations/help-desk.png", title: "PERSONAL SUPPORT", desc: "You get your own expert no bots, no confusion." },
-    { img: "/animations/increase.png", title: "BETTER VALUE", desc: "Quality accounting without the big price tag." },
-    { img: "/animations/dashboard.png", title: "YOUR DASHBOARD", desc: "See your numbers anytime, anywhere." },
-    { img: "/animations/update.png", title: "LIVE UPDATE", desc: "Stay in the loop with real-time financial info." }
-  ];
 
   const overlay = "absolute inset-0 bg-gradient-to-r from-[#020617]/85 via-[#020617]/75 to-[#0a2540]/85";
 
@@ -318,7 +214,7 @@ const particles: Particle[] = [];
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-            {services.map((service, index) => (
+            {BOOKKEEPING_PAGE_SERVICES.map((service, index) => (
               <div key={index} className="group relative bg-white/90 p-5 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color} rounded-t-xl`} />
                 <div className="flex items-center gap-3 sm:gap-4 mb-3">
@@ -346,7 +242,7 @@ const particles: Particle[] = [];
           </span>
         </h2>
 
-        {features.map((item, index) => (
+        {BOOKKEEPING_PAGE_FEATURES.map((item, index) => (
           <div key={index} className="relative py-12 sm:py-16 md:py-20">
             {item.bgImage && (
               <div
@@ -428,7 +324,7 @@ const particles: Particle[] = [];
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-8 mt-6 sm:mt-8">
-            {benefits.map((benefit, index) => (
+            {BOOKKEEPING_PAGE_BENEFITS.map((benefit, index) => (
               <div
                 key={index}
                 className="group bg-white/90 backdrop-blur-sm p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/30"
@@ -505,7 +401,7 @@ const particles: Particle[] = [];
           </svg>
 
           <div className="relative mt-16 sm:mt-20 md:mt-24 lg:mt-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
-            {valueProps.map((item, idx) => (
+            {BOOKKEEPING_PAGE_VALUE_PROPS.map((item, idx) => (
               <div key={idx} className="flex flex-col items-center group">
                 <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-4 sm:mb-5 md:mb-6">
                   <Image

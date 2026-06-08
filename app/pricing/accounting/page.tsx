@@ -4,13 +4,15 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
  
+import { ACCOUNTING_PRICING_SECTIONS } from "@/utils/constants";
+
 type Plan = {
   name: string;
   price: number | string;
   features: string[];
   popular?: boolean;
 };
- 
+
 type Section = {
   id: string;
   title: string;
@@ -20,15 +22,15 @@ type Section = {
   iconColor: string;
   plans: Plan[];
 };
- 
+
 type CartItem = Plan & {
   service: string;
   id: string;
 };
- 
+
 const heroBg =
   "https://img.freepik.com/premium-photo/business-people-handshake-collaboration-thank-you-contract-meeting-with-diversity-teamwork-collaboration-happy-manager-b2b-partnership-investment-company-growth-staff-applause_590464-82212.jpg";
- 
+
 const startPayment = async (plan: Plan) => {
   try {
 
@@ -58,7 +60,7 @@ const startPayment = async (plan: Plan) => {
 
     const data = await response.json();
 
-    console.log("PAYMENT RESPONSE:", data);
+    // Payment response logged removed
 
     if (data.url) {
       window.location.href = data.url;
@@ -73,28 +75,28 @@ const startPayment = async (plan: Plan) => {
     toast.error("Payment failed");
   }
 };
- 
+
 const addToCart = (item: CartItem) => {
   // Get existing cart from localStorage
   const existingCart = JSON.parse(localStorage.getItem("cart") ?? "[]") as CartItem[];
- 
+
   // Check if item already exists in cart
   const itemExists = existingCart.some(
     (cartItem) => cartItem.id === item.id
   );
- 
+
   if (!itemExists) {
     existingCart.push(item);
     localStorage.setItem("cart", JSON.stringify(existingCart));
   }
- 
+
   return existingCart;
 };
- 
+
 const PricingPage = () => {
   const [user, setUser] = useState(null);
   const router = useRouter();
- 
+
   useEffect(() => {
     // Check if user is logged in
     const storedUser = localStorage.getItem("user");
@@ -102,7 +104,7 @@ const PricingPage = () => {
       setUser(JSON.parse(storedUser));
     }
   }, []);
- 
+
   const handleAddToCart = (
   plan: Plan,
   sectionId: string
@@ -125,11 +127,11 @@ const PricingPage = () => {
     `${plan.name} (${sectionId}) added 🛒`
   );
 };
- 
+
   const handlePlanClick = (plan: Plan) => {
     const storedUser = localStorage.getItem("user");
     const currentUser = storedUser ? JSON.parse(storedUser) : null;
- 
+
     if (!currentUser) {
       // Save selected plan before login
       localStorage.setItem("selectedPlan", JSON.stringify(plan));
@@ -138,144 +140,8 @@ const PricingPage = () => {
       startPayment(plan);
     }
   };
- 
-  const sections: Section[] = [
-    {
-      id: "accounting",
-      title: "Accounting Services",
-      icon: (
-        <svg className="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 7h6m0 10v-3m-6 3v-3m-6 3h18M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
-        </svg>
-      ),
-      gradient: "from-emerald-500 to-teal-500",
-      bgLight: "from-emerald-50 to-teal-50",
-      iconColor: "text-emerald-600",
-      plans: [
-        {
-          name: "Starter Pack",
-          price: 499,
-          features: [
-            "Basic Bookkeeping (40 hrs)",
-            "Monthly Reports",
-            "Bank Reconciliation",
-            "Payroll Support",
-          ],
-        },
-        {
-          name: "Pro Pack",
-          price: 899,
-          popular: true,
-          features: [
-            "Bookkeeping (80 hrs)",
-            "Full Payroll",
-            "Bank Reconciliation",
-            "Financial Reports",
-          ],
-        },
-        {
-          name: "Enterprise Pack",
-          price: 1599,
-          features: [
-            "Complete Bookkeeping (160 hrs)",
-            "Payroll + Compliance",
-            "Reports + Advisory",
-            "Dedicated Accountant",
-          ],
-        },
-      ],
-    },
-    {
-      id: "taxation",
-      title: "Taxation Services",
-      icon: (
-        <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-      gradient: "from-blue-600 to-indigo-600",
-      bgLight: "from-blue-50 to-indigo-50",
-      iconColor: "text-blue-600",
-      plans: [
-        {
-          name: "Initial Pack",
-          price: 299,
-          features: [
-            "Basic Tax Filing",
-            "GST Filing",
-            "Tax Reports",
-            "Email Support",
-          ],
-        },
-        {
-          name: "Boost Pack",
-          price: 599,
-          popular: true,
-          features: [
-            "Tax Planning",
-            "Quarterly Filing",
-            "Compliance",
-            "Priority Support",
-          ],
-        },
-        {
-          name: "Elite Pack",
-          price: 999,
-          features: [
-            "Advanced Tax Strategy",
-            "Audit Support",
-            "Full Compliance",
-            "Dedicated Consultant",
-          ],
-        },
-      ],
-    },
-    {
-      id: "business-analyst",
-      title: "Business Analyst Services",
-      icon: (
-        <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-      gradient: "from-amber-500 to-orange-500",
-      bgLight: "from-amber-50 to-orange-50",
-      iconColor: "text-amber-600",
-      plans: [
-        {
-          name: "First Pack",
-          price: 999,
-          features: [
-            "Basic KPI Tracking",
-            "Monthly Insights",
-            "Reports",
-            "Email Support",
-          ],
-        },
-        {
-          name: "Growth Pack",
-          price: 1999,
-          popular: true,
-          features: [
-            "Forecasting",
-            "Profit Analysis",
-            "Dashboards",
-            "Strategy Calls",
-          ],
-        },
-        {
-          name: "Ultimate Pack",
-          price: "Contact Us",
-          features: [
-            "Advanced Analytics",
-            "Custom Dashboards",
-            "Business Strategy",
-            "Dedicated Analyst",
-          ],
-        },
-      ],
-    },
-  ];
+
+  const sections: Section[] = ACCOUNTING_PRICING_SECTIONS;
  
   
  

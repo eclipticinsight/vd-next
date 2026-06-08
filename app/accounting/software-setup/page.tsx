@@ -18,6 +18,11 @@ import {
   FileCheck
 } from "lucide-react";
 import Image from "next/image";
+import {
+  SOFTWARE_MIGRATION_PAGE_SERVICES,
+  SOFTWARE_MIGRATION_PAGE_STEPS,
+  BOOKKEEPING_PAGE_VALUE_PROPS
+} from "@/utils/constants";
 
 // Wave Transition Component
 export const WaveTransition = ({ direction = "bottom" }) => {
@@ -83,71 +88,6 @@ const SoftwareMigrationPage = () => {
     };
   }, []);
 
-  const features = [
-    {
-      icon: <Database className="w-6 h-6 text-white" />,
-      title: "QuickBooks Online",
-      description: "Seamless migration, cleanup, and optimization of your QuickBooks Online environment.",
-      gradient: "from-green-500 to-emerald-600"
-    },
-    {
-      icon: <FileCheck className="w-6 h-6 text-white" />,
-      title: "Bill.com",
-      description: "AP/AR automation setup with approval workflows and clean payment integrations.",
-      gradient: "from-indigo-500 to-blue-600"
-    },
-    {
-      icon: <Users className="w-6 h-6 text-white" />,
-      title: "Microsoft SharePoint",
-      description: "Structured financial document management and secure collaboration setup.",
-      gradient: "from-blue-500 to-cyan-600"
-    },
-    {
-      icon: <Database className="w-6 h-6 text-white" />,
-      title: "QuickBooks Desktop",
-      description: "Version upgrades, file repair, hosting migration, and cloud transition support.",
-      gradient: "from-orange-500 to-amber-600"
-    },
-    {
-      icon: <Calendar className="w-6 h-6 text-white" />,
-      title: "Gusto & ADP Payroll",
-      description: "Payroll system setup, tax compliance configuration, and HR integrations.",
-      gradient: "from-purple-500 to-pink-600"
-    },
-    {
-      icon: <TrendingUp className="w-6 h-6 text-white" />,
-      title: "Stripe",
-      description: "Payment gateway integration with automated reconciliation and reporting sync.",
-      gradient: "from-indigo-600 to-purple-700"
-    }
-  ];
-
-  const processSteps = [
-    {
-      step: "01",
-      title: "QuickBooks Desktop → QuickBooks Online (QBD → QBO)",
-      description: "Full historical data migration from QuickBooks Desktop to QuickBooks Online with account mapping, payroll alignment, and reconciliation validation.",
-      icon: <Database className="w-8 h-8 text-indigo-600" />
-    },
-    {
-      step: "02",
-      title: "QuickBooks Online → QuickBooks Desktop (QBO → QBD)",
-      description: "Structured downgrade or enterprise transition with secure data export, file rebuild, and balance verification.",
-      icon: <CloudUpload className="w-8 h-8 text-indigo-600" />
-    },
-    {
-      step: "03",
-      title: "Xero ↔ QuickBooks Online (Xero → QBO / QBO → Xero)",
-      description: "Seamless platform switching with chart-of-accounts restructuring, bank feed setup, and clean opening balance adjustments.",
-      icon: <BarChart className="w-8 h-8 text-indigo-600" />
-    },
-    {
-      step: "04",
-      title: "Wave / Sage → QuickBooks Online",
-      description: "Complete migration from Wave or Sage to QBO including customer/vendor data, open invoices, payroll history, and tax configuration.",
-      icon: <TrendingUp className="w-8 h-8 text-indigo-600" />
-    }
-  ];
 
   return (
     <div className="bg-white font-sans antialiased overflow-x-hidden">
@@ -257,7 +197,7 @@ const SoftwareMigrationPage = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, idx) => (
+            {SOFTWARE_MIGRATION_PAGE_SERVICES.map((feature, idx) => (
               <div
                 key={idx}
                 className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-blue-100"
@@ -318,7 +258,7 @@ const SoftwareMigrationPage = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, idx) => (
+            {SOFTWARE_MIGRATION_PAGE_STEPS.map((step, idx) => (
               <div
                 key={idx}
                 className="group relative backdrop-blur-md rounded-3xl p-8 shadow-lg border border-white/10 hover:border-indigo-400 transition-all duration-300 hover:-translate-y-2"
@@ -431,81 +371,25 @@ const SoftwareMigrationPage = () => {
 
           {/* Cards */}
           <div className="relative mt-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-            {/* PERSONAL SUPPORT */}
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/help-desk.png"
-                  alt="Personal Support"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
+            {BOOKKEEPING_PAGE_VALUE_PROPS.map((item, idx) => (
+              <div key={idx} className="flex flex-col items-center group">
+                <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    width={80}
+                    height={80}
+                    className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
+                  {item.desc}
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                PERSONAL SUPPORT
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                You get your own expert no bots, no confusion.
-              </p>
-            </div>
-
-            {/* BETTER VALUE */}
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/increase.png"
-                  alt="Better Value"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                BETTER VALUE
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                Quality accounting without the big price tag.
-              </p>
-            </div>
-
-            {/* YOUR DASHBOARD */}
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/dashboard.png"
-                  alt="Your Dashboard"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                YOUR DASHBOARD
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                See your numbers anytime, anywhere.
-              </p>
-            </div>
-
-            {/* LIVE UPDATE */}
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/update.png"
-                  alt="Live Update"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                LIVE UPDATE
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                Stay in the loop with real-time financial info.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>

@@ -35,58 +35,14 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import WaveTransition from '@/components/sections/WaveTransition';
+import { AUTOMATION_PAGE_STEPS, AUTOMATION_PAGE_AREAS, AUTOMATION_PAGE_TECH } from "@/utils/constants";
 
 export default function AutomationIntegrationPage() {
   const [activeTab, setActiveTab] = useState('strategy');
 
-  const integrationSteps = [
-    {
-      step: 1,
-      title: "Identify Opportunities",
-      desc: "Analyze workflows to find repetitive tasks and areas where AI can improve speed and efficiency.",
-      icon: Target
-    },
-    {
-      step: 2,
-      title: "Apply Smart Tools",
-      desc: "Integrate AI-powered tools that automate tasks, assist in data processing, and support daily operations.",
-      icon: Layers
-    },
-    {
-      step: 3,
-      title: "Streamline Workflows",
-      desc: "Connect systems and processes to enable smoother operations and faster data flow across teams.",
-      icon: GitBranch
-    },
-    {
-      step: 4,
-      title: "Improve & Scale",
-      desc: "Continuously refine processes using AI insights to enhance performance, accuracy, and overall efficiency.",
-      icon: Brain
-    }
-  ];
-
-  const automationAreas = [
-    { icon: TrendingUp, title: "Sales & CRM", benefits: "Auto-lead scoring, email sequencing, pipeline updates", color: "from-blue-500 to-cyan-500" },
-    { icon: ShoppingCart, title: "E-commerce & Order Mgmt", benefits: "Sync inventory, automated fulfillment, personalized cart recovery", color: "from-green-500 to-emerald-500" },
-    { icon: Users, title: "HR & Onboarding", benefits: "Employee document collection, payroll sync, role-based access", color: "from-purple-500 to-violet-500" },
-    { icon: FileText, title: "Finance & Accounting", benefits: "Invoicing automation, expense approvals, real-time reconciliation", color: "from-amber-500 to-orange-500" },
-    { icon: MessageSquare, title: "Customer Support", benefits: "AI chatbots, ticket routing, sentiment analysis", color: "from-rose-500 to-pink-500" },
-    { icon: Database, title: "Data & Analytics", benefits: "ETL pipelines, automated reporting, predictive dashboards", color: "from-indigo-500 to-purple-500" }
-  ];
-
-  const techTools = [
-    { name: "Salesforce", icon: "SF", category: "CRM", color: "from-blue-600 to-blue-700" },
-    { name: "HubSpot", icon: "H", category: "Marketing", color: "from-orange-500 to-orange-600" },
-    { name: "Slack", icon: "S", category: "Communication", color: "from-purple-500 to-purple-600" },
-    { name: "Shopify", icon: "SH", category: "E-commerce", color: "from-green-500 to-green-600" },
-    { name: "Zapier", icon: "Z", category: "Automation", color: "from-amber-500 to-amber-600" },
-    { name: "Stripe", icon: "$", category: "Payments", color: "from-indigo-500 to-indigo-600" },
-    { name: "Microsoft 365", icon: "M", category: "Productivity", color: "from-blue-400 to-blue-500" },
-    { name: "Google Workspace", icon: "G", category: "Collaboration", color: "from-emerald-500 to-emerald-600" },
-    { name: "AWS", icon: "AWS", category: "Cloud", color: "from-orange-600 to-orange-700" },
-    { name: "Snowflake", icon: "❄️", category: "Data", color: "from-cyan-500 to-cyan-600" }
-  ];
+  const integrationSteps = AUTOMATION_PAGE_STEPS;
+  const automationAreas = AUTOMATION_PAGE_AREAS;
+  const techTools = AUTOMATION_PAGE_TECH;
 
   const handleContactClick = () => {
     window.open("https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw", "_blank");

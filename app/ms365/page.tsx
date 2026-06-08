@@ -52,60 +52,11 @@ const scaleIn = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
 };
 
-// Static data
-const SERVICES = [
-  { icon: Users, name: "User Provisioning and Management", desc: "Oversee user accounts, permissions, and access controls to ensure secure onboarding and offboarding.", color: "from-blue-500 to-cyan-500" },
-  { icon: Settings, name: "License Management", desc: "Align subscriptions with organizational needs, manage allocations, and ensure compliance with licensing agreements.", color: "from-purple-500 to-pink-500" },
-  { icon: Shield, name: "Security Management", desc: "Implement features like multi-factor authentication, data loss prevention, and advanced threat protection.", color: "from-green-500 to-emerald-500" },
-  { icon: Lock, name: "Identity and Access Management (IAM)", desc: "Administer user identities and authentication across Microsoft 365 services.", color: "from-orange-500 to-red-500" },
-  { icon: Database, name: "Data Governance and Compliance", desc: "Establish policies for data retention, eDiscovery, and regulatory adherence.", color: "from-indigo-500 to-purple-500" },
-  { icon: Mail, name: "Exchange Online Management", desc: "Configure email services, manage mailboxes, and set anti-spam and anti-malware protocols.", color: "from-blue-500 to-indigo-500" },
-  { icon: FileText, name: "SharePoint Online Management", desc: "Oversee site configurations, permissions, and document management.", color: "from-teal-500 to-cyan-500" },
-  { icon: HardDrive, name: "OneDrive for Business Management", desc: "Manage storage, access controls, and sharing policies.", color: "from-yellow-500 to-orange-500" },
-  { icon: MessageSquare, name: "Teams and Skype for Business Management", desc: "Administer collaboration tools, user settings, and compliance features.", color: "from-purple-500 to-indigo-500" },
-  { icon: Smartphone, name: "Endpoint Management", desc: "Utilize solutions like Microsoft Endpoint Manager for device enrollment and security.", color: "from-pink-500 to-rose-500" },
-  { icon: Layers, name: "Power Platform Governance", desc: "Regulate the use of services like Power BI, Power Apps, and Power Automate.", color: "from-cyan-500 to-blue-500" },
-  { icon: Activity, name: "Service Monitoring and Reporting", desc: "Track service health, generate reports, and analyze usage data.", color: "from-emerald-500 to-green-500" },
-  { icon: Download, name: "Migration and Deployment Services", desc: "Plan and execute transitions to Microsoft 365, including email and file migrations.", color: "from-red-500 to-pink-500" },
-  { icon: BookOpen, name: "Training and Support Services", desc: "Provide resources and guidance to ensure effective utilization.", color: "from-blue-500 to-purple-500" },
-];
+import { MS365_SERVICES, MS365_WHY_OUTSOURCE, MS365_KEY_COMPONENTS } from '@/utils/constants';
 
-const WHY_OUTSOURCE = [
-  { text: "Access to expert insights and analysis", icon: Eye, color: "blue" },
-  { text: "Reduces Cost & Saves Time", icon: DollarSign, color: "green" },
-  { text: "Mitigate the risk of errors and discrepancies", icon: AlertCircle, color: "orange" },
-  { text: "Allows you to focus on core business functions", icon: Target, color: "purple" },
-  { text: "Fresh perspectives and innovative approaches", icon: RefreshCw, color: "indigo" },
-  { text: "Leverage the latest software and technology", icon: Zap, color: "cyan" },
-  { text: "Tailored services for your objectives", icon: Settings, color: "pink" },
-];
-
-const KEY_COMPONENTS = [
-  {
-    icon: Users,
-    title: "User and License Administration",
-    desc: "Efficiently manage user accounts, permissions, and licenses to ensure secure access and compliance.",
-    stats: "99.9% Uptime",
-    color: "blue",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80"
-  },
-  {
-    icon: Shield,
-    title: "Security and Compliance Implementation",
-    desc: "Deploy robust security measures and establish data governance policies to protect information.",
-    stats: "100% Secure",
-    color: "indigo",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80"
-  },
-  {
-    icon: Activity,
-    title: "Continuous Monitoring and Support",
-    desc: "Regularly oversee system performance, provide user training, and adapt to evolving needs.",
-    stats: "100% Support",
-    color: "purple",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80"
-  }
-];
+const SERVICES = MS365_SERVICES;
+const WHY_OUTSOURCE = MS365_WHY_OUTSOURCE;
+const KEY_COMPONENTS = MS365_KEY_COMPONENTS;
 
 export default function MS365ManagementPage() {
   const sliderRef = useRef<HTMLDivElement>(null);

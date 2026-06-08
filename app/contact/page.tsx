@@ -1,20 +1,18 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
-  Clock,
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
   Sparkles,
-  Shield,
-  Zap,
-  Users,
-  Globe,
-  Star,
   Award,
   Heart,
+  Shield,
+  Clock,
+  Star,
+  Globe,
 } from 'lucide-react';
 import {
   FaFacebook,
@@ -23,6 +21,13 @@ import {
   FaGithub,
   FaXTwitter,
 } from "react-icons/fa6";
+
+import {
+  CONTACT_INFO,
+  SOCIAL_LINKS,
+  CONTACT_PAGE_FEATURES as features,
+  CONTACT_PAGE_STATS as stats
+} from '@/utils/constants';
 
 const ContactPage = () => {
   const [mounted, setMounted] = useState(false);
@@ -39,8 +44,8 @@ const ContactPage = () => {
     {
       icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: 'Phone',
-      details: '+1(727) 564-9476',
-      subDetails: 'Mon-Fri 9am-6pm EST',
+      details: CONTACT_INFO.phone,
+      subDetails: CONTACT_INFO.officeHours,
       gradient: 'from-green-500 to-emerald-600',
       lightBg: 'bg-green-50',
       textColor: 'text-green-600',
@@ -49,7 +54,7 @@ const ContactPage = () => {
     {
       icon: <Mail className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: 'Email',
-      details: 'connect@visionarydynamics.com',
+      details: CONTACT_INFO.email,
       subDetails: 'We reply within 24 hours',
       gradient: 'from-blue-500 to-indigo-600',
       lightBg: 'bg-blue-50',
@@ -59,7 +64,7 @@ const ContactPage = () => {
     {
       icon: <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: 'Office',
-      details: '7901 4th St N STE 300 St. Petersburg, Florida-33702 USA',
+      details: CONTACT_INFO.address,
       gradient: 'from-purple-500 to-pink-600',
       lightBg: 'bg-purple-50',
       textColor: 'text-purple-600',
@@ -68,41 +73,13 @@ const ContactPage = () => {
   ];
 
   const socialLinks = [
-    { icon: <FaXTwitter className="w-4 h-4 sm:w-5 sm:h-5" />, href: 'https://x.com/VisionaryD64371', label: 'Twitter', color: 'hover:bg-[#1DA1F2]' },
-    { icon: <FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5" />, href: 'https://in.linkedin.com/company/visionarydynamicsas', label: 'LinkedIn', color: 'hover:bg-[#0A66C2]' },
-   { icon: <FaFacebook className="w-4 h-4 sm:w-5 sm:h-5" />, href: 'https://www.facebook.com/visionarydynamicsas/' },
-    { icon: <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />, href: 'https://www.instagram.com/visionary.dynamics/', label: 'Instagram', color: 'hover:bg-[#E4405F]' }
+    { icon: <FaXTwitter className="w-4 h-4 sm:w-5 sm:h-5" />, href: SOCIAL_LINKS.twitter, label: 'Twitter', color: 'hover:bg-[#1DA1F2]' },
+    { icon: <FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5" />, href: SOCIAL_LINKS.linkedin, label: 'LinkedIn', color: 'hover:bg-[#0A66C2]' },
+    { icon: <FaFacebook className="w-4 h-4 sm:w-5 sm:h-5" />, href: SOCIAL_LINKS.facebook },
+    { icon: <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />, href: SOCIAL_LINKS.instagram, label: 'Instagram', color: 'hover:bg-[#E4405F]' }
   ];
 
-  const features = [
-    {
-      icon: <Zap className="w-5 h-5 sm:w-6 sm:h-6" />,
-      title: 'Lightning Fast',
-      description: 'Average response time under 2 hours'
-    },
-    {
-      icon: <Shield className="w-5 h-5 sm:w-6 sm:h-6" />,
-      title: 'Secure & Private',
-      description: 'Your data is encrypted and protected'
-    },
-    {
-      icon: <Users className="w-5 h-5 sm:w-6 sm:h-6" />,
-      title: 'Expert Team',
-      description: 'Dedicated account managers for business clients'
-    },
-    {
-      icon: <Globe className="w-5 h-5 sm:w-6 sm:h-6" />,
-      title: 'Global Support',
-      description: 'Multi-language support available 24/7'
-    }
-  ];
 
-  const stats = [
-    { value: '10K+', label: 'Happy Clients', icon: <Users className="w-4 h-4 sm:w-5 sm:h-5" /> },
-    { value: '98%', label: 'Satisfaction', icon: <Star className="w-4 h-4 sm:w-5 sm:h-5" /> },
-    { value: '24/7', label: 'Support', icon: <Clock className="w-4 h-4 sm:w-5 sm:h-5" /> },
-    { value: '2h', label: 'Response', icon: <Zap className="w-4 h-4 sm:w-5 sm:h-5" /> }
-  ];
 
   if (!mounted) {
     return null;

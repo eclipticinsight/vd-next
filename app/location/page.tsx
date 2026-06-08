@@ -53,58 +53,10 @@ export const WaveTransition = ({ direction = "bottom" }) => {
   );
 };
  
+import { CONTACT_INFO, LOCATION_PAGE_LOCATIONS, LOCATION_PAGE_OFFICES } from "@/utils/constants";
+
 /* ================= LOCATIONS DATA ================= */
-const locations = [
-  {
-    id: "florida",
-    name: "Florida",
-    country: "United States",
-    city: "Saint Petersburg",
-    address: "7901 4th St N STE 300 St. Petersburg, Florida-33702 USA",
-    lat: 27.7731,
-    lng: -82.6403,
-    zoom: 12,
-    flag: "🇺🇸",
-    image: "https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Our flagship headquarters with state-of-the-art facilities"
-  },
-  {
-    id: "usa",
-    name: "United States",
-    city: "Dallas",
-    address: "Dallas, Texas",
-    lat: 32.7767,
-    lng: -96.7970,
-    zoom: 10,
-    flag: "🇺🇸",
-    image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Financial hub connecting global markets"
-  },
-  {
-    id: "canada",
-    name: "Canada",
-    city: "Vancouver",
-    address: "Vancouver, British Columbia",
-    lat: 49.2827,
-    lng: -123.1207,
-    zoom: 10,
-    flag: "🇨🇦",
-    image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "North American innovation center"
-  },
-  {
-    id: "india",
-    name: "India",
-    city: "Noida",
-    address: "Sector 16, Noida, UP",
-    lat: 28.4595,
-    lng: 77.0266,
-    zoom: 12,
-    flag: "🇮🇳",
-    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Indian headquarters with modern facilities"
-  },
-];
+const locations = LOCATION_PAGE_LOCATIONS;
  
 /* Fly animation component */
 type FlyToProps = {
@@ -228,36 +180,7 @@ export default function Locations() {
     fixLeafletIcons();
   }, []);
  
-  const offices = [
-    {
-      title: "USA",
-      subtitle: "United States",
-      text: "The United States is one of our core markets, where we partner with startups, enterprises, and global organizations to drive digital transformation, operational excellence, and sustainable growth.",
-      image: "https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      features: ["Security", "Conference Rooms", "Tech Hub"],
-    },
-    {
-      title: "U.K",
-      subtitle: "United Kingdom",
-      text: "The United Kingdom is a strategic hub for our global operations, where we support organizations across finance, professional services, healthcare, retail, and technology.",
-      image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      features: ["Market Access", "Networking", "Research Center"],
-    },
-    {
-      title: "Canada",
-      subtitle: "Canada",
-      text: "In Canada, we work closely with businesses to drive innovation, sustainability, and scalable growth across industries such as energy, financial services, healthcare, education, and technology.",
-      image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      features: ["Innovation Lab", "Sustainability", "Tech Integration"],
-    },
-    {
-      title: "United Arab Emirates",
-      subtitle: "UAE",
-      text: "The UAE is a global business hub where we collaborate with enterprises, startups, and government organizations to drive digital innovation, smart infrastructure, and scalable growth solutions.",
-      image: "https://dubai.savills.ae/_images/downtown-dubai-7-760.jpg",
-      features: ["Global Business Hub", "Smart Infrastructure", "Strategic Location"],
-    },
-  ];
+  const offices = LOCATION_PAGE_OFFICES;
  
   return (
     <div className="min-h-screen overflow-x-hidden">

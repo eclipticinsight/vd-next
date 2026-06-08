@@ -18,10 +18,6 @@ export default function AdminBlogs() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const router = useRouter();
 
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
-
   const fetchBlogs = async () => {
     try {
       const res = await API.get("/blogs");
@@ -34,10 +30,14 @@ export default function AdminBlogs() {
         setBlogs([]);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       setBlogs([]);
     }
   };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
 
   // DELETE BLOG
   const deleteBlog = async (id: string) => {
@@ -48,7 +48,7 @@ export default function AdminBlogs() {
       await API.delete(`/blogs/${id}`);
       fetchBlogs();
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 

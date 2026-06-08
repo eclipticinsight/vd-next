@@ -8,6 +8,7 @@ import {
   ChartBarIcon,
   UsersIcon,
 } from "@heroicons/react/24/outline";
+import { INDUSTRIES_PAGE_LIST, INDUSTRIES_APPROACH_STEPS } from "@/utils/constants";
  
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
@@ -139,86 +140,7 @@ const Parallax3DBackground = () => {
  
 /* ================= MAIN COMPONENT ================= */
 export default function Industries() {
-  const industries = [
-    {
-      id: 1,
-      name: "CPA Firms & Consultancy Agencies",
-      description:
-        "Empowering CPA firms and consultancy agencies with compliance-driven automation, financial intelligence, and strategic advisory platforms that streamline operations and drive sustainable growth.",
-      category: "Professional Services",
-      image:
-        "https://images.unsplash.com/photo-1554224154-22dec7ec8818?w=800&h=600&fit=crop",
-      bgColor: "bg-sky-50",
-      color: "text-sky-600",
-      borderColor: "border-sky-200",
-      gradient: "from-sky-400 to-cyan-400",
-    },
-    {
-      id: 2,
-      name: "Real Estate",
-      description:
-        "Driving property growth through market intelligence, digital platforms, and investment-focused advisory solutions.",
-      category: "Property & Infrastructure",
-      image:
-        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
-      bgColor: "bg-amber-50",
-      color: "text-amber-600",
-      borderColor: "border-amber-200",
-      gradient: "from-amber-400 to-orange-400",
-    },
-    {
-      id: 3,
-      name: "Healthcare",
-      description:
-        "Advancing patient care and operational excellence through digital health, compliance, and data-driven solutions.",
-      category: "Medical & Life Sciences",
-      image:
-        "https://images.pexels.com/photos/3845129/pexels-photo-3845129.jpeg",
-      bgColor: "bg-emerald-50",
-      color: "text-emerald-600",
-      borderColor: "border-emerald-200",
-      gradient: "from-emerald-400 to-teal-400",
-    },
-    {
-      id: 4,
-      name: "E-Commerce",
-      description:
-        "Scaling digital storefronts with performance marketing, automation, and customer-centric commerce strategies.",
-      category: "Digital Commerce",
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-      bgColor: "bg-rose-50",
-      color: "text-rose-600",
-      borderColor: "border-rose-200",
-      gradient: "from-rose-400 to-pink-400",
-    },
-    {
-      id: 5,
-      name: "Information Technology",
-      description:
-        "Building secure, scalable, and innovative digital ecosystems with cloud, AI, and enterprise IT solutions.",
-      category: "Technology Services",
-      image:
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
-      bgColor: "bg-blue-50",
-      color: "text-blue-600",
-      borderColor: "border-blue-200",
-      gradient: "from-blue-400 to-cyan-400",
-    },
-    {
-      id: 6,
-      name: "Recruitment Agency",
-      description:
-        "Connecting organizations with top talent through strategic hiring, workforce planning, and digital recruitment platforms.",
-      category: "Human Capital",
-      image:
-        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop",
-      bgColor: "bg-violet-50",
-      color: "text-violet-600",
-      borderColor: "border-violet-200",
-      gradient: "from-violet-400 to-fuchsia-400",
-    },
-  ];
+  const industries = INDUSTRIES_PAGE_LIST;
  
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white text-slate-800">
@@ -348,40 +270,7 @@ export default function Industries() {
           </div>
  
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                step: "01",
-                title: "Discovery & Analysis",
-                description:
-                  "Understand your business landscape, challenges, and opportunities.",
-                icon: <ChartBarIcon className="w-8 h-8" />,
-                color: "from-cyan-400 to-blue-500",
-              },
-              {
-                step: "02",
-                title: "Strategy Development",
-                description:
-                  "Co-create tailored strategies with clear goals and milestones.",
-                icon: <UsersIcon className="w-8 h-8" />,
-                color: "from-indigo-400 to-purple-500",
-              },
-              {
-                step: "03",
-                title: "Implementation Support",
-                description:
-                  "Execute solutions with hands-on support and optimization.",
-                icon: <WrenchScrewdriverIcon className="w-8 h-8" />,
-                color: "from-emerald-400 to-teal-500",
-              },
-              {
-                step: "04",
-                title: "Results Measurement",
-                description:
-                  "Track KPIs, measure ROI, and ensure sustainable success.",
-                icon: <CheckCircleIcon className="w-8 h-8" />,
-                color: "from-violet-400 to-purple-500",
-              },
-            ].map((item, index) => (
+            {INDUSTRIES_APPROACH_STEPS.map((item, index) => (
               <div key={index} className="relative group">
                 <div
                   className={`relative overflow-hidden rounded-3xl p-8

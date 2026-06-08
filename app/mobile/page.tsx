@@ -17,47 +17,11 @@ import {
   ChevronRight
 } from 'lucide-react';
 import WaveTransition from '@/components/sections/WaveTransition';
+import { MOBILE_FEATURES, MOBILE_BENEFITS, MOBILE_STEPS, MOBILE_WHY_OUTSOURCE } from '@/utils/constants';
 
 export default function MDMPage() {
-  const features = [
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Advanced Security",
-      description: "Enterprise-grade security with encryption and threat detection"
-    },
-    {
-      icon: <Smartphone className="w-6 h-6" />,
-      title: "Multi-OS Support",
-      description: "Manage iOS, Android, Windows, and macOS devices seamlessly"
-    },
-    {
-      icon: <Lock className="w-6 h-6" />,
-      title: "Remote Lock & Wipe",
-      description: "Remotely lock or wipe devices in case of loss or theft"
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      title: "Cloud Management",
-      description: "Centralized cloud-based console for easy management"
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "User Management",
-      description: "Role-based access control and user group management"
-    },
-    {
-      icon: <Settings className="w-6 h-6" />,
-      title: "Policy Enforcement",
-      description: "Automated policy deployment and compliance checking"
-    }
-  ];
-
-  const benefits = [
-    "Reduce security risks by 85%",
-    "Save 40% on IT management costs",
-    "99.9% device compliance rate",
-    "24/7 real-time monitoring"
-  ];
+  const features = MOBILE_FEATURES;
+  const benefits = MOBILE_BENEFITS;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -361,23 +325,7 @@ export default function MDMPage() {
             <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-white/30 z-0"></div>
             
             <div className="space-y-16">
-              {[
-  {
-    num:1,
-    title:"Define Objectives",
-    desc:"Identify business goals, security requirements and choose the right MDM platform."
-  },
-  {
-    num:2,
-    title:"Device Enrollment",
-    desc:"Enroll devices automatically or manually within the MDM platform."
-  },
-  {
-    num:3,
-    title:"Policy Deployment",
-    desc:"Configure security rules and compliance policies."
-  }
-].map((step, idx) => (
+            {MOBILE_STEPS.map((step, idx) => (
 
 <div
   key={idx}
@@ -552,14 +500,7 @@ export default function MDMPage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              { icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", title: "Expert Insights", desc: "Access to expert insights and analysis from industry veterans", color: "from-blue-400 to-blue-600" },
-              { icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z", title: "Cost Reduction", desc: "Reduces Cost & Saves Time with optimized resource allocation", color: "from-green-400 to-green-600" },
-              { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", title: "Risk Mitigation", desc: "Mitigate the risk of errors and discrepancies proactively", color: "from-purple-400 to-purple-600" },
-              { icon: "M13 10V3L4 14h7v7l9-11h-7z", title: "Core Focus", desc: "Allows you to focus on core business functions", color: "from-orange-400 to-orange-600" },
-              { icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0114 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z", title: "Fresh Perspectives", desc: "Fresh perspectives and innovative approaches to problem-solving", color: "from-pink-400 to-pink-600" },
-              { icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Latest Technology", desc: "Leverage the latest software and technology", color: "from-indigo-400 to-indigo-600" }
-            ].map((benefit, index) => (
+            {MOBILE_WHY_OUTSOURCE.map((benefit, index) => (
               <div key={index} className={`group relative rounded-3xl p-6 border border-white/20 backdrop-blur-xl overflow-hidden bg-gradient-to-br ${benefit.color} shadow-[0_20px_50px_rgba(0,0,0,0.25)] hover:scale-105 hover:-translate-y-3 transition-all duration-500`}>
                 <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-5 shadow-xl border border-white/20 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
                   <svg className="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -23,6 +23,13 @@ import {
   ArrowRight
 } from "lucide-react";
 import Image from "next/image";
+import {
+  WEBDESIGN_SERVICES as services,
+  WEBDESIGN_STEPS as steps,
+  WEBDESIGN_REASONS as reasons,
+  WEBDESIGN_TECHS as techs,
+  WEBDESIGN_FAQS as faqs
+} from "@/utils/constants";
 
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
@@ -316,15 +323,14 @@ const SectionHeader = ({
 const Hero = () => (
   <section className="relative h-[700px] flex items-center bg-gradient-to-br from-indigo-50 via-white to-white overflow-hidden">
     
-    {/* Background Video */}
+    {/* Background Image */}
     <div className="absolute inset-0 z-0">
-      <video
-        src="/videos/web.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="w-full h-full object-cover"
+      <Image
+        src="/images/webdesign-hero.png"
+        alt="Web Design & Development Hero"
+        fill
+        priority
+        className="object-cover"
       />
       <div className="absolute inset-0 bg-black/60"></div>
     </div>
@@ -350,40 +356,6 @@ const Hero = () => (
 );
 
 // ---------- Services Section ----------
-const services = [
-  {
-    title: "Custom Website Design",
-    desc: "Unique, brand-focused designs that captivate your audience and create lasting first impressions. We craft bespoke digital experiences that reflect your brand's personality, values, and vision while ensuring intuitive navigation and engaging user journeys.",
-    image: "/images/web-design.jpg",
-    gradient: "from-pink-500 to-rose-500",
-    features: ["UI/UX Design", "Branding", "Custom Layouts", "Wireframing", "Prototyping"],
-    stats: { projects: 150, satisfaction: "99%" }
-  },
-  {
-    title: "Frontend Development",
-    desc: "Modern, fast and responsive UI development that brings designs to life with clean, maintainable code. We leverage the latest technologies to create lightning-fast, interactive applications that deliver exceptional user experiences across all browsers and devices.",
-    image: "/images/frontend.jpg",
-    gradient: "from-blue-500 to-cyan-500",
-    features: ["React", "Tailwind", "Animations", "Next.js", "TypeScript"],
-    stats: { projects: 200, satisfaction: "98%" }
-  },
-  {
-    title: "Mobile Optimization",
-    desc: "Perfect experience across all devices with responsive designs that adapt seamlessly to any screen size. We ensure your website loads quickly, functions flawlessly, and provides an intuitive experience whether users are on smartphones, tablets, or desktops.",
-    image: "/images/mobile.jpg",
-    gradient: "from-green-500 to-emerald-500",
-    features: ["Responsive Design", "Speed Optimization", "SEO", "Touch Interactions", "Cross-Browser"],
-    stats: { projects: 180, satisfaction: "97%" }
-  },
-  {
-    title: "Backend Development",
-    desc: "Secure and scalable backend systems that power your applications with robust architecture and reliable performance. We build RESTful APIs, manage databases, and implement security protocols to ensure your data is protected and your applications run smoothly under any load.",
-    image: "/images/backend.jpg",
-    gradient: "from-purple-500 to-indigo-500",
-    features: ["Node.js", "MongoDB", "API Development", "PostgreSQL", "Authentication"],
-    stats: { projects: 120, satisfaction: "99%" }
-  }
-];
 
 const Services = () => (
   <section className="relative py-6 md:py-10 bg-gradient-to-br from-blue-100 via-blue to-blue-100 overflow-hidden">
@@ -439,9 +411,11 @@ const Services = () => (
               <div className={`relative transform transition-all duration-700 group-hover:scale-105 ${
                 idx % 2 === 0 ? 'animate-float' : 'animate-float-slow'
               }`}>
-                <img 
+                <Image 
                   src={service.image} 
                   alt={service.title} 
+                  width={500}
+                  height={500}
                   className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain rounded-3xl shadow-2xl"
                   style={{
                     borderRadius: '2rem',
@@ -501,57 +475,6 @@ const Services = () => (
 );
 
 // ---------- Our Process Section ----------
-const steps = [
-  { 
-    title: "Planning", 
-    icon: "📋",
-    gradient: "from-blue-500 to-cyan-500",
-    desc: "Strategic planning and goal setting",
-    color: "blue"
-  },
-  { 
-    title: "Design", 
-    icon: "🎨",
-    gradient: "from-purple-500 to-pink-500",
-    desc: "User-centered visual design",
-    color: "purple"
-  },
-  { 
-    title: "Content Creation", 
-    icon: "✍️",
-    gradient: "from-orange-500 to-red-500",
-    desc: "Compelling copy and visuals",
-    color: "orange"
-  },
-  { 
-    title: "Development", 
-    icon: "💻",
-    gradient: "from-green-500 to-emerald-500",
-    desc: "Clean, scalable code",
-    color: "green"
-  },
-  { 
-    title: "Testing", 
-    icon: "🧪",
-    gradient: "from-indigo-500 to-blue-500",
-    desc: "Comprehensive QA",
-    color: "indigo"
-  },
-  { 
-    title: "Launch", 
-    icon: "🚀",
-    gradient: "from-yellow-500 to-amber-500",
-    desc: "Seamless deployment",
-    color: "yellow"
-  },
-  { 
-    title: "Maintenance", 
-    icon: "⚙️",
-    gradient: "from-teal-500 to-cyan-500",
-    desc: "Ongoing support",
-    color: "teal"
-  }
-];
 
 const OurProcess = () => (
   <section className="relative py-24 md:py-32 bg-gradient-to-br from-blue-100 via-blue to-blue-100 overflow-hidden">
@@ -703,44 +626,6 @@ const OurProcess = () => (
 );
 
 // ---------- Why Choose Us ----------
-const reasons = [
-  { 
-    icon: Award, 
-    title: "Award‑Winning Team", 
-    desc: "Our designers and developers have been recognized for excellence.",
-    stats: "15+ Industry Awards",
-    gradient: "from-amber-500 to-orange-500",
-    bgPattern: "🏆",
-    bgImage: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-  },
-  { 
-    icon: Clock, 
-    title: "On‑Time Delivery", 
-    desc: "We respect your timeline and always deliver as promised.",
-    stats: "98% On-Time Rate",
-    gradient: "from-blue-500 to-cyan-500",
-    bgPattern: "⏰",
-    bgImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-  },
-  { 
-    icon: Users, 
-    title: "Client‑Centric Approach", 
-    desc: "You're a partner, not just a ticket. We communicate every step.",
-    stats: "200+ Happy Clients",
-    gradient: "from-purple-500 to-pink-500",
-    bgPattern: "🤝",
-    bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-  },
-  { 
-    icon: Zap, 
-    title: "Cutting‑Edge Tech", 
-    desc: "We use the latest tools to build fast, secure, and future‑proof websites.",
-    stats: "10+ Modern Technologies",
-    gradient: "from-green-500 to-emerald-500",
-    bgPattern: "⚡",
-    bgImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-  },
-];
 
 const WhyChooseUs = () => (
   <section className="relative py-16 md:py-24 overflow-hidden text-white">
@@ -850,16 +735,6 @@ const WhyChooseUs = () => (
 );
 
 // ---------- Technologies We Use ----------
-const techs = [
-  { name: "React", icon: "⚛️", category: "Frontend", proficiency: 95, color: "from-cyan-500 to-blue-500" },
-  { name: "Vue", icon: "🟢", category: "Frontend", proficiency: 90, color: "from-green-500 to-emerald-500" },
-  { name: "Tailwind CSS", icon: "🌊", category: "Styling", proficiency: 98, color: "from-sky-500 to-indigo-500" },
-  { name: "Node.js", icon: "📦", category: "Backend", proficiency: 92, color: "from-green-600 to-lime-500" },
-  { name: "WordPress", icon: "🔵", category: "CMS", proficiency: 88, color: "from-blue-600 to-blue-400" },
-  { name: "Figma", icon: "🎨", category: "Design", proficiency: 94, color: "from-purple-500 to-pink-500" },
-  { name: "Next.js", icon: "▲", category: "Framework", proficiency: 93, color: "from-gray-800 to-gray-600" },
-  { name: "MongoDB", icon: "🍃", category: "Database", proficiency: 86, color: "from-green-700 to-green-500" },
-];
 
 const Technologies = () => {
   return (
@@ -936,56 +811,6 @@ const Technologies = () => {
 };
 
 // ---------- FAQ Section ----------
-const faqs = [
-  { 
-    q: "How long does it take to build a website?", 
-    a: "Typical timelines range from 4–8 weeks for a custom website, depending on complexity. We'll give you a detailed estimate after our discovery call. Simple brochure sites can be ready in 3-4 weeks, while complex e-commerce platforms may take 8-12 weeks.",
-    category: "timeline",
-    popular: true
-  },
-  { 
-    q: "Do you offer ongoing maintenance?", 
-    a: "Absolutely! We have flexible support packages to keep your site updated, secure, and performing at its best. Options range from basic security updates to comprehensive maintenance including content updates, performance optimization, and monthly backups.",
-    category: "support",
-    popular: true
-  },
-  { 
-    q: "Will my website be mobile-friendly?", 
-    a: "Yes, every site we build is fully responsive and tested on all major devices and browsers. We follow a 'mobile-first' approach, ensuring your site looks and functions perfectly on smartphones, tablets, and desktops.",
-    category: "technical",
-    popular: false
-  },
-  { 
-    q: "What information do you need to start?", 
-    a: "We'll guide you through the process. Initially, we need your brand guidelines (logos, colors, fonts), content ideas, goals for the website, and any examples of sites you like. Don't worry if you don't have everything—we can help develop it together.",
-    category: "process",
-    popular: true
-  },
-  { 
-    q: "How much does a website cost?", 
-    a: "Every project is unique, so costs vary based on complexity, features, and timeline. Basic websites start around $3,000-$5,000, while more complex projects with custom functionality range from $10,000-$50,000+. We provide transparent pricing with detailed quotes.",
-    category: "pricing",
-    popular: false
-  },
-  { 
-    q: "Do you provide SEO services?", 
-    a: "Yes, we build websites with SEO best practices from the ground up—clean code, fast loading, proper structure. We also offer ongoing SEO packages to help improve your search rankings and drive organic traffic.",
-    category: "marketing",
-    popular: false
-  },
-  { 
-    q: "What platforms do you build on?", 
-    a: "We're platform-agnostic and choose the best technology for your needs. Options include custom React/Vue sites, WordPress for content-heavy sites, Shopify for e-commerce, or Webflow for designer-friendly builds.",
-    category: "technical",
-    popular: true
-  },
-  { 
-    q: "Will I be able to update the site myself?", 
-    a: "Absolutely! We build with user-friendly content management systems and provide training. Whether it's WordPress, Sanity, or a custom CMS, you'll have control to update text, images, and blog posts without touching code.",
-    category: "support",
-    popular: false
-  },
-];
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);

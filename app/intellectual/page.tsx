@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { CONTACT_INFO } from '@/utils/constants';
 
 /**
  * Full-width Intellectual Property Policy page with a hero section.
@@ -180,7 +181,7 @@ const IntellectualPropertyPolicy = () => {
                 Visionary Dynamics Consulting Inc.<br />
                 Attn: Copyright Agent<br />
                 <a href="mailto:copyright@visionarydynamicsas.com" className="text-blue-600 hover:underline">copyright@visionarydynamicsas.com</a><br />
-                Phone: +1 (727) 564-9476
+                Phone: {CONTACT_INFO.phone}
               </p>
             </div>
 
@@ -277,7 +278,7 @@ const IntellectualPropertyPolicy = () => {
                 Visionary Dynamics Consulting Inc.<br />
                 Attn: Legal Department<br />
                 <a href="mailto:legal@visionarydynamicsas.com" className="text-blue-600 hover:underline">legal@visionarydynamicsas.com</a><br />
-                Phone: +1 (727) 564-9476
+                Phone: {CONTACT_INFO.phone}
               </p>
             </div>
 

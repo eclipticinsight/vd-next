@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { CONTACT_INFO } from '@/utils/constants';
 
 /**
  * Full-width Complaint & Grievance Policy page with a hero section.
@@ -84,7 +85,7 @@ const ComplaintGrievancePolicy = () => {
                 
                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <h3 className="text-lg font-medium text-gray-800 mb-2">📞 Phone</h3>
-                  <p className="text-gray-600">+1 (727) 564-9476</p>
+                  <p className="text-gray-600">{CONTACT_INFO.phone}</p>
                   <p className="text-sm text-gray-500 mt-1">Monday-Friday, 9am-5pm EST</p>
                 </div>
                 
@@ -99,8 +100,7 @@ const ComplaintGrievancePolicy = () => {
                   <p className="text-gray-600">
                     Visionary Dynamics Consulting Inc.<br />
                     Attn: Grievance Officer<br />
-                    7901 4th St N STE 300<br />
-                    St. Petersburg, Florida-33702 USA
+                    {CONTACT_INFO.address}
                   </p>
                 </div>
               </div>
@@ -215,8 +215,8 @@ const ComplaintGrievancePolicy = () => {
                 <p className="text-gray-600">Grievance Officer</p>
                 <p className="text-gray-600 mt-2">
                   Email: <a href="mailto:sarah.johnson@visionarydynamicsas.com" className="text-blue-600 hover:underline">sarah.johnson@visionarydynamicsas.com</a><br />
-                  Phone: +1 (727) 564-9476<br />
-                  Address: 7901 4th St N STE 300, St. Petersburg, Florida-33702 USA
+                  Phone: {CONTACT_INFO.phone}<br />
+                  Address: {CONTACT_INFO.address}
                 </p>
               </div>
             </div>
@@ -293,7 +293,7 @@ const ComplaintGrievancePolicy = () => {
                 Visionary Dynamics Consulting Inc.<br />
                 Attn: Compliance Department<br />
                 <a href="mailto:compliance@visionarydynamicsas.com" className="text-blue-600 hover:underline">compliance@visionarydynamicsas.com</a><br />
-                Phone: +1 (727) 564-9476
+                Phone: {CONTACT_INFO.phone}
               </p>
             </div>
 

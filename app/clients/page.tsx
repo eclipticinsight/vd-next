@@ -11,6 +11,7 @@ import {
   HeartIcon,
   LightBulbIcon,
 } from "@heroicons/react/24/outline";
+import { CLIENTS_PAGE_STATS, CLIENTS_PAGE_TESTIMONIALS, CLIENTS_PAGE_FILTERS } from "@/utils/constants";
 import {
   StarIcon as StarIconSolid,
   HeartIcon as HeartIconSolid,
@@ -251,32 +252,7 @@ const Elegant3DBackground = () => {
  
 /* ================= STATS SECTION ================= */
 const StatsSection = () => {
-  const stats = [
-    {
-      value: "100+",
-      label: "Happy Clients",
-      icon: <UserGroupIcon className="w-8 h-8" />,
-      color: "from-sky-400 to-cyan-500",
-    },
-    {
-      value: "4.9/5",
-      label: "Average Rating",
-      icon: <StarIcon className="w-8 h-8" />,
-      color: "from-yellow-400 to-orange-500",
-    },
-    {
-      value: "98%",
-      label: "Retention Rate",
-      icon: <ChartBarIcon className="w-8 h-8" />,
-      color: "from-emerald-400 to-green-500",
-    },
-    {
-      value: "1+",
-      label: "Years Experience",
-      icon: <LightBulbIcon className="w-8 h-8" />,
-      color: "from-violet-400 to-purple-500",
-    },
-  ];
+  const stats = CLIENTS_PAGE_STATS;
  
   return (
     <div className="relative py-24">
@@ -427,60 +403,9 @@ export default function OurClients() {
   const [activeFilter, setActiveFilter] = useState("all");
   const router = useRouter();
  
-  const testimonials = [
-    {
-      id: 1,
-      name: "James Kneblik, Jr.",
-      position: "Vice President",
-      company: "Surgical Resources Group LLC",
-      content:
-        "Visionary Dynamics has been an outstanding partner—highly supportive, reliable, and dedicated to driving real efficiency and transformation in our business. Their professionalism, collaboration, and commitment to delivering results have made a significant impact. We truly value the work they've done and look forward to many more great achievements together.",
-      rating: 5,
-      date: "2 weeks ago",
-      tags: ["Technology", "E-commerce"],
-    },
-    {
-      id: 2,
-      name: "Brad Coffman",
-      position: "CEO",
-      company: "Valorem Brokers",
-      content:
-        "Visionary Dynamics has been a truly reliable partner, consistently demonstrating exceptional professionalism and a strong commitment to delivering results. Their ability to execute on time and maintain high standards has made a meaningful impact on our business, clients, and referrals. We genuinely appreciate their dedication, growth, and the value they continue to bring.",
-      rating: 5,
-      date: "1 month ago",
-      tags: ["Finance", "Consulting"],
-    },
-    {
-      id: 3,
-      name: "Saket Gunjan",
-      position: "President",
-      company: "Squegg",
-      content:
-        "Working with Visionary Dynamics has been an absolute pleasure. Their team brings exceptional energy, professionalism, and expertise, making the entire experience seamless and highly effective. We truly appreciate their dedication and look forward to expanding our collaboration into new areas",
-      rating: 5,
-      date: "3 weeks ago",
-      tags: ["Healthcare", "Marketing"],
-    },
-    {
-      id: 4,
-      name: "David Wilson",
-      position: "CTO",
-      company: "CloudSecure Systems",
-      content:
-        "They implemented top-tier cybersecurity with flawless execution. Zero breaches since deployment.",
-      rating: 5,
-      date: "2 months ago",
-      tags: ["IT", "Cybersecurity"],
-    },
-  ];
+  const testimonials = CLIENTS_PAGE_TESTIMONIALS;
  
-  const filters = [
-    { id: "all", label: "All Testimonials" },
-    { id: "technology", label: "Technology" },
-    { id: "finance", label: "Finance" },
-    { id: "healthcare", label: "Healthcare" },
-    { id: "it", label: "IT" },
-  ];
+  const filters = CLIENTS_PAGE_FILTERS;
  
   const filteredTestimonials = testimonials.filter((t) => {
     if (activeFilter === "all") return true;

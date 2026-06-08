@@ -21,6 +21,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import WaveTransition from '@/components/sections/WaveTransition';
+import { CLOUD_PAGE_STEPS, CLOUD_PAGE_BENEFITS, CLOUD_PAGE_TOOLS } from "@/utils/constants";
 
 export default function CloudPage() {
   const [animated, setAnimated] = useState(false);
@@ -29,110 +30,9 @@ const [hoveredStep, setHoveredStep] = useState<number | null>(null);
     setAnimated(true);
   }, []);
 
-  const steps = [
-    {
-      title: "Data Collection",
-      desc: "Collect data from apps, CRM, websites, and tools in real-time with intelligent data aggregation.",
-      icon: <Cloud className="w-6 h-6" />,
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-50",
-      iconColor: "text-blue-600",
-      gradient: "from-blue-50 to-cyan-50",
-      borderColor: "border-blue-100",
-      stats: "100+ Data Sources",
-      statIcon: <Database className="w-3 h-3" />
-    },
-    {
-      title: "Processing & Automation",
-      desc: "Automate workflows and process data instantly using advanced cloud computing systems and AI.",
-      icon: <Cpu className="w-6 h-6" />,
-      color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-50",
-      iconColor: "text-purple-600",
-      gradient: "from-purple-50 to-pink-50",
-      borderColor: "border-purple-100",
-      stats: "< 50ms Processing",
-      statIcon: <Sparkles className="w-3 h-3" />
-    },
-    {
-      title: "Secure Storage",
-      desc: "Store data securely with automated backups, encryption, and controlled access management.",
-      icon: <Database className="w-6 h-6" />,
-      color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-50",
-      iconColor: "text-green-600",
-      gradient: "from-green-50 to-emerald-50",
-      borderColor: "border-green-100",
-      stats: "256-bit Encryption",
-      statIcon: <Shield className="w-3 h-3" />
-    },
-    {
-      title: "System Integration",
-      desc: "Connect accounting, marketing, and business tools seamlessly with unified API architecture.",
-      icon: <Workflow className="w-6 h-6" />,
-      color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-50",
-      iconColor: "text-orange-600",
-      gradient: "from-orange-50 to-red-50",
-      borderColor: "border-orange-100",
-      stats: "5000+ Integrations",
-      statIcon: <Workflow className="w-3 h-3" />
-    },
-    {
-      title: "Monitoring & Security",
-      desc: "Track performance and secure systems using enterprise-grade cloud security standards.",
-      icon: <Shield className="w-6 h-6" />,
-      color: "from-indigo-500 to-violet-500",
-      bgColor: "bg-indigo-50",
-      iconColor: "text-indigo-600",
-      gradient: "from-indigo-50 to-violet-50",
-      borderColor: "border-indigo-100",
-      stats: "24/7 Monitoring",
-      statIcon: <CheckCircle className="w-3 h-3" />
-    }
-  ]; 
-
-  const benefits = [
-    {
-      title: "Faster Operations",
-      desc: "Reduce manual work and speed up processes by up to 75%",
-      icon: <Zap className="w-6 h-6" />,
-      stat: "75%",
-      statLabel: "Faster Processing"
-    },
-    {
-      title: "Real-time Insights",
-      desc: "Get live data and analytics for better decision-making",
-      icon: <BarChart3 className="w-6 h-6" />,
-      stat: "99.9%",
-      statLabel: "Data Accuracy"
-    },
-    {
-      title: "Data Security",
-      desc: "Enterprise-level protection and automated backup systems",
-      icon: <Lock className="w-6 h-6" />,
-      stat: "256-bit",
-      statLabel: "Encryption"
-    },
-    {
-      title: "Scalability",
-      desc: "Easily scale your systems as your business grows",
-      icon: <RefreshCw className="w-6 h-6" />,
-      stat: "∞",
-      statLabel: "Unlimited Scale"
-    }
-  ];
-
-  const tools = [
-    { name: 'AWS', icon: '☁️' },
-    { name: 'Azure', icon: '🔷' },
-    { name: 'Google Cloud', icon: '☁️' },
-    { name: 'Docker', icon: '🐳' },
-    { name: 'Kubernetes', icon: '⚙️' },
-    { name: 'Terraform', icon: '🏗️' },
-    { name: 'Jenkins', icon: '🤖' },
-    { name: 'GitHub Actions', icon: '⚡' },
-  ];
+  const steps = CLOUD_PAGE_STEPS;
+  const benefits = CLOUD_PAGE_BENEFITS;
+  const tools = CLOUD_PAGE_TOOLS;
 
   const handleContactClick = () => {
     window.open("https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw", "_blank");

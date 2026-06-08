@@ -13,21 +13,10 @@ import {
   ChevronRight
 } from 'lucide-react';
 import WaveTransition from '@/components/sections/WaveTransition';
+import { NETWORK_SERVICE_ITEMS, NETWORK_BENEFITS, NETWORK_PRICING_PLANS, NETWORK_WHY_OUTSOURCE } from '@/utils/constants';
+
 export default function MDMPage() {
-  const serviceItems = [
-    { icon: "fa-shield-halved", title: "Monitoring", color: "blue", desc: "Continuous oversight to detect issues", gradient: "from-blue-400 to-blue-600" },
-    { icon: "fa-lock", title: "Security", color: "indigo", desc: "Protect against threats", gradient: "from-indigo-400 to-indigo-600" },
-    { icon: "fa-gears", title: "Configuration", color: "green", desc: "Optimize network devices", gradient: "from-green-400 to-green-600" },
-    { icon: "fa-cloud-arrow-up", title: "Disaster Recovery", color: "purple", desc: "Backup solutions", gradient: "from-purple-400 to-purple-600" },
-    { icon: "fa-chart-line", title: "Performance", color: "orange", desc: "Enhance infrastructure", gradient: "from-orange-400 to-orange-600" },
-    { icon: "fa-wifi", title: "VPN Services", color: "teal", desc: "Secure remote connections", gradient: "from-teal-400 to-teal-600" },
-    { icon: "fa-diagram-project", title: "SDN", color: "cyan", desc: "Centralized control", gradient: "from-cyan-400 to-cyan-600" },
-    { icon: "fa-scale-balanced", title: "Load Balancing", color: "amber", desc: "Traffic distribution", gradient: "from-amber-400 to-amber-600" },
-    { icon: "fa-phone", title: "UC", color: "rose", desc: "Voice & video integration", gradient: "from-rose-400 to-rose-600" },
-    { icon: "fa-network-wired", title: "Managed Wi-Fi", color: "violet", desc: "Wireless infrastructure", gradient: "from-violet-400 to-violet-600" },
-    { icon: "fa-cloud", title: "Cloud Networking", color: "sky", desc: "Cloud resource management", gradient: "from-sky-400 to-sky-600" },
-    { icon: "fa-clipboard-check", title: "Compliance", color: "emerald", desc: "Regulatory adherence", gradient: "from-emerald-400 to-emerald-600" },
-  ];
+  const serviceItems = NETWORK_SERVICE_ITEMS;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -215,11 +204,7 @@ export default function MDMPage() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {[
-              { icon: "fa-shield-halved", title: "Enhanced Security", desc: "Continuous monitoring and proactive threat mitigation reduce the risk of data breaches and cyberattacks.", features: ["Real-time threat monitoring", "Automated incident response", "Compliance management"], gradient: "from-blue-600 to-purple-600" },
-              { icon: "fa-coins", title: "Cost Efficiency", desc: "Outsourcing network management helps control expenses by reducing the need for in-house resources.", features: ["40% reduction in IT costs", "Predictable monthly pricing", "No hidden fees"], gradient: "from-green-600 to-teal-600" },
-              { icon: "fa-gauge-high", title: "Improved Performance", desc: "Expert management optimizes network infrastructure, leading to faster, more reliable connectivity.", features: ["99.9% guaranteed uptime", "50% faster load times", "Global CDN integration"], gradient: "from-purple-600 to-pink-600" }
-            ].map((card, idx) => (
+            {NETWORK_BENEFITS.map((card, idx) => (
               <div key={idx} className="group relative">
                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${card.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300 blur`}></div>
                 <div className="relative bg-gray-800/90 backdrop-blur-sm rounded-2xl p-8 hover:transform hover:-translate-y-2 transition-all duration-300 border border-gray-700 group-hover:border-transparent h-full flex flex-col">
@@ -340,35 +325,7 @@ export default function MDMPage() {
           </div>
           
           <div className="grid lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Essential",
-                price: "$2,499",
-                period: "/month",
-                description: "Perfect for small businesses",
-                features: ["24/7 Network Monitoring", "Basic Security Suite", "Weekly Backups", "Email Support", "5 Devices Included"],
-                gradient: "from-blue-400 to-blue-600",
-                popular: false
-              },
-              {
-                name: "Professional",
-                price: "$4,999",
-                period: "/month",
-                description: "Ideal for growing companies",
-                features: ["Everything in Essential", "Advanced Threat Protection", "Daily Backups", "24/7 Phone Support", "15 Devices Included", "Monthly Strategy Calls"],
-                gradient: "from-purple-400 to-purple-600",
-                popular: true
-              },
-              {
-                name: "Enterprise",
-                price: "Custom",
-                period: "",
-                description: "For large organizations",
-                features: ["Everything in Professional", "Dedicated Security Team", "Real-time Backup", "SLA Guarantee", "Unlimited Devices", "Quarterly Audits"],
-                gradient: "from-orange-400 to-orange-600",
-                popular: false
-              }
-            ].map((plan, index) => (
+            {NETWORK_PRICING_PLANS.map((plan, index) => (
               <div
                 key={index}
                 className={`group relative bg-white/10 backdrop-blur-md rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-2 ${
@@ -429,14 +386,7 @@ export default function MDMPage() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {[
-              { icon: "fa-brain", title: "Expert Insights", desc: "Access to expert insights and analysis", color: "blue" },
-              { icon: "fa-coins", title: "Cost & Time Efficient", desc: "Reduces Cost & Saves Time", color: "blue" },
-              { icon: "fa-shield", title: "Risk Mitigation", desc: "Mitigate the risk of errors and discrepancies", color: "purple" },
-              { icon: "fa-bullseye", title: "Core Business Focus", desc: "Allows you to focus on core business functions", color: "green" },
-              { icon: "fa-lightbulb", title: "Fresh Perspectives", desc: "Fresh perspectives and innovative approaches", color: "orange" },
-              { icon: "fa-microchip", title: "Latest Technology", desc: "Leverage the latest software and technology", color: "indigo" }
-            ].map((item, idx) => (
+            {NETWORK_WHY_OUTSOURCE.map((item, idx) => (
               <div key={idx} className="group bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-white/40">
                 <div className="flex items-start gap-4">
                   <div className={`flex-shrink-0 w-12 h-12 bg-${item.color}-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}>

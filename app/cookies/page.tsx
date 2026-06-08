@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { CONTACT_INFO } from '@/utils/constants';
 
 /**
  * Full-width Cookies Policy page with a hero section.
@@ -138,7 +139,7 @@ const CookiesPolicy = () => {
               <p>If you have any questions about our use of cookies, please contact us at:</p>
               <p className="mt-2">
                 Visionary Dynamics Consulting Inc.<br />
-                <a href="mailto:connect@visionarydynamicsas.com" className="text-blue-600 hover:underline">connect@visionarydynamicsas.com</a>
+                <a href={`mailto:${CONTACT_INFO.email}`} className="text-blue-600 hover:underline">{CONTACT_INFO.email}</a>
               </p>
             </div>
 

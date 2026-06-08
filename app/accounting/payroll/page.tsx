@@ -9,6 +9,15 @@ import {
   FaInstagram
 } from "react-icons/fa";
 import Image from "next/image";
+import {
+  PAYROLL_PAGE_HERO_PARTICLES,
+  PAYROLL_PAGE_SERVICES_PARTICLES,
+  PAYROLL_PAGE_WHY_CHOOSE_PARTICLES,
+  PAYROLL_PAGE_SERVICES,
+  PAYROLL_PAGE_FORMS,
+  PAYROLL_PAGE_PROCESS_STEPS,
+  BOOKKEEPING_PAGE_VALUE_PROPS
+} from "@/utils/constants";
 
 // Wave Transition Component
 export const WaveTransition = ({ direction = "bottom" }) => {
@@ -32,42 +41,6 @@ export const WaveTransition = ({ direction = "bottom" }) => {
 
 export default function PayrollPage() {
   const sectionRef = useRef(null);
-
-  const heroParticles = [
-  { top: "10%", left: "20%" },
-  { top: "25%", left: "80%" },
-  { top: "40%", left: "15%" },
-  { top: "60%", left: "70%" },
-  { top: "80%", left: "35%" },
-  { top: "15%", left: "60%" },
-  { top: "70%", left: "90%" },
-  { top: "50%", left: "45%" },
-];
-
-const serviceParticles = [
-  { top: "15%", left: "10%" },
-  { top: "30%", left: "25%" },
-  { top: "45%", left: "60%" },
-  { top: "65%", left: "80%" },
-  { top: "80%", left: "20%" },
-  { top: "20%", left: "90%" },
-  { top: "55%", left: "40%" },
-  { top: "75%", left: "55%" },
-  { top: "35%", left: "75%" },
-  { top: "90%", left: "35%" },
-];
-
-const whyChooseParticles = [
-  { top: "10%", left: "15%" },
-  { top: "20%", left: "70%" },
-  { top: "35%", left: "30%" },
-  { top: "50%", left: "85%" },
-  { top: "65%", left: "25%" },
-  { top: "75%", left: "60%" },
-  { top: "85%", left: "45%" },
-  { top: "40%", left: "10%" },
-  { top: "25%", left: "90%" },
-];
  
   
   // Add floating animation on scroll
@@ -132,7 +105,7 @@ const whyChooseParticles = [
                style={{ animation: 'drift 18s ease-in-out infinite' }} />
           <div className="absolute top-[30%] right-[15%] w-16 h-16 border-2 border-blue-300/40 rotate-12" />
           <div className="absolute bottom-[20%] left-[20%] w-24 h-24 border-2 border-indigo-300/40 rounded-lg rotate-45" />
-         {heroParticles.map((particle, i) => (
+          {PAYROLL_PAGE_HERO_PARTICLES.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1.5 h-1.5 bg-blue-400/60 rounded-full"
@@ -183,7 +156,7 @@ const whyChooseParticles = [
           <div className="absolute top-[20%] left-[30%] w-32 h-32 border-2 border-dashed border-blue-300/50 rounded-full" 
                style={{ animation: 'spin-very-slow 30s linear infinite' }} />
           <div className="absolute top-[70%] right-[25%] w-40 h-40 bg-gradient-to-br from-blue-200/40 to-indigo-200/40 rounded-full blur-lg" />
-          {serviceParticles.map((particle, i) => (
+          {PAYROLL_PAGE_SERVICES_PARTICLES.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1.5 h-1.5 bg-indigo-400/60 rounded-full"
@@ -209,38 +182,7 @@ const whyChooseParticles = [
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[
-              {
-                title: "Seamless Salary Processing",
-                desc: "Accurate payroll processing tailored to your business. We calculate salaries, bonuses, and deductions so employees are paid correctly every time.",
-                icon: "💰",
-              },
-              {
-                title: "Smart Tax Management",
-                desc: "We handle tax deductions and filings, ensuring full compliance and fewer risks.",
-                icon: "📊",
-              },
-              {
-                title: "Professional Payslips",
-                desc: "We send clear and secure digital payslips so employees can easily understand their salary details.",
-                icon: "🧾",
-              },
-              {
-                title: "Statutory Compliance",
-                desc: "We handle provident fund, taxes, and legal requirements to keep your business compliant.",
-                icon: "⚖️",
-              },
-              {
-                title: "Employee Benefits",
-                desc: "We manage insurance, bonuses, reimbursements, leave, and retirement benefits.",
-                icon: "🎁",
-              },
-              {
-                title: "Payroll Reports",
-                desc: "Access accurate payroll data and reports whenever you need them.",
-                icon: "📈",
-              },
-            ].map((service, index) => (
+            {PAYROLL_PAGE_SERVICES.map((service, index) => (
               <div
                 key={index}
                 className="group bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
@@ -270,7 +212,7 @@ const whyChooseParticles = [
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/forms-bg.png')",
+            backgroundImage: "url('/images/forms-bg.webp')",
           }}
         />
         <div className="absolute inset-0 bg-black/70" />
@@ -286,36 +228,7 @@ const whyChooseParticles = [
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                number: "01",
-                title: "Form W-2",
-                desc: "Annual form showing employee wages and taxes withheld.",
-                bg: "from-blue-600/70 to-cyan-500/60",
-                accent: "from-blue-500 to-cyan-400",
-              },
-              {
-                number: "02",
-                title: "Form W-3",
-                desc: "Summary form submitted with all W-2 copies.",
-                bg: "from-purple-600/70 to-pink-500/60",
-                accent: "from-purple-500 to-pink-400",
-              },
-              {
-                number: "03",
-                title: "Form W-4",
-                desc: "Used to determine federal tax withholding from employee pay.",
-                bg: "from-emerald-600/70 to-teal-500/60",
-                accent: "from-emerald-500 to-teal-400",
-              },
-              {
-                number: "04",
-                title: "Form 1099-NEC",
-                desc: "Reports payments made to independent contractors.",
-                bg: "from-orange-600/70 to-red-500/60",
-                accent: "from-orange-500 to-red-400",
-              },
-            ].map((item, i) => (
+            {PAYROLL_PAGE_FORMS.map((item, i) => (
               <div
                 key={i}
                 className={`group relative overflow-hidden
@@ -377,7 +290,7 @@ const whyChooseParticles = [
       <section className="relative py-20 bg-blue-100 overflow-hidden z-10">
         {/* Background Shapes - Visible but professional */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {whyChooseParticles.map((particle, i) => (
+          {PAYROLL_PAGE_WHY_CHOOSE_PARTICLES.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1.5 h-1.5 bg-blue-400/60 rounded-full"
@@ -436,77 +349,25 @@ left: particle.left,
           </svg>
 
           <div className="relative mt-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-lg flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/help-desk.png"
-                  alt="Personal Support"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain"
-                />
+            {BOOKKEEPING_PAGE_VALUE_PROPS.map((item, idx) => (
+              <div key={idx} className="flex flex-col items-center group">
+                <div className="w-44 h-44 rounded-full bg-white shadow-lg flex items-center justify-center mb-6">
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    width={80}
+                    height={80}
+                    className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-blue-900">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-sm mt-2 max-w-xs">
+                  {item.desc}
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-blue-900">
-                PERSONAL SUPPORT
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs">
-                You get your own expert no bots, no confusion.
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-lg flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/increase.png"
-                  alt="Better Value"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900">
-                BETTER VALUE
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs">
-                Quality accounting without the big price tag.
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-lg flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/dashboard.png"
-                  alt="Your Dashboard"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900">
-                YOUR DASHBOARD
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs">
-                See your numbers anytime, anywhere.
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-lg flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/update.png"
-                  alt="Live Update"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900">
-                LIVE UPDATE
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs">
-                Stay in the loop with real-time financial info.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -529,36 +390,7 @@ left: particle.left,
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-300 via-blue-500 to-blue-300" />
 
             <div className="space-y-1">
-              {[
-                {
-                  step: "01",
-                  title: "Consultation",
-                  desc: "Understand your payroll needs and requirements.",
-                  color: "blue",
-                  align: "left"
-                },
-                {
-                  step: "02",
-                  title: "Setup",
-                  desc: "Configure payroll systems and data securely.",
-                  color: "indigo",
-                  align: "right"
-                },
-                {
-                  step: "03",
-                  title: "Processing",
-                  desc: "Run payroll accurately with full compliance.",
-                  color: "purple",
-                  align: "left"
-                },
-                {
-                  step: "04",
-                  title: "Reporting",
-                  desc: "Deliver payroll reports and ongoing support.",
-                  color: "pink",
-                  align: "right"
-                },
-              ].map((item, i) => (
+              {PAYROLL_PAGE_PROCESS_STEPS.map((item, i) => (
                 <div key={i} className={`relative flex flex-col ${item.align === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-12`}>
                   <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-2 border-blue-500 rounded-full z-10" />
                   

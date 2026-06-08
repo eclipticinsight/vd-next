@@ -6,76 +6,7 @@ import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown, ChevronRight, ShoppingCart } from "lucide-react";
 
-/* ================= MENU DATA ================= */
-const MENU_DATA = {
-  "Who We Are": {
-    "About Us": [],
-    "Our Locations": [],
-    "Industries we Serve": [],
-    "What Our Clients Say": [],
-  },
-  "What We Do": {
-    "Accounting": ["Bookkeeping", "Payroll", "Financial Reporting and Analysis", "Software Setup & Migration"],
-    "Taxation": ["Cooperative Tax", "Individual Tax"],
-    "Business Analytics": [],
-    "Marketing": [
-      "Website Design & Development",
-      "Search Engine Optimization",
-      "Social Media Marketing",
-      "Email Marketing",
-      "LinkedIn Marketing",
-    ],
-    "RPO": [],
-    "IT Asset Management": [
-      "MS 365 Management",
-      "Mobile Device Management",
-      "Managed Network Services",
-    ],
-  },
-  "How We Do": {
-    "Tools we use": ["AI", "Automation", "Cloud"],
-    "Blog": [],
-  },
-  "Pricing": {
-    "Accounting Pricing": [],
-    "Marketing Pricing": [],
-    "Development Pricing": [],
-  },
-};
-
-/* ================= ROUTES ================= */
-const ROUTES: Record<string, string> = {
-  "About Us": "/about",
-  "Our Locations": "/location",
-  "Industries we Serve": "/industries",
-  "What Our Clients Say": "/clients",
-  "Bookkeeping": "/accounting/bookkeeping",
-  "Payroll": "/accounting/payroll",
-"Financial Reporting and Analysis":
-"/accounting/financial-reporting",
-"Software Setup & Migration":
-"/accounting/software-setup", 
- "Cooperative Tax": "/taxation/cooperative",
-  "Individual Tax": "/taxation/individual",
-  "Business Analytics": "/business-analytics",
-  "Website Design & Development": "/webdesign",
-  "Search Engine Optimization": "/seo",
-  "Social Media Marketing": "/social",
-  "Email Marketing": "/email",
-  "LinkedIn Marketing": "/linkedin",
-  "AI": "/ai",
-  "Automation": "/automation",
-  "Cloud": "/cloud",
-  "MS 365 Management": "/ms365",
-  "Mobile Device Management": "/mobile",
-  "Managed Network Services": "/network",
-  "Development Pricing": "/pricing/development",
-  "Marketing Pricing": "/pricing/marketing",
-  "Accounting Pricing": "/pricing/accounting",
-  "Blog": "/blog",
-  "VirtualAssistance": "/virtualassistance",
-  "RPO": "/rpo"
-};
+import { MENU_DATA, ROUTES } from "../../utils/constants";
 
 // Types
 interface User {

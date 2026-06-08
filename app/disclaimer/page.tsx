@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { CONTACT_INFO } from '@/utils/constants';
 
 /**
  * Full-width Disclaimer page with a hero section.
@@ -173,7 +174,7 @@ const Disclaimer = () => {
             {/* 12. Jurisdiction and Governing Law Disclaimer */}
             <div>
               <h2 className="text-2xl font-medium text-gray-800 mb-2">12. Jurisdiction and Governing Law Disclaimer</h2>
-              <p>The information provided on our website may not be appropriate or available for use in all jurisdictions. Those who access our website do so on their own initiative and are responsible for compliance with applicable local laws. This Disclaimer and any disputes arising out of or related to your use of our website or services shall be governed by the laws of the State of Florida, without regard to its conflict of law provisions.</p>
+              <p>The information provided on our website may not be appropriate or available for use in all jurisdictions. Those who access our website do not do so on their own initiative and are responsible for compliance with applicable local laws. This Disclaimer and any disputes arising out of or related to your use of our website or services shall be governed by the laws of the State of Florida, without regard to its conflict of law provisions.</p>
             </div>
 
             {/* 13. Errors and Omissions Disclaimer */}
@@ -207,8 +208,8 @@ const Disclaimer = () => {
               <p className="mt-2">
                 Visionary Dynamics Consulting Inc.<br />
                 <a href="mailto:disclaimers@visionarydynamicsas.com" className="text-blue-600 hover:underline">disclaimers@visionarydynamicsas.com</a><br />
-                Phone: +1 (727) 564-9476<br />
-                Address: 7901 4th St N STE 300 St. Petersburg, Florida-33702 USA
+                Phone: {CONTACT_INFO.phone}<br />
+                Address: {CONTACT_INFO.address}
               </p>
             </div>
 

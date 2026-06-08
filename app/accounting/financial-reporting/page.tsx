@@ -19,6 +19,11 @@ import {
   Wallet 
 } from 'lucide-react';
 import Image from 'next/image';
+import {
+  FINANCIAL_REPORTING_PAGE_FEATURES,
+  FINANCIAL_REPORTING_PAGE_REPORTS,
+  BOOKKEEPING_PAGE_VALUE_PROPS
+} from '@/utils/constants';
 
 // Wave Transition Component
 export const WaveTransition = ({ direction = "bottom" }) => {
@@ -42,103 +47,6 @@ export const WaveTransition = ({ direction = "bottom" }) => {
 const FinancialReportingPage = () => {
   const sectionRef = useRef(null);
 
-  const features = [
-    {
-      icon: BarChart3,
-      title: "Revenue Analysis",
-      color: "from-blue-500 to-indigo-500",
-      light: "bg-blue-50",
-      text: "text-blue-600",
-      points: [
-        "Total revenue growth tracking",
-        "Revenue by product or service",
-        "Regional revenue performance"
-      ]
-    },
-    {
-      icon: DollarSign,
-      title: "Cost Analysis",
-      color: "from-emerald-500 to-teal-500",
-      light: "bg-emerald-50",
-      text: "text-emerald-600",
-      points: [
-        "Cost of goods sold (COGS)",
-        "Operating expense breakdown",
-        "Fixed vs variable cost insights"
-      ]
-    },
-    {
-      icon: TrendingUp,
-      title: "Profitability Analysis",
-      color: "from-purple-500 to-pink-500",
-      light: "bg-purple-50",
-      text: "text-purple-600",
-      points: [
-        "Gross profit margin",
-        "Operating margin tracking",
-        "Net profit performance"
-      ]
-    },
-    {
-      icon: Activity,
-      title: "Efficiency Analysis",
-      color: "from-orange-500 to-amber-500",
-      light: "bg-orange-50",
-      text: "text-orange-600",
-      points: [
-        "Inventory turnover ratio",
-        "Debtors turnover tracking",
-        "Asset utilization metrics"
-      ]
-    },
-    {
-      icon: Wallet,
-      title: "Cash Flow Analysis",
-      color: "from-rose-500 to-red-500",
-      light: "bg-rose-50",
-      text: "text-rose-600",
-      points: [
-        "Operating cash flow",
-        "Investing cash flow",
-        "Financing cash flow"
-      ]
-    },
-    {
-      icon: Target,
-      title: "Comparative & Trend Analysis",
-      color: "from-cyan-500 to-sky-500",
-      light: "bg-cyan-50",
-      text: "text-cyan-600",
-      points: [
-        "Year-over-year growth",
-        "Industry benchmarking",
-        "Competitor comparison"
-      ]
-    }
-  ];
-
-  const reports = [
-    {
-      title: "Profit & Loss",
-      description: "Track revenue, expenses, and profitability over any period",
-      image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-    },
-    {
-      title: "Balance Sheet",
-      description: "Get a complete picture of assets, liabilities, and equity",
-      image: "https://tse1.mm.bing.net/th/id/OIP.lRdtLjpAjMcnkblM8T7vegHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
-    },
-    {
-      title: "Cash Flow",
-      description: "Monitor cash inflows and outflows in real-time",
-      image: "https://cdn-icons-png.flaticon.com/512/2830/2830284.png",
-    },
-    {
-      title: "AR/AP Aging",
-      description: "Track outstanding receivables and payables",
-      image: "https://cdn-icons-png.flaticon.com/512/3144/3144456.png",
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-blue-50">  
@@ -253,7 +161,7 @@ const FinancialReportingPage = () => {
 
           {/* Feature Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => {
+            {FINANCIAL_REPORTING_PAGE_FEATURES.map((feature, index) => {
               const Icon = feature.icon;
 
               return (
@@ -329,7 +237,7 @@ const FinancialReportingPage = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {reports.map((report, index) => (
+            {FINANCIAL_REPORTING_PAGE_REPORTS.map((report, index) => (
               <div
                 key={index}
                 className="bg-white/95 backdrop-blur-sm p-6 rounded-xl border border-white/20 hover:scale-105 hover:shadow-2xl transition-all duration-300"
@@ -408,81 +316,25 @@ const FinancialReportingPage = () => {
 
           {/* Cards */}
           <div className="relative mt-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-            {/* PERSONAL SUPPORT */}
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/help-desk.png"
-                  alt="Personal Support"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
+            {BOOKKEEPING_PAGE_VALUE_PROPS.map((item, idx) => (
+              <div key={idx} className="flex flex-col items-center group">
+                <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    width={80}
+                    height={80}
+                    className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
+                  {item.desc}
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                PERSONAL SUPPORT
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                You get your own expert no bots, no confusion.
-              </p>
-            </div>
-
-            {/* BETTER VALUE */}
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/increase.png"
-                  alt="Better Value"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                BETTER VALUE
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                Quality accounting without the big price tag.
-              </p>
-            </div>
-
-            {/* YOUR DASHBOARD */}
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/dashboard.png"
-                  alt="Your Dashboard"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                YOUR DASHBOARD
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                See your numbers anytime, anywhere.
-              </p>
-            </div>
-
-            {/* LIVE UPDATE */}
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <Image
-                  src="/animations/update.png"
-                  alt="Live Update"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                LIVE UPDATE
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                Stay in the loop with real-time financial info.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>

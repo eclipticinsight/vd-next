@@ -65,10 +65,6 @@ export default function BlogContent() {
     }
   }, []);
 
-  useEffect(() => {
-    fetchBlogs();
-  }, [page, category]);
-
   const fetchBlogs = async () => {
     try {
       setLoading(true);
@@ -97,6 +93,10 @@ export default function BlogContent() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, [page, category]);
 
   const filteredBlogs = Array.isArray(blogs)
     ? blogs.filter((blog) =>

@@ -7,6 +7,14 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  FaLinkedin,
+  FaXTwitter,
+  FaFacebookF,
+  FaInstagram,
+} from "react-icons/fa6";
+
+import { CONTACT_INFO, SOCIAL_LINKS, FOOTER_QUICK_LINKS, FOOTER_POLICIES } from "../../utils/constants";
 
 export default function Footer() {
   return (
@@ -56,36 +64,13 @@ export default function Footer() {
           <div className="lg:ml-36">
             <h4 className="font-semibold mb-5 text-white">Quick Links</h4>
             <ul className="space-y-2 text-white/70 text-sm">
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-white transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/accounting" className="hover:text-white transition-colors">
-                  Accounting
-                </Link>
-              </li>
-              <li>
-                <Link href="/webdesign" className="hover:text-white transition-colors">
-                  Marketing
-                </Link>
-              </li>
-              <li>
-                <Link href="/mobile" className="hover:text-white transition-colors">
-                  I.T
-                </Link>
-              </li>
+              {FOOTER_QUICK_LINKS.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href} className="hover:text-white transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -93,78 +78,21 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="font-semibold mb-5 text-white">Policies</h4>
             <ul className="space-y-2 text-white/70 text-sm">
-              <li>
-                <a 
-                  href="/privacy" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/terms" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Terms & Conditions
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/cookies" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Cookie Policy
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/datasecurity" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Data Security Policy
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/intellectual" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Intellectual Property Policy
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/complaint" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Complaint & Grievance Policy
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/disclaimer" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Disclaimer
-                </a>
-              </li>
+              {FOOTER_POLICIES.map((policy, index) => (
+                <li key={index}>
+                  <a 
+                    href={policy.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:text-white transition-colors"
+                  >
+                    {policy.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
+
 
           {/* CONTACT */}
           <div>
@@ -173,67 +101,94 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-sky-400 flex-shrink-0" />
                 <a 
-                  href="mailto:connect@visionarydynamicsas.com" 
+                  href={`mailto:${CONTACT_INFO.email}`} 
                   className="hover:text-white transition-colors break-all"
                 >
-                  connect@visionarydynamicsas.com
+                  {CONTACT_INFO.email}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-sky-400 flex-shrink-0" />
                 <a 
-                  href="tel:+17275649476" 
+                  href={`tel:${CONTACT_INFO.phoneClean}`} 
                   className="hover:text-white transition-colors"
                 >
-                  +1(727) 564-9476
+                  {CONTACT_INFO.phone}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-sky-400 mt-1 flex-shrink-0" />
                 <p className="leading-relaxed">
-                  7901 4th St N STE 300 St. Petersburg, Florida-33702 USA
+                  {CONTACT_INFO.address}
                 </p>
               </li>
             </ul>
 
             {/* SOCIAL ICONS */}
             <div className="flex items-center gap-4">
-              <a
-                href="https://in.linkedin.com/company/visionarydynamicsas"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-white/5 hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-500/40 transition-all duration-300"
-                aria-label="LinkedIn"
-              >
-                 <span className="text-white">LinkedIn</span>
-              </a>
-              <a
-                href="https://x.com/VisionaryD64371"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-white/5 hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-500/40 transition-all duration-300"
-                aria-label="Twitter"
-              >
-                 <span className="text-white">Twitter</span>
-              </a>
-              <a
-                href="https://www.facebook.com/visionarydynamicsas/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-white/5 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/40 transition-all duration-300"
-                aria-label="Facebook"
-              >
-                <span className="text-[18px] font-bold">f</span>
-              </a>
-              <a
-                href="https://www.instagram.com/visionary.dynamics/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-white/5 hover:bg-pink-500 hover:shadow-lg hover:shadow-pink-500/40 transition-all duration-300"
-                aria-label="Instagram"
-              >
-                <span className="text-[18px] font-bold">IG</span>
-              </a>
+              {/* LinkedIn */}
+              <div className="relative group flex flex-col items-center">
+                <a
+                  href={SOCIAL_LINKS.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-white/5 hover:bg-sky-600 hover:text-white text-slate-300 hover:shadow-lg hover:shadow-sky-500/30 transition-all duration-300 flex items-center justify-center border border-white/5 hover:border-sky-500"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin className="w-5 h-5" />
+                </a>
+                <span className="absolute bottom-full mb-2 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-lg bg-slate-900 text-white text-xs font-medium px-2.5 py-1 select-none pointer-events-none whitespace-nowrap shadow-xl border border-slate-800">
+                  LinkedIn
+                </span>
+              </div>
+
+              {/* Twitter */}
+              <div className="relative group flex flex-col items-center">
+                <a
+                  href={SOCIAL_LINKS.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-white/5 hover:bg-black hover:text-white text-slate-300 hover:shadow-lg hover:shadow-white/20 transition-all duration-300 flex items-center justify-center border border-white/5 hover:border-white/25"
+                  aria-label="Twitter"
+                >
+                  <FaXTwitter className="w-5 h-5" />
+                </a>
+                <span className="absolute bottom-full mb-2 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-lg bg-slate-900 text-white text-xs font-medium px-2.5 py-1 select-none pointer-events-none whitespace-nowrap shadow-xl border border-slate-800">
+                  X (Twitter)
+                </span>
+              </div>
+
+              {/* Facebook */}
+              <div className="relative group flex flex-col items-center">
+                <a
+                  href={SOCIAL_LINKS.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-white/5 hover:bg-blue-600 hover:text-white text-slate-300 hover:shadow-lg hover:shadow-blue-600/30 transition-all duration-300 flex items-center justify-center border border-white/5 hover:border-blue-500"
+                  aria-label="Facebook"
+                >
+                  <FaFacebookF className="w-5 h-5" />
+                </a>
+                <span className="absolute bottom-full mb-2 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-lg bg-slate-900 text-white text-xs font-medium px-2.5 py-1 select-none pointer-events-none whitespace-nowrap shadow-xl border border-slate-800">
+                  Facebook
+                </span>
+              </div>
+
+              {/* Instagram */}
+              <div className="relative group flex flex-col items-center">
+                <a
+                  href={SOCIAL_LINKS.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-white/5 hover:bg-pink-600 hover:text-white text-slate-300 hover:shadow-lg hover:shadow-pink-600/30 transition-all duration-300 flex items-center justify-center border border-white/5 hover:border-pink-500"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="w-5 h-5" />
+                </a>
+                <span className="absolute bottom-full mb-2 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 rounded-lg bg-slate-900 text-white text-xs font-medium px-2.5 py-1 select-none pointer-events-none whitespace-nowrap shadow-xl border border-slate-800">
+                  Instagram
+                </span>
+              </div>
             </div>
           </div>
         </div>

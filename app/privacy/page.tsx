@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { CONTACT_INFO } from '@/utils/constants';
 
 /**
  * Full-width Privacy Policy page with a hero section.
@@ -120,7 +121,7 @@ const PrivacyPolicy = () => {
               <p className="mt-2">
                 Visionary Dynamics Consulting Inc.<br />
                 Email: privacy@visionarydynamicsas.com<br />
-                Phone: +1(727) 564-9476
+                Phone: {CONTACT_INFO.phone}
               </p>
             </div>
 

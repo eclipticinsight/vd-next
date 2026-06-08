@@ -75,10 +75,7 @@ export default function LoginPage() {
 
   } catch(err:any){
 
-    console.log(
-      "LOGIN ERROR:",
-      err
-    );
+    // Login error log removed
 
     setError(
       err?.message ||

@@ -16,6 +16,44 @@ const [payments, setPayments] = useState<any[]>([]);
     process.env.NEXT_PUBLIC_API_URL ||
     "http://localhost:5000/api";
 
+  const fetchDashboardData = async () => {
+    try {
+      const token =
+localStorage.getItem("token");
+      
+      // ✅ USERS
+      const usersRes = await axios.get(
+        `${API_URL}/user/all-users`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setUsers(usersRes.data);
+
+      // ✅ PAYMENTS
+      const paymentsRes = await axios.get(
+        `${API_URL}/payment/all`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setPayments(paymentsRes.data);
+    } catch (error: any) {
+      console.error(error);
+      if (error.response?.status === 401) {
+        logout();
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     // Check if user is admin
     const checkAdminAuth = () => {
@@ -62,44 +100,6 @@ const [payments, setPayments] = useState<any[]>([]);
       fetchDashboardData();
     }
   }, []);
-
-  const fetchDashboardData = async () => {
-    try {
-      const token =
-localStorage.getItem("token");
-      
-      // ✅ USERS
-      const usersRes = await axios.get(
-        `${API_URL}/user/all-users`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      setUsers(usersRes.data);
-
-      // ✅ PAYMENTS
-      const paymentsRes = await axios.get(
-        `${API_URL}/payment/all`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      setPayments(paymentsRes.data);
-    } catch (error: any) {
-      console.error(error);
-      if (error.response?.status === 401) {
-        logout();
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const getToken = () => {
     if (typeof window !== "undefined") {
