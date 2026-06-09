@@ -1,0 +1,66 @@
+const fs = require("fs");
+
+const path = require("path");
+
+const rootDir = path.resolve(__dirname);
+
+const standaloneDir = path.join(rootDir, ".next", "standalone");
+
+const staticSrc = path.join(rootDir, ".next", "static");
+
+const staticDest = path.join(standaloneDir, ".next", "static");
+
+const publicSrc = path.join(rootDir, "frontend", "public");
+
+const publicDest = path.join(standaloneDir, "frontend", "public");
+
+async function copyRecursive(src, dest) {
+
+  if (!fs.existsSync(src)) {
+
+    throw new Error(`Source path not found: ${src}`);
+
+  }
+
+  await fs.promises.rm(dest, { recursive: true, force: true });
+
+  await fs.promises.mkdir(path.dirname(dest), { recursive: true });
+
+  await fs.promises.cp(src, dest, { recursive: true });
+
+}
+
+async function main() {
+
+  if (!fs.existsSync(standaloneDir)) {
+
+    throw new Error(
+
+      `Standalone folder not found. Run next build first and then retry.`
+
+    );
+
+  }
+
+  console.log(`Assembling standalone output at: ${standaloneDir}`);
+
+  console.log(`Copying static assets: ${staticSrc} -> ${staticDest}`);
+
+  await copyRecursive(staticSrc, staticDest);
+
+  console.log(`Copying public assets: ${publicSrc} -> ${publicDest}`);
+
+  await copyRecursive(publicSrc, publicDest);
+
+  console.log("Standalone assemble complete.");
+
+}
+
+main().catch((error) => {
+
+  console.error("Failed to assemble standalone output:", error);
+
+  process.exit(1);
+
+});
+ 
