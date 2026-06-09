@@ -1,40 +1,60 @@
-# Frontend
+# ========================
+# Backend (root)
+# ========================
 /node_modules
-/.next
-/out
+/.env
 
-# Backend
-/backend/node_modules
-/backend/.env
+# ========================
+# Frontend
+# ========================
+/frontend/node_modules
+/frontend/.next
+/frontend/out
+/frontend/.env.local
+/frontend/.env*.local
 
-# Testing
-/coverage
-
+# ========================
 # Production
+# ========================
 /build
-/backend/build
-/backend/dist
+/dist
 
+# ========================
 # Logs
+# ========================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# ========================
 # Environment files
+# ========================
 .env*
-backend/.env
 
+# ========================
 # Vercel
+# ========================
 .vercel
 
+# ========================
 # Misc
+# ========================
 .DS_Store
 *.pem
 
+# ========================
 # TypeScript
+# ========================
 *.tsbuildinfo
 next-env.d.ts
 
-# ESLint reports (generated, not source)
+# ========================
+# ESLint reports
+# ========================
 eslint_*.txt
 eslint_*.json
+
+# ========================
+# Testing
+# ========================
+/coverage
