@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 
 import Header from "../components/layout/Header";
 import ConditionalFooter from "../components/layout/ConditionalFooter";
+import SmoothScroll from "../components/ui/SmoothScroll";
 
 const SITE_URL = "https://www.visionarydynamicsas.com";
 const SITE_NAME = "Visionary Dynamics";
@@ -121,19 +122,21 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <SmoothScroll>
 
-        <Header />
+          <Header />
 
-        <main>{children}</main>
+          <main>{children}</main>
 
-        <ConditionalFooter />
+          <ConditionalFooter />
 
-        {/* GLOBAL POPUP */}
-        <Toaster
-          position="top-right"
-          reverseOrder={false}
-        />
+          {/* GLOBAL POPUP */}
+          <Toaster
+            position="top-right"
+            reverseOrder={false}
+          />
 
+        </SmoothScroll>
       </body>
     </html>
   );
