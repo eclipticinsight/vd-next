@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     root: path.resolve(__dirname, ".."),
   },
   images: {
+    unoptimized: true,  // Required for standalone builds + fixes /_next/image proxy timeouts
     remotePatterns: [
       {
         protocol: "https",
@@ -29,6 +30,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "www.visionarydynamicsas.com",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
       },
     ],
   },
