@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   // Fix: tell Turbopack this folder is the frontend workspace root
   // (avoids confusion with the root-level backend package-lock.json)
   turbopack: {
