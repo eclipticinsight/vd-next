@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   // Fix: tell Turbopack this folder is the frontend workspace root
   // (avoids confusion with the root-level backend package-lock.json)
   turbopack: {
-    root: path.resolve(__dirname),
+    root: path.resolve(__dirname, ".."),
   },
   images: {
     remotePatterns: [

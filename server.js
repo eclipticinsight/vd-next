@@ -1,6 +1,10 @@
 require("dotenv").config();
 
 const express = require("express");
+const fs = require("fs");
+
+// Ensure uploads directory exists (Azure restarts wipe ephemeral storage)
+if (!fs.existsSync("uploads")) fs.mkdirSync("uploads", { recursive: true });
 const app = express();
 
 app.set("trust proxy", 1);
@@ -41,12 +45,12 @@ connectDB();
 
 // 🔥 CORS
 const allowedOrigins = [
-  // "http://localhost:3000",
-  // "http://127.0.0.1:3000",
-  // "http://localhost:5173",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+  "http://localhost:5173",
   "https://visionarydynamicsas.com",
-  // "https://www.visionarydynamicsas.com",
-  // "https://vd-next.vercel.app",
+  "https://www.visionarydynamicsas.com",
+  "https://vd-next.vercel.app",
 ];
 
 if (process.env.FRONTEND_URL) {
