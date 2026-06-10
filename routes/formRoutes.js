@@ -41,4 +41,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+// DELETE: Remove form submission
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedForm = await Form.findByIdAndDelete(req.params.id);
+    if (!deletedForm) {
+      return res.status(404).json({ error: "Submission not found" });
+    }
+    res.json({ message: "Submission deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Error deleting submission" });
+  }
+});
+
 module.exports = router;
