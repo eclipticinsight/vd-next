@@ -4,6 +4,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+axios.defaults.withCredentials = true;
+
 export default function AdminDashboard() {
   const router = useRouter();
 const [users, setUsers] = useState<any[]>([]);
@@ -18,29 +20,16 @@ const [payments, setPayments] = useState<any[]>([]);
 
   const fetchDashboardData = async () => {
     try {
-      const token =
-localStorage.getItem("token");
-      
       // ✅ USERS
       const usersRes = await axios.get(
-        `${API_URL}/user/all-users`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        `${API_URL}/user/all-users`
       );
 
       setUsers(usersRes.data);
 
       // ✅ PAYMENTS
       const paymentsRes = await axios.get(
-        `${API_URL}/payment/all`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        `${API_URL}/payment/all`
       );
 
       setPayments(paymentsRes.data);
@@ -101,23 +90,10 @@ localStorage.getItem("token");
     }
   }, []);
 
-  const getToken = () => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("token");
-    }
-    return null;
-  };
-
   const deleteUser = async (id: string) => {
     try {
-      const token = getToken();
       await axios.delete(
-        `${API_URL}/user/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        `${API_URL}/user/${id}`
       );
       fetchDashboardData();
     } catch (error) {
@@ -128,15 +104,9 @@ localStorage.getItem("token");
 
   const blockUser = async (id: string) => {
     try {
-      const token = getToken();
       await axios.put(
         `${API_URL}/user/block/${id}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        {}
       );
       fetchDashboardData();
     } catch (error) {

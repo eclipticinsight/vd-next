@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { API } from "@/utils/api";
 
 // Define the Offer type
 interface Offer {
@@ -39,26 +40,13 @@ export default function AdminOffers() {
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
-  const getToken = () => (typeof window !== "undefined" ? localStorage.getItem("token") : null);
-
   const fetchOffers = async () => {
     try {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`${API_URL}/offers`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          ...(getToken() ? { Authorization: `Bearer ${getToken()}` } : {}),
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
+      const response = await API.get("/offers");
+      const data = response.data;
 
       if (Array.isArray(data)) {
         setOffers(data);
@@ -67,9 +55,9 @@ export default function AdminOffers() {
       } else {
         setOffers([]);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error fetching offers:", err);
-      setError(err instanceof Error ? err.message : "Failed to fetch offers");
+      setError(err?.message || err || "Failed to fetch offers");
       setOffers([]);
     } finally {
       setLoading(false);
@@ -85,22 +73,11 @@ export default function AdminOffers() {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`${API_URL}/offers/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          ...(getToken() ? { Authorization: `Bearer ${getToken()}` } : {}),
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
+      await API.delete(`/offers/${id}`);
       await fetchOffers();
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error deleting offer:", err);
-      alert(err instanceof Error ? err.message : "Error deleting offer");
+      alert(err?.message || err || "Error deleting offer");
     }
   };
 
@@ -136,28 +113,17 @@ export default function AdminOffers() {
         features: formData.features.filter(f => f.trim() !== "")
       };
 
-      const url = editingOffer ? `${API_URL}/offers/${editingOffer._id}` : `${API_URL}/offers`;
-      const method = editingOffer ? "PUT" : "POST";
-
-      const response = await fetch(url, {
-        method,
-        headers: {
-          "Content-Type": "application/json",
-          ...(getToken() ? { Authorization: `Bearer ${getToken()}` } : {}),
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Error saving offer");
+      if (editingOffer) {
+        await API.put(`/offers/${editingOffer._id}`, payload);
+      } else {
+        await API.post("/offers", payload);
       }
 
       await fetchOffers();
       closeForm();
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error saving offer:", err);
-      alert(err instanceof Error ? err.message : "Error saving offer");
+      alert(err?.message || err || "Error saving offer");
     }
   };
 

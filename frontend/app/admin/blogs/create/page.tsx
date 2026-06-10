@@ -59,6 +59,7 @@ export default function CreateBlog() {
       const response = await fetch("/api/blogs/upload", {
         method: "POST",
         body: formData,
+        credentials: "include",
       });
 
       if (!response.ok) {
@@ -87,12 +88,10 @@ export default function CreateBlog() {
 
   e.preventDefault();
 
-  const token =
-    localStorage.getItem("token");
+  const isLoggedIn =
+    localStorage.getItem("isLoggedIn") === "true";
 
-  
-
-  if (!token) {
+  if (!isLoggedIn) {
     return alert("Login required");
   }
 
@@ -107,11 +106,9 @@ export default function CreateBlog() {
 
         headers:{
           "Content-Type":"application/json",
-
-          Authorization:
-            `Bearer ${token}`,
         },
 
+        credentials: "include",
         body:JSON.stringify(form),
       });
 

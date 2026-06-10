@@ -45,9 +45,6 @@ export default function Signup() {
       if (res.data.user) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
       }
-      if (res.data.token) {
-        localStorage.setItem("token", res.data.token);
-      }
 
       // Redirect to login page with success message
       router.push("/login?registered=true");

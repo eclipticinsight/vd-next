@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { API } from "@/utils/api";
 
 // Define the User type
 interface User {
@@ -27,20 +28,8 @@ export default function AdminUsers() {
       setLoading(true);
       setError(null);
 
-      const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
-      const response = await fetch(`${API_URL}/user/all-users`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
+      const response = await API.get("/user/all-users");
+      const data = response.data;
 
       if (Array.isArray(data)) {
         setUsers(data);
@@ -49,9 +38,9 @@ export default function AdminUsers() {
       } else {
         setUsers([]);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error fetching users:", err);
-      setError(err instanceof Error ? err.message : "Failed to fetch users");
+      setError(err?.message || err || "Failed to fetch users");
       setUsers([]);
     } finally {
       setLoading(false);

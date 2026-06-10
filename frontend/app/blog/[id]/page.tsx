@@ -65,11 +65,8 @@ export default function BlogDetails() {
       setError(null);
 
       try {
-        const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
         const response = await fetch(`${API_URL}/blogs/slug/${slug}`, {
-          headers: {
-            ...(token ? { Authorization: `Bearer ${token}` } : {}),
-          },
+          credentials: "include",
         });
         
         if (!response.ok) {
@@ -101,12 +98,9 @@ export default function BlogDetails() {
     if (!blog) return;
 
     try {
-      const token = localStorage.getItem("token");
       const response = await fetch(`${API_URL}/blogs/${blog._id}`, {
         method: "DELETE",
-        headers: {
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
+        credentials: "include",
       });
 
       if (!response.ok) {

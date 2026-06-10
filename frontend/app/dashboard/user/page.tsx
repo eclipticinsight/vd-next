@@ -50,11 +50,11 @@ const UserPanel = () => {
     .join("")
     .slice(0, 2);
 
-  const getToken = () => {
+  const getIsLoggedIn = () => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("token");
+      return localStorage.getItem("isLoggedIn") === "true";
     }
-    return null;
+    return false;
   };
 
   const loadLocalUser = () => {
@@ -77,17 +77,13 @@ const UserPanel = () => {
 
     const fetchProfile = async () => {
       try {
-        const token = getToken();
-        if (!token) {
+        const loggedIn = getIsLoggedIn();
+        if (!loggedIn) {
           setProfileLoading(false);
           return;
         }
 
-        const { data } = await axios.get(`${API}/user/profile`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const { data } = await axios.get(`${API}/user/profile`);
         setUser(data);
 
         if (typeof window !== "undefined") {
@@ -190,8 +186,8 @@ const UserPanel = () => {
   };
 
   useEffect(() => {
-    const token = getToken();
-    if (!token && !profileLoading) {
+    const loggedIn = getIsLoggedIn();
+    if (!loggedIn && !profileLoading) {
       router.push("/login");
     }
   }, [router, profileLoading]);

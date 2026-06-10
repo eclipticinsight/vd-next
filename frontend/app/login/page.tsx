@@ -39,16 +39,17 @@ export default function LoginPage() {
 
     }
 
-    localStorage.setItem(
-      "token",
-      loginData.token
-    );
+    // Fetch user profile since token/user details are hidden from the login response
+    const profileResult = await API.get('/user/profile');
+    const user = profileResult.data;
+
+    if (!user) {
+      throw new Error("Failed to fetch user profile");
+    }
 
     localStorage.setItem(
       "user",
-      JSON.stringify(
-        loginData.user
-      )
+      JSON.stringify(user)
     );
 
     localStorage.setItem(
@@ -58,7 +59,7 @@ export default function LoginPage() {
 
    
     if(
-      loginData.user.role === "admin"
+      user.role === "admin"
     ){
 
       router.push(
