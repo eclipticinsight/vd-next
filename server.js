@@ -51,6 +51,9 @@ const allowedOrigins = [
   "https://visionarydynamicsas.com",
   "https://www.visionarydynamicsas.com",
   "https://vd-next.vercel.app",
+  // Azure App Service domains
+  "https://visionarydynamicsas.azurewebsites.net",
+  "https://vd-frontend.azurewebsites.net",
 ];
 
 if (process.env.FRONTEND_URL) {
@@ -73,6 +76,11 @@ app.use(
 
       // Allow all Vercel preview URLs
       if (origin.endsWith(".vercel.app")) {
+        return callback(null, true);
+      }
+
+      // Allow all Azure App Service URLs
+      if (origin.endsWith(".azurewebsites.net")) {
         return callback(null, true);
       }
 
