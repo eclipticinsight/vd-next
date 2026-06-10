@@ -33,7 +33,7 @@ jobs:
       - name: Build Next.js app
         env:
           # Hardcoded production API URL to bypass any incorrect GitHub Secrets
-          NEXT_PUBLIC_API_URL: https://vd-next.onrender.com/api
+          NEXT_PUBLIC_API_URL: https://visionarydynamicsas-axbyczf9cnb8e4a8.eastus-01.azurewebsites.net/api
           NEXT_PUBLIC_TINYMCE_API_KEY: ${{ secrets.NEXT_PUBLIC_TINYMCE_API_KEY }}
         run: npm run build
  

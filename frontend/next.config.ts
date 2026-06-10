@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_API_URL:
       process.env.NEXT_PUBLIC_API_URL ||
-      "https://vd-next.onrender.com/api",
+      "https://visionarydynamicsas-axbyczf9cnb8e4a8.eastus-01.azurewebsites.net/api",
   },
   // Fix: tell Turbopack this folder is the frontend workspace root
   // (avoids confusion with the root-level backend package-lock.json)
