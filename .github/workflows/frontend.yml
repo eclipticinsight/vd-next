@@ -42,7 +42,7 @@ jobs:
         run: |
           cp -r frontend/public .next/standalone/frontend/public
           cp -r .next/static .next/standalone/.next/static
-          cp web.config .next/standalone/web.config || true
+          cp frontend/web.config .next/standalone/web.config || true
  
       # ── 6. Deploy to Azure App Service ───────────────────────────
       - name: Deploy to Azure Web App

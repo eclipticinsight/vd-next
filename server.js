@@ -126,9 +126,9 @@ app.use(
     saveUninitialized: false,
 
     cookie: {
-      secure: true,
+      secure: process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID,
       httpOnly: true,
-      sameSite: "none",
+      sameSite: (process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID) ? "none" : "lax",
     },
   })
 );

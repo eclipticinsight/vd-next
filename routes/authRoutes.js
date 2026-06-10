@@ -144,10 +144,12 @@ router.post("/login", async (req, res) => {
       { expiresIn: "1d" }
     );
 
+    const isProduction = process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID;
+
     res.cookie("token", token, {
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
+      secure: isProduction,
+      sameSite: isProduction ? "none" : "lax",
       path: "/",
       maxAge: 24 * 60 * 60 * 1000,
     });
@@ -204,12 +206,14 @@ router.get(
       const FRONTEND_URL =
         process.env.FRONTEND_URL || "http://localhost:5173";
 
+      const isProduction = process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID;
+
       res.cookie("token", token, {
-  httpOnly: true,
-  secure: true,
-  sameSite: "none",
-  maxAge: 24 * 60 * 60 * 1000,
-});
+        httpOnly: true,
+        secure: isProduction,
+        sameSite: isProduction ? "none" : "lax",
+        maxAge: 24 * 60 * 60 * 1000,
+      });
 
 res.redirect(`${FRONTEND_URL}/dashboard`);
     } catch (err) {
