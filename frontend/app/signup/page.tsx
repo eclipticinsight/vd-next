@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import axios from "axios";
+import { API } from "@/utils/api";
 
 export default function Signup() {
   const router = useRouter();
@@ -36,8 +36,8 @@ export default function Signup() {
       setLoading(true);
       setError("");
 
-      const res = await axios.post(
-        "https://visionarydynamicsas.com/api/register",
+      const res = await API.post(
+        "/auth/register",
         formData
       );
 
