@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import BlogCardImage from "@/components/ui/BlogCardImage";
 
 
 // Define the Blog type
@@ -225,12 +226,13 @@ export default function BlogDetails() {
         <section className="relative z-20 max-w-5xl mx-auto px-4 md:px-6 -mt-10 md:-mt-16">
           <div className="rounded-[32px] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.18)] border border-black/5 bg-white">
             <div className="relative w-full h-[400px] md:h-[500px]">
-              <Image
+              <BlogCardImage
                 src={blog.image}
                 alt={blog.imageAlt || blog.title}
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1200px) 100vw, 1200px"
+                category={blog.category}
                 priority
               />
             </div>

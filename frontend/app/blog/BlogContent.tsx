@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
+import BlogCardImage from "@/components/ui/BlogCardImage";
 import { 
   Search, 
   Plus, 
@@ -31,6 +32,7 @@ interface Blog {
     email: string;
   };
   tags?: string[];
+  category?: string;
 }
 
 interface User {
@@ -276,19 +278,15 @@ export default function BlogContent() {
                           </div>
                         </div>
                         <div className="h-48 md:h-auto order-1 md:order-2 relative">
-                          {featuredBlog.image ? (
-                            <Image
-                              src={featuredBlog.image}
-                              alt={featuredBlog.title}
-                              fill
-                              className="object-cover"
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                            />
-                          ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-[#1e293b] to-[#0f172a] flex items-center justify-center">
-                              <FileText className="h-16 w-16 text-slate-600" />
-                            </div>
-                          )}
+                          <BlogCardImage
+                            src={featuredBlog.image}
+                            alt={featuredBlog.title}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            category={featuredBlog.category}
+                            priority
+                          />
                         </div>
                       </div>
                     </div>
@@ -303,19 +301,14 @@ export default function BlogContent() {
                     <article className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-slate-200 h-full flex flex-col">
                       {/* Image Container */}
                       <div className="relative overflow-hidden aspect-[16/9] bg-gradient-to-br from-slate-100 to-slate-200">
-                        {blog.image ? (
-                          <Image
-                            src={blog.image}
-                            alt={blog.title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-700"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center">
-                            <FileText className="h-12 w-12 text-slate-300" />
-                          </div>
-                        )}
+                        <BlogCardImage
+                          src={blog.image}
+                          alt={blog.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-700"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          category={blog.category}
+                        />
                         {/* Category Badge */}
                         <div className="absolute top-3 left-3">
                           <span className="text-[10px] font-semibold bg-white/90 backdrop-blur-sm text-slate-700 px-2.5 py-1 rounded-full shadow-sm">
