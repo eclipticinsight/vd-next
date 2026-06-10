@@ -31,7 +31,6 @@ async function getRSAKeyPair() {
         key: "rsa_key_pair",
         value: { publicKey, privateKey },
       });
-      console.log("🔑 Generated new persistent RSA Key Pair in DB.");
     }
     return config.value;
   } catch (err) {
