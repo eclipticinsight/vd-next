@@ -42,6 +42,10 @@ const nextConfig: NextConfig = {
         hostname: "www.visionarydynamicsas.com",
       },
       {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
       },

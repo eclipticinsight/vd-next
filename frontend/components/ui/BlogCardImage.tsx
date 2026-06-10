@@ -42,10 +42,8 @@ const getImageUrl = (imageSrc?: string) => {
       return `http://localhost:5000/uploads/${filename}`;
     }
     
-    // On production, use the backend API host
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://visionarydynamicsas.com/api";
-    const backendHost = apiUrl.replace(/\/api\/?$/, "");
-    return `${backendHost}/uploads/${filename}`;
+    // On production, use raw GitHub URL as a permanent, reliable CDN host for committed uploads
+    return `https://raw.githubusercontent.com/VishalRana2025/vd-next/main/uploads/${filename}`;
   }
   
   return imageSrc;
