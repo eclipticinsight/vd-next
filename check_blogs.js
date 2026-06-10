@@ -18,7 +18,7 @@ async function run() {
     await mongoose.connect(mongoUri);
     console.log("Connected successfully!");
 
-    const blogs = await Blog.find({}, "title slug image createdAt").limit(10);
+    const blogs = await Blog.find({}, "title slug image createdAt");
     console.log(`Found ${blogs.length} blogs:`);
     blogs.forEach(blog => {
       console.log(`- Title: "${blog.title}"`);

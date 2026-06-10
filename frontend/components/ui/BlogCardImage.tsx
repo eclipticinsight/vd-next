@@ -30,6 +30,27 @@ const getFallbackImage = (category?: string) => {
   return "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop&q=80";
 };
 
+const getImageUrl = (imageSrc?: string) => {
+  if (!imageSrc) return "";
+
+  const match = imageSrc.match(/\/uploads\/(.+)$/);
+  if (match) {
+    const filename = match[1];
+    
+    // Check if we are running frontend on localhost
+    if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+      return `http://localhost:5000/uploads/${filename}`;
+    }
+    
+    // On production, use the backend API host
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://visionarydynamicsas.com/api";
+    const backendHost = apiUrl.replace(/\/api\/?$/, "");
+    return `${backendHost}/uploads/${filename}`;
+  }
+  
+  return imageSrc;
+};
+
 export default function BlogCardImage({
   src,
   alt,
@@ -40,10 +61,11 @@ export default function BlogCardImage({
   priority = false,
 }: BlogCardImageProps) {
   const fallback = getFallbackImage(category);
-  const [imgSrc, setImgSrc] = useState(src || fallback);
+  const resolvedSrc = getImageUrl(src);
+  const [imgSrc, setImgSrc] = useState(resolvedSrc || fallback);
 
   useEffect(() => {
-    setImgSrc(src || fallback);
+    setImgSrc(getImageUrl(src) || fallback);
   }, [src, fallback]);
 
   return (
