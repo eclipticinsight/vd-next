@@ -32,8 +32,8 @@ jobs:
       # ── 4. Build Next.js ─────────────────────────────────────────
       - name: Build Next.js app
         env:
-          # Secret takes priority; hardcoded URL is the safe fallback
-          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL || 'https://vd-next.onrender.com/api' }}
+          # Hardcoded production API URL to bypass any incorrect GitHub Secrets
+          NEXT_PUBLIC_API_URL: https://vd-next.onrender.com/api
           NEXT_PUBLIC_TINYMCE_API_KEY: ${{ secrets.NEXT_PUBLIC_TINYMCE_API_KEY }}
         run: npm run build
  
