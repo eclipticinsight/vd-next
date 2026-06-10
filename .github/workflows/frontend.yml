@@ -1,11 +1,7 @@
 name: Deploy Frontend to Azure App Service
  
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'frontend/**'          # only trigger when frontend code changes
+  workflow_dispatch:
  
 jobs:
   build-and-deploy:
