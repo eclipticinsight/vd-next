@@ -2,12 +2,55 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
+const crypto = require("crypto");
 
 const User = require("../models/User");
 const auth = require("../middleware/auth");
 const roleMiddleware = require("../middleware/role");
+const SystemConfig = require("../models/SystemConfig");
 
 const router = express.Router();
+
+// Helper to get or generate RSA Key Pair from Database
+async function getRSAKeyPair() {
+  try {
+    let config = await SystemConfig.findOne({ key: "rsa_key_pair" });
+    if (!config) {
+      const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
+        modulusLength: 2048,
+        publicKeyEncoding: {
+          type: "spki",
+          format: "pem",
+        },
+        privateKeyEncoding: {
+          type: "pkcs8",
+          format: "pem",
+        },
+      });
+      config = await SystemConfig.create({
+        key: "rsa_key_pair",
+        value: { publicKey, privateKey },
+      });
+      console.log("🔑 Generated new persistent RSA Key Pair in DB.");
+    }
+    return config.value;
+  } catch (err) {
+    console.error("Failed to retrieve or generate RSA Key Pair:", err);
+    throw err;
+  }
+}
+
+// 🔑 GET RSA PUBLIC KEY
+router.get("/public-key", async (req, res) => {
+  try {
+    const keys = await getRSAKeyPair();
+    res.json({ publicKey: keys.publicKey });
+  } catch (err) {
+    console.error("Public key fetch error:", err);
+    res.status(500).json({ message: "Failed to load public key" });
+  }
+});
+
 
 // 🔑 REGISTER
 router.post("/register", async (req, res) => {
@@ -55,11 +98,38 @@ const normalizedEmail = email.toLowerCase().trim();
 // 🔐 LOGIN
 router.post("/login", async (req, res) => {
   try {
-const { email, password } = req.body;
+    const { encryptedData } = req.body;
+    if (!encryptedData) {
+      return res.status(400).json({ message: "Login payload is missing encrypted data" });
+    }
 
-const user = await User.findOne({
-  email: email.toLowerCase().trim(),
-});
+    // Decrypt RSA payload
+    const keys = await getRSAKeyPair();
+    let decryptedData;
+    try {
+      const buffer = Buffer.from(encryptedData, "base64");
+      const decrypted = crypto.privateDecrypt(
+        {
+          key: keys.privateKey,
+          padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+          oaepHash: "sha256",
+        },
+        buffer
+      );
+      decryptedData = JSON.parse(decrypted.toString("utf8"));
+    } catch (decryptErr) {
+      console.error("RSA Decryption failed:", decryptErr);
+      return res.status(400).json({ message: "Invalid encrypted login payload" });
+    }
+
+    const { email, password } = decryptedData;
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password are required" });
+    }
+
+    const user = await User.findOne({
+      email: email.toLowerCase().trim(),
+    });
     if (!user) {
       return res.status(400).json({ message: "Invalid email or password" });
     }

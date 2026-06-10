@@ -6,6 +6,53 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { API } from '@/utils/api';
 
+// Helper to convert PEM public key to ArrayBuffer
+function pemToArrayBuffer(pem: string) {
+  const b64Lines = pem
+    .replace(/-----BEGIN PUBLIC KEY-----/, "")
+    .replace(/-----END PUBLIC KEY-----/, "")
+    .replace(/\s+/g, "");
+  const binaryDerString = window.atob(b64Lines);
+  const binaryLen = binaryDerString.length;
+  const bytes = new Uint8Array(binaryLen);
+  for (let i = 0; i < binaryLen; i++) {
+    bytes[i] = binaryDerString.charCodeAt(i);
+  }
+  return bytes.buffer;
+}
+
+// Encrypt plaintext using RSA-OAEP with SHA-256
+async function encryptRSA(pemPublicKey: string, plaintext: string) {
+  const derBuffer = pemToArrayBuffer(pemPublicKey);
+  const key = await window.crypto.subtle.importKey(
+    "spki",
+    derBuffer,
+    {
+      name: "RSA-OAEP",
+      hash: "SHA-256",
+    },
+    true,
+    ["encrypt"]
+  );
+  
+  const enc = new TextEncoder();
+  const encryptedBuffer = await window.crypto.subtle.encrypt(
+    {
+      name: "RSA-OAEP"
+    },
+    key,
+    enc.encode(plaintext)
+  );
+  
+  // Convert encrypted Buffer to base64
+  const bytes = new Uint8Array(encryptedBuffer);
+  let binary = "";
+  for (let i = 0; i < bytes.byteLength; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return window.btoa(binary);
+}
+
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -20,11 +67,24 @@ export default function LoginPage() {
     setLoading(true);
     setError('');
 
+    // Fetch public key for encryption
+    const publicKeyResult = await API.get('/auth/public-key');
+    const { publicKey } = publicKeyResult.data;
+    if (!publicKey) {
+      throw new Error("Failed to retrieve public key for secure login");
+    }
+
+    // Encrypt credentials JSON payload
+    const plaintext = JSON.stringify({
+      email: data.email.trim(),
+      password: data.password
+    });
+    const encryptedData = await encryptRSA(publicKey, plaintext);
+
     const result = await API.post(
       '/auth/login',
       {
-        email: data.email.trim(),
-        password: data.password
+        encryptedData
       }
     );
 
