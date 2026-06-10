@@ -33,7 +33,7 @@ jobs:
       - name: Build Next.js app
         env:
           # Secret takes priority; hardcoded URL is the safe fallback
-          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL || 'https://visionarydynamicsas.com/api' }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL || 'https://vd-next.onrender.com/api' }}
           NEXT_PUBLIC_TINYMCE_API_KEY: ${{ secrets.NEXT_PUBLIC_TINYMCE_API_KEY }}
         run: npm run build
  
