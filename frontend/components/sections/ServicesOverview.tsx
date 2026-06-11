@@ -64,7 +64,7 @@ export default function ServicesOverview() {
         },
         {
           title: "Financial Reporting & Analysis",
-          route: "/accounting/financial-reporting",
+          route: "/accounting/financial-reporting-analysis",
         },
       ],
 
@@ -94,19 +94,19 @@ export default function ServicesOverview() {
         },
         {
           title: "Social Media Management",
-          route: "/social",
+          route: "/social-media-marketing",
         },
         {
           title: "Email Marketing",
-          route: "/email",
+          route: "/email-marketing",
         },
         {
           title: "LinkedIn Marketing",
-          route: "/linkedin",
+          route: "/linkedin-marketing",
         },
         {
           title: "Web Design & Development",
-          route: "/webdesign",
+          route: "/webdesign-development",
         },
       ],
 
@@ -132,11 +132,11 @@ export default function ServicesOverview() {
       features: [
         {
           title: "Microsoft 365 Management",
-          route: "/ms365",
+          route: "/ms365-management",
         },
         {
           title: "Managed Network Services",
-          route: "/network",
+          route: "/managed-network-services",
         },
         {
           title: "Microsoft Azure",
@@ -148,7 +148,7 @@ export default function ServicesOverview() {
         },
         {
           title: "Mobile Device Management",
-          route: "/mobile",
+          route: "/mobile-device-management",
         },
       ],
 

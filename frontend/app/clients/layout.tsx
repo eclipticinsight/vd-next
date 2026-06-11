@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Client Testimonials",
   description:
-    "See what our clients say about Visionary Dynamics. Real testimonials from businesses and individuals who trust us for accounting, IT, marketing, and consulting services.",
+    "Meet the clients who rely on Visionary Dynamics for impactful digital solutions, strategic innovation, and long‑term business growth.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/clients" },
   openGraph: {
-    title: "Client Testimonials | Visionary Dynamics",
+    title: "Client Testimonials & Reviews | Visionary Dynamics",
     description:
-      "Read real testimonials from satisfied clients who rely on Visionary Dynamics for professional business services.",
+      "Meet the clients who rely on Visionary Dynamics for impactful digital solutions, strategic innovation, and long‑term business growth.",
     url: "https://www.visionarydynamicsas.com/clients",
   },
 };

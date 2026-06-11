@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Industries We Serve",
   description:
-    "Visionary Dynamics delivers specialized accounting, IT, marketing, and business analytics solutions across healthcare, retail, real estate, manufacturing, non-profit, and more.",
+    "Empowering industries like CPA firms, real estate, healthcare, IT, e-commerce, and recruitment with expert business solutions by Visionary Dynamics.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/industries" },
   openGraph: {
-    title: "Industries We Serve | Visionary Dynamics",
+    title: "Industries We Serve | Visionary Dynamics Solutions",
     description:
-      "Explore our industry-specific solutions for healthcare, retail, real estate, non-profit, and more.",
+      "Empowering industries like CPA firms, real estate, healthcare, IT, e-commerce, and recruitment with expert business solutions by Visionary Dynamics.",
     url: "https://www.visionarydynamicsas.com/industries",
   },
 };

@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "SEO Services — Search Engine Optimization",
   description:
-    "Boost your organic search rankings with expert SEO services. Keyword research, on-page optimization, technical SEO, link building, local SEO, and monthly performance reporting.",
+    "Get effective SEO services from Visionary Dynamics to enhance online presence, increase traffic, and drive sustainable growth.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/seo" },
   openGraph: {
-    title: "SEO Services | Visionary Dynamics",
+    title: "Visionary Dynamics | SEO & Digital Growth Services",
     description:
-      "Expert search engine optimization — keyword research, on-page SEO, technical audits, link building, and local SEO to grow your organic traffic.",
+      "Get effective SEO services from Visionary Dynamics to enhance online presence, increase traffic, and drive sustainable growth.",
     url: "https://www.visionarydynamicsas.com/seo",
   },
 };

@@ -11,7 +11,7 @@ import SmoothScroll from "../components/ui/SmoothScroll";
 const SITE_URL = "https://www.visionarydynamicsas.com";
 const SITE_NAME = "Visionary Dynamics";
 const DEFAULT_DESCRIPTION =
-  "Visionary Dynamics is a full-service consulting firm offering accounting, bookkeeping, payroll, taxation, IT asset management, digital marketing, SEO, and business analytics for businesses and individuals.";
+  "Visionary Dynamics offers expert accounting, IT asset management, and marketing solutions to help businesses streamline operations and drive growth.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — Accounting, IT & Digital Marketing Services`,
+    title: "Visionary Dynamics | Digital, IT & Business Solutions",
     description: DEFAULT_DESCRIPTION,
     images: ["/VD-Logo-e1737873827576.png"],
     creator: "@VisionaryD64371",
@@ -140,4 +140,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+}

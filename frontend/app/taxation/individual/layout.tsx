@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Individual Tax Services",
   description:
-    "Maximize your refund with expert individual tax preparation and filing. We identify every deduction, provide audit protection, and offer year-round support. Fast 3–5 day turnaround.",
+    "Manage your personal taxes confidently with Visionary Dynamics’ reliable individual tax services focused on accuracy and compliance.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/taxation/individual" },
   openGraph: {
     title: "Individual Tax Services | Visionary Dynamics",
     description:
-      "Expert individual tax preparation — maximize refunds, audit protection, and year-round support from certified tax professionals.",
+      "Manage your personal taxes confidently with Visionary Dynamics’ reliable individual tax services focused on accuracy and compliance.",
     url: "https://www.visionarydynamicsas.com/taxation/individual",
   },
 };

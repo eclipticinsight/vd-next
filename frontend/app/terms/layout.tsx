@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions",
+  title: "Terms & Conditions | Visionary Dynamics",
   description:
-    "Read the Visionary Dynamics Terms & Conditions governing the use of our services and website.",
+    "Read Visionary Dynamics’ terms of service to understand usage policies, legal obligations, and conditions of access.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/terms" },
   robots: { index: false, follow: false },
 };

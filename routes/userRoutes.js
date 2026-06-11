@@ -97,7 +97,7 @@ coverImage,
       req.user.id,
       allowedUpdates,
       {
-        new: true,
+        returnDocument: 'after',
         runValidators: true,
       }
     ).select("-password -__v");
@@ -197,7 +197,7 @@ router.put("/admin-update/:id", protect, async (req, res) => {
       req.params.id,
       req.body,
       {
-        new: true,
+        returnDocument: 'after',
         runValidators: true,
       }
     ).select("-password -__v");

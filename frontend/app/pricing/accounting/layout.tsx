@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Accounting Services Pricing",
   description:
-    "Transparent and flexible accounting service pricing plans. Compare bookkeeping, payroll, financial reporting, and software setup packages from Visionary Dynamics.",
+    "Visionary Dynamics offers flexible accounting pricing plans to help businesses manage finances efficiently and cost‑effectively.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/pricing/accounting" },
   openGraph: {
     title: "Accounting Pricing | Visionary Dynamics",
     description:
-      "Compare our accounting service pricing plans — bookkeeping, payroll, financial reporting, and more.",
+      "Visionary Dynamics offers flexible accounting pricing plans to help businesses manage finances efficiently and cost‑effectively.",
     url: "https://www.visionarydynamicsas.com/pricing/accounting",
   },
 };

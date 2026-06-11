@@ -88,31 +88,6 @@ const [payments, setPayments] = useState<any[]>([]);
     }
   }, []);
 
-  const deleteUser = async (id: string) => {
-    try {
-      await axios.delete(
-        `${API_URL}/user/${id}`
-      );
-      fetchDashboardData();
-    } catch (error) {
-      console.error(error);
-      alert("Failed to delete user");
-    }
-  };
-
-  const blockUser = async (id: string) => {
-    try {
-      await axios.put(
-        `${API_URL}/user/block/${id}`,
-        {}
-      );
-      fetchDashboardData();
-    } catch (error) {
-      console.error(error);
-      alert("Failed to block/unblock user");
-    }
-  };
-
   const logout = () => {
     if (typeof window !== "undefined") {
       localStorage.clear();
@@ -273,14 +248,13 @@ const [payments, setPayments] = useState<any[]>([]);
                       <th className="px-6 py-4">Role</th>
                       <th className="px-6 py-4">Company</th>
                       <th className="px-6 py-4">Status</th>
-                      <th className="px-6 py-4">Actions</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     {filteredUsers.length === 0 && (
                       <tr>
-                        <td colSpan={5} className="text-center py-10 text-gray-400">
+                        <td colSpan={4} className="text-center py-10 text-gray-400">
                           No users found
                         </td>
                       </tr>
@@ -338,38 +312,6 @@ const [payments, setPayments] = useState<any[]>([]);
       >
         {user.blocked ? "Blocked" : "Active"}
       </span>
-    </td>
-
-    {/* ACTIONS */}
-    <td className="px-6 py-5">
-      <div className="flex gap-3">
-
-        <button
-          onClick={() => router.push(`/dashboard/admin/user/${user._id}`)}
-          className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-sm"
-        >
-          Edit
-        </button>
-
-        <button
-          onClick={() => blockUser(user._id)}
-          className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-lg text-sm"
-        >
-          {user.blocked ? "Unblock" : "Block"}
-        </button>
-
-        <button
-          onClick={() => {
-            if (window.confirm("Delete this user?")) {
-              deleteUser(user._id);
-            }
-          }}
-          className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg text-sm"
-        >
-          Delete
-        </button>
-
-      </div>
     </td>
 
   </tr>

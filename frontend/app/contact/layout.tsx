@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Visionary Dynamics. Reach our expert team for accounting, IT management, digital marketing, or business consulting. Fast response within 2 hours.",
+    "Reach out to Visionary Dynamics for inquiries, consultations, or support related to our digital and business services.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/contact" },
   openGraph: {
-    title: "Contact Us | Visionary Dynamics",
+    title: "Visionary Dynamics Contact | Business Inquiries",
     description:
-      "Contact our team for accounting, IT management, marketing, or business consulting services. Response within 2 hours.",
+      "Reach out to Visionary Dynamics for inquiries, consultations, or support related to our digital and business services.",
     url: "https://www.visionarydynamicsas.com/contact",
   },
 };

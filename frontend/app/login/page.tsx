@@ -55,7 +55,7 @@ async function encryptRSA(pemPublicKey: string, plaintext: string) {
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string | React.ReactNode>('');
   const router = useRouter();
 
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -135,18 +135,30 @@ export default function LoginPage() {
     }
 
   } catch(err:any){
+    const serverMessage = err?.message;
+    const isUnverified = err?.unverified;
+    const unverifiedEmail = err?.email;
 
-    // Login error log removed
-
-    setError(
-      err?.message ||
-      "Login failed"
-    );
-
+    if (isUnverified && unverifiedEmail) {
+      setError(
+        <span>
+          {serverMessage}{" "}
+          <Link 
+            href={`/verify-email?email=${encodeURIComponent(unverifiedEmail)}`}
+            className="text-indigo-600 hover:text-indigo-700 font-semibold underline ml-1"
+          >
+            Verify Email Now
+          </Link>
+        </span>
+      );
+    } else {
+      setError(
+        serverMessage ||
+        "Login failed"
+      );
+    }
   } finally {
-
     setLoading(false);
-
   }
 
 };
@@ -202,9 +214,17 @@ export default function LoginPage() {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Password
-              </label>
+              <div className="flex items-center justify-between mb-1">
+                <label className="block text-sm font-medium text-gray-700">
+                  Password
+                </label>
+                <Link
+                  href="/forgot-password"
+                  className="text-xs text-indigo-600 hover:text-indigo-700 hover:underline font-medium transition-colors"
+                >
+                  Forgot password?
+                </Link>
+              </div>
 
               <input
   type="password"

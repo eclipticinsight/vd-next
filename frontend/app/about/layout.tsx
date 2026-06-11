@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Visionary Dynamics Consulting Inc. — a team of seasoned professionals delivering innovative accounting, IT, and marketing solutions with over 6 years of experience.",
+    "Discover Visionary Dynamics’ mission, vision, and expert team delivering tailored financial, IT, and analytics solutions for business growth.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/about" },
   openGraph: {
-    title: "About Us | Visionary Dynamics",
+    title: "About Us | Visionary Dynamics Consulting & Services",
     description:
-      "Discover who we are, our mission, values, and the journey behind Visionary Dynamics Consulting Inc.",
+      "Discover Visionary Dynamics’ mission, vision, and expert team delivering tailored financial, IT, and analytics solutions for business growth.",
     url: "https://www.visionarydynamicsas.com/about",
   },
 };

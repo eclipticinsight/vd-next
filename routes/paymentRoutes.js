@@ -118,4 +118,45 @@ router.get("/all", async (req, res) => {
   }
 });
 
+// ================================
+// DELETE ALL PENDING PAYMENTS
+// ================================
+router.delete("/bulk-delete-pending", async (req, res) => {
+  try {
+    const result = await Payment.deleteMany({ status: "pending" });
+    res.json({
+      success: true,
+      message: `Deleted ${result.deletedCount} pending payments`,
+    });
+  } catch (error) {
+    console.error("Bulk Delete Pending Payments Error:", error);
+    res.status(500).json({
+      message: "Failed to bulk delete pending payments",
+    });
+  }
+});
+
+// ================================
+// DELETE SINGLE PAYMENT
+// ================================
+router.delete("/:id", async (req, res) => {
+  try {
+    const deleted = await Payment.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({
+        message: "Payment not found",
+      });
+    }
+    res.json({
+      success: true,
+      message: "Payment deleted successfully",
+    });
+  } catch (error) {
+    console.error("Delete Payment Error:", error);
+    res.status(500).json({
+      message: "Failed to delete payment",
+    });
+  }
+});
+
 module.exports = router;

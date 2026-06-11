@@ -19,30 +19,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Accounting
     { url: `${SITE_URL}/accounting/bookkeeping`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/accounting/payroll`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/accounting/financial-reporting`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/accounting/software-setup`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/accounting/financial-reporting-analysis`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/accounting/software-setup-migration`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 
     // Taxation
     { url: `${SITE_URL}/taxation/individual`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/taxation/cooperative`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/taxation/cooperative-tax`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 
     // Analytics
     { url: `${SITE_URL}/business-analytics`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
 
     // Marketing
-    { url: `${SITE_URL}/webdesign`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/webdesign-development`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/seo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/social`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/email`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/linkedin`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/social-media-marketing`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/email-marketing`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/linkedin-marketing`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
 
     // IT / Tools
     { url: `${SITE_URL}/ai`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/automation`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/cloud`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/ms365`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/mobile`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/network`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/ms365-management`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/mobile-device-management`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/managed-network-services`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
 
     // Pricing
     { url: `${SITE_URL}/pricing/accounting`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },

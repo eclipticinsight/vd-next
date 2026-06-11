@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "RPO — Recruitment Process Outsourcing",
   description:
-    "End-to-end recruitment process outsourcing (RPO) services. From sourcing to onboarding, Visionary Dynamics helps you build high-performing teams faster and more cost-effectively.",
+    "Visionary Dynamics provides end‑to‑end RPO solutions to optimize recruitment processes and support workforce growth.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/rpo" },
   openGraph: {
-    title: "Recruitment Process Outsourcing (RPO) | Visionary Dynamics",
+    title: "Visionary Dynamics | RPO & Talent Solutions",
     description:
-      "Full-cycle RPO services — talent sourcing, screening, interviewing, and onboarding to build your dream team.",
+      "Visionary Dynamics provides end‑to‑end RPO solutions to optimize recruitment processes and support workforce growth.",
     url: "https://www.visionarydynamicsas.com/rpo",
   },
 };

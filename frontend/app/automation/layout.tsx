@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Business Automation Services",
   description:
-    "Streamline your operations with intelligent business automation. Workflow automation, RPA, process mapping, and system integrations that eliminate manual work and boost productivity.",
+    "Visionary Dynamics offers powerful automation tools to streamline workflows, boost efficiency, and drive smarter business operations.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/automation" },
   openGraph: {
-    title: "Business Automation Services | Visionary Dynamics",
+    title: "Automation Tools for Business | Visionary Dynamics",
     description:
-      "Workflow automation, RPA, and process integrations to eliminate manual tasks and increase operational efficiency.",
+      "Visionary Dynamics offers powerful automation tools to streamline workflows, boost efficiency, and drive smarter business operations.",
     url: "https://www.visionarydynamicsas.com/automation",
   },
 };

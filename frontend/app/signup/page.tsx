@@ -12,6 +12,8 @@ export default function Signup() {
     firstName: "",
     lastName: "",
     companyName: "",
+    countryCode: "+91",
+    mobile: "",
     email: "",
     password: "",
     confirmPassword: ""
@@ -21,7 +23,7 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     setFormData({
       ...formData,
@@ -54,16 +56,11 @@ export default function Signup() {
           firstName: formData.firstName,
           lastName: formData.lastName,
           companyName: formData.companyName,
+          mobile: formData.mobile ? `${formData.countryCode} ${formData.mobile}` : "",
           email: formData.email,
           password: formData.password,
-
         }
       );
-
-      // Optional: Store user info if returned
-      if (res.data.user) {
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-      }
 
       // Redirect to login page with success message
       router.push("/login?registered=true");
@@ -114,7 +111,7 @@ export default function Signup() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      First Name
+                      First Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -128,7 +125,7 @@ export default function Signup() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Last Name
+                      Last Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -140,6 +137,21 @@ export default function Signup() {
                       required
                     />
                   </div>
+                </div>
+                {/* Email Field */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
 
                 {/* Company Name Field */}
@@ -157,52 +169,77 @@ export default function Signup() {
                   />
                 </div>
 
-                {/* Email Field */}
+                {/* Mobile Number Field */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Email
+                    Mobile Number <span className="text-gray-400 text-xs">(Optional)</span>
+                  </label>
+                  <div className="flex gap-2">
+                    <select
+                      name="countryCode"
+                      value={formData.countryCode}
+                      onChange={handleChange}
+                      className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white text-gray-700 transition-colors text-sm"
+                    >
+                      <option value="+91">IN (+91)</option>
+                      <option value="+1">US/CA (+1)</option>
+                      <option value="+44">UK (+44)</option>
+                      <option value="+61">AU (+61)</option>
+                      <option value="+971">AE (+971)</option>
+                      <option value="+65">SG (+65)</option>
+                      <option value="+49">DE (+49)</option>
+                      <option value="+33">FR (+33)</option>
+                      <option value="+81">JP (+81)</option>
+                      <option value="+39">IT (+39)</option>
+                      <option value="+34">ES (+34)</option>
+                      <option value="+55">BR (+55)</option>
+                      <option value="+27">ZA (+27)</option>
+                      <option value="+52">MX (+52)</option>
+                      <option value="+60">MY (+60)</option>
+                      <option value="+63">PH (+63)</option>
+                      <option value="+64">NZ (+64)</option>
+                    </select>
+                    <input
+                      type="tel"
+                      name="mobile"
+                      value={formData.mobile}
+                      placeholder="Enter mobile number"
+                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                {/* Password Field */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Password <span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    placeholder="Enter your email"
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    placeholder="Enter password"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                     onChange={handleChange}
                     required
                   />
                 </div>
 
-                {/* Password & Confirm Password Fields */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      value={formData.password}
-                      placeholder="Enter password"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Confirm Password
-                    </label>
-                    <input
-                      type="password"
-                      name="confirmPassword"
-                      value={formData.confirmPassword}
-                      placeholder="Confirm password"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
+                {/* Confirm Password Field */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Confirm Password <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    placeholder="Confirm password"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
                   Password must be at least 6 characters

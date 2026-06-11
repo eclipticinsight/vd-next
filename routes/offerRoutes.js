@@ -22,7 +22,7 @@ router.put("/:id", auth, roleMiddleware("admin"), async (req, res) => {
   const updated = await Offer.findByIdAndUpdate(
     req.params.id,
     req.body,
-    { new: true }
+    { returnDocument: 'after' }
   );
   res.json(updated);
 });

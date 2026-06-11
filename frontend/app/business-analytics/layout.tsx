@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Business Analytics",
   description:
-    "Transform raw data into actionable business insights. Visionary Dynamics offers data analysis, market research, process optimization, and strategic planning to drive growth.",
+    "Unlock data‑driven growth with Visionary Dynamics’ business analytics services designed for insights, performance, and strategy.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/business-analytics" },
   openGraph: {
-    title: "Business Analytics | Visionary Dynamics",
+    title: "Visionary Dynamics | Business Analytics Services",
     description:
-      "Data-driven insights, market research, process optimization, and strategic planning services for growing businesses.",
+      "Unlock data‑driven growth with Visionary Dynamics’ business analytics services designed for insights, performance, and strategy.",
     url: "https://www.visionarydynamicsas.com/business-analytics",
   },
 };

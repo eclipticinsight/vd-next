@@ -267,30 +267,24 @@ export default function CreateBlog() {
         </select>
 
         {/* TINYMCE EDITOR */}
-       <div className="bg-white rounded-xl overflow-hidden">
-
-  <Editor
-  apiKey={
-    process.env
-    .NEXT_PUBLIC_TINYMCE_API_KEY
-  }
-
-  value={form.content}
-
-  onEditorChange={(content)=>
-    setForm({
-      ...form,
-      content,
-    })
-  }
-
-  init={{
-    height:500,
-    menubar:true,
-  }}
-/>
-
-</div>
+        <div className="bg-white rounded-xl overflow-hidden">
+          <Editor
+            tinymceScriptSrc="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js"
+            value={form.content}
+            onEditorChange={(content) =>
+              setForm({
+                ...form,
+                content,
+              })
+            }
+            init={{
+              height: 500,
+              menubar: true,
+              plugins: "advlist autolink lists link image table code fullscreen preview",
+              toolbar: "undo redo | blocks | bold italic underline | alignleft aligncenter alignright | bullist numlist | image link table | code preview",
+            }}
+          />
+        </div>
 
         {/* CHARACTER COUNT */}
         <div className="text-right text-sm text-white/50">

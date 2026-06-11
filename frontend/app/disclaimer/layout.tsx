@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Disclaimer",
+  title: "Legal Disclaimer | Visionary Dynamics",
   description:
-    "Visionary Dynamics Disclaimer — important notices regarding the information and content provided on our website and services.",
+    "Visionary Dynamics’ disclaimer explains legal information, limitations of liability, and usage terms for our website.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/disclaimer" },
   robots: { index: false, follow: false },
 };

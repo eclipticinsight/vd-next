@@ -191,6 +191,24 @@ const userSchema = new mongoose.Schema(
     lastLogin: {
       type: Date,
     },
+
+    resetCode: {
+      type: String,
+      default: "",
+    },
+
+    resetCodeExpires: {
+      type: Date,
+    },
+
+    verificationCode: {
+      type: String,
+      default: "",
+    },
+
+    verificationCodeExpires: {
+      type: Date,
+    },
   },
   {
     timestamps: true,

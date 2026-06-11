@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Payroll Services",
   description:
-    "Accurate and timely payroll processing for businesses of all sizes. Tax filings, direct deposit, benefits administration, and full compliance — handled by Visionary Dynamics.",
+    "Streamline payroll operations with Visionary Dynamics’ expert payroll services designed for accuracy, compliance, and efficiency.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/accounting/payroll" },
   openGraph: {
-    title: "Payroll Services | Visionary Dynamics",
+    title: "Visionary Dynamics | Payroll Processing Services",
     description:
-      "Hassle-free payroll processing with tax filings, direct deposit, and compliance management for your business.",
+      "Streamline payroll operations with Visionary Dynamics’ expert payroll services designed for accuracy, compliance, and efficiency.",
     url: "https://www.visionarydynamicsas.com/accounting/payroll",
   },
 };

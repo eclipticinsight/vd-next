@@ -56,6 +56,27 @@ export default function AdminPayments() {
     }
   };
 
+  const deletePayment = async (id: string) => {
+    try {
+      await API.delete(`/payment/${id}`);
+      fetchPayments();
+    } catch (err: any) {
+      console.error(err);
+      alert(err?.message || "Failed to delete payment");
+    }
+  };
+
+  const bulkDeletePending = async () => {
+    try {
+      const response = await API.delete("/payment/bulk-delete-pending");
+      alert(response.data?.message || "Pending payments deleted successfully");
+      fetchPayments();
+    } catch (err: any) {
+      console.error(err);
+      alert(err?.message || "Failed to delete pending payments");
+    }
+  };
+
   const calculateStats = (paymentsData: Payment[]) => {
     const totalRevenue = paymentsData.reduce((sum, payment) => sum + (payment.amount || 0), 0);
     const totalPayments = paymentsData.length;
@@ -153,13 +174,29 @@ export default function AdminPayments() {
         </div>
       )}
 
-      <div className="mb-6 flex gap-3 flex-wrap">
+      <div className="mb-6 flex gap-3 flex-wrap items-center">
         <button
           onClick={() => fetchPayments()}
-          className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition text-sm"
+          className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition text-sm font-semibold"
         >
           Refresh
         </button>
+        {payments.some((p) => (p.status || "").toLowerCase() === "pending") && (
+          <button
+            onClick={() => {
+              if (
+                window.confirm(
+                  "Are you sure you want to delete all pending/incomplete payments?"
+                )
+              ) {
+                bulkDeletePending();
+              }
+            }}
+            className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition text-sm font-semibold"
+          >
+            Delete All Pending Payments
+          </button>
+        )}
       </div>
 
       <div className="grid gap-5">
@@ -214,30 +251,46 @@ export default function AdminPayments() {
                 </div>
               </div>
 
-              {(payment.userId || payment.offerId || payment.method) && (
-                <div className="mt-4 pt-4 border-t border-white/10">
-                  <div className="grid md:grid-cols-3 gap-4 text-sm">
-                    {payment.userId && (
-                      <div>
-                        <span className="text-white/40">User ID: </span>
-                        <span className="font-mono text-xs">{payment.userId}</span>
-                      </div>
-                    )}
-                    {payment.offerId && (
-                      <div>
-                        <span className="text-white/40">Offer ID: </span>
-                        <span className="font-mono text-xs">{payment.offerId}</span>
-                      </div>
-                    )}
-                    {payment.method && (
-                      <div>
-                        <span className="text-white/40">Payment Method: </span>
-                        <span>{payment.method}</span>
-                      </div>
-                    )}
-                  </div>
+              <div className="mt-4 pt-4 border-t border-white/10 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+                <div className="flex-1">
+                  {payment.userId || payment.offerId || payment.method ? (
+                    <div className="grid md:grid-cols-3 gap-4 text-sm">
+                      {payment.userId && (
+                        <div>
+                          <span className="text-white/40">User ID: </span>
+                          <span className="font-mono text-xs">{payment.userId}</span>
+                        </div>
+                      )}
+                      {payment.offerId && (
+                        <div>
+                          <span className="text-white/40">Offer ID: </span>
+                          <span className="font-mono text-xs">{payment.offerId}</span>
+                        </div>
+                      )}
+                      {payment.method && (
+                        <div>
+                          <span className="text-white/40">Payment Method: </span>
+                          <span>{payment.method}</span>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <span className="text-white/30 text-xs">No additional metadata</span>
+                  )}
                 </div>
-              )}
+                <div>
+                  <button
+                    onClick={() => {
+                      if (window.confirm("Delete this payment record?")) {
+                        deletePayment(payment._id);
+                      }
+                    }}
+                    className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg text-sm transition-all"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             </div>
           ))
         )}

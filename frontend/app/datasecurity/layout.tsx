@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Data Security Policy",
+  title: "Visionary Dynamics Data Security Policy",
   description:
-    "Visionary Dynamics Data Security Policy — how we protect your data and maintain compliance with international security standards.",
+    "Read Visionary Dynamics’ Data Security Policy outlining how we protect personal data using encryption, access controls, and compliance standards.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/datasecurity" },
   robots: { index: false, follow: false },
 };

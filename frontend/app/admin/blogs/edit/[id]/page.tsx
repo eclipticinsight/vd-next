@@ -219,10 +219,7 @@ export default function EditBlog() {
 <div className="bg-white rounded-xl overflow-hidden">
 
   <Editor
-    apiKey={
-      process.env
-        .NEXT_PUBLIC_TINYMCE_API_KEY
-    }
+    tinymceScriptSrc="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js"
 
     value={form.content}
 

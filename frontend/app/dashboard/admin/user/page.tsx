@@ -7,16 +7,19 @@ import { API } from "@/utils/api";
 interface User {
   _id: string;
   name?: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
   role: "admin" | "user" | string;
   status?: string;
+  blocked?: boolean;
 }
 
 export default function AdminUsers() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const [editingRoleUserId, setEditingRoleUserId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchUsers();
@@ -45,6 +48,38 @@ export default function AdminUsers() {
       setLoading(false);
     }
   };
+
+  const deleteUser = async (id: string) => {
+    try {
+      await API.delete(`/user/${id}`);
+      fetchUsers();
+    } catch (err: any) {
+      console.error(err);
+      alert(err?.message || "Failed to delete user");
+    }
+  };
+
+  const blockUser = async (id: string) => {
+    try {
+      await API.put(`/user/block/${id}`, {});
+      fetchUsers();
+    } catch (err: any) {
+      console.error(err);
+      alert(err?.message || "Failed to block/unblock user");
+    }
+  };
+
+  const handleRoleChange = async (id: string, newRole: string) => {
+    try {
+      await API.put(`/user/admin-update/${id}`, { role: newRole });
+      setEditingRoleUserId(null);
+      fetchUsers();
+    } catch (err: any) {
+      console.error(err);
+      alert(err?.message || "Failed to update role");
+    }
+  };
+
 
   if (loading) {
     return (
@@ -82,45 +117,97 @@ export default function AdminUsers() {
                   <th className="p-5 text-left">Email</th>
                   <th className="p-5 text-left">Role</th>
                   <th className="p-5 text-left">Status</th>
+                  <th className="p-5 text-left">Actions</th>
                 </tr>
               </thead>
 
               <tbody>
                 {users.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="p-8 text-center text-white/60">
+                    <td colSpan={5} className="p-8 text-center text-white/60">
                       No users found
                     </td>
                   </tr>
                 ) : (
-                  users.map((user) => (
-                    <tr
-                      key={user._id}
-                      className="border-b border-white/10 hover:bg-white/5 transition"
-                    >
-                      {/* NAME */}
-                      <td className="p-5 font-medium">{user.name || "N/A"}</td>
+                  users.map((user) => {
+                    const displayName = user.firstName || user.lastName
+                      ? `${user.firstName || ""} ${user.lastName || ""}`.trim()
+                      : user.name || "N/A";
 
-                      {/* EMAIL */}
-                      <td className="p-5">{user.email}</td>
+                    return (
+                      <tr
+                        key={user._id}
+                        className="border-b border-white/10 hover:bg-white/5 transition"
+                      >
+                        {/* NAME */}
+                        <td className="p-5 font-medium">{displayName}</td>
 
-                      {/* ROLE */}
-                      <td className="p-5">
-                        <span
-                          className={`px-4 py-2 rounded-lg text-sm ${
-                            user.role === "admin" ? "bg-purple-600" : "bg-blue-600"
-                          }`}
-                        >
-                          {user.role || "user"}
-                        </span>
-                      </td>
+                        {/* EMAIL */}
+                        <td className="p-5">{user.email}</td>
 
-                      {/* STATUS */}
-                      <td className="p-5">
-                        <span className="bg-green-600 px-4 py-2 rounded-lg text-sm">Active</span>
-                      </td>
-                    </tr>
-                  ))
+                        {/* ROLE */}
+                        <td className="p-5">
+                          {editingRoleUserId === user._id ? (
+                            <select
+                              value={user.role || "user"}
+                              onChange={(e) => handleRoleChange(user._id, e.target.value)}
+                              onBlur={() => setEditingRoleUserId(null)}
+                              className="bg-[#091026] border border-white/20 text-white rounded px-2 py-1 outline-none focus:border-purple-500 font-medium"
+                              autoFocus
+                            >
+                              <option value="user">user</option>
+                              <option value="admin">admin</option>
+                            </select>
+                          ) : (
+                            <span
+                              onClick={() => setEditingRoleUserId(user._id)}
+                              className={`px-4 py-2 rounded-lg text-sm cursor-pointer hover:opacity-80 transition font-medium ${
+                                user.role === "admin" ? "bg-purple-600" : "bg-blue-600"
+                              }`}
+                              title="Click to edit role"
+                            >
+                              {user.role || "user"}
+                            </span>
+                          )}
+                        </td>
+
+                        {/* STATUS */}
+                        <td className="p-5">
+                          <span
+                            className={`px-4 py-2 rounded-lg text-sm ${
+                              user.blocked
+                                ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                                : "bg-green-600"
+                            }`}
+                          >
+                            {user.blocked ? "Blocked" : "Active"}
+                          </span>
+                        </td>
+
+                        {/* ACTIONS */}
+                        <td className="p-5">
+                          <div className="flex gap-3">
+                            <button
+                              onClick={() => blockUser(user._id)}
+                              className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-lg text-sm transition-all"
+                            >
+                              {user.blocked ? "Unblock" : "Block"}
+                            </button>
+                            <button
+                              onClick={() => {
+                                if (window.confirm("Delete this user?")) {
+                                  deleteUser(user._id);
+                                }
+                              }}
+                              className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg text-sm transition-all"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
                 )}
               </tbody>
             </table>
