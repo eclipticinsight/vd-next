@@ -219,7 +219,8 @@ export default function EditBlog() {
 <div className="bg-white rounded-xl overflow-hidden">
 
   <Editor
-    tinymceScriptSrc="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js"
+    tinymceScriptSrc="/tinymce/tinymce.min.js"
+    licenseKey="gpl"
 
     value={form.content}
 
