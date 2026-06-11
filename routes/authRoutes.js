@@ -54,12 +54,17 @@ router.get("/public-key", async (req, res) => {
 // 🔑 REGISTER
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password, adminCode } = req.body;
+    const { firstName, lastName, companyName, name, email, password, adminCode } = req.body;
 
-const normalizedEmail = email.toLowerCase().trim();
+    const normalizedEmail = email.toLowerCase().trim();
 
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: "All fields are required" });
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password are required" });
+    }
+
+    const nameVal = name || `${firstName || ""} ${lastName || ""}`.trim();
+    if (!nameVal) {
+      return res.status(400).json({ message: "Name is required" });
     }
 
     const existingUser = await User.findOne({ email: normalizedEmail });
@@ -72,7 +77,10 @@ const normalizedEmail = email.toLowerCase().trim();
     const role = "user";
 
     const user = await User.create({
-      name,
+      name: nameVal,
+      firstName: firstName || "",
+      lastName: lastName || "",
+      companyName: companyName || "",
       email: normalizedEmail,
       password: hashed,
       role,
@@ -83,6 +91,9 @@ const normalizedEmail = email.toLowerCase().trim();
       user: {
         id: user._id,
         name: user.name,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        companyName: user.companyName,
         email: user.email,
         role: user.role,
       },
