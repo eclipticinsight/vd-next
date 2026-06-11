@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { API_URL } from "@/utils/api";
 
 axios.defaults.withCredentials = true;
 
@@ -13,10 +14,7 @@ const [payments, setPayments] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
-  // Get API URL from environment variable or fallback to local backend
-  const API_URL =
-    process.env.NEXT_PUBLIC_API_URL ||
-    "http://localhost:5000/api";
+
 
   const fetchDashboardData = async () => {
     try {

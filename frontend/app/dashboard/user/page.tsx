@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, ChangeEvent } from "react";
 import { CONTACT_INFO } from "@/utils/constants";
 import axios from "axios";
+import { API_URL } from "@/utils/api";
 import {
   Phone,
   CheckCircle,
@@ -22,7 +23,7 @@ const UserPanel = () => {
   const [payments, setPayments] = useState<any[]>([]);
   const [profileLoading, setProfileLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+  const API = API_URL;
 
   const [editForm, setEditForm] = useState({
     firstName: "",

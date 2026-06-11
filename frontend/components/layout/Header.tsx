@@ -32,13 +32,17 @@ const Header = () => {
   useEffect(() => {
 
     const updateCartCount = () => {
+      try {
+        const cart =
+          JSON.parse(
+            localStorage.getItem("cart") || "[]"
+          );
 
-      const cart =
-        JSON.parse(
-          localStorage.getItem("cart") || "[]"
-        );
-
-      setCartCount(cart.length);
+        setCartCount(cart.length);
+      } catch (err) {
+        console.error("Error updating cart count:", err);
+        setCartCount(0);
+      }
     };
 
     updateCartCount();

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import toast from "react-hot-toast";
 
 import { DEVELOPMENT_PRICING_CMS_PLANS, DEVELOPMENT_PRICING_CODING_PLANS } from '@/utils/constants';
+import { API_URL } from '@/utils/api';
 
 type PricingType = 'cms' | 'coding';
 
@@ -116,7 +117,7 @@ const PricingPage = () => {
   try {
 
     const res = await fetch(
-      "http://localhost:5000/api/payment/create-checkout-session",
+      `${API_URL}/payment/create-checkout-session`,
       {
         method: "POST",
 

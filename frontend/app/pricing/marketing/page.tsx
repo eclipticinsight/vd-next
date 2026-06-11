@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import toast from "react-hot-toast";
  
 import { MARKETING_PRICING_SEO_PLANS, MARKETING_PRICING_SMO_PLANS } from '@/utils/constants';
+import { API_URL } from '@/utils/api';
 
 type PricingType = 'seo' | 'smo';
 
@@ -104,7 +105,7 @@ const PricingPage = () => {
   try {
 
     const res = await fetch(
-      "http://localhost:5000/api/payment/create-checkout-session",
+      `${API_URL}/payment/create-checkout-session`,
       {
         method: "POST",
 

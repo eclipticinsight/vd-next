@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import BlogCardImage from "@/components/ui/BlogCardImage";
+import { API_URL } from "@/utils/api";
 import { 
   Search, 
   Plus, 
@@ -51,7 +52,6 @@ export default function BlogContent() {
   const [user, setUser] = useState<User | null>(null);
   
   const router = useRouter();
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
   const searchParams = useSearchParams();
   const category = searchParams.get("category");
 

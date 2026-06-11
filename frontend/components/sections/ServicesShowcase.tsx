@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
+import { API_URL } from "@/utils/api";
 import {
   Users,
   Headphones,
@@ -93,8 +94,7 @@ const ServicesShowcase: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-      const res = await fetch(`${API_URL}/api/form`, {
+      const res = await fetch(`${API_URL}/form`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

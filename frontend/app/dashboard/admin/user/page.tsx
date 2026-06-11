@@ -17,7 +17,6 @@ export default function AdminUsers() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
   useEffect(() => {
     fetchUsers();

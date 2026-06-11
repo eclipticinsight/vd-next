@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
  
 import { ACCOUNTING_PRICING_SECTIONS } from "@/utils/constants";
+import { API_URL } from "@/utils/api";
 
 type Plan = {
   name: string;
@@ -35,7 +36,7 @@ const startPayment = async (plan: Plan) => {
   try {
 
     const response = await fetch(
-      "http://localhost:5000/api/payment/create-checkout-session",
+      `${API_URL}/payment/create-checkout-session`,
       {
         method: "POST",
 

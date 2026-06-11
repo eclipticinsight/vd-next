@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import BlogCardImage from "@/components/ui/BlogCardImage";
+import { API_URL } from "@/utils/api";
 
 
 // Define the Blog type
@@ -35,7 +36,6 @@ export default function BlogDetails() {
   const params = useParams();
   const router = useRouter();
   const slug = params.id as string;
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
   const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);

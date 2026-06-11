@@ -1,8 +1,16 @@
-const BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "http://localhost:5000/api";
+const getApiUrl = () => {
+  if (typeof window !== "undefined") {
+    if (window.location.hostname === "localhost") {
+      return "http://localhost:5000/api";
+    }
+    return "/api";
+  }
+  return process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+};
 
-  export const API_URL = BASE_URL;
+const BASE_URL = getApiUrl();
+
+export const API_URL = BASE_URL;
 
 
 export const API = {

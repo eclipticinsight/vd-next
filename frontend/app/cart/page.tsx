@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Trash2, ShoppingBag, CreditCard, User, ArrowLeft, Shield, Truck, Clock } from "lucide-react";
+import { API_URL } from "@/utils/api";
 
 // Types
 interface CartItem {
@@ -36,7 +37,7 @@ const startPayment = async (
     );
 
   const res = await fetch(
-    "http://localhost:5000/api/payment/create-checkout-session",
+    `${API_URL}/payment/create-checkout-session`,
     {
       method: "POST",
 
