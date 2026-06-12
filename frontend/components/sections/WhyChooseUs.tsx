@@ -157,11 +157,11 @@ export default function WhyChooseUs() {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!sectionRef.current) return;
-      
+
       const rect = sectionRef.current.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
       const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
-      
+
       setMousePosition({ x, y });
     };
 
@@ -189,7 +189,7 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative w-full min-h-screen py-16 md:py-28 overflow-hidden bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100"
     >
@@ -199,12 +199,12 @@ export default function WhyChooseUs() {
       <div className="absolute inset-0 z-0">
         {/* Subtle radial gradient for depth - fully transparent feel */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(56,189,248,0.03)_0%,_transparent_70%)]" />
-        
+
         {/* Soft atmospheric wisps - transparent and ethereal */}
         <div className="absolute top-[5%] left-[0%] w-[300px] h-[300px] bg-gradient-to-r from-sky-200/10 to-cyan-200/5 rounded-full blur-3xl" />
         <div className="absolute bottom-[10%] right-[5%] w-[350px] h-[350px] bg-gradient-to-l from-indigo-200/10 to-transparent rounded-full blur-3xl" />
         <div className="absolute top-[40%] right-[20%] w-[250px] h-[250px] bg-violet-200/5 rounded-full blur-2xl" />
-        
+
         {/* Ultra-fine grid pattern - barely visible */}
         <div
           className="absolute inset-0 opacity-[0.02]"

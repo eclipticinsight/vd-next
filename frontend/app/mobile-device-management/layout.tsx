@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mobile Device Management | Visionary Dynamics",
+  title: "Mobile Device Management",
   description:
     "Visionary Dynamics provides reliable mobile device management solutions to ensure secure access, compliance, and productivity.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/mobile-device-management" },

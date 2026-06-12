@@ -6,6 +6,8 @@ import QuickBooksAnnouncement from "../components/sections/QuickBooksAnnouncemen
 import WhyChooseUs from "../components/sections/WhyChooseUs";
 import Testimonials from "../components/sections/Testimonials";
 import SlideUp from "../components/ui/SlideUp";
+import AboutUsSection from "../components/sections/AboutUsSection";
+import StatsSection from "../components/sections/StatsSection";
 
 import dynamic from "next/dynamic";
 
@@ -32,6 +34,13 @@ export default function Home() {
       <SlideUp delay={0}>
         <ServicesShowcase />
       </SlideUp>
+
+      {/* <SlideUp delay={0.1}>
+        <StatsSection />
+      </SlideUp> */}
+
+      {/* Premium Stacking Cards Section */}
+      {/* <AboutUsSection /> */}
 
       <SlideUp delay={0.1}>
         <WhyChooseUs />

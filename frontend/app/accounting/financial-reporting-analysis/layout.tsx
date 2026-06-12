@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Business Financial Reporting| Visionary Dynamics",
+  title: "Business Financial Reporting",
   description:
     "Visionary Dynamics provides expert financial reporting solutions that enable accurate analysis, risk management, and informed business decisions.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/accounting/financial-reporting-analysis" },

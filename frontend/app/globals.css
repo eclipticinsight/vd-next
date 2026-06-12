@@ -26,16 +26,25 @@ body {
 }
 
 html,
-body{
-  margin:0;
-  padding:0;
-  overflow-x:hidden;
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 html,
-body{
-  margin:0;
-  padding:0;
-  width:100%;
-  overflow-x:hidden;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }

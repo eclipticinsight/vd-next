@@ -59,8 +59,8 @@ export default function ServicesOverview() {
           route: "/accounting/payroll",
         },
         {
-          title: "Auditing",
-          route: "/accounting/auditing",
+          title: "Software setup & migration",
+          route: "/accounting/software-setup-migration",
         },
         {
           title: "Financial Reporting & Analysis",
@@ -140,11 +140,11 @@ export default function ServicesOverview() {
         },
         {
           title: "Microsoft Azure",
-          route: "/it-asset-management/microsoft-azure",
+          route: "/ms365-management",
         },
         {
           title: "Microsoft Intune",
-          route: "/it-asset-management/microsoft-intune",
+          route: "/ms365-management",
         },
         {
           title: "Mobile Device Management",

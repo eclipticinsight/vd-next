@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Web Design & Development Services | Visionary Dynamics",
+  title: "Web Design & Development Services",
   description:
     "Expert website design and development services by Visionary Dynamics to deliver engaging, responsive, and result‑driven websites.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/webdesign-development" },

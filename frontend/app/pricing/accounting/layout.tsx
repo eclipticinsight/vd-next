@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     "Visionary Dynamics offers flexible accounting pricing plans to help businesses manage finances efficiently and cost‑effectively.",
   alternates: { canonical: "https://www.visionarydynamicsas.com/pricing/accounting" },
   openGraph: {
-    title: "Accounting Pricing | Visionary Dynamics",
+    title: "Accounting Pricing Plans | Visionary Dynamics",
     description:
       "Visionary Dynamics offers flexible accounting pricing plans to help businesses manage finances efficiently and cost‑effectively.",
     url: "https://www.visionarydynamicsas.com/pricing/accounting",
