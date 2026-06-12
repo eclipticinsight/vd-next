@@ -272,9 +272,9 @@ export default function LoginPage() {
 
           <div className="relative w-80 h-80 mx-auto mb-6">
             <img
-              src="https://cdn3d.iconscout.com/3d/premium/thumb/man-working-on-laptop-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--office-employee-work-from-home-pack-people-illustrations-4337853.png"
+              src="/images/login-illustration.png"
               alt="Illustration"
-              className="w-full h-auto"
+              className="w-full h-auto rounded-2xl shadow-lg"
             />
           </div>
 

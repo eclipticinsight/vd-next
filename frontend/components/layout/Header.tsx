@@ -138,7 +138,7 @@ const Header = () => {
               className="relative px-4 py-2 rounded-full bg-[#F5F5F0] text-slate-900 hover:bg-[#e5e5e0] transition-colors"
             >
               Cart 🛒
-              {cartCount > 0 && (
+              {cartCount > 0 && pathname !== "/cart" && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 rounded-full">
                   {cartCount}
                 </span>
