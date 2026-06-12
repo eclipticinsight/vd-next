@@ -1,5 +1,5 @@
 "use client";
- 
+
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -28,11 +28,11 @@ import {
   Globe,
   Clock,
 } from "lucide-react";
- 
+
 // ==================== WAVE TRANSITION COMPONENT ====================
 export const WaveTransition = ({ direction = "bottom" }: { direction?: "top" | "bottom" }) => {
   const isTop = direction === "top";
- 
+
   return (
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
@@ -47,7 +47,7 @@ export const WaveTransition = ({ direction = "bottom" }: { direction?: "top" | "
     </div>
   );
 };
- 
+
 // ==================== MAIN ABOUT US PAGE ====================
 const AboutUs = () => {
   // Animation variants for staggered children
@@ -61,7 +61,7 @@ const AboutUs = () => {
       },
     },
   };
- 
+
   const itemVariants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
@@ -70,12 +70,12 @@ const AboutUs = () => {
       transition: { duration: 0.6, ease: "easeOut" },
     },
   };
- 
+
   const fadeInUp = {
     hidden: { y: 40, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.7, ease: "easeOut" } },
   };
- 
+
   return (
     <div className="w-full overflow-x-hidden">
       {/* ==================== SECTION 1: HERO WITH BACKGROUND & OVERLAY ==================== */}
@@ -83,20 +83,20 @@ const AboutUs = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-  src="https://img.freepik.com/free-photo/team-business-people-stacking-hands_53876-119699.jpg?t=st=1769699940~exp=1769703540~hmac=9ff0bb0bf2f79e0f2f8e241e3afa199442796fa9e9c3298961423ca5d95127e5"
-  alt="Business team stacking hands"
-  fill
-  className="object-cover"
-  priority
-/>
+            src="https://img.freepik.com/free-photo/team-business-people-stacking-hands_53876-119699.jpg?t=st=1769699940~exp=1769703540~hmac=9ff0bb0bf2f79e0f2f8e241e3afa199442796fa9e9c3298961423ca5d95127e5"
+            alt="Business team stacking hands"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
- 
+
         {/* Cinematic overlay with gradient */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(2,6,23,0.45)_0%,rgba(2,6,23,0.75)_50%,rgba(2,6,23,0.95)_80%)]" />
- 
+
         {/* Top + Bottom fade */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/70 via-transparent to-[#020617]/90" />
- 
+
         {/* Content Container */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -120,13 +120,13 @@ const AboutUs = () => {
             <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-blue-400 to-sky-300 rounded-full" />
           </div>
         </motion.div>
- 
+
         {/* Bottom Wave */}
         <div className="absolute bottom-0 left-0 w-full z-20">
           <WaveTransition direction="bottom" />
         </div>
       </section>
- 
+
       {/* ==================== SECTION 2: ABOUT VISIONARY DYNAMICS ==================== */}
       <section className="relative w-full py-16 sm:py-20 md:py-24 lg:py-28 px-5 sm:px-6 md:px-8 bg-blue-100">
         {/* Decorative floating elements - optimized for performance with FIXED values */}
@@ -135,7 +135,7 @@ const AboutUs = () => {
           <div className="absolute top-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-blue-400/10 to-transparent rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-0 w-56 h-56 sm:w-80 sm:h-80 bg-gradient-to-l from-sky-400/10 to-transparent rounded-full blur-3xl" />
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] bg-blue-300/5 rounded-full blur-3xl" />
- 
+
           {/* Floating particles - subtle with FIXED positions (NO Math.random()) */}
           {[
             { left: "5%", top: "15%", duration: 2.5, delay: 0.2 },
@@ -163,7 +163,7 @@ const AboutUs = () => {
             />
           ))}
         </div>
- 
+
         {/* Content Container */}
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-20 items-center">
@@ -191,7 +191,7 @@ const AboutUs = () => {
                 <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-16 h-16 sm:w-24 sm:h-24 bg-sky-300/15 rounded-full blur-xl" />
               </div>
             </motion.div>
- 
+
             {/* Content */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
@@ -212,7 +212,7 @@ const AboutUs = () => {
                   </span>
                 </h2>
               </div>
- 
+
               <div className="space-y-4 sm:space-y-5 text-slate-700">
                 <p className="text-base sm:text-lg leading-relaxed">
                   A group of seasoned professionals with more than six years of experience lead{" "}
@@ -220,7 +220,7 @@ const AboutUs = () => {
                   We are committed to providing our clients with specialized, superior solutions that enable them to reach their objectives.
                   “Visionary Dynamics is a wholly integrated division operating under the strategic direction of Ecliptic Insight Ventures.”
                 </p>
- 
+
                 <p className="text-base sm:text-lg leading-relaxed">
                   We serve both individuals and companies with our expertise in IT asset management and customized financial services.{" "}
                   <span className="font-semibold text-black-1100">
@@ -228,7 +228,7 @@ const AboutUs = () => {
                   </span>{" "}
                   and more are just a few of the many services we provide.
                 </p>
- 
+
                 <p className="text-base sm:text-lg leading-relaxed">
                   At Visionary Dynamics, we use strategic insights and creative solutions to enable clients to maximize resources and make wise decisions. Above all, we ensure the{" "}
                   <span className="font-semibold text-black-1100">security of all client information</span>{" "}
@@ -239,14 +239,14 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
- 
+
       {/* ==================== SECTION 3: CEO MESSAGE ==================== */}
       <section className="relative py-16 sm:py-20 md:py-24 lg:py-28 px-5 sm:px-6 md:px-8 bg-gray-900 overflow-hidden">
         {/* Top Wave */}
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />
         </div>
- 
+
         {/* Background Image */}
         <div aria-hidden="true" className="absolute inset-0">
           <Image
@@ -256,10 +256,10 @@ const AboutUs = () => {
             className="object-cover"
           />
         </div>
- 
+
         {/* Dark Overlay */}
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-black/80 via-slate-900/85 to-black/80" />
- 
+
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 xl:gap-16 items-center">
             {/* CEO Image */}
@@ -293,7 +293,7 @@ const AboutUs = () => {
                 </div>
               </div>
             </motion.div>
- 
+
             {/* Message Card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -312,29 +312,29 @@ const AboutUs = () => {
                     A vision for tomorrow, built on today's commitment
                   </p>
                 </div>
- 
+
                 <div className="space-y-3 sm:space-y-4">
                   <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
                     <span className="font-semibold text-black-1100">Welcome to Visionary Dynamics.</span>{" "}
                     It is my privilege to connect with you and share the vision that drives our organization forward. We are committed to delivering exceptional solutions that empower businesses, individuals, and communities to thrive in a rapidly evolving world.
                   </p>
- 
+
                   <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
                     Our journey is built on a foundation of{" "}
                     <span className="font-semibold text-black-1100">trust, innovation, and unwavering dedication to excellence</span>. We believe in creating value through meaningful partnerships and staying at the forefront of industry trends.
                   </p>
- 
+
                   <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
                     As we continue to grow, our focus remains steadfast:{" "}
                     <span className="font-semibold text-black-1100">to provide services and solutions that make a real difference</span>. Whether you're here to explore opportunities or seek guidance, we are here to support you every step of the way.
                   </p>
- 
+
                   <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
                     <p className="text-gray-800 text-sm sm:text-base md:text-lg font-semibold text-center lg:text-left italic bg-gradient-to-r from-blue-50 to-indigo-50 py-3 px-4 sm:px-5 rounded-xl border-l-4 border-blue-500">
                       "Thank you for being a part of our story. Together, we can build a brighter, more successful future."
                     </p>
                   </div>
- 
+
                   <div className="flex justify-center lg:justify-end mt-4 sm:mt-6">
                     <div className="flex items-center gap-3">
                       <div className="flex flex-col items-end">
@@ -351,13 +351,13 @@ const AboutUs = () => {
             </motion.div>
           </div>
         </div>
- 
+
         {/* Bottom Wave */}
         <div className="absolute bottom-0 left-0 w-full z-10">
           <WaveTransition direction="bottom" />
         </div>
       </section>
- 
+
       {/* ==================== SECTION 4: CORE VALUES ==================== */}
       <section className="w-full py-16 sm:py-20 md:py-24 bg-blue-100">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-8">
@@ -374,7 +374,7 @@ const AboutUs = () => {
               The principles that guide everything we do
             </p>
           </motion.div>
- 
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               { title: "Innovation", desc: "Constantly pushing boundaries to deliver cutting-edge solutions.", icon: "💡" },
@@ -400,29 +400,29 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
- 
+
       {/* ==================== SECTION 5: MISSION & VISION SECTION ==================== */}
       <MissionVisionSection />
- 
+
       {/* ==================== SECTION 6: OUR JOURNEY TIMELINE ==================== */}
       <JourneySection />
     </div>
   );
 };
- 
+
 // ==================== MISSION & VISION SECTION COMPONENT ====================
 const MissionVisionSection = () => {
   const [activeTab, setActiveTab] = useState<"mission" | "vision">("mission");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
- 
+
   const images = [
     "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2074&q=80",
     "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2070&q=80",
     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2070&q=80",
   ];
- 
+
   useEffect(() => {
     if (!isPlaying) return;
     const interval = setInterval(() => {
@@ -430,9 +430,9 @@ const MissionVisionSection = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, [isPlaying, images.length]);
- 
+
   const currentData = activeTab === "mission" ? ABOUT_PAGE_MISSION_DATA : ABOUT_PAGE_VISION_DATA;
- 
+
   // FIXED: Static particles data (NO Math.random())
   const floatingParticles = [
     { left: "10%", top: "20%", duration: 5, xOffset: 0 },
@@ -448,7 +448,7 @@ const MissionVisionSection = () => {
     { left: "80%", top: "65%", duration: 4.5, xOffset: 10 },
     { left: "95%", top: "35%", duration: 6.8, xOffset: 11 },
   ];
- 
+
   return (
     <div ref={sectionRef} className="relative w-full">
       {/* Hero Section for Mission/Vision */}
@@ -464,7 +464,7 @@ const MissionVisionSection = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-sky-200/40 via-blue-100/30 to-cyan-200/40" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.85)_0%,rgba(219,234,254,0.7)_45%,rgba(191,219,254,0.9)_80%)]" />
         </div>
-       
+
         <div className="relative w-full px-10 sm:px-14 lg:px-24 pt-0 pb-16 h-full flex items-center text-center">
           <div className="w-full">
             <h1 className="text-6xl md:text-8xl font-black mb-8">
@@ -498,9 +498,8 @@ const MissionVisionSection = () => {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab as "mission" | "vision")}
-                    className={`relative px-12 py-4 rounded-xl font-bold text-lg transition-all duration-300 z-10 ${
-                      activeTab === tab ? "text-slate-900" : "text-slate-700 hover:text-slate-900"
-                    }`}
+                    className={`relative px-12 py-4 rounded-xl font-bold text-lg transition-all duration-300 z-10 ${activeTab === tab ? "text-slate-900" : "text-slate-700 hover:text-slate-900"
+                      }`}
                   >
                     <span>{tab === "mission" ? "Our Mission" : "Our Vision"}</span>
                   </button>
@@ -510,7 +509,7 @@ const MissionVisionSection = () => {
           </div>
         </div>
       </section>
- 
+
       {/* Main Content */}
       <section className="relative w-full pt-0 pb-32 overflow-hidden bg-gradient-to-br from-blue-50 via-sky-100 to-blue-200">
         {/* Floating decorative elements - FIXED with static values (NO Math.random()) */}
@@ -537,7 +536,7 @@ const MissionVisionSection = () => {
             </motion.div>
           ))}
         </div>
- 
+
         <div className="relative w-full px-6 sm:px-10 lg:px-24 xl:px-32">
           <AnimatePresence mode="wait">
             <motion.div
@@ -586,7 +585,7 @@ const MissionVisionSection = () => {
                   ))}
                 </div>
               </div>
- 
+
               <motion.div
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -638,7 +637,7 @@ const MissionVisionSection = () => {
               </motion.div>
             </motion.div>
           </AnimatePresence>
- 
+
           <motion.h4
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -649,7 +648,7 @@ const MissionVisionSection = () => {
               Core Pillars
             </span>
           </motion.h4>
- 
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {currentData.pillars.map((pillar, idx) => (
               <motion.div
@@ -675,24 +674,24 @@ const MissionVisionSection = () => {
     </div>
   );
 };
- 
+
 // ==================== JOURNEY TIMELINE SECTION ====================
 const JourneySection = () => {
 
- 
+
   return (
     <section
       className="relative w-full pt-16 pb-32 overflow-hidden bg-cover bg-center"
       style={{
-  backgroundImage:
-    "url('https://static.vecteezy.com/system/resources/previews/056/546/949/non_2x/success-roadmap-journey-milestone-or-career-path-achievement-route-or-pathway-to-achieve-goals-accomplishment-assessment-or-way-to-success-businessman-look-at-achievement-milestone-to-success-vector.jpg')",
-}}
+        backgroundImage:
+          "url('https://static.vecteezy.com/system/resources/previews/056/546/949/non_2x/success-roadmap-journey-milestone-or-career-path-achievement-route-or-pathway-to-achieve-goals-accomplishment-assessment-or-way-to-success-businessman-look-at-achievement-milestone-to-success-vector.jpg')",
+      }}
     >
       <div className="absolute top-0 left-0 w-full -mt-1 z-10">
         <WaveTransition direction="top" />
       </div>
       <div className="absolute inset-0 bg-slate-900/85" />
-     
+
       <div className="relative w-full px-6 sm:px-10 lg:px-24 xl:px-32 z-10">
         <motion.h4
           initial={{ opacity: 0, y: 20 }}
@@ -704,11 +703,11 @@ const JourneySection = () => {
             Our Journey
           </span>
         </motion.h4>
- 
+
         <div className="relative max-w-6xl mx-auto">
           {/* Center Line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-500 transform -translate-x-1/2 hidden md:block" />
-         
+
           <div className="space-y-8 md:space-y-12">
             {ABOUT_PAGE_JOURNEY_DATA.map((item, index) => (
               <motion.div
@@ -717,9 +716,8 @@ const JourneySection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className={`relative flex flex-col md:flex-row items-center ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                } gap-6 md:gap-12`}
+                className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  } gap-6 md:gap-12`}
               >
                 {/* Timeline Node */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex z-20">
@@ -731,7 +729,7 @@ const JourneySection = () => {
                     className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 border-4 border-white/20 shadow-lg"
                   />
                 </div>
- 
+
                 {/* Content Box */}
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                   <motion.div
@@ -743,10 +741,10 @@ const JourneySection = () => {
                     <div className="text-white/80 text-sm leading-relaxed">{item.desc}</div>
                   </motion.div>
                 </div>
- 
+
                 {/* Empty spacer for layout */}
                 <div className="hidden md:block w-5/12" />
-               
+
                 {/* Mobile Timeline Indicator */}
                 <div className="md:hidden flex items-center gap-3 w-full">
                   <div className="w-4 h-4 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500" />
@@ -756,18 +754,14 @@ const JourneySection = () => {
             ))}
           </div>
         </div>
- 
+
         {/* Journey Stats Summary */}
-       
+
       </div>
- 
-      {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 w-full z-10">
-        <WaveTransition direction="bottom" />
-      </div>
+
+
     </section>
   );
 };
- 
+
 export default AboutUs;
- 
