@@ -642,50 +642,50 @@ export const WEBDESIGN_SERVICES = [
 ];
 
 export const WEBDESIGN_STEPS = [
-  { 
-    title: "Planning", 
+  {
+    title: "Planning",
     icon: "📋",
     gradient: "from-blue-500 to-cyan-500",
     desc: "Strategic planning and goal setting",
     color: "blue"
   },
-  { 
-    title: "Design", 
+  {
+    title: "Design",
     icon: "🎨",
     gradient: "from-purple-500 to-pink-500",
     desc: "User-centered visual design",
     color: "purple"
   },
-  { 
-    title: "Content Creation", 
+  {
+    title: "Content Creation",
     icon: "✍️",
     gradient: "from-orange-500 to-red-500",
     desc: "Compelling copy and visuals",
     color: "orange"
   },
-  { 
-    title: "Development", 
+  {
+    title: "Development",
     icon: "💻",
     gradient: "from-green-500 to-emerald-500",
     desc: "Clean, scalable code",
     color: "green"
   },
-  { 
-    title: "Testing", 
+  {
+    title: "Testing",
     icon: "🧪",
     gradient: "from-indigo-500 to-blue-500",
     desc: "Comprehensive QA",
     color: "indigo"
   },
-  { 
-    title: "Launch", 
+  {
+    title: "Launch",
     icon: "🚀",
     gradient: "from-yellow-500 to-amber-500",
     desc: "Seamless deployment",
     color: "yellow"
   },
-  { 
-    title: "Maintenance", 
+  {
+    title: "Maintenance",
     icon: "⚙️",
     gradient: "from-teal-500 to-cyan-500",
     desc: "Ongoing support",
@@ -694,36 +694,36 @@ export const WEBDESIGN_STEPS = [
 ];
 
 export const WEBDESIGN_REASONS = [
-  { 
-    icon: Award, 
-    title: "Award‑Winning Team", 
+  {
+    icon: Award,
+    title: "Award‑Winning Team",
     desc: "Our designers and developers have been recognized for excellence.",
     stats: "15+ Industry Awards",
     gradient: "from-amber-500 to-orange-500",
     bgPattern: "🏆",
     bgImage: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
-  { 
-    icon: Clock, 
-    title: "On‑Time Delivery", 
+  {
+    icon: Clock,
+    title: "On‑Time Delivery",
     desc: "We respect your timeline and always deliver as promised.",
     stats: "98% On-Time Rate",
     gradient: "from-blue-500 to-cyan-500",
     bgPattern: "⏰",
     bgImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
-  { 
-    icon: Users, 
-    title: "Client‑Centric Approach", 
+  {
+    icon: Users,
+    title: "Client‑Centric Approach",
     desc: "You're a partner, not just a ticket. We communicate every step.",
     stats: "200+ Happy Clients",
     gradient: "from-purple-500 to-pink-500",
     bgPattern: "🤝",
     bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
-  { 
-    icon: Zap, 
-    title: "Cutting‑Edge Tech", 
+  {
+    icon: Zap,
+    title: "Cutting‑Edge Tech",
     desc: "We use the latest tools to build fast, secure, and future‑proof websites.",
     stats: "10+ Modern Technologies",
     gradient: "from-green-500 to-emerald-500",
@@ -744,50 +744,50 @@ export const WEBDESIGN_TECHS = [
 ];
 
 export const WEBDESIGN_FAQS = [
-  { 
-    q: "How long does it take to build a website?", 
+  {
+    q: "How long does it take to build a website?",
     a: "Typical timelines range from 4–8 weeks for a custom website, depending on complexity. We'll give you a detailed estimate after our discovery call. Simple brochure sites can be ready in 3-4 weeks, while complex e-commerce platforms may take 8-12 weeks.",
     category: "timeline",
     popular: true
   },
-  { 
-    q: "Do you offer ongoing maintenance?", 
+  {
+    q: "Do you offer ongoing maintenance?",
     a: "Absolutely! We have flexible support packages to keep your site updated, secure, and performing at its best. Options range from basic security updates to comprehensive maintenance including content updates, performance optimization, and monthly backups.",
     category: "support",
     popular: true
   },
-  { 
-    q: "Will my website be mobile-friendly?", 
+  {
+    q: "Will my website be mobile-friendly?",
     a: "Yes, every site we build is fully responsive and tested on all major devices and browsers. We follow a 'mobile-first' approach, ensuring your site looks and functions perfectly on smartphones, tablets, and desktops.",
     category: "technical",
     popular: false
   },
-  { 
-    q: "What information do you need to start?", 
+  {
+    q: "What information do you need to start?",
     a: "We'll guide you through the process. Initially, we need your brand guidelines (logos, colors, fonts), content ideas, goals for the website, and any examples of sites you like. Don't worry if you don't have everything—we can help develop it together.",
     category: "process",
     popular: true
   },
-  { 
-    q: "How much does a website cost?", 
+  {
+    q: "How much does a website cost?",
     a: "Every project is unique, so costs vary based on complexity, features, and timeline. Basic websites start around $3,000-$5,000, while more complex projects with custom functionality range from $10,000-$50,000+. We provide transparent pricing with detailed quotes.",
     category: "pricing",
     popular: false
   },
-  { 
-    q: "Do you provide SEO services?", 
+  {
+    q: "Do you provide SEO services?",
     a: "Yes, we build websites with SEO best practices from the ground up—clean code, fast loading, proper structure. We also offer ongoing SEO packages to help improve your search rankings and drive organic traffic.",
     category: "marketing",
     popular: false
   },
-  { 
-    q: "What platforms do you build on?", 
+  {
+    q: "What platforms do you build on?",
     a: "We're platform-agnostic and choose the best technology for your needs. Options include custom React/Vue sites, WordPress for content-heavy sites, Shopify for e-commerce, or Webflow for designer-friendly builds.",
     category: "technical",
     popular: true
   },
-  { 
-    q: "Will I be able to update the site myself?", 
+  {
+    q: "Will I be able to update the site myself?",
     a: "Absolutely! We build with user-friendly content management systems and provide training. Whether it's WordPress, Sanity, or a custom CMS, you'll have control to update text, images, and blog posts without touching code.",
     category: "support",
     popular: false
@@ -944,60 +944,60 @@ export const SEO_FAQS = [
 
 /* ================= RPO PAGE ================= */
 export const RPO_SERVICES = [
-  { 
-    icon: Search, 
-    title: 'Sourcing & Screening', 
-    desc: 'AI-powered candidate matching and thorough vetting process', 
+  {
+    icon: Search,
+    title: 'Sourcing & Screening',
+    desc: 'AI-powered candidate matching and thorough vetting process',
     longDesc: 'Leverage advanced AI algorithms to find and screen the best candidates quickly and efficiently.',
     color: 'from-blue-500 to-cyan-500',
     iconBg: 'bg-blue-100',
     stats: '95% match rate',
     delay: 0
   },
-  { 
-    icon: FileText, 
-    title: 'Talent Pipeline Management', 
-    desc: 'Build and nurture a robust talent pool for future needs', 
+  {
+    icon: FileText,
+    title: 'Talent Pipeline Management',
+    desc: 'Build and nurture a robust talent pool for future needs',
     longDesc: 'Create and maintain a sustainable pipeline of qualified candidates for upcoming positions.',
     color: 'from-indigo-500 to-purple-500',
     iconBg: 'bg-indigo-100',
     stats: '50k+ candidates',
     delay: 1
   },
-  { 
-    icon: BarChart3, 
-    title: 'Analytics & Reporting', 
-    desc: 'Data-driven insights to optimize recruitment strategies', 
+  {
+    icon: BarChart3,
+    title: 'Analytics & Reporting',
+    desc: 'Data-driven insights to optimize recruitment strategies',
     longDesc: 'Real-time analytics and customizable reports to track and improve your hiring metrics.',
     color: 'from-green-500 to-teal-500',
     iconBg: 'bg-green-100',
     stats: 'Real-time metrics',
     delay: 2
   },
-  { 
-    icon: MessageSquare, 
-    title: 'Candidate Experience', 
-    desc: 'Seamless communication and engagement throughout', 
+  {
+    icon: MessageSquare,
+    title: 'Candidate Experience',
+    desc: 'Seamless communication and engagement throughout',
     longDesc: 'Exceptional candidate journey with personalized communication and feedback at every stage.',
     color: 'from-orange-500 to-red-500',
     iconBg: 'bg-orange-100',
     stats: '98% satisfaction',
     delay: 3
   },
-  { 
-    icon: Calendar, 
-    title: 'Onboarding Support', 
-    desc: 'Smooth transition from offer acceptance to day one', 
+  {
+    icon: Calendar,
+    title: 'Onboarding Support',
+    desc: 'Smooth transition from offer acceptance to day one',
     longDesc: 'Comprehensive onboarding programs to ensure new hires integrate seamlessly into your team.',
     color: 'from-pink-500 to-rose-500',
     iconBg: 'bg-pink-100',
     stats: '48hr turnaround',
     delay: 4
   },
-  { 
-    icon: Building2, 
-    title: 'Employer Branding', 
-    desc: 'Enhance your company image to attract top talent', 
+  {
+    icon: Building2,
+    title: 'Employer Branding',
+    desc: 'Enhance your company image to attract top talent',
     longDesc: 'Strategic employer branding solutions to position your company as an employer of choice.',
     color: 'from-purple-500 to-indigo-500',
     iconBg: 'bg-purple-100',
@@ -1596,7 +1596,7 @@ export const MS365_WHY_OUTSOURCE = [
   { text: "Allows you to focus on core business functions", icon: Target, color: "purple" },
   { text: "Fresh perspectives and innovative approaches", icon: RefreshCw, color: "indigo" },
   { text: "Leverage the latest software and technology", icon: Zap, color: "cyan" },
-  { text: "Tailored services for your objectives", icon: Settings, color: "pink" },
+
 ];
 
 export const MS365_KEY_COMPONENTS = [
@@ -1669,19 +1669,19 @@ export const MOBILE_BENEFITS = [
 
 export const MOBILE_STEPS = [
   {
-    num:1,
-    title:"Define Objectives",
-    desc:"Identify business goals, security requirements and choose the right MDM platform."
+    num: 1,
+    title: "Define Objectives",
+    desc: "Identify business goals, security requirements and choose the right MDM platform."
   },
   {
-    num:2,
-    title:"Device Enrollment",
-    desc:"Enroll devices automatically or manually within the MDM platform."
+    num: 2,
+    title: "Device Enrollment",
+    desc: "Enroll devices automatically or manually within the MDM platform."
   },
   {
-    num:3,
-    title:"Policy Deployment",
-    desc:"Configure security rules and compliance policies."
+    num: 3,
+    title: "Policy Deployment",
+    desc: "Configure security rules and compliance policies."
   }
 ];
 

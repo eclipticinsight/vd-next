@@ -40,7 +40,7 @@ export default function Home() {
       </SlideUp> */}
 
       {/* Premium Stacking Cards Section */}
-      {/* <AboutUsSection /> */}
+      <AboutUsSection />
 
       <SlideUp delay={0.1}>
         <WhyChooseUs />
