@@ -188,17 +188,24 @@ router.get("/", async (req, res) => {
   try {
     const page = Number(req.query.page) || 1;
     const limit = 6;
+    const { category } = req.query;
 
-    const blogs = await Blog.find()
+    const filter = {};
+    if (category) {
+      filter.category = category;
+    }
+
+    const blogs = await Blog.find(filter)
       .sort({ createdAt: -1 })
       .skip((page - 1) * limit)
       .limit(limit);
 
-    const total = await Blog.countDocuments();
+    const total = await Blog.countDocuments(filter);
 
     res.json({
       blogs,
       totalPages: Math.ceil(total / limit),
+      total,
     });
 
   } catch (err) {

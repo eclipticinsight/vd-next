@@ -44,6 +44,7 @@ interface User {
 
 export default function BlogContent() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [totalBlogs, setTotalBlogs] = useState(0);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -84,6 +85,7 @@ export default function BlogContent() {
       const blogsData = data.blogs || [];
       setBlogs(blogsData);
       setTotalPages(data.totalPages || 1);
+      setTotalBlogs(data.total || 0);
       
       // Set first blog as featured if available and on first page
       if (page === 1 && blogsData.length > 0 && !featuredBlog && !category) {
@@ -173,7 +175,9 @@ export default function BlogContent() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-2 text-sm text-slate-500">
-                <span className="font-semibold text-slate-700">{filteredBlogs.length}</span>
+                <span className="font-semibold text-slate-700">
+                  {search ? filteredBlogs.length : totalBlogs}
+                </span>
                 <span>articles</span>
                 {search && <span className="text-[#3b82f6]">· filtered by "{search}"</span>}
               </div>
