@@ -1,54 +1,26 @@
-"use client";
+// Server Component — intentionally no "use client".
+// Next.js SSR-renders Hero + ServicesOverview as static HTML in the initial
+// HTTP response, so the h1/h2 text paints at FCP (~300ms) rather than after
+// React hydration (~2600ms). This is the primary LCP fix.
+//
+// All heavy Framer Motion sections are loaded lazily inside DynamicSections
+// (a Client Component), which is the correct pattern for ssr:false in App Router.
 
 import Hero from "../components/sections/Hero";
 import ServicesOverview from "../components/sections/ServicesOverview";
-import QuickBooksAnnouncement from "../components/sections/QuickBooksAnnouncement";
-import WhyChooseUs from "../components/sections/WhyChooseUs";
-import Testimonials from "../components/sections/Testimonials";
-import SlideUp from "../components/ui/SlideUp";
-import AboutUsSection from "../components/sections/AboutUsSection";
-import StatsSection from "../components/sections/StatsSection";
-
-import dynamic from "next/dynamic";
-
-const ServicesShowcase = dynamic(
-  () => import("../components/sections/ServicesShowcase"),
-  { ssr: false }
-);
+import DynamicSections from "../components/sections/DynamicSections";
 
 export default function Home() {
   return (
     <>
-      {/* Hero — no slide animation, it's the first visible section */}
+      {/* Hero — SSR-rendered, no animations, first visible section */}
       <Hero />
 
-      {/* Each section below slides up as it enters the viewport */}
-      <SlideUp delay={0}>
-        <ServicesOverview />
-      </SlideUp>
+      {/* ServicesOverview — SSR-rendered shell, client-hydrated interactions */}
+      <ServicesOverview />
 
-      <SlideUp delay={0.1}>
-        <QuickBooksAnnouncement />
-      </SlideUp>
-
-      <SlideUp delay={0}>
-        <ServicesShowcase />
-      </SlideUp>
-
-      {/* <SlideUp delay={0.1}>
-        <StatsSection />
-      </SlideUp> */}
-
-      {/* Premium Stacking Cards Section */}
-      <AboutUsSection />
-
-      <SlideUp delay={0.1}>
-        <WhyChooseUs />
-      </SlideUp>
-
-      <SlideUp delay={0.1}>
-        <Testimonials />
-      </SlideUp>
+      {/* All remaining sections lazy-loaded on the client (heavy Framer Motion) */}
+      <DynamicSections />
     </>
   );
 }

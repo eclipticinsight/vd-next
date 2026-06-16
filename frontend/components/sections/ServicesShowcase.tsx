@@ -11,13 +11,13 @@ import {
   Calculator,
   CheckCircle,
   ChevronRight,
-   Hand,
+  Hand,
 } from "lucide-react";
 
 
 export const WaveTransition = ({ direction = "bottom" }: { direction?: "top" | "bottom" }) => {
   const isTop = direction === "top";
-  
+
   return (
     <div className={`relative w-full overflow-hidden pointer-events-none ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
@@ -41,6 +41,28 @@ const crossfade = {
   transition: {
     duration: 0.6 as number,
     ease: "easeInOut" as const,
+  },
+};
+
+const timelineContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.35,
+    },
+  },
+};
+
+const timelineItemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
   },
 };
 
@@ -70,7 +92,7 @@ const ServicesShowcase: React.FC = () => {
   const [showContactForm, setShowContactForm] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -79,7 +101,7 @@ const ServicesShowcase: React.FC = () => {
     service: "",
     message: "",
   });
-  
+
   const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -136,7 +158,7 @@ const ServicesShowcase: React.FC = () => {
     {
       step: "01",
       title: "Accounting & Compliance Process",
-      route: "/contact", 
+      route: "/contact",
       category: "Finance Process",
       description:
         "A compliance-driven financial process that captures transactions, validates records, prepares reports, and ensures regulatory adherence with audit-ready documentation.",
@@ -224,16 +246,16 @@ const ServicesShowcase: React.FC = () => {
       <div className="absolute top-0 left-0 w-full -mt-1 z-10">
         <WaveTransition direction="top" />
       </div>
- 
+
       {/* ================= IMAGE BACKGROUND ================= */}
       <div
         className="absolute inset-0 pointer-events-none"
-style={{
-  backgroundImage: "url('/images/business-analytics.avif')",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-}}
+        style={{
+          backgroundImage: "url('/images/business-analytics.avif')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <div className="absolute inset-0 pointer-events-none bg-[#0a192f]/45" />
 
@@ -318,17 +340,15 @@ style={{
                         flex flex-col items-center justify-center
                         transition-all duration-300
                         border
-                        ${
-                          active === index
-                            ? "bg-white border-white shadow-[0_8px_25px_rgba(255,255,255,0.25)] scale-105"
-                            : "bg-white/5 border-white/10 hover:bg-white/10"
+                        ${active === index
+                          ? "bg-white border-white shadow-[0_8px_25px_rgba(255,255,255,0.25)] scale-105"
+                          : "bg-white/5 border-white/10 hover:bg-white/10"
                         }
                       `}
                     >
                       <process.icon
-                        className={`w-5 h-5 ${
-                          active === index ? "opacity-100" : "opacity-70"
-                        }`}
+                        className={`w-5 h-5 ${active === index ? "opacity-100" : "opacity-70"
+                          }`}
                         style={{ color: process.color }}
                       />
 
@@ -361,18 +381,23 @@ style={{
           {/* MAIN GRID */}
           <div className="block lg:grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
             {/* LEFT — Timeline */}
-            <div className="hidden sm:block space-y-4 sm:space-y-6 col-span-3">
+            <motion.div
+              variants={timelineContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, margin: "-100px" }}
+              className="hidden sm:block space-y-4 sm:space-y-6 col-span-3"
+            >
               {processes.map((process, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ opacity: active !== index ? 0.85 : 1 }}
-                  transition={{ duration: 0.2 }}
+                  variants={timelineItemVariants}
+                  whileHover={{ opacity: active !== index ? 0.85 : 1, y: -4 }}
                   onClick={() => handleProcessClick(index)}
-                  className={`cursor-pointer min-h-[220px] lg:min-h-[230px] p-6 lg:p-8 rounded-3xl border transition-all backdrop-blur-xl flex items-center ${
-                    active === index
-                      ? "bg-white/20 shadow-2xl border-white/30"
-                      : "bg-white/10 border-white/20 hover:bg-white/20 hover:shadow-xl"
-                  }`}
+                  className={`cursor-pointer min-h-[220px] lg:min-h-[230px] p-6 lg:p-8 rounded-3xl border transition-all backdrop-blur-xl flex items-center ${active === index
+                    ? "bg-white/20 shadow-2xl border-white/30"
+                    : "bg-white/10 border-white/20 hover:bg-white/20 hover:shadow-xl"
+                    }`}
                 >
                   <div className="flex items-start gap-8">
                     <div
@@ -411,18 +436,18 @@ style={{
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* RIGHT — Preview */}
             <AnimatePresence mode="wait">
-  <motion.div
-    key={current.title}
-    initial={crossfade.initial}
-    animate={crossfade.animate}
-    exit={crossfade.exit}
-    transition={crossfade.transition}
-    className="relative z-50 w-full sm:ml-0 bg-white/[0.96] backdrop-blur-3xl rounded-[32px] border border-white/40 shadow-[0_25px_80px_rgba(0,0,0,0.35)] overflow-hidden p-5 sm:p-6 lg:p-8 sticky top-24 lg:col-span-2"
-  >
+              <motion.div
+                key={current.title}
+                initial={crossfade.initial}
+                animate={crossfade.animate}
+                exit={crossfade.exit}
+                transition={crossfade.transition}
+                className="relative z-50 w-full sm:ml-0 bg-white/[0.96] backdrop-blur-3xl rounded-[32px] border border-white/40 shadow-[0_25px_80px_rgba(0,0,0,0.35)] overflow-hidden p-5 sm:p-6 lg:p-8 sticky top-24 lg:col-span-2"
+              >
                 <div className="relative mb-5">
                   {/* Glow */}
                   <div
@@ -432,7 +457,7 @@ style={{
 
                   <div className="flex items-center gap-4 relative z-10 mb-4">
                   </div>
-                  
+
                   {/* ICON */}
                   <div className="w-16 h-16 flex items-center justify-center rounded-2xl shadow-md border border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100" style={{ backgroundColor: `${current.color}20` }}>
                     <current.icon
@@ -476,10 +501,10 @@ style={{
                 </div>
 
                 <button
-  onClick={() => setShowContactForm(true)}
-  className="w-full py-4 rounded-2xl font-bold text-lg text-white shadow-[0_10px_30px_rgba(16,185,129,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 relative overflow-hidden cursor-pointer"
-  style={{ backgroundColor: current.color }}
->
+                  onClick={() => setShowContactForm(true)}
+                  className="w-full py-4 rounded-2xl font-bold text-lg text-white shadow-[0_10px_30px_rgba(16,185,129,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 relative overflow-hidden cursor-pointer"
+                  style={{ backgroundColor: current.color }}
+                >
                   <div className="flex items-center justify-center gap-3 relative z-10">
                     <span>Start This Process</span>
                     <ChevronRight className="w-5 h-5" />
@@ -504,14 +529,14 @@ style={{
                   <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Start Your Transformation</h3>
                   <p className="text-gray-600 text-xs sm:text-sm">Fill out the form below and we&apos;ll get back to you within 24 hours</p>
                 </div>
-                <button 
+                <button
                   onClick={() => setShowContactForm(false)}
                   className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full transition-colors"
                 >
                   <X className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500" />
                 </button>
               </div>
-              
+
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
@@ -535,7 +560,7 @@ style={{
                       className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
                       required
                     />
-                  </div>  
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -604,7 +629,7 @@ style={{
           </div>
         </div>
       )}
-      
+
       <div className="absolute bottom-0 left-0 w-full z-30">
         <WaveTransition />
       </div>

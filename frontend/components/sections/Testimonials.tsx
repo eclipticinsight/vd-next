@@ -6,7 +6,7 @@ import Image from "next/image";
 // ================= WAVE TRANSITION COMPONENT =================
 export const WaveTransition = ({ direction = "bottom" }: { direction?: "top" | "bottom" }) => {
   const isTop = direction === "top";
-  
+
   return (
     <div className={`relative w-full overflow-hidden pointer-events-none ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
@@ -114,13 +114,12 @@ function TestimonialCard({ testimonial, isActive }: { testimonial: Testimonial; 
       <div className="relative h-full rounded-2xl">
         {/* Gradient Background */}
         <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${testimonial.color} ${isActive ? "opacity-30" : "opacity-20"}`} />
-        
+
         {/* Glass Card */}
-        <div className={`relative bg-white/10 backdrop-blur-2xl backdrop-blur-xl rounded-2xl p-5 md:p-6 h-full flex flex-col border-2 transition-all duration-300 ${
-          isActive 
-            ? "border-white/60 shadow-2xl shadow-cyan-400/60" 
-            : "border-white/40"
-        }`}>
+        <div className={`relative bg-white/10 backdrop-blur-2xl backdrop-blur-xl rounded-2xl p-5 md:p-6 h-full flex flex-col border-2 transition-all duration-300 ${isActive
+          ? "border-white/60 shadow-2xl shadow-cyan-400/60"
+          : "border-white/40"
+          }`}>
           <div className="absolute inset-0 rounded-2xl border border-white/30 pointer-events-none" />
 
           {/* Avatar Section */}
@@ -158,7 +157,7 @@ function TestimonialCard({ testimonial, isActive }: { testimonial: Testimonial; 
 
           {/* Content */}
           <div className="flex-1 relative">
-          <div className={`absolute -top-2 -left-2 ${isActive ? "text-6xl md:text-7xl" : "text-5xl md:text-6xl"} text-white/20 font-serif`}>&quot;</div>
+            <div className={`absolute -top-2 -left-2 ${isActive ? "text-6xl md:text-7xl" : "text-5xl md:text-6xl"} text-white/20 font-serif`}>&quot;</div>
             <div className={`absolute -bottom-2 -right-2 ${isActive ? "text-6xl md:text-7xl" : "text-5xl md:text-6xl"} text-white/20 font-serif rotate-180`}>&quot;</div>
             <p className={`leading-relaxed relative z-10 ${isActive ? "text-white text-xs md:text-sm lg:text-base" : "text-white/80 text-xs md:text-xs"} font-medium line-clamp-none`}>
               &quot;{testimonial.content}&quot;
@@ -195,28 +194,26 @@ export default function Testimonials() {
     setTimeout(() => setIsAnimating(false), 500);
   }, [isAnimating, getNextIndex]);
 
+  const handleNextRef = useRef(handleNext);
+  useEffect(() => {
+    handleNextRef.current = handleNext;
+  }, [handleNext]);
+
   // Auto-slide functionality
   useEffect(() => {
-    if (autoPlayInterval.current) {
-      clearInterval(autoPlayInterval.current);
-      autoPlayInterval.current = null;
-    }
-    
-    if (!isHovered && !isAnimating) {
-      autoPlayInterval.current = setInterval(() => {
-        handleNext();
-      }, 5000);
-    }
-    
+    if (isHovered) return;
+
+    const timer = setInterval(() => {
+      handleNextRef.current();
+    }, 4000);
+
     return () => {
-      if (autoPlayInterval.current) {
-        clearInterval(autoPlayInterval.current);
-      }
+      clearInterval(timer);
     };
-  }, [isHovered, isAnimating, handleNext]);
+  }, [isHovered]);
 
   return (
-    <section 
+    <section
       className="relative w-full min-h-[70vh] pt-24 md:pt-28 lg:pt-32 pb-8 md:pb-10 px-4 md:px-8 lg:px-16 overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -225,21 +222,20 @@ export default function Testimonials() {
       <div className="absolute top-0 left-0 w-full -mt-1 z-10">
         <WaveTransition direction="top" />
       </div>
-      
+
       {/* Background Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Background Image - Updated for Next.js */}
         <div className="absolute inset-0">
           <Image
-  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2070"
-  alt="Background"
-  fill
-  className="object-cover"
-  priority
-  quality={75}
-/>
+            src="/images/testimonials-bg.webp"
+            alt="Background"
+            fill
+            className="object-cover"
+            quality={75}
+          />
         </div>
-        
+
         {/* Overlay Gradients */}
         <div
           className="absolute inset-0"
@@ -247,7 +243,7 @@ export default function Testimonials() {
             background: `linear-gradient(180deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.90) 40%, rgba(30, 41, 59, 0.85) 100%)`,
           }}
         />
-        
+
         {/* Grid Pattern */}
         <div
           className="absolute inset-0 opacity-10"
@@ -256,23 +252,23 @@ export default function Testimonials() {
             backgroundSize: "50px 50px",
           }}
         />
-        
+
         {/* Floating Particles */}
-{[...Array(20)].map((_, i) => (
-  <div
-    key={i}
-    className="absolute rounded-full"
-    style={{
-      width: `${20 + i * 3}px`,
-      height: `${20 + i * 4}px`,
-      top: `${(i * 13) % 100}%`,
-      left: `${(i * 17) % 100}%`,
-      background:
-        "radial-gradient(circle, rgba(59,130,246,0.12), transparent)",
-      filter: "blur(8px)",
-    }}
-  />
-))}
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: `${20 + i * 3}px`,
+              height: `${20 + i * 4}px`,
+              top: `${(i * 13) % 100}%`,
+              left: `${(i * 17) % 100}%`,
+              background:
+                "radial-gradient(circle, rgba(59,130,246,0.12), transparent)",
+              filter: "blur(8px)",
+            }}
+          />
+        ))}
       </div>
 
       {/* Content */}
@@ -302,55 +298,55 @@ export default function Testimonials() {
         {/* 3-Card Slider Container */}
         <div className="relative px-4 md:px-8 lg:px-12">
           {/* Navigation Arrows */}
-         <button
-  onClick={handlePrev}
-  disabled={isAnimating}
-  className="group absolute left-0 md:-left-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-md border border-cyan-500/40 shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 hover:bg-cyan-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-  aria-label="Previous testimonial"
->
-  <svg
-    className="w-5 h-5 text-cyan-300 transition-transform duration-300 group-hover:-translate-x-1"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M15 19l-7-7 7-7"
-    />
-  </svg>
+          <button
+            onClick={handlePrev}
+            disabled={isAnimating}
+            className="group absolute left-0 md:-left-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-md border border-cyan-500/40 shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 hover:bg-cyan-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Previous testimonial"
+          >
+            <svg
+              className="w-5 h-5 text-cyan-300 transition-transform duration-300 group-hover:-translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
 
-  <span className="absolute left-14 opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap bg-black/80 text-white text-xs px-3 py-1 rounded-lg">
-    Previous
-  </span>
-</button>
+            <span className="absolute left-14 opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap bg-black/80 text-white text-xs px-3 py-1 rounded-lg">
+              Previous
+            </span>
+          </button>
 
           <button
-  onClick={handleNext}
-  disabled={isAnimating}
-  className="group absolute right-0 md:-right-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-md border border-cyan-500/40 shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 hover:bg-cyan-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-  aria-label="Next testimonial"
->
-  <svg
-    className="w-5 h-5 text-cyan-300 transition-transform duration-300 group-hover:translate-x-1"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M9 5l7 7-7 7"
-    />
-  </svg>
+            onClick={handleNext}
+            disabled={isAnimating}
+            className="group absolute right-0 md:-right-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-md border border-cyan-500/40 shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 hover:bg-cyan-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Next testimonial"
+          >
+            <svg
+              className="w-5 h-5 text-cyan-300 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
 
-  <span className="absolute right-14 opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap bg-black/80 text-white text-xs px-3 py-1 rounded-lg">
-    Next
-  </span>
-</button>
+            <span className="absolute right-14 opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap bg-black/80 text-white text-xs px-3 py-1 rounded-lg">
+              Next
+            </span>
+          </button>
 
           {/* 3 Cards Layout - Reduced Height */}
           <div className="relative h-[280px] md:h-[320px] lg:h-[350px] overflow-visible">
@@ -364,8 +360,8 @@ export default function Testimonials() {
                   `translateX(${isAnimating ? "-20px" : "0px"}) scale(.82)`
               }}
             >
-              <TestimonialCard 
-                testimonial={testimonials[getPrevIndex()]} 
+              <TestimonialCard
+                testimonial={testimonials[getPrevIndex()]}
                 isActive={false}
               />
             </div>
@@ -378,8 +374,8 @@ export default function Testimonials() {
                   `translateX(-50%) scale(${isAnimating ? .97 : 1.05})`
               }}
             >
-              <TestimonialCard 
-                testimonial={testimonials[currentIndex]} 
+              <TestimonialCard
+                testimonial={testimonials[currentIndex]}
                 isActive={true}
               />
             </div>
@@ -391,11 +387,11 @@ export default function Testimonials() {
                 opacity: 0.45,
                 zIndex: 5,
                 transform:
-`translateX(${isAnimating ? "20px":"0px"}) scale(.82)`
-}}
->
-              <TestimonialCard 
-                testimonial={testimonials[getNextIndex()]} 
+                  `translateX(${isAnimating ? "20px" : "0px"}) scale(.82)`
+              }}
+            >
+              <TestimonialCard
+                testimonial={testimonials[getNextIndex()]}
                 isActive={false}
               />
             </div>
@@ -435,4 +431,4 @@ export default function Testimonials() {
       `}</style>
     </section>
   );
-}
+} 

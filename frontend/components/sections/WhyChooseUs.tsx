@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 /* =========================
    DATA
@@ -143,6 +144,28 @@ const colorMapping: Record<string, ColorSet> = {
     light: "rgba(45, 212, 191, 0.08)",
     medium: "rgba(45, 212, 191, 0.15)",
     dark: "rgba(45, 212, 191, 0.25)",
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.35,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 45 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
   },
 };
 
@@ -354,7 +377,11 @@ export default function WhyChooseUs() {
         </div>
 
         {/* CARDS GRID */}
-        <div
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
           className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch"
           style={{ contentVisibility: "auto" }}
         >
@@ -362,8 +389,9 @@ export default function WhyChooseUs() {
             const colors = colorMapping[feature.color];
 
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={cardVariants}
                 className="group relative"
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
@@ -494,10 +522,10 @@ export default function WhyChooseUs() {
                     {feature.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

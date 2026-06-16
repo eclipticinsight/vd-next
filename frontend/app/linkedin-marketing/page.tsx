@@ -502,7 +502,7 @@ export default function Home() {
         </div>
 
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80" alt="CTA Background" className="w-full h-full object-cover" />
+          <img src="/images/bookkeeping-cta-bg.webp" alt="CTA Background" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-black/70"></div>
 

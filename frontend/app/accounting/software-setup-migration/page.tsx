@@ -97,7 +97,7 @@ const SoftwareMigrationPage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg')",
+            backgroundImage: "url('/images/macbook-imac.webp')",
           }}
         />
 
@@ -231,7 +231,7 @@ const SoftwareMigrationPage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg')",
+            backgroundImage: "url('/images/team-meeting.webp')",
           }}
         />
 
@@ -403,7 +403,7 @@ const SoftwareMigrationPage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg')",
+            backgroundImage: "url('/images/bookkeeping-cta-bg.webp')",
           }}
         />
 

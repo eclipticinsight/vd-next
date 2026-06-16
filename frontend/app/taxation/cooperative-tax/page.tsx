@@ -657,7 +657,7 @@ py-10 sm:py-12 md:py-14 lg:py-16 xl:py-18">
 
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1565373679580-fc0cb538f49c?q=80&w=1170&auto=format&fit=crop"
+            src="/images/bookkeeping-cta-bg.webp"
             alt="Tax Planning Background"
             className="w-full h-full object-cover"
           />

@@ -17,7 +17,7 @@ const cards = [
     borderAccent: "from-purple-400 via-violet-400/50 to-transparent",
     glow: "rgba(168,85,247,0.35)",
     shadow: "shadow-[0_20px_50px_-10px_rgba(168,85,247,0.35)] hover:shadow-[0_35px_70px_-5px_rgba(168,85,247,0.6)]",
-    image: "/images/step_audit_unique.png"
+    image: "/images/step_audit_unique.webp"
   },
   {
     step: "Step 02.",
@@ -29,7 +29,7 @@ const cards = [
     borderAccent: "from-pink-400 via-rose-400/50 to-transparent",
     glow: "rgba(236,72,153,0.35)",
     shadow: "shadow-[0_20px_50px_-10px_rgba(236,72,153,0.35)] hover:shadow-[0_35px_70px_-5px_rgba(236,72,153,0.6)]",
-    image: "/images/step_team_unique.png"
+    image: "/images/step_team_unique.webp"
   },
   {
     step: "Step 03.",
@@ -41,7 +41,7 @@ const cards = [
     borderAccent: "from-sky-400 via-cyan-400/50 to-transparent",
     glow: "rgba(14,165,233,0.35)",
     shadow: "shadow-[0_20px_50px_-10px_rgba(14,165,233,0.35)] hover:shadow-[0_35px_70px_-5px_rgba(14,165,233,0.6)]",
-    image: "/images/step_security_unique.png"
+    image: "/images/step_security_unique.webp"
   },
   {
     step: "Step 04.",
@@ -53,7 +53,7 @@ const cards = [
     borderAccent: "from-emerald-400 via-teal-400/50 to-transparent",
     glow: "rgba(16,185,129,0.35)",
     shadow: "shadow-[0_20px_50px_-10px_rgba(16,185,129,0.35)] hover:shadow-[0_35px_70px_-5px_rgba(16,185,129,0.6)]",
-    image: "/images/step_scale_unique.png"
+    image: "/images/step_scale_unique.webp"
   }
 ];
 
@@ -72,7 +72,7 @@ export default function AboutUsSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/stats-bg.jpg"
+          src="/images/stats-bg.webp"
           alt="Background"
           fill
           priority

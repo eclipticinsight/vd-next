@@ -640,7 +640,7 @@ export default function MS365ManagementPage() {
  
           <div className="absolute inset-0 z-0">
             <img
-              src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+              src="/images/bookkeeping-cta-bg.webp"
               alt="Microsoft 365 dashboard on laptop"
               className="w-full h-full object-cover"
             />

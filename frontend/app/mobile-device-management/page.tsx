@@ -637,7 +637,7 @@ export default function MDMPage() {
         
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            src="/images/bookkeeping-cta-bg.webp"
             alt="Mobile device security and protection"
             className="w-full h-full object-cover"
           />

@@ -1061,7 +1061,7 @@ const SEOPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="https://images.squarespace-cdn.com/content/v1/50c9c50fe4b0a97682fac903/1612917261766-MQLT5X4OZ95GXKY2R27V/image-asset.jpeg"
+            src="/images/bookkeeping-cta-bg.webp"
             alt="Digital marketing growth"
             className="w-full h-full object-cover"
           />

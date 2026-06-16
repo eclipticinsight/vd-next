@@ -293,7 +293,7 @@ export default function Signup() {
         <div className="text-white text-center px-10">
           <div className="relative w-80 h-80 mx-auto mb-6">
             <img
-              src="/images/signup-illustration.png"
+              src="/images/signup-illustration.webp"
               alt="Illustration"
               className="w-full h-auto rounded-2xl shadow-lg"
             />

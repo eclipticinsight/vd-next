@@ -33,7 +33,7 @@ import {
 
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
- 
+
   return (
     <div className={`relative w-full overflow-hidden pointer-events-none ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
@@ -206,7 +206,7 @@ const FloatingObjects = () => (
         ease: "easeInOut"
       }}
     />
-    
+
     {/* Geometric shapes */}
     <motion.div
       className="absolute top-32 left-1/4 w-16 h-16 border-4 border-blue-400/30 rounded-lg"
@@ -246,8 +246,8 @@ const FloatingObjects = () => (
         repeatType: "reverse",
         ease: "easeInOut"
       }}
-    />  
-    
+    />
+
     {/* Floating waves */}
     <svg className="absolute top-0 left-0 w-full h-full opacity-20">
       <defs>
@@ -263,14 +263,14 @@ const FloatingObjects = () => (
         strokeWidth="3"
         fill="none"
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ 
-          pathLength: 1, 
+        animate={{
+          pathLength: 1,
           opacity: 0.5,
           x: [0, 50, 0]
         }}
-        transition={{ 
-          duration: 10, 
-          repeat: Infinity, 
+        transition={{
+          duration: 10,
+          repeat: Infinity,
           repeatType: "reverse",
           ease: "easeInOut"
         }}
@@ -281,14 +281,14 @@ const FloatingObjects = () => (
         strokeWidth="2"
         fill="none"
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ 
-          pathLength: 1, 
+        animate={{
+          pathLength: 1,
           opacity: 0.3,
           x: [0, -50, 0]
         }}
-        transition={{ 
-          duration: 15, 
-          repeat: Infinity, 
+        transition={{
+          duration: 15,
+          repeat: Infinity,
           repeatType: "reverse",
           ease: "easeInOut",
           delay: 2
@@ -322,11 +322,11 @@ const SectionHeader = ({
 // ---------- Hero Section ----------
 const Hero = () => (
   <section className="relative h-[700px] flex items-center bg-gradient-to-br from-indigo-50 via-white to-white overflow-hidden">
-    
+
     {/* Background Image */}
     <div className="absolute inset-0 z-0">
       <Image
-        src="/images/webdesign-hero.png"
+        src="/images/webdesign-hero.webp"
         alt="Web Design & Development Hero"
         fill
         priority
@@ -337,7 +337,7 @@ const Hero = () => (
 
     {/* Content */}
     <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
-      
+
       {/* Left Content */}
       <div className="md:w-1/2 mb-10 md:mb-0">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
@@ -361,7 +361,7 @@ const Services = () => (
   <section className="relative py-6 md:py-10 bg-gradient-to-br from-blue-100 via-blue to-blue-100 overflow-hidden">
     {/* Add floating animation styles */}
     <style>{animationStyles}</style>
-    
+
     {/* Enhanced Background Elements */}
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full blur-3xl opacity-20"></div>
@@ -372,7 +372,7 @@ const Services = () => (
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
       {/* Section Header - Enhanced */}
       <div className="text-center mb-16 md:mb-24">
-       
+
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
           <span className="text-gray-900">
             Comprehensive
@@ -383,7 +383,7 @@ const Services = () => (
           </span>
         </h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          End-to-end solutions tailored to your business needs. From concept to deployment, 
+          End-to-end solutions tailored to your business needs. From concept to deployment,
           we've got you covered with cutting-edge technology and creative expertise.
         </p>
       </div>
@@ -391,29 +391,27 @@ const Services = () => (
       {/* Services List */}
       <div className="space-y-24 md:space-y-32">
         {services.map((service, idx) => (
-          <div 
-            key={idx} 
-            className={`group relative flex flex-col lg:flex-row gap-12 lg:gap-16 items-center ${
-              idx % 2 === 1 ? "lg:flex-row-reverse" : ""
-            }`}
+          <div
+            key={idx}
+            className={`group relative flex flex-col lg:flex-row gap-12 lg:gap-16 items-center ${idx % 2 === 1 ? "lg:flex-row-reverse" : ""
+              }`}
           >
             {/* Decorative line connector */}
             {idx < services.length - 1 && (
               <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-px h-24 bg-gradient-to-b from-gray-300 via-gray-200 to-transparent -bottom-28"></div>
             )}
-            
+
             {/* Graphic Section - Floating Animation with Rounded Corners */}
             <div className="relative lg:w-1/2 flex justify-center">
               {/* Subtle shadow background with glow */}
               <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} rounded-3xl blur-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-700`}></div>
-              
+
               {/* Image Container with Floating Animation */}
-              <div className={`relative transform transition-all duration-700 group-hover:scale-105 ${
-                idx % 2 === 0 ? 'animate-float' : 'animate-float-slow'
-              }`}>
-                <Image 
-                  src={service.image} 
-                  alt={service.title} 
+              <div className={`relative transform transition-all duration-700 group-hover:scale-105 ${idx % 2 === 0 ? 'animate-float' : 'animate-float-slow'
+                }`}>
+                <Image
+                  src={service.image}
+                  alt={service.title}
                   width={500}
                   height={500}
                   className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain rounded-3xl shadow-2xl"
@@ -422,11 +420,11 @@ const Services = () => (
                     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
                   }}
                 />
-                
+
                 {/* Decorative corner elements - also rounded */}
                 <div className={`absolute -top-4 -left-4 w-20 h-20 border-t-4 border-l-4 ${service.gradient.replace('from-', 'border-').replace('to-', '')} border-opacity-40 rounded-tl-3xl`} style={{ borderRadius: '1.5rem' }}></div>
                 <div className={`absolute -bottom-4 -right-4 w-20 h-20 border-b-4 border-r-4 ${service.gradient.replace('from-', 'border-').replace('to-', '')} border-opacity-40 rounded-br-3xl`} style={{ borderRadius: '1.5rem' }}></div>
-                
+
                 {/* Optional: Floating shadow effect */}
                 <div className={`absolute -inset-4 bg-gradient-to-r ${service.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`}></div>
               </div>
@@ -446,16 +444,16 @@ const Services = () => (
                 </h2>
                 <div className={`absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r ${service.gradient} rounded-full transform origin-left group-hover:w-32 transition-all duration-500`}></div>
               </div>
-              
+
               {/* Description - More detailed */}
               <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                 {service.desc}
               </p>
-              
+
               {/* Feature tags - Enhanced with icons */}
               <div className="flex flex-wrap gap-2 pt-2">
                 {service.features.map((feature, fIdx) => (
-                  <span 
+                  <span
                     key={fIdx}
                     className="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-50 text-gray-700 hover:bg-white hover:shadow-md transition-all duration-300 border border-gray-100 flex items-center gap-1"
                   >
@@ -479,7 +477,7 @@ const Services = () => (
 const OurProcess = () => (
   <section className="relative py-24 md:py-32 bg-gradient-to-br from-blue-100 via-blue to-blue-100 overflow-hidden">
     <style>{animationStyles}</style>
-    
+
     {/* Enhanced Animated Background */}
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float-slow"></div>
@@ -510,15 +508,15 @@ const OurProcess = () => (
         <div className="hidden md:block absolute left-0 right-0 top-1/2 transform -translate-y-1/2 h-2">
           <div className="h-full bg-gradient-to-r from-transparent via-indigo-200 to-transparent blur-sm"></div>
         </div>
-        
+
         {/* Timeline Line Container */}
         <div className="hidden md:block absolute left-0 right-0 top-1/2 transform -translate-y-1/2">
           {/* Background Line with Gradient */}
           <div className="h-0.5 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded-full"></div>
-          
+
           {/* Animated Progress Line */}
           <div className="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full animate-progress-line" style={{ width: '100%' }}></div>
-          
+
           {/* Animated Dots on Timeline */}
           <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-between px-12">
             {steps.map((_, idx) => (
@@ -526,7 +524,7 @@ const OurProcess = () => (
             ))}
           </div>
         </div>
-        
+
         {/* Steps Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 md:gap-4 relative">
           {steps.map((step, idx) => (
@@ -537,23 +535,23 @@ const OurProcess = () => (
                 <div className="relative bg-white rounded-full p-1.5 z-20">
                   {/* Outer Glow Ring */}
                   <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${step.gradient} blur-xl opacity-40 group-hover:opacity-80 transition-all duration-500`}></div>
-                  
+
                   {/* Main Circle with Rotating Border */}
                   <div className={`relative z-10 w-24 h-24 md:w-20 md:h-20 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-xl group-hover:shadow-2xl group-hover:scale-110 transition-all duration-500 cursor-pointer overflow-hidden`}>
                     {/* Shine Effect */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <span className="text-3xl md:text-2xl filter drop-shadow-lg group-hover:scale-110 transition-transform duration-300">{step.icon}</span>
                   </div>
-                  
+
                   {/* Pulse Ring */}
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent animate-ping-slow opacity-0 group-hover:opacity-100"></div>
                 </div>
-                
+
                 {/* Title with Gradient */}
                 <h3 className={`text-base md:text-sm font-bold mt-4 mb-2 bg-gradient-to-r ${step.gradient} bg-clip-text text-transparent group-hover:scale-105 transition-all duration-300`}>
                   {step.title}
                 </h3>
-                
+
                 {/* Enhanced Description Tooltip */}
                 <div className="hidden md:block absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-56 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none z-20 group-hover:translate-y-0 translate-y-2">
                   <div className="bg-white rounded-2xl shadow-2xl p-4 border border-gray-100 backdrop-blur-sm">
@@ -563,7 +561,7 @@ const OurProcess = () => (
                   </div>
                 </div>
               </div>
-              
+
               {/* Connector Dots for Mobile */}
               {idx < steps.length - 1 && (
                 <div className="md:hidden absolute left-1/2 top-28 w-px h-10 bg-gradient-to-b from-gray-300 to-transparent"></div>
@@ -572,7 +570,7 @@ const OurProcess = () => (
           ))}
         </div>
       </div>
-      
+
       {/* Enhanced Mobile Detailed View */}
       <div className="md:hidden mt-12 space-y-4">
         {steps.map((step, idx) => (
@@ -595,7 +593,7 @@ const OurProcess = () => (
           </div>
         ))}
       </div>
-      
+
       {/* Enhanced Summary Section */}
       <div className="mt-20 text-center">
         <div className="inline-flex flex-col md:flex-row items-center gap-4 p-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105">
@@ -727,7 +725,7 @@ const WhyChooseUs = () => (
         ))}
       </div>
     </div>
-    
+
     <div className="absolute bottom-0 left-0 w-full z-30">
       <WaveTransition />
     </div>
@@ -740,20 +738,20 @@ const Technologies = () => {
   return (
     <section className="relative py-16 md:py-24 bg-gradient-to-br from-blue-100 via-blue to-blue-100 overflow-hidden">
       <FloatingObjects />
-      
+
       {/* Decorative grid background */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      
+
       {/* Floating orbs */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
       <div className="absolute bottom-20 right-10 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float animation-delay-2000"></div>
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <SectionHeader 
-          title="Technologies We Use" 
-          subtitle="We leverage cutting-edge tools and frameworks to build robust, scalable solutions." 
+        <SectionHeader
+          title="Technologies We Use"
+          subtitle="We leverage cutting-edge tools and frameworks to build robust, scalable solutions."
         />
-    
+
         {/* Main tech grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
           {techs.map((tech, idx) => (
@@ -763,10 +761,10 @@ const Technologies = () => {
             >
               {/* Gradient overlay on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-              
+
               {/* Top accent bar */}
               <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${tech.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
-              
+
               <div className="p-5">
                 {/* Icon with animated background */}
                 <div className="relative mb-3">
@@ -775,17 +773,17 @@ const Technologies = () => {
                     {tech.icon}
                   </div>
                 </div>
-                
+
                 {/* Tech name */}
                 <h3 className="text-base font-bold text-gray-900 mb-1 text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 transition-all duration-500">
                   {tech.name}
                 </h3>
-                
+
                 {/* Category badge */}
                 <span className="inline-block px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium mb-3">
                   {tech.category}
                 </span>
-                
+
                 {/* Proficiency bar */}
                 <div className="relative pt-1">
                   <div className="flex mb-1 items-center justify-between">
@@ -799,7 +797,7 @@ const Technologies = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Hover effect corner */}
               <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-transparent to-indigo-100 rounded-tl-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
@@ -816,7 +814,7 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
-  
+
   const categories = [
     { id: 'all', name: 'All Questions', count: faqs.length },
     { id: 'timeline', name: 'Timeline', count: faqs.filter(f => f.category === 'timeline').length },
@@ -826,10 +824,10 @@ const FAQ = () => {
     { id: 'process', name: 'Process', count: faqs.filter(f => f.category === 'process').length },
     { id: 'marketing', name: 'Marketing', count: faqs.filter(f => f.category === 'marketing').length },
   ];
-  
+
   const filteredFaqs = faqs.filter(faq => {
-    const matchesSearch = faq.q.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         faq.a.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = faq.q.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      faq.a.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = activeCategory === 'all' || faq.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
@@ -837,64 +835,59 @@ const FAQ = () => {
   return (
     <section className="relative py-16 md:py-24 bg-gradient-to-b from-blue-100 to-blue-100 overflow-hidden">
       <FloatingObjects />
-      
+
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-10 w-72 h-72 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
         <div className="absolute bottom-20 left-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
       </div>
-      
+
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <SectionHeader 
-          title="Frequently Asked Questions" 
-          subtitle="Got questions? We've got answers. Find everything you need to know about our process." 
+        <SectionHeader
+          title="Frequently Asked Questions"
+          subtitle="Got questions? We've got answers. Find everything you need to know about our process."
         />
-        
+
         {/* Main FAQ accordion */}
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
           {filteredFaqs.length > 0 ? (
             filteredFaqs.map((faq, idx) => (
               <div
                 key={idx}
-                className={`border-b border-gray-100 last:border-0 transition-all duration-300 ${
-                  openIndex === idx ? 'bg-indigo-50/30' : 'hover:bg-gray-50'
-                }`}
+                className={`border-b border-gray-100 last:border-0 transition-all duration-300 ${openIndex === idx ? 'bg-indigo-50/30' : 'hover:bg-gray-50'
+                  }`}
               >
                 <button
                   className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left"
                   onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                 >
                   <div className="flex items-start gap-3">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${
-                      openIndex === idx ? 'bg-indigo-600' : 'bg-indigo-100'
-                    }`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${openIndex === idx ? 'bg-indigo-600' : 'bg-indigo-100'
+                      }`}>
                       <HelpCircle size={16} className={openIndex === idx ? 'text-white' : 'text-indigo-600'} />
                     </div>
-                    <h3 className={`font-semibold transition-colors duration-300 ${
-                      openIndex === idx ? 'text-indigo-600' : 'text-gray-900'
-                    }`}>
+                    <h3 className={`font-semibold transition-colors duration-300 ${openIndex === idx ? 'text-indigo-600' : 'text-gray-900'
+                      }`}>
                       {faq.q}
                     </h3>
                   </div>
-                  <ChevronDown 
-                    size={20} 
-                    className={`flex-shrink-0 transition-all duration-300 ${
-                      openIndex === idx ? 'rotate-180 text-indigo-600' : 'text-gray-400'
-                    }`}
+                  <ChevronDown
+                    size={20}
+                    className={`flex-shrink-0 transition-all duration-300 ${openIndex === idx ? 'rotate-180 text-indigo-600' : 'text-gray-400'
+                      }`}
                   />
                 </button>
-                
+
                 {/* Answer with animation */}
-                <div 
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                    openIndex === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                  }`}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
                 >
                   <div className="px-6 pb-5 pl-16">
                     <div className="prose prose-indigo">
                       <p className="text-gray-600 leading-relaxed">{faq.a}</p>
                     </div>
-                    
+
                     {/* Category tag */}
                     <div className="mt-3 flex items-center gap-2">
                       <span className="text-xs text-gray-400">Category:</span>
@@ -937,11 +930,11 @@ const CTA = () => (
     <div className="absolute top-0 left-0 w-full -mt-1 z-10">
       <WaveTransition direction="top" />
     </div>
-   
+
     {/* Background Image */}
     <div className="absolute inset-0 pointer-events-none">
       <img
-        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2070&q=80"
+        src="/images/bookkeeping-cta-bg.webp"
         alt="Team collaborating on a project"
         className="w-full h-full object-cover"
       />
@@ -958,7 +951,7 @@ const CTA = () => (
 
     {/* Content */}
     <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-      
+
       {/* Main heading */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}

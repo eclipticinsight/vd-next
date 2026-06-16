@@ -258,7 +258,7 @@ const [hoveredStep, setHoveredStep] = useState<number | null>(null);
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://img.freepik.com/premium-photo/business-background_921096-1222.jpg')`
+            backgroundImage: `url('/images/bookkeeping-cta-bg.webp')`
           }}
         />
 

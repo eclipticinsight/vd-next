@@ -249,21 +249,21 @@ export const SOCIAL_PAGE_TESTIMONIALS = [
     role: "CEO, TechStart",
     content: "Their social media strategy increased our engagement by 300% in just 3 months. Absolutely phenomenal work!",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/women/1.jpg"
+    image: "/images/user-woman-1.webp"
   },
   {
     name: "Michael Chen",
     role: "Marketing Director",
     content: "The team understands our brand perfectly. Our social presence has never been stronger.",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/men/1.jpg"
+    image: "/images/user-man-1.webp"
   },
   {
     name: "Emma Davis",
     role: "Small Business Owner",
     content: "Finally found a social media partner that delivers real results. Highly recommended!",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/women/2.jpg"
+    image: "/images/user-woman-2.webp"
   }
 ];
 
@@ -634,7 +634,7 @@ export const WEBDESIGN_SERVICES = [
   {
     title: "Backend Development",
     desc: "Secure and scalable backend systems that power your applications with robust architecture and reliable performance. We build RESTful APIs, manage databases, and implement security protocols to ensure your data is protected and your applications run smoothly under any load.",
-    image: "/images/backend.jpg",
+    image: "/images/backend.webp",
     gradient: "from-purple-500 to-indigo-500",
     features: ["Node.js", "MongoDB", "API Development", "PostgreSQL", "Authentication"],
     stats: { projects: 120, satisfaction: "99%" }
@@ -2930,7 +2930,7 @@ export const BOOKKEEPING_PAGE_FEATURES = [
     title: "Precise Accounting",
     desc:
       "Rely on our outsourced accounting services and let us take care of your finances with ease.",
-    image: "/images/precise-accounting.png",
+    image: "/images/precise-accounting.webp",
     reverse: false,
     bg: "bg-blue-100",
     darkOverlay: false,
@@ -2940,9 +2940,9 @@ export const BOOKKEEPING_PAGE_FEATURES = [
     title: "Time-Consuming Bookkeeping Tasks",
     desc:
       "Manual data entry and reconciliations take valuable time away from your core business operations.",
-    image: "/images/financial-reporting.png",
+    image: "/images/financial-reporting.webp",
     reverse: true,
-    bgImage: "bg-blue-100",
+    bg: "bg-blue-100",
     darkOverlay: false,
     imageBg: false,
   },
@@ -2950,7 +2950,7 @@ export const BOOKKEEPING_PAGE_FEATURES = [
     title: "Lack of Real-Time Financial Insights",
     desc:
       "Delayed or outdated financial reports make it difficult to make informed decisions.",
-    image: "/images/tax-support.png",
+    image: "/images/tax-support.webp",
     reverse: false,
     bg: "bg-blue-100",
     darkOverlay: false,

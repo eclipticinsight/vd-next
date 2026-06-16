@@ -414,7 +414,7 @@ const BusinessAnalystPage = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=2070&auto=format&fit=crop')"
+            backgroundImage: "url('/images/bookkeeping-cta-bg.webp')"
           }}
         ></div>
         <div className="absolute inset-0 bg-black/80"></div>

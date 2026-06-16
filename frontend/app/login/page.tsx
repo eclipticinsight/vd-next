@@ -272,7 +272,7 @@ export default function LoginPage() {
 
           <div className="relative w-80 h-80 mx-auto mb-6">
             <img
-              src="/images/login-illustration.png"
+              src="/images/login-illustration.webp"
               alt="Illustration"
               className="w-full h-auto rounded-2xl shadow-lg"
             />

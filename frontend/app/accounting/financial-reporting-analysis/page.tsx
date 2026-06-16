@@ -56,7 +56,7 @@ const FinancialReportingPage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://img.freepik.com/free-photo/business-person-looking-finance-graphs_23-2150461313.jpg?t=st=1771521456~exp=1771525056~hmac=2d0c5afad4d05f24c3ed8e86608c1b154d3e7dafbd0851742a81c1f695807bb5')",
+            backgroundImage: "url('/images/finance-graphs.webp')",
           }}
         />
 
@@ -219,7 +219,7 @@ const FinancialReportingPage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.pexels.com/photos/5466810/pexels-photo-5466810.jpeg')",
+            backgroundImage: "url('/images/financial-advisor.webp')",
           }}
         />
 
@@ -350,7 +350,7 @@ const FinancialReportingPage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.pexels.com/photos/14751274/pexels-photo-14751274.jpeg')",
+            backgroundImage: "url('/images/bookkeeping-cta-bg.webp')",
           }}
         />
 

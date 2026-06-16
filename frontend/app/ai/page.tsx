@@ -332,7 +332,7 @@ export default function AIConsultingPage() {
         
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            src="/images/bookkeeping-cta-bg.webp"
             alt="AI concept - neural network visualization" 
             className="w-full h-full object-cover"
           />

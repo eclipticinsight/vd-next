@@ -19,6 +19,49 @@ const marketingBg = "/images/marketing-bg.webp";
 const itBg = "/images/it-bg.webp";
 
 
+const tabContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const tabItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut" as const,
+    },
+  },
+};
+
+const featureContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+const featureItemVariants = {
+  hidden: { opacity: 0, x: -15 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut" as const,
+    },
+  },
+};
+
 export default function ServicesOverview() {
 
   const router = useRouter();
@@ -199,7 +242,8 @@ export default function ServicesOverview() {
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="text-center py-20"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
@@ -221,13 +265,20 @@ export default function ServicesOverview() {
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-4 pb-10 flex-wrap">
+        <motion.div
+          variants={tabContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          className="flex justify-center gap-4 pb-10 flex-wrap"
+        >
           {services.map((service, index) => {
             const isActive = activeService === index;
 
             return (
-              <button
+              <motion.button
                 key={index}
+                variants={tabItemVariants}
                 onClick={() => setActiveService(index)}
                 className={`
     flex items-center gap-2 px-8 py-4 rounded-2xl
@@ -246,10 +297,10 @@ export default function ServicesOverview() {
               >
                 <service.icon className="w-5 h-5" />
                 {service.title}
-              </button>
+              </motion.button>
             );
           })}
-        </div>
+        </motion.div>
 
         <div
           ref={ref}
@@ -312,11 +363,17 @@ export default function ServicesOverview() {
                 </div>
 
                 {/* LIST */}
-                <div className="space-y-5">
-
+                <motion.div
+                  variants={featureContainerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="space-y-5"
+                >
                   {active.features.map((feature, idx) => (
-                    <div
+                    <motion.div
                       key={idx}
+                      variants={featureItemVariants}
                       onClick={() => router.push(feature.route)}
                       className="
       flex items-center justify-between
@@ -337,10 +394,10 @@ export default function ServicesOverview() {
                       </div>
 
 
-                    </div>
+                    </motion.div>
                   ))}
 
-                </div>
+                </motion.div>
 
               </div>
 

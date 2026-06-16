@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +22,11 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit), sans-serif;
 }
 
 html,
@@ -41,10 +45,32 @@ body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+/* Hero mobile background — applied via CSS so the browser can discover
+   the image immediately at parse time (no JS hydration wait).
+   On desktop (>= 1024px) the video element takes over, so we clear it. */
+.hero-bg-mobile {
+  background-image: url('/images/hero-bg.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-bg-mobile {
+    background-image: none;
+  }
 }

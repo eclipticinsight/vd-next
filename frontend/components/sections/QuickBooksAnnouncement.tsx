@@ -13,10 +13,10 @@ import {
 } from "lucide-react";
 
 /* IMAGE IMPORTS - Updated for Next.js */
-const certifiedImg = "/images/quickbooks-certified.png";
-const integrationImg = "/images/quickbooks-integration.png";
-const supportImg = "/images/quickbooks-support.png";
-const partnershipImg = "/images/quickbooks-partnership.png";
+const certifiedImg = "/images/quickbooks-certified.webp";
+const integrationImg = "/images/quickbooks-integration.webp";
+const supportImg = "/images/quickbooks-support.webp";
+const partnershipImg = "/images/quickbooks-partnership.webp";
 
 /* Color helper */
 const colorMap: Record<string, string> = {
@@ -370,7 +370,8 @@ const QuickBooksAnnouncement = () => {
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="relative"
           >

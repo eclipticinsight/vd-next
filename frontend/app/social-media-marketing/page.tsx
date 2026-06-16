@@ -366,7 +366,7 @@ const SocialMediaMarketingPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="https://img.freepik.com/premium-photo/blur-background-empty-modern-office-background-city-center-workspace-interior-design_327072-42494.jpg"
+            src="/images/bookkeeping-cta-bg.webp"
             alt="Social media marketing"
             fill
             className="object-cover"

@@ -185,7 +185,7 @@ const particles: Particle[] = [];
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.pexels.com/photos/6779716/pexels-photo-6779716.jpeg')",
+            backgroundImage: "url('/images/bookkeeping-hero-bg.webp')",
           }}
         />
         <div className={overlay} />
@@ -242,7 +242,7 @@ const particles: Particle[] = [];
           </span>
         </h2>
 
-        {BOOKKEEPING_PAGE_FEATURES.map((item, index) => (
+        {BOOKKEEPING_PAGE_FEATURES.map((item: any, index) => (
           <div key={index} className="relative py-12 sm:py-16 md:py-20">
             {item.bgImage && (
               <div
@@ -308,7 +308,7 @@ const particles: Particle[] = [];
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80')",
+            backgroundImage: "url('/images/bookkeeping-benefits-bg.webp')",
           }}
         />
         <div className={overlay} />
@@ -433,7 +433,7 @@ const particles: Particle[] = [];
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80')",
+            backgroundImage: "url('/images/bookkeeping-cta-bg.webp')",
           }}
         />
         <div className={overlay} />

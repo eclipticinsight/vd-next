@@ -555,7 +555,7 @@ export default function RPOShowcase() {
       {/* CTA Section */}
       <section className="py-28 relative bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('https://www.smart-manpower.com/Content/Home1/RPO_Images-02.jpg')"
+          backgroundImage: "url('/images/bookkeeping-cta-bg.webp')"
         }}>
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />

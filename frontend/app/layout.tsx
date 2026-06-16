@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import { Inter, Outfit } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
 
 import { Toaster } from "react-hot-toast";
 
@@ -114,14 +126,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <head>
+        {/* Preload LCP hero background — browser fetches this during HTML parse,
+            before JS hydration, which significantly reduces Largest Contentful Paint. */}
+        <link
+          rel="preload"
+          href="/images/hero-bg.webp"
+          as="image"
+          type="image/webp"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body>
+      <body className="font-sans antialiased">
         <SmoothScroll>
 
           <Header />

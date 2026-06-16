@@ -23,7 +23,7 @@ import {
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
 
-  
+
   return (
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
@@ -41,8 +41,8 @@ export const WaveTransition = ({ direction = "bottom" }) => {
 
 export default function PayrollPage() {
   const sectionRef = useRef(null);
- 
-  
+
+
   // Add floating animation on scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +55,7 @@ export default function PayrollPage() {
         }
       });
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -94,27 +94,27 @@ export default function PayrollPage() {
 
       {/* Hero Section - Light Blue with Objects */}
       <section className="relative pt-66 pb-66 md:pt-70 md:pb-66 bg-blue-50 overflow-hidden z-10">
-        
+
         {/* Background Shapes - Visible but professional */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="float-shape absolute top-10 left-[5%] w-64 h-64 bg-blue-200/50 rounded-full blur-xl" 
-               style={{ animation: 'drift 20s ease-in-out infinite' }} />
-          <div className="float-shape absolute bottom-10 right-[8%] w-80 h-80 bg-indigo-200/50 rounded-full blur-xl" 
-               style={{ animation: 'drift 25s ease-in-out infinite reverse' }} />
-          <div className="absolute top-1/3 left-[15%] w-40 h-40 bg-blue-300/40 rounded-full blur-lg" 
-               style={{ animation: 'drift 18s ease-in-out infinite' }} />
+          <div className="float-shape absolute top-10 left-[5%] w-64 h-64 bg-blue-200/50 rounded-full blur-xl"
+            style={{ animation: 'drift 20s ease-in-out infinite' }} />
+          <div className="float-shape absolute bottom-10 right-[8%] w-80 h-80 bg-indigo-200/50 rounded-full blur-xl"
+            style={{ animation: 'drift 25s ease-in-out infinite reverse' }} />
+          <div className="absolute top-1/3 left-[15%] w-40 h-40 bg-blue-300/40 rounded-full blur-lg"
+            style={{ animation: 'drift 18s ease-in-out infinite' }} />
           <div className="absolute top-[30%] right-[15%] w-16 h-16 border-2 border-blue-300/40 rotate-12" />
           <div className="absolute bottom-[20%] left-[20%] w-24 h-24 border-2 border-indigo-300/40 rounded-lg rotate-45" />
           {PAYROLL_PAGE_HERO_PARTICLES.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1.5 h-1.5 bg-blue-400/60 rounded-full"
-             style={{
-  top: particle.top,
-  left: particle.left,
-  animation: `float-particle ${10 + i * 2}s ease-in-out infinite`,
-  animationDelay: `${i * 0.3}s`
-}}
+              style={{
+                top: particle.top,
+                left: particle.left,
+                animation: `float-particle ${10 + i * 2}s ease-in-out infinite`,
+                animationDelay: `${i * 0.3}s`
+              }}
             />
           ))}
         </div>
@@ -123,7 +123,7 @@ export default function PayrollPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://img.freepik.com/free-photo/businessmen-hands-white-table-with-documents-drafts_176420-357.jpg?t=st=1771425997~exp=1771429597~hmac=3fe5205594f469d906251e635eb8848cc869443dcf7cf2fdc0c19565adca07e9')",
+            backgroundImage: "url('/images/payroll-hero-bg.webp')",
           }}
         />
 
@@ -151,19 +151,19 @@ export default function PayrollPage() {
       <section className="relative py-16 bg-blue-100 overflow-hidden z-10">
         {/* Background Shapes - Visible but professional */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-[20%] left-[30%] w-32 h-32 border-2 border-dashed border-blue-300/50 rounded-full" 
-               style={{ animation: 'spin-very-slow 30s linear infinite' }} />
+          <div className="absolute top-[20%] left-[30%] w-32 h-32 border-2 border-dashed border-blue-300/50 rounded-full"
+            style={{ animation: 'spin-very-slow 30s linear infinite' }} />
           <div className="absolute top-[70%] right-[25%] w-40 h-40 bg-gradient-to-br from-blue-200/40 to-indigo-200/40 rounded-full blur-lg" />
           {PAYROLL_PAGE_SERVICES_PARTICLES.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1.5 h-1.5 bg-indigo-400/60 rounded-full"
               style={{
-  top: particle.top,
-  left: particle.left,
-  animation: `float-particle ${10 + i * 2}s ease-in-out infinite`,
-  animationDelay: `${i * 0.3}s`
-}}
+                top: particle.top,
+                left: particle.left,
+                animation: `float-particle ${10 + i * 2}s ease-in-out infinite`,
+                animationDelay: `${i * 0.3}s`
+              }}
             />
           ))}
         </div>
@@ -206,11 +206,11 @@ export default function PayrollPage() {
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />
         </div>
- 
+
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/forms-bg.webp')",
+            backgroundImage: "url('/images/payroll-forms-bg.webp')",
           }}
         />
         <div className="absolute inset-0 bg-black/70" />
@@ -294,7 +294,7 @@ export default function PayrollPage() {
               className="absolute w-1.5 h-1.5 bg-blue-400/60 rounded-full"
               style={{
                 top: particle.top,
-left: particle.left,
+                left: particle.left,
                 animation: `float-particle ${11 + i * 2}s ease-in-out infinite`,
                 animationDelay: `${i * 0.5}s`
               }}
@@ -391,7 +391,7 @@ left: particle.left,
               {PAYROLL_PAGE_PROCESS_STEPS.map((item, i) => (
                 <div key={i} className={`relative flex flex-col ${item.align === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-12`}>
                   <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-2 border-blue-500 rounded-full z-10" />
-                  
+
                   <div className={`w-full md:w-1/2 ${item.align === 'right' ? 'md:text-left' : 'md:text-right'}`}>
                     <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
                       <span className={`inline-block px-4 py-1 rounded-full bg-${item.color}-50 text-${item.color}-600 text-sm font-semibold mb-4`}>
@@ -418,11 +418,11 @@ left: particle.left,
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />
         </div>
- 
+
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80')",
+            backgroundImage: "url('/images/bookkeeping-cta-bg.webp')",
           }}
         />
         <div className="absolute inset-0 bg-black/70" />
@@ -444,12 +444,12 @@ left: particle.left,
                 }}
                 className="group bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 flex items-center justify-center"
               >
-                <Phone className="mr-3 w-5 h-5" /> 
+                <Phone className="mr-3 w-5 h-5" />
                 <span>Schedule Call</span>
                 <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
-            
+
             <p className="text-gray-300 text-sm mt-6">
               Get a free consultation within 24 hours
             </p>

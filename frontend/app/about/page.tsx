@@ -83,7 +83,7 @@ const AboutUs = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="https://img.freepik.com/free-photo/team-business-people-stacking-hands_53876-119699.jpg?t=st=1769699940~exp=1769703540~hmac=9ff0bb0bf2f79e0f2f8e241e3afa199442796fa9e9c3298961423ca5d95127e5"
+            src="/images/about-hero.webp"
             alt="Business team stacking hands"
             fill
             className="object-cover"
@@ -250,7 +250,7 @@ const AboutUs = () => {
         {/* Background Image */}
         <div aria-hidden="true" className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
+            src="/images/ceo-bg.webp"
             alt="Office background"
             fill
             className="object-cover"
@@ -418,9 +418,9 @@ const MissionVisionSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const images = [
-    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2074&q=80",
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2070&q=80",
-    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2070&q=80",
+    "/images/about-mission-1.webp",
+    "images/about-mission-2.webp",
+    "images/about-mission-3.webp",
   ];
 
   useEffect(() => {
@@ -684,7 +684,7 @@ const JourneySection = () => {
       className="relative w-full pt-16 pb-32 overflow-hidden bg-cover bg-center"
       style={{
         backgroundImage:
-          "url('https://static.vecteezy.com/system/resources/previews/056/546/949/non_2x/success-roadmap-journey-milestone-or-career-path-achievement-route-or-pathway-to-achieve-goals-accomplishment-assessment-or-way-to-success-businessman-look-at-achievement-milestone-to-success-vector.jpg')",
+          "url('/images/journey-bg.webp')",
       }}
     >
       <div className="absolute top-0 left-0 w-full -mt-1 z-10">
