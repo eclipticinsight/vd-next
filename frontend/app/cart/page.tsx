@@ -176,7 +176,7 @@ export default function CartPage() {
         <div className="absolute inset-0">
           <img
             src="https://static.vecteezy.com/system/resources/thumbnails/029/749/672/small_2x/illustration-of-shopping-cart-and-laptop-online-stores-concept-background-generative-ai-photo.jpeg"
-            alt="background"
+            alt="Online shopping cart and laptop graphic representing digital store checkout"
             className="w-full h-full object-cover"
           />
         </div>

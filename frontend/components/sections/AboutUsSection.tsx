@@ -73,7 +73,7 @@ export default function AboutUsSection() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/stats-bg.webp"
-          alt="Background"
+          alt="Office workspace background with blurred analytics overlay for About Us statistics"
           fill
           priority
           className="object-cover"

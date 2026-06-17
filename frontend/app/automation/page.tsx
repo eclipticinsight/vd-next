@@ -328,7 +328,7 @@ export default function AutomationIntegrationPage() {
         <div className="absolute inset-0">
           <img
             src="https://static.vecteezy.com/system/resources/previews/021/538/318/non_2x/increasing-automation-level-rpa-robotic-process-automation-innovation-technology-concept-wireframe-hand-is-pulling-up-to-the-maximum-position-circle-progress-bar-with-the-gears-icon-vector.jpg"
-            alt="background"
+            alt="Robotic Process Automation RPA wireframe representation showing gears and optimization graphs"
             className="w-full h-full object-cover"
           />
         </div>

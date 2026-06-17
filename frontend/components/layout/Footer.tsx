@@ -34,7 +34,7 @@ export default function Footer() {
 
     <Image
   src="/VD-Logo-e1737873827576.png"
-  alt="Logo"
+  alt="Visionary Dynamics company logo"
   width={180}
   height={80}
   style={{ width: "160px", height: "auto" }}

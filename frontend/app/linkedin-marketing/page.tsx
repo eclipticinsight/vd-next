@@ -325,7 +325,7 @@ export default function Home() {
         </div>
         
         <div className="absolute inset-0 z-0">
-          <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Background" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="B2B sales and LinkedIn marketing professionals reviewing growth charts" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/90 to-gray-900/80"></div>
         </div>
 

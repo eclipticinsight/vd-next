@@ -229,7 +229,7 @@ export default function Testimonials() {
         <div className="absolute inset-0">
           <Image
             src="/images/testimonials-bg.webp"
-            alt="Background"
+            alt="Customer feedback testimonials section background with subtle dark pattern"
             fill
             className="object-cover"
             quality={75}

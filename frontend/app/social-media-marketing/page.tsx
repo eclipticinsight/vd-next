@@ -214,7 +214,7 @@ const SocialMediaMarketingPage = () => {
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80"
-            alt="Background"
+            alt="Digital marketing team discussing social media growth strategy"
             fill
             className="object-cover"
           />

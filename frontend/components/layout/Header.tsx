@@ -175,7 +175,7 @@ const Header = () => {
               <div className="flex items-center justify-between px-5 h-20 border-b border-white/10 flex-shrink-0">
                 <Image
                   src="/VD-Logo-e1737873827576.png"
-                  alt="Logo"
+                  alt="Visionary Dynamics mobile navigation logo"
                   width={180}
                   height={80}
                   loading="eager"

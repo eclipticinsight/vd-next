@@ -636,7 +636,7 @@ const WhyChooseUs = () => (
     <div className="absolute inset-0 pointer-events-none">
       <img
         src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2070&q=80"
-        alt="Background"
+        alt="Workspace office setting representing creative web design and programming collaboration"
         className="w-full h-full object-cover scale-110"
       />
     </div>
@@ -664,7 +664,7 @@ const WhyChooseUs = () => (
             <div className="absolute inset-0 pointer-events-none">
               <img
                 src={reason.bgImage}
-                alt=""
+                alt={reason.title}
                 className="w-full h-full object-cover opacity-0 group-hover:opacity-10 transition-opacity duration-700 scale-110 group-hover:scale-100"
               />
               <div className={`absolute inset-0 bg-gradient-to-br ${reason.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-700 mix-blend-overlay`}></div>

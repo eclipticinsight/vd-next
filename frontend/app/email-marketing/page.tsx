@@ -258,7 +258,7 @@ const EmailMarketingPage = () => {
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" 
-            alt="Background" 
+            alt="Digital marketing team collaborating on an email newsletter campaign strategy" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/80"></div>
