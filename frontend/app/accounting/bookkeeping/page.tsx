@@ -185,7 +185,7 @@ const particles: Particle[] = [];
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/bookkeeping-hero-bg-v2.png')",
+            backgroundImage: "url('/images/bookkeeping-hero-bg-v3.png')",
           }}
         />
         <div className={overlay} />
