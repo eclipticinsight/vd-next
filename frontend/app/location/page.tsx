@@ -192,7 +192,7 @@ export default function Locations() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://img.freepik.com/premium-photo/3d-location-with-world-map-gps-navigator-pin-3d-render-illustration_974729-16638.jpg?w=2000')",
+              "url('/images/location-hero-bg.png')",
           }}
         />
  
