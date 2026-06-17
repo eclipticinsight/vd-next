@@ -216,6 +216,14 @@ app.use("/api/auth", authRoutes);
 // ========================
 // ✅ TEST ROUTE
 // ========================
+app.get("/api/test-deploy", (req, res) => {
+  res.json({
+    deployed: true,
+    version: "bookkeeping-v3-and-location-v1",
+    timestamp: Date.now()
+  });
+});
+
 app.get("/api", (req, res) => {
   res.send("API is running...");
 });
