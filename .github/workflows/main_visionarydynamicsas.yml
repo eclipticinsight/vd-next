@@ -32,14 +32,16 @@ jobs:
           NEXT_PUBLIC_TINYMCE_API_KEY: ${{ secrets.NEXT_PUBLIC_TINYMCE_API_KEY }}
         run: npm run build
 
-      - name: Prune devDependencies to keep deployment small
-        run: npm prune --production
+      - name: Install production dependencies in standalone directory
+        run: |
+          cd .next/standalone
+          npm install --omit=dev
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: .next/standalone
 
   deploy:
     runs-on: ubuntu-latest

@@ -53,6 +53,7 @@ async function main() {
     "models",
     "middleware",
     "uploads",
+    "web.config",
   ];
 
   for (const item of backendFiles) {
@@ -71,6 +72,62 @@ async function main() {
     console.log(`Copying .env file to standalone`);
     await fs.promises.copyFile(envSrc, envDest);
   }
+
+  // Generate a minimal package.json in standalone to prune dependencies
+  const rootPackageJsonPath = path.join(rootDir, "package.json");
+  const rootPackageJson = JSON.parse(fs.readFileSync(rootPackageJsonPath, "utf8"));
+  
+  const backendDeps = [
+    "bcryptjs",
+    "compression",
+    "cookie-parser",
+    "cors",
+    "dotenv",
+    "express",
+    "express-session",
+    "jsonwebtoken",
+    "mongoose",
+    "multer",
+    "nodemailer",
+    "passport",
+    "passport-google-oauth20",
+    "sitemap",
+    "slugify",
+    "stripe",
+    "next",
+    "react",
+    "react-dom",
+    "sharp"
+  ];
+
+  const standaloneDeps = {};
+  for (const dep of backendDeps) {
+    if (rootPackageJson.dependencies && rootPackageJson.dependencies[dep]) {
+      standaloneDeps[dep] = rootPackageJson.dependencies[dep];
+    } else if (rootPackageJson.devDependencies && rootPackageJson.devDependencies[dep]) {
+      standaloneDeps[dep] = rootPackageJson.devDependencies[dep];
+    } else {
+      standaloneDeps[dep] = "latest";
+    }
+  }
+
+  const standalonePackageJson = {
+    name: "vd-next-standalone",
+    version: rootPackageJson.version || "1.0.0",
+    private: true,
+    scripts: {
+      "start": "node server.js"
+    },
+    dependencies: standaloneDeps
+  };
+
+  const standalonePackageJsonPath = path.join(standaloneDir, "package.json");
+  await fs.promises.writeFile(
+    standalonePackageJsonPath,
+    JSON.stringify(standalonePackageJson, null, 2),
+    "utf8"
+  );
+  console.log(`Created standalone package.json with targeted dependencies`);
 
   // Rename Next.js server.js to next-server.js
   const frontendServerJs = path.join(standaloneDir, "frontend", "server.js");
