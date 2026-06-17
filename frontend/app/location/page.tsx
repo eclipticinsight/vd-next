@@ -1,5 +1,5 @@
 "use client";
- 
+
 import { useState, useEffect, type ComponentType } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Globe, Building2, Navigation, Users, Clock, Award, Shield } from "lucide-react";
@@ -11,7 +11,7 @@ import {
   type MarkerProps,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
- 
+
 // Dynamically import react-leaflet components to avoid SSR issues
 const MapContainer = dynamic<MapContainerProps>(
   () =>
@@ -34,10 +34,10 @@ const Marker = dynamic<MarkerProps>(
     ),
   { ssr: false }
 );
- 
+
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
- 
+
   return (
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
@@ -52,24 +52,24 @@ export const WaveTransition = ({ direction = "bottom" }) => {
     </div>
   );
 };
- 
+
 import { CONTACT_INFO, LOCATION_PAGE_LOCATIONS, LOCATION_PAGE_OFFICES } from "@/utils/constants";
 
 /* ================= LOCATIONS DATA ================= */
 const locations = LOCATION_PAGE_LOCATIONS;
- 
+
 /* Fly animation component */
 type FlyToProps = {
   position: [number, number];
   zoom: number;
 };
- 
+
 function FlyTo({ position, zoom }: FlyToProps) {
   const map = useMap();
   map.flyTo(position, zoom, { duration: 1.5 });
   return null;
 }
- 
+
 /* Floating Objects Component - Optimized for mobile */
 const FloatingObjects = () => {
   // Fixed values to prevent hydration mismatch
@@ -83,7 +83,7 @@ const FloatingObjects = () => {
     { size: 45, duration: 13, delay: 1.2, left: 60, top: 15, xMove: 30, yMove: -20 },
     { size: 100, duration: 19, delay: 0.3, left: 50, top: 50, xMove: -25, yMove: 25 },
   ];
- 
+
   const glowDots = [
     { size: 8, duration: 6, left: 20, top: 30, xMove: 30, yMove: -20 },
     { size: 5, duration: 8, left: 50, top: 70, xMove: -25, yMove: 25 },
@@ -96,7 +96,7 @@ const FloatingObjects = () => {
     { size: 8, duration: 9, left: 70, top: 90, xMove: 35, yMove: -35 },
     { size: 5, duration: 7, left: 25, top: 45, xMove: -25, yMove: 30 },
   ];
- 
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Larger animated floating circles */}
@@ -125,7 +125,7 @@ const FloatingObjects = () => {
           }}
         />
       ))}
- 
+
       {/* Floating glow dots */}
       {glowDots.map((item, i) => (
         <motion.div
@@ -155,18 +155,18 @@ const FloatingObjects = () => {
     </div>
   );
 };
- 
+
 /* ================= MAIN COMPONENT ================= */
 export default function Locations() {
   const [active, setActive] = useState(locations[0]);
- 
+
   // Fix Leaflet marker icons in browser only
   useEffect(() => {
     const fixLeafletIcons = async () => {
       const L = await import("leaflet");
-     
+
       delete (L.Icon.Default.prototype as any)._getIconUrl;
-     
+
       L.Icon.Default.mergeOptions({
         iconRetinaUrl:
           "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
@@ -176,17 +176,17 @@ export default function Locations() {
           "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
       });
     };
-   
+
     fixLeafletIcons();
   }, []);
- 
+
   const offices = LOCATION_PAGE_OFFICES;
- 
+
   return (
     <div className="min-h-screen overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="relative min-h-[55vh] sm:min-h-[60vh] md:min-h-[65vh] lg:min-h-[70vh] w-full overflow-hidden flex items-center justify-center">
-        
+
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -195,13 +195,13 @@ export default function Locations() {
               "url('/images/location-hero-bg.png')",
           }}
         />
- 
+
         {/* Transparent Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-[#020617]/45 to-[#020617]/50" />
- 
+
         {/* Soft Cinematic Vignette */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(2,6,23,0.1)_0%,rgba(2,6,23,0.3)_55%,rgba(2,6,23,0.45)_85%)]" />
- 
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -216,7 +216,7 @@ export default function Locations() {
           <WaveTransition />
         </div>
       </section>
- 
+
       {/* MAIN CONTENT */}
       <section className="relative py-10 sm:py-12 md:py-16 px-4 sm:px-6 overflow-hidden bg-blue-100">
         {/* Subtle grid pattern */}
@@ -230,10 +230,10 @@ export default function Locations() {
             backgroundSize: '40px 40px',
           }}
         />
-       
+
         {/* Floating Objects */}
         <FloatingObjects />
-       
+
         <div className="relative z-10 w-full max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -247,7 +247,7 @@ export default function Locations() {
               Strategic offices across key global markets, delivering exceptional consulting services worldwide
             </p>
           </motion.div>
- 
+
           {/* STATS BAR */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -273,7 +273,7 @@ export default function Locations() {
               </div>
             ))}
           </motion.div>
- 
+
           <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start">
             {/* LOCATIONS LIST WITH IMAGES */}
             <motion.div
@@ -291,7 +291,7 @@ export default function Locations() {
                   Select a location to view details and explore our presence in key markets worldwide
                 </p>
               </div>
- 
+
               <div className="space-y-3 sm:space-y-4">
                 {locations.map((loc) => (
                   <motion.button
@@ -299,10 +299,9 @@ export default function Locations() {
                     onClick={() => setActive(loc)}
                     whileTap={{ scale: 0.98 }}
                     className={`w-full text-left rounded-xl sm:rounded-2xl border transition-all duration-300 group overflow-hidden backdrop-blur-sm
-                      ${
-                        active.id === loc.id
-                          ? "bg-blue-200/80 border-blue-500/70 shadow-lg shadow-blue-300/50"
-                          : "bg-white/80 border-blue-400/50 shadow-md shadow-blue-200/40"
+                      ${active.id === loc.id
+                        ? "bg-blue-200/80 border-blue-500/70 shadow-lg shadow-blue-300/50"
+                        : "bg-white/80 border-blue-400/50 shadow-md shadow-blue-200/40"
                       }
                     `}
                   >
@@ -321,18 +320,15 @@ export default function Locations() {
                       <div className="flex-1 p-3 sm:p-4 md:p-5">
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
-                            <div className={`font-semibold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1 ${
-                              active.id === loc.id ? "text-blue-900" : "text-blue-800"
-                            }`}>
+                            <div className={`font-semibold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1 ${active.id === loc.id ? "text-blue-900" : "text-blue-800"
+                              }`}>
                               {loc.name === "Florida" ? `${loc.name}, ${loc.country}` : loc.name}
                             </div>
                             <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm mb-1 sm:mb-2">
-                              <MapPin className={`w-3 h-3 sm:w-4 sm:h-4 ${
-                                active.id === loc.id ? "text-blue-700" : "text-blue-600"
-                              }`} />
-                              <span className={`text-xs sm:text-sm ${
-                                active.id === loc.id ? "text-blue-800" : "text-blue-700"
-                              }`}>
+                              <MapPin className={`w-3 h-3 sm:w-4 sm:h-4 ${active.id === loc.id ? "text-blue-700" : "text-blue-600"
+                                }`} />
+                              <span className={`text-xs sm:text-sm ${active.id === loc.id ? "text-blue-800" : "text-blue-700"
+                                }`}>
                                 {loc.city}
                               </span>
                             </div>
@@ -340,11 +336,10 @@ export default function Locations() {
                               {loc.description}
                             </p>
                           </div>
-                          <div className={`w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full border-2 flex items-center justify-center flex-shrink-0 ml-2 ${
-                            active.id === loc.id
-                              ? "border-blue-700 bg-blue-200 shadow-md shadow-blue-300"
-                              : "border-blue-500 bg-blue-100/80"
-                          }`}>
+                          <div className={`w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full border-2 flex items-center justify-center flex-shrink-0 ml-2 ${active.id === loc.id
+                            ? "border-blue-700 bg-blue-200 shadow-md shadow-blue-300"
+                            : "border-blue-500 bg-blue-100/80"
+                            }`}>
                             {active.id === loc.id && (
                               <motion.div
                                 initial={{ scale: 0 }}
@@ -360,7 +355,7 @@ export default function Locations() {
                 ))}
               </div>
             </motion.div>
- 
+
             {/* MAP SECTION */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -370,23 +365,23 @@ export default function Locations() {
               className="w-full lg:w-1/2 sticky top-24"
             >
               <div className="relative bg-white/80 backdrop-blur-md border border-blue-400/60 rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-xl shadow-blue-200/50">
-               
+
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
                   <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-blue-200/70 border border-blue-400/50">
                     <Navigation className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-blue-700" />
                   </div>
- 
+
                   <div>
                     <h3 className="text-base sm:text-lg md:text-xl font-bold text-blue-900">
                       Interactive Map
                     </h3>
- 
+
                     <p className="text-xs sm:text-sm text-blue-800/80">
                       Currently viewing: {active.city}
                     </p>
                   </div>
                 </div>
- 
+
                 {/* MAP */}
                 <div className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] rounded-lg sm:rounded-xl overflow-hidden border border-blue-300/60 shadow-lg">
                   <MapContainer
@@ -399,16 +394,16 @@ export default function Locations() {
                       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                       attribution='&copy; OpenStreetMap contributors'
                     />
- 
+
                     <FlyTo
                       position={[active.lat, active.lng]}
                       zoom={active.zoom}
                     />
- 
+
                     <Marker position={[active.lat, active.lng]} />
                   </MapContainer>
                 </div>
- 
+
                 {/* MOBILE OFFICE ICONS */}
                 <div className="flex lg:hidden gap-3 mt-5 overflow-x-auto pb-2 px-2">
                   {locations.map((loc) => (
@@ -416,10 +411,9 @@ export default function Locations() {
                       key={loc.id}
                       onClick={() => setActive(loc)}
                       className={`flex flex-col items-center min-w-[75px] p-2 rounded-2xl border transition-all duration-300
-                        ${
-                          active.id === loc.id
-                            ? "bg-blue-700 border-blue-700 shadow-lg"
-                            : "bg-white border-blue-200"
+                        ${active.id === loc.id
+                          ? "bg-blue-700 border-blue-700 shadow-lg"
+                          : "bg-white border-blue-200"
                         }`}
                     >
                       <img
@@ -427,13 +421,12 @@ export default function Locations() {
                         alt={loc.city}
                         className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
                       />
- 
+
                       <span
                         className={`text-[11px] mt-1 font-medium whitespace-nowrap
-                          ${
-                            active.id === loc.id
-                              ? "text-white"
-                              : "text-blue-800"
+                          ${active.id === loc.id
+                            ? "text-white"
+                            : "text-blue-800"
                           }`}
                       >
                         {loc.city}
@@ -441,7 +434,7 @@ export default function Locations() {
                     </button>
                   ))}
                 </div>
- 
+
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={active.id}
@@ -452,10 +445,10 @@ export default function Locations() {
                     className="mt-4 sm:mt-5 md:mt-6 lg:mt-8 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-blue-100/80 border border-blue-400/60 backdrop-blur-sm"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
-                     
+
                       <div className="flex-1">
                         <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
- 
+
                           <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl overflow-hidden border border-blue-400/50 flex-shrink-0">
                             <img
                               src={active.image}
@@ -463,13 +456,13 @@ export default function Locations() {
                               className="w-full h-full object-cover"
                             />
                           </div>
- 
+
                           <div>
                             <h3 className="text-sm sm:text-base md:text-lg font-semibold flex items-center gap-1 sm:gap-2 text-blue-900">
                               <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-blue-700" />
                               {active.city}
                             </h3>
- 
+
                             <p className="text-xs sm:text-sm text-blue-800/80 mt-0.5">
                               {active.name === "Florida"
                                 ? `${active.name}, ${active.country}`
@@ -477,12 +470,12 @@ export default function Locations() {
                             </p>
                           </div>
                         </div>
- 
+
                         <p className="text-xs sm:text-sm text-blue-800/80 break-words">
                           {active.address}
                         </p>
                       </div>
- 
+
                     </div>
                   </motion.div>
                 </AnimatePresence>
@@ -491,14 +484,14 @@ export default function Locations() {
           </div>
         </div>
       </section>
- 
+
       {/* OFFICE CARDS SECTION */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden">
         {/* Top Wave */}
         <div className="absolute top-0 left-0 w-full -mt-1 z-10">
           <WaveTransition direction="top" />
         </div>
- 
+
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
@@ -510,7 +503,7 @@ export default function Locations() {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-[#020617]/35 to-blue-900/40" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,rgba(2,6,23,0.25)_45%,rgba(2,6,23,0.45)_80%)]" />
         </div>
-       
+
         <div className="relative z-10">
           <div className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <motion.div
@@ -526,7 +519,7 @@ export default function Locations() {
                 State-of-the-art facilities designed for collaboration, innovation, and exceptional client service
               </p>
             </motion.div>
- 
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-7 lg:gap-8">
               {offices.map((office, i) => (
                 <motion.div
@@ -541,14 +534,13 @@ export default function Locations() {
                     transition-all duration-500 group
                     hover:shadow-2xl hover:-translate-y-3
                     hover:border-blue-400/50
-                    ${
-                      i === 0
-                        ? "hover:bg-gradient-to-br hover:from-blue-500/25 hover:to-cyan-500/25"
-                        : i === 1
+                    ${i === 0
+                      ? "hover:bg-gradient-to-br hover:from-blue-500/25 hover:to-cyan-500/25"
+                      : i === 1
                         ? "hover:bg-gradient-to-br hover:from-purple-500/25 hover:to-pink-500/25"
                         : i === 2
-                        ? "hover:bg-gradient-to-br hover:from-emerald-500/25 hover:to-teal-500/25"
-                        : "hover:bg-gradient-to-br hover:from-amber-500/25 hover:to-orange-500/25"
+                          ? "hover:bg-gradient-to-br hover:from-emerald-500/25 hover:to-teal-500/25"
+                          : "hover:bg-gradient-to-br hover:from-amber-500/25 hover:to-orange-500/25"
                     }`}
                 >
                   <div className="h-36 sm:h-40 md:h-44 lg:h-48 relative overflow-hidden">
@@ -594,4 +586,3 @@ export default function Locations() {
     </div>
   );
 }
- 
