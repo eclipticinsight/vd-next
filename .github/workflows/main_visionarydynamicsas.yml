@@ -47,18 +47,19 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_046310D19D944A84A887FBF4DC7DAA14 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_37D85168C92348F9BDCE5A93B4793EBD }}
 
-      - name: Enable remote build on Azure
+      - name: Configure Azure App Settings
         run: |
           az webapp config appsettings set \
             --name Visionarydynamicsas \
-            --resource-group $(az webapp show --name Visionarydynamicsas --query resourceGroup -o tsv) \
+            --resource-group Visionarydynamicsas \
             --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true WEBSITE_RUN_FROM_PACKAGE=0
 
-      - name: Deploy to Azure Web App via CLI
+      - name: Deploy to Azure Web App
         run: |
           az webapp deploy \
             --name Visionarydynamicsas \
-            --resource-group $(az webapp show --name Visionarydynamicsas --query resourceGroup -o tsv) \
+            --resource-group Visionarydynamicsas \
             --src-path deploy.zip \
             --type zip \
-            --async false
+            --async false \
+            --timeout 600
