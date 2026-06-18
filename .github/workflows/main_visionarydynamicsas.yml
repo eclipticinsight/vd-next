@@ -52,9 +52,3 @@ jobs:
           app-name: 'Visionarydynamicsas'
           slot-name: 'Production'
           package: .next/standalone
-
-      - name: Restart Azure Web App
-        uses: azure/CLI@v2
-        with:
-          inlineScript: |
-            az webapp restart --name Visionarydynamicsas

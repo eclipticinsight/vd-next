@@ -128,6 +128,26 @@ if (process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID) 
     console.error("❌ Failed to start Next.js server:", err);
   });
 
+  // Clean up Next.js child process when Express exits
+  const cleanup = () => {
+    console.log("Stopping Next.js standalone server...");
+    try {
+      nextProcess.kill("SIGTERM");
+    } catch (err) {
+      // ignore
+    }
+  };
+
+  process.on("exit", cleanup);
+  process.on("SIGINT", () => {
+    cleanup();
+    process.exit(0);
+  });
+  process.on("SIGTERM", () => {
+    cleanup();
+    process.exit(0);
+  });
+
   // Proxy middleware for non-API routes (placed before body parsers)
   app.use((req, res, next) => {
     if (
