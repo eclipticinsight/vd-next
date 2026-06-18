@@ -35,10 +35,10 @@ jobs:
           NEXT_PUBLIC_TINYMCE_API_KEY: ${{ secrets.NEXT_PUBLIC_TINYMCE_API_KEY }}
         run: npm run build
 
-      - name: Zip artifact for deployment (excluding node_modules)
+      - name: Install production dependencies in standalone directory
         run: |
           cd .next/standalone
-          zip -r ../../deploy.zip . --exclude "*/node_modules/*"
+          npm install --omit=dev
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -47,19 +47,8 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_046310D19D944A84A887FBF4DC7DAA14 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_37D85168C92348F9BDCE5A93B4793EBD }}
 
-      - name: Configure Azure App Settings
-        run: |
-          az webapp config appsettings set \
-            --name Visionarydynamicsas \
-            --resource-group Visionarydynamicsas \
-            --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true WEBSITE_RUN_FROM_PACKAGE=0
-
-      - name: Deploy to Azure Web App
-        run: |
-          az webapp deploy \
-            --name Visionarydynamicsas \
-            --resource-group Visionarydynamicsas \
-            --src-path deploy.zip \
-            --type zip \
-            --async false \
-            --timeout 600
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'Visionarydynamicsas'
+          package: .next/standalone
