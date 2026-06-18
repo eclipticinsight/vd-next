@@ -27,21 +27,23 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install all dependencies
-        shell: bash
-        run: npm install
+        run: npm ci
 
       - name: Build Next.js app
         env:
           NEXT_PUBLIC_API_URL: https://visionarydynamicsas-axbyczf9cnb8e4a8.eastus-01.azurewebsites.net/api
           NEXT_PUBLIC_TINYMCE_API_KEY: ${{ secrets.NEXT_PUBLIC_TINYMCE_API_KEY }}
-        shell: bash
         run: npm run build
 
       - name: Install production dependencies in standalone directory
-        shell: bash
         run: |
           cd .next/standalone
-          npm ci --omit=dev
+          npm install --omit=dev --ignore-scripts
+
+      - name: Zip artifact for deployment
+        run: |
+          cd .next/standalone
+          zip -r ../../deploy.zip . --exclude "*.git*"
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -50,8 +52,14 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_046310D19D944A84A887FBF4DC7DAA14 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_37D85168C92348F9BDCE5A93B4793EBD }}
 
+      - name: Disable remote build on Azure (use our pre-built zip)
+        uses: azure/appservice-settings@v1
+        with:
+          app-name: 'Visionarydynamicsas'
+          app-settings-json: '[{"name": "SCM_DO_BUILD_DURING_DEPLOYMENT", "value": "false", "slotSetting": false}]'
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'Visionarydynamicsas'
-          package: .next/standalone
+          package: deploy.zip
