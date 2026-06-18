@@ -27,7 +27,7 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install all dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Next.js app
         env:
