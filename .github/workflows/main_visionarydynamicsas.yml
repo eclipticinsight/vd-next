@@ -47,14 +47,18 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_046310D19D944A84A887FBF4DC7DAA14 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_37D85168C92348F9BDCE5A93B4793EBD }}
 
-      - name: Enable remote build on Azure (install node_modules server-side)
-        uses: azure/appservice-settings@v1
-        with:
-          app-name: 'Visionarydynamicsas'
-          app-settings-json: '[{"name": "SCM_DO_BUILD_DURING_DEPLOYMENT", "value": "true", "slotSetting": false}, {"name": "WEBSITE_RUN_FROM_PACKAGE", "value": "0", "slotSetting": false}]'
+      - name: Enable remote build on Azure
+        run: |
+          az webapp config appsettings set \
+            --name Visionarydynamicsas \
+            --resource-group $(az webapp show --name Visionarydynamicsas --query resourceGroup -o tsv) \
+            --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true WEBSITE_RUN_FROM_PACKAGE=0
 
-      - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'Visionarydynamicsas'
-          package: deploy.zip
+      - name: Deploy to Azure Web App via CLI
+        run: |
+          az webapp deploy \
+            --name Visionarydynamicsas \
+            --resource-group $(az webapp show --name Visionarydynamicsas --query resourceGroup -o tsv) \
+            --src-path deploy.zip \
+            --type zip \
+            --async false
