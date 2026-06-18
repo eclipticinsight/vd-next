@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       id-token: write
       contents: read
@@ -27,18 +27,21 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install all dependencies
+        shell: bash
         run: npm install
 
       - name: Build Next.js app
         env:
           NEXT_PUBLIC_API_URL: https://visionarydynamicsas-axbyczf9cnb8e4a8.eastus-01.azurewebsites.net/api
           NEXT_PUBLIC_TINYMCE_API_KEY: ${{ secrets.NEXT_PUBLIC_TINYMCE_API_KEY }}
+        shell: bash
         run: npm run build
 
       - name: Install production dependencies in standalone directory
+        shell: bash
         run: |
           cd .next/standalone
-          npm install --omit=dev
+          npm ci --omit=dev
 
       - name: Login to Azure
         uses: azure/login@v2
