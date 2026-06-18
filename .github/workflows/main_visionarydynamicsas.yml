@@ -35,15 +35,10 @@ jobs:
           NEXT_PUBLIC_TINYMCE_API_KEY: ${{ secrets.NEXT_PUBLIC_TINYMCE_API_KEY }}
         run: npm run build
 
-      - name: Install production dependencies in standalone directory
+      - name: Zip artifact for deployment (excluding node_modules)
         run: |
           cd .next/standalone
-          npm install --omit=dev --ignore-scripts
-
-      - name: Zip artifact for deployment
-        run: |
-          cd .next/standalone
-          zip -r ../../deploy.zip . --exclude "*.git*"
+          zip -r ../../deploy.zip . --exclude "*/node_modules/*"
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -52,11 +47,11 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_046310D19D944A84A887FBF4DC7DAA14 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_37D85168C92348F9BDCE5A93B4793EBD }}
 
-      - name: Disable remote build on Azure (use our pre-built zip)
+      - name: Enable remote build on Azure (install node_modules server-side)
         uses: azure/appservice-settings@v1
         with:
           app-name: 'Visionarydynamicsas'
-          app-settings-json: '[{"name": "SCM_DO_BUILD_DURING_DEPLOYMENT", "value": "false", "slotSetting": false}]'
+          app-settings-json: '[{"name": "SCM_DO_BUILD_DURING_DEPLOYMENT", "value": "true", "slotSetting": false}, {"name": "WEBSITE_RUN_FROM_PACKAGE", "value": "0", "slotSetting": false}]'
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
