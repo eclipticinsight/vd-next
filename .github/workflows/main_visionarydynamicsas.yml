@@ -50,5 +50,5 @@ jobs:
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'visionarydynamicsas-axbyczf9cnb8e4a8'
+          app-name: 'Visionarydynamicsas'
           package: .next/standalone
