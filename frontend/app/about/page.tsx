@@ -176,14 +176,13 @@ const AboutUs = () => {
               className="lg:w-1/2 w-full"
             >
               <div className="relative group">
-                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl ring-1 ring-blue-200/40 bg-white/20 backdrop-blur-sm transition-transform duration-500 group-hover:scale-[1.02]">
+                <div className="relative w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl ring-1 ring-blue-200/40 bg-white/20 backdrop-blur-sm transition-transform duration-500 group-hover:scale-[1.02]">
                   <Image
                     src="/images/about-partner.webp"
                     alt="Business team collaboration"
-                    width={600}
-                    height={460}
+                    fill
                     priority
-                    className="w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[460px] object-cover"
+                    className="object-cover"
                   />
                 </div>
                 {/* Decorative glow */}
@@ -272,13 +271,12 @@ const AboutUs = () => {
             >
               <div className="relative group w-full max-w-sm sm:max-w-md">
                 <div className="relative bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 sm:p-2 rounded-2xl sm:rounded-3xl shadow-2xl transition-all duration-500 group-hover:scale-[1.02]">
-                  <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border-2 sm:border-4 border-white shadow-xl bg-white">
+                  <div className="relative w-full aspect-[3/4] overflow-hidden rounded-xl sm:rounded-2xl border-2 sm:border-4 border-white shadow-xl bg-white">
                     <Image
                       src="/images/ceoimage.webp"
                       alt="Aakash Dhandhania"
-                      width={500}
-                      height={700}
-                      className="w-full aspect-[3/4] object-cover"
+                      fill
+                      className="object-cover"
                     />
                   </div>
                   <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-70 blur-sm group-hover:opacity-100 transition-opacity" />

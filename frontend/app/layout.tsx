@@ -128,14 +128,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <head>
-        {/* Preload LCP hero background — browser fetches this during HTML parse,
-            before JS hydration, which significantly reduces Largest Contentful Paint. */}
-        <link
-          rel="preload"
-          href="/images/hero-bg.webp"
-          as="image"
-          type="image/webp"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
