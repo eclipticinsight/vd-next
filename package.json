@@ -169,7 +169,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "build": "npm --prefix frontend run build",
+    "build": "cd frontend && npm run build",
     "postbuild": "node assemble-standalone.js",
     "dev:backend": "nodemon server.js",
     "dev:frontend": "cd frontend && next dev",
