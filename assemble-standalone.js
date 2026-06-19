@@ -4,9 +4,17 @@ const path = require("path");
 
 const rootDir = path.resolve(__dirname);
 
-const standaloneDir = path.join(rootDir, ".next", "standalone");
+const standaloneDir = path.join(
+  rootDir,
+  ".next",
+  "standalone"
+);
 
-const staticSrc = path.join(rootDir, ".next", "static");
+const staticSrc = path.join(
+  rootDir,
+  ".next",
+  "static"
+);
 
 const staticDest = path.join(standaloneDir, ".next", "static");
 
