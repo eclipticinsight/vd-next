@@ -1,0 +1,54 @@
+name: Deploy Frontend to Azure App Service
+ 
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'          # only trigger when frontend code changes
+ 
+jobs:
+  build-and-deploy:
+    name: Build & Deploy Next.js
+    runs-on: ubuntu-latest
+ 
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
+      # ── 2. Setup Node.js ─────────────────────────────────────────
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+ 
+      # ── 3. Install dependencies ───────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+ 
+      # ── 4. Build Next.js ─────────────────────────────────────────
+      - name: Build Next.js app
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+        run: npm run build
+ 
+      # ── 5. Prepare Standalone Files ──────────────────────────────
+      - name: Prepare standalone files for deployment
+        run: |
+          cp -r frontend/public .next/standalone/frontend/public
+          cp -r .next/static .next/standalone/.next/static
+          cp web.config .next/standalone/web.config || true
+ 
+      # ── 6. Deploy to Azure App Service ───────────────────────────
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}          # e.g. vd-frontend
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .next/standalone
+ 
+ 
+ 
