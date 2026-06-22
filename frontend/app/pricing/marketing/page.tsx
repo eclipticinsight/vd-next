@@ -1,10 +1,10 @@
 // app/pricing/page.tsx
 'use client';
- 
+
 import { useEffect, useState, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import toast from "react-hot-toast";
- 
+
 import { MARKETING_PRICING_SEO_PLANS, MARKETING_PRICING_SMO_PLANS } from '@/utils/constants';
 import { API_URL } from '@/utils/api';
 
@@ -27,7 +27,9 @@ type Plan = {
   guestPost?: number;
   pressRelease?: number;
   platforms?: string[];
+  platformNote?: string;
   postsPerMonth?: number;
+  postsPerPlatformPerMonth?: number;
   engagement?: string;
 };
 
@@ -78,86 +80,86 @@ const PricingPage = () => {
 
   const seoPlans = MARKETING_PRICING_SEO_PLANS;
   const smoPlans = MARKETING_PRICING_SMO_PLANS;
- 
+
   const handleBuyNow = async (plan: Plan) => {
 
-  const storedUser = localStorage.getItem("user");
-  const user = storedUser
-    ? JSON.parse(storedUser)
-    : null;
+    const storedUser = localStorage.getItem("user");
+    const user = storedUser
+      ? JSON.parse(storedUser)
+      : null;
 
-  if (!user) {
+    if (!user) {
 
-    localStorage.setItem(
-      "pendingPlan",
-      JSON.stringify(plan)
-    );
-
-    toast.error(
-      "Please login first"
-    );
-
-    window.location.href = "/login";
-
-    return;
-  }
-
-  try {
-
-    const res = await fetch(
-      `${API_URL}/payment/create-checkout-session`,
-      {
-        method: "POST",
-
-        headers: {
-          "Content-Type":
-            "application/json",
-        },
-
-        credentials: "include",
-
-        body: JSON.stringify({
-          plans: [
-            {
-              name: plan.name,
-              price: Number(plan.price),
-            },
-          ],
-
-          userId: user?._id || null,
-        }),
-      }
-    );
-
-    const data = await res.json();
-
-    // Payment response logged removed
-
-    if (data.url) {
-
-      window.location.href =
-        data.url;
-
-    } else {
+      localStorage.setItem(
+        "pendingPlan",
+        JSON.stringify(plan)
+      );
 
       toast.error(
-        data.error ||
-        "Checkout URL not received"
+        "Please login first"
+      );
+
+      window.location.href = "/login";
+
+      return;
+    }
+
+    try {
+
+      const res = await fetch(
+        `${API_URL}/payment/create-checkout-session`,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+
+          credentials: "include",
+
+          body: JSON.stringify({
+            plans: [
+              {
+                name: plan.name,
+                price: Number(plan.price),
+              },
+            ],
+
+            userId: user?._id || null,
+          }),
+        }
+      );
+
+      const data = await res.json();
+
+      // Payment response logged removed
+
+      if (data.url) {
+
+        window.location.href =
+          data.url;
+
+      } else {
+
+        toast.error(
+          data.error ||
+          "Checkout URL not received"
+        );
+
+      }
+
+    } catch (error) {
+
+      console.error(error);
+
+      toast.error(
+        "Payment failed"
       );
 
     }
+  };
 
-  } catch (error) {
-
-    console.error(error);
-
-    toast.error(
-      "Payment failed"
-    );
-
-  }
-};
- 
   const handleAddToCart = (plan: Plan, type: PricingType) => {
     const existingCart = JSON.parse(localStorage.getItem('cart') ?? '[]') as CartItem[];
     const updatedCart: CartItem[] = [
@@ -169,40 +171,38 @@ const PricingPage = () => {
     ];
     localStorage.setItem('cart', JSON.stringify(updatedCart));
 
-window.dispatchEvent(
-  new Event("cartUpdated")
-);
+    window.dispatchEvent(
+      new Event("cartUpdated")
+    );
 
-setCart(updatedCart);
+    setCart(updatedCart);
 
-toast.success(`${plan.name} added 🛒`);
+    toast.success(`${plan.name} added 🛒`);
   };
- 
+
   // Helper component for pricing cards
   const PricingCard = ({ plan, type, isHovered, onHover }: PricingCardProps) => {
     const getPriceDisplay = () => {
       return `$${plan.price.toLocaleString()}/month`;
     };
- 
+
     const getPriceNote = () => {
       return 'billed monthly';
     };
- 
+
     return (
       <div
-        className={`relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 flex flex-col h-full transform ${
-          isHovered ? 'shadow-2xl -translate-y-2' : 'shadow-lg'
-        } ${plan.popular ? 'ring-2 ring-orange-400 shadow-xl' : 'border border-gray-100'}`}
+        className={`relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 flex flex-col h-full transform ${isHovered ? 'shadow-2xl -translate-y-2' : 'shadow-lg'
+          } ${plan.popular ? 'ring-2 ring-orange-400 shadow-xl' : 'border border-gray-100'}`}
         onMouseEnter={() => onHover(plan.id)}
         onMouseLeave={() => onHover(null)}
       >
         {/* Animated gradient background */}
         <div
-          className={`absolute inset-0 bg-gradient-to-br ${plan.gradient} opacity-0 transition-opacity duration-500 ${
-            isHovered ? 'opacity-100' : ''
-          }`}
+          className={`absolute inset-0 bg-gradient-to-br ${plan.gradient} opacity-0 transition-opacity duration-500 ${isHovered ? 'opacity-100' : ''
+            }`}
         />
- 
+
         {plan.popular && (
           <div className="absolute top-4 right-4 z-10">
             <div className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-lg animate-pulse">
@@ -210,7 +210,7 @@ toast.success(`${plan.name} added 🛒`);
             </div>
           </div>
         )}
- 
+
         <div className="relative z-10 p-8">
           {/* Icon and Name */}
           <div className="flex items-center justify-between mb-4">
@@ -218,16 +218,25 @@ toast.success(`${plan.name} added 🛒`);
               {plan.icon}
             </div>
           </div>
- 
+
           <h3 className="text-2xl font-bold text-gray-800 mb-2">{plan.name}</h3>
- 
-          <div className="mt-4">
-            <span className="text-5xl font-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-              {getPriceDisplay()}
-            </span>
-            <p className="text-sm text-gray-500 mt-1">{getPriceNote()}</p>
-          </div>
- 
+
+          {plan.id === 'smo-enterprise' ? (
+            <div className="mt-4 min-h-[72px] flex flex-col justify-center">
+              <span className="text-4xl font-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                Contact Us
+              </span>
+              <p className="text-sm text-gray-500 mt-1">for custom pricing</p>
+            </div>
+          ) : (
+            <div className="mt-4">
+              <span className="text-5xl font-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                {getPriceDisplay()}
+              </span>
+              <p className="text-sm text-gray-500 mt-1">{getPriceNote()}</p>
+            </div>
+          )}
+
           {/* SEO-specific metrics */}
           {type === 'seo' && (
             <div className="mt-6 grid grid-cols-2 gap-3">
@@ -249,7 +258,7 @@ toast.success(`${plan.name} added 🛒`);
               </div>
             </div>
           )}
- 
+
           {/* SMO-specific metrics */}
           {type === 'smo' && (
             <div className="mt-6 space-y-3 bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-4">
@@ -257,12 +266,19 @@ toast.success(`${plan.name} added 🛒`);
                 <span className="text-gray-600 font-medium min-w-[110px]">Platforms:</span>
                 <span className="font-bold text-gray-900 leading-relaxed">
                   {Array.isArray(plan.platforms) ? plan.platforms.join(', ') : plan.platforms}
+                  {plan.platformNote && (
+                    <span className="text-xs font-bold text-rose-600 ml-1.5 bg-rose-100 px-2 py-0.5 rounded inline-block uppercase tracking-wide">
+                      {plan.platformNote}
+                    </span>
+                  )}
                 </span>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-gray-600 font-medium">Posts/Month:</span>
-                <span className="font-bold text-gray-900">{plan.postsPerMonth}+</span>
-              </div>
+              {plan.postsPerPlatformPerMonth !== undefined && plan.postsPerPlatformPerMonth !== null && (
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600 font-medium">Post Per Platform Per Month:</span>
+                  <span className="font-bold text-gray-900">{plan.postsPerPlatformPerMonth}</span>
+                </div>
+              )}
               <div className="flex justify-between items-center">
                 <span className="text-gray-600 font-medium">Engagement:</span>
                 <span className="font-bold text-gray-900">{plan.engagement}</span>
@@ -270,9 +286,9 @@ toast.success(`${plan.name} added 🛒`);
             </div>
           )}
         </div>
- 
+
         <div className="border-t border-gray-200 relative z-10"></div>
- 
+
         <div className="p-8 flex-grow relative z-10">
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">What's included:</p>
           <ul className="space-y-3">
@@ -291,34 +307,44 @@ toast.success(`${plan.name} added 🛒`);
             ))}
           </ul>
         </div>
- 
+
         <div className="p-8 pt-0 relative z-10 space-y-3">
-          {/* Add to Cart */}
-          <button
-            onClick={() => handleAddToCart(plan, type)}
-            className="w-full py-3 rounded-xl font-semibold border border-gray-300 text-gray-800 hover:bg-gray-100 transition cursor-pointer"
-          >
-            🛒 Add to Cart
-          </button>
- 
-          {/* Buy Now */}
-          <button
-            onClick={() => handleBuyNow(plan)}
-            className={`w-full py-4 rounded-xl font-bold transition-all duration-300 transform ${
-              plan.popular
-                ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:shadow-xl hover:scale-105'
-                : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105'
-            }`}
-          >
-            ⚡ Buy Now
-          </button>
+          {plan.id === 'smo-enterprise' ? (
+            <button
+              onClick={() => router.push('/contact')}
+              className="w-full py-4 rounded-xl font-bold transition-all duration-300 transform bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105 cursor-pointer text-center"
+            >
+              📞 Contact Us
+            </button>
+          ) : (
+            <>
+              {/* Add to Cart */}
+              <button
+                onClick={() => handleAddToCart(plan, type)}
+                className="w-full py-3 rounded-xl font-semibold border border-gray-300 text-gray-800 hover:bg-gray-100 transition cursor-pointer"
+              >
+                🛒 Add to Cart
+              </button>
+
+              {/* Buy Now */}
+              <button
+                onClick={() => handleBuyNow(plan)}
+                className={`w-full py-4 rounded-xl font-bold transition-all duration-300 transform ${plan.popular
+                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:shadow-xl hover:scale-105'
+                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105'
+                  }`}
+              >
+                ⚡ Buy Now
+              </button>
+            </>
+          )}
         </div>
       </div>
     );
   };
- 
 
- 
+
+
   return (
     <div className="bg-gradient-to-br from-blue-100 via-blue to-blue-100 min-h-screen">
       {/* Hero Section */}
@@ -331,21 +357,21 @@ toast.success(`${plan.name} added 🛒`);
       >
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/0"></div>
- 
+
         {/* Optional gradient overlay (premium look) */}
         <div className="absolute inset-0 bg-black/80"></div>
- 
+
         {/* Content */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-5xl md:text-7xl font-black mb-6 animate-fade-in">Digital Growth Starts Here</h1>
- 
+
           <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-             Powerful SEO, SMO, and web development solutions designed to increase traffic, boost engagement, and grow your business online.
- 
+            Powerful SEO, SMO, and web development solutions designed to increase traffic, boost engagement, and grow your business online.
+
           </p>
         </div>
       </div>
- 
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* ========== SECTION 1: SEO PLANS ========== */}
         <section className="mb-32">
@@ -367,7 +393,7 @@ toast.success(`${plan.name} added 🛒`);
             ))}
           </div>
         </section>
- 
+
         {/* ========== SECTION 2: SMO PLANS ========== */}
         <section className="mb-32">
           <SectionHeader
@@ -389,7 +415,7 @@ toast.success(`${plan.name} added 🛒`);
           </div>
         </section>
       </div>
- 
+
       {/* Add custom CSS for animations */}
       <style jsx global>{`
         @keyframes fade-in {
@@ -410,6 +436,5 @@ toast.success(`${plan.name} added 🛒`);
     </div>
   );
 };
- 
+
 export default PricingPage;
- 
