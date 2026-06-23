@@ -175,7 +175,6 @@ export const FOOTER_QUICK_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Accounting", href: "/accounting" },
   { label: "Marketing", href: "/webdesign-development" },
   { label: "I.T", href: "/mobile-device-management" },
 ];
@@ -1190,7 +1189,7 @@ export const MARKETING_PRICING_SMO_PLANS = [
     features: [
       'Everything in Professional, plus:',
       'All Platforms + YouTube Optimization',
-      '120 Premium Posts (stories + reels + long-form)',
+      'Premium Posts (stories + reels + long-form)',
       'Full-Service Community Management',
       'Paid Social Strategy & Ad Management',
       'Influencer Outreach (3 per month)',
