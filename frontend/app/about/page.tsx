@@ -17,16 +17,7 @@ import {
   Triangle,
   ChevronLeft,
   ChevronRight,
-  Target,
-  Users,
-  Lightbulb,
-  TrendingUp,
-  Brain,
-  Zap,
-  Cpu,
-  Award,
-  Globe,
-  Clock,
+  
 } from "lucide-react";
 
 // ==================== WAVE TRANSITION COMPONENT ====================
