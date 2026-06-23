@@ -6,7 +6,7 @@ import {
   Shield,
   BarChart3,
   Clock,
-  MessageSquare,
+ 
   Phone,
   ChevronRight,
   CheckCircle,
