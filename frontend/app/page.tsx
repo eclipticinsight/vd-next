@@ -9,6 +9,12 @@
 import Hero from "../components/sections/Hero";
 import ServicesOverview from "../components/sections/ServicesOverview";
 import DynamicSections from "../components/sections/DynamicSections";
+import QuickBooksAnnouncement from "../components/sections/QuickBooksAnnouncement";
+import ServicesShowcase from "../components/sections/ServicesShowcase";
+import WhyChooseUs from "../components/sections/WhyChooseUs";
+import Testimonials from "../components/sections/Testimonials";
+import StatsSection from "../components/sections/StatsSection";
+import AboutUsSection from "../components/sections/AboutUsSection";
 
 export default function Home() {
   return (
@@ -20,7 +26,14 @@ export default function Home() {
       <ServicesOverview />
 
       {/* All remaining sections lazy-loaded on the client (heavy Framer Motion) */}
-      <DynamicSections />
+      <QuickBooksAnnouncement />
+      <ServicesShowcase />
+
+      {/* <StatsSection />
+      <AboutUsSection /> */}
+
+      <WhyChooseUs />
+      <Testimonials />
     </>
   );
 }

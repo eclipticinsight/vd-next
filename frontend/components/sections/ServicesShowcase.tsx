@@ -270,29 +270,7 @@ const ServicesShowcase: React.FC = () => {
           }}
         />
 
-        <div className="absolute inset-0 pointer-events-none">
-          {typeof window !== "undefined" && [...Array(25)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-cyan-400 rounded-full"
-              initial={{
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                opacity: 0,
-              }}
-              animate={{
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                opacity: [0, 0.6, 0],
-              }}
-              transition={{
-                duration: 4 + Math.random() * 4,
-                repeat: Infinity,
-                delay: i * 0.3,
-              }}
-            />
-          ))}
-        </div>
+        
       </div>
 
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#020b1c]/60 via-[#071b33]/50 to-[#020b1c]/70" />
