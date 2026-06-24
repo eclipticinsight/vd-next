@@ -68,7 +68,7 @@ export default function BlogDetails() {
         const response = await fetch(`${API_URL}/blogs/slug/${slug}`, {
           credentials: "include",
         });
-        
+
         if (!response.ok) {
           if (response.status === 404) {
             setError("not-found");
@@ -212,7 +212,7 @@ export default function BlogDetails() {
           )}
         </div>
       </section>
-      
+
       <div className="h-20 md:h-28"></div>
 
       {/* FEATURE IMAGE */}
@@ -240,8 +240,8 @@ export default function BlogDetails() {
         <div className="w-24 h-1 bg-gradient-to-r from-[#f4a522] to-[#1a73e8] rounded-full mb-14"></div>
 
         {/* BLOG CONTENT */}
-<article
-  className="
+        <article
+          className="
     max-w-none
 
     [&_h1]:text-5xl
@@ -307,13 +307,13 @@ export default function BlogDetails() {
     [&_td]:px-5
     [&_td]:py-4
   "
->
-  <div
-    dangerouslySetInnerHTML={{
-      __html: blog.content || "<p>No content available</p>",
-    }}
-  />
-</article>
+        >
+          <div
+            dangerouslySetInnerHTML={{
+              __html: blog.content || "<p>No content available</p>",
+            }}
+          />
+        </article>
         {/* CTA SECTION */}
         <section className="relative overflow-hidden mt-28 rounded-[32px] bg-gradient-to-br from-[#0b1f3a] to-[#162d50] text-white p-10 md:p-16 shadow-2xl">
           {/* GLOW */}
