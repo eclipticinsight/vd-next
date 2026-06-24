@@ -9,7 +9,6 @@ import {
   ABOUT_PAGE_JOURNEY_DATA
 } from "@/utils/constants";
 import {
-  HeartHandshake,
   Pause,
   Play,
 
