@@ -12,12 +12,11 @@ import {
   HeartHandshake,
   Pause,
   Play,
-  Server,
-  ShieldCheck,
+
   Triangle,
   ChevronLeft,
   ChevronRight,
-  
+
 } from "lucide-react";
 
 // ==================== WAVE TRANSITION COMPONENT ====================
