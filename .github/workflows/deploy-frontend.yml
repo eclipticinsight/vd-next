@@ -4,16 +4,13 @@ on:
   push:
     branches:
       - main
-    
-            # only trigger when frontend code changes
+    paths:
+      - 'frontend/**'          # only trigger when frontend code changes
  
 jobs:
   build-and-deploy:
     name: Build & Deploy Next.js
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read
  
     steps:
       # ── 1. Checkout ──────────────────────────────────────────────
@@ -44,24 +41,15 @@ jobs:
           cp -r frontend/public .next/standalone/frontend/public
           cp -r .next/static .next/standalone/.next/static
           cp web.config .next/standalone/web.config || true
-   
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B62B69198A894496A7E962392FC5A657 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_046310D19D944A84A887FBF4DC7DAA14 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_37D85168C92348F9BDCE5A93B4793EBD }}
-
-      - name: 'Deploy to Azure Web App'
-        id: deploy-frontend
+ 
+      # ── 6. Deploy to Azure App Service ───────────────────────────
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'Vd-frontend'
-          slot-name: 'prod'
-          package:  .next/standalone
-
-  # ── 6. Deploy to Azure App Service ───────────────────────────
-      
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}          # e.g. vd-frontend
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .next/standalone
+ 
  
  
  
