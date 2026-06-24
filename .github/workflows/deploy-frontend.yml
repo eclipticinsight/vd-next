@@ -11,6 +11,9 @@ jobs:
   build-and-deploy:
     name: Build & Deploy Next.js
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write #This is required for requesting the JWT
+      contents: read
  
     steps:
       # ── 1. Checkout ──────────────────────────────────────────────
