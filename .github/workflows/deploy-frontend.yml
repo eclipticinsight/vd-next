@@ -59,7 +59,7 @@ jobs:
  
   # ── 6. Deploy to Azure App Service ───────────────────────────
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
+        id: id: deploy-frontend
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}          # e.g. vd-frontend
