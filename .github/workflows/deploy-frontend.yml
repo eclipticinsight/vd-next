@@ -53,17 +53,12 @@ jobs:
         id: deploy-frontend
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'Visionarydynamicsas'
-          slot-name: 'Production'
-          package: .
- 
+          app-name: 'Vd-frontend'
+          slot-name: 'prod'
+          package:  .next/standalone
+
   # ── 6. Deploy to Azure App Service ───────────────────────────
-      - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}          # e.g. vd-frontend
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .next/standalone
+      
  
  
  
