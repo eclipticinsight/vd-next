@@ -8,7 +8,6 @@
 
 import Hero from "../components/sections/Hero";
 import ServicesOverview from "../components/sections/ServicesOverview";
-import DynamicSections from "../components/sections/DynamicSections";
 import QuickBooksAnnouncement from "../components/sections/QuickBooksAnnouncement";
 import ServicesShowcase from "../components/sections/ServicesShowcase";
 import WhyChooseUs from "../components/sections/WhyChooseUs";
