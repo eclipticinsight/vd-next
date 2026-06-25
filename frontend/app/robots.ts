@@ -21,5 +21,7 @@ export default function robots(): MetadataRoute.Robots {
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
     host: siteUrl,
+    // LLMs.txt — machine-readable site summary for AI assistants
+    // Available at: ${siteUrl}/llms.txt
   };
 }
