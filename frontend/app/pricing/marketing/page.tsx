@@ -5,7 +5,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import toast from "react-hot-toast";
 
-import { MARKETING_PRICING_SEO_PLANS, MARKETING_PRICING_SMO_PLANS } from '@/utils/constants';
+import { MARKETING_PRICING_SEO_PLANS, MARKETING_PRICING_SMO_PLANS, MARKETING_PRICING_CUSTOM_FORM_HEADER } from '@/utils/constants';
 import { API_URL } from '@/utils/api';
 
 type PricingType = 'seo' | 'smo';
@@ -14,6 +14,8 @@ type Plan = {
   id: string;
   name: string;
   price: number;
+  originalPrice?: number;
+  contactSales?: boolean;
   icon: string;
   gradient: string;
   borderColor: string;
@@ -70,6 +72,68 @@ const PricingPage = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const router = useRouter();
 
+  // Custom Plan Form States
+  const [formData, setFormData] = useState({
+    planType: 'seo',
+    name: '',
+    email: '',
+    countryCode: '+91',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleCustomPlanSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email) {
+      toast.error('Please fill in your name and email');
+      return;
+    }
+    setIsSubmitting(true);
+
+    const fullPhone = formData.phone ? `${formData.countryCode} ${formData.phone}` : '';
+
+    const detailString = [
+      `Service Needed: ${formData.planType.toUpperCase() === 'SEO' ? 'Search Engine Optimization (SEO)' : 'Social Media Optimization (SMO)'}`,
+      formData.message && `Message: ${formData.message}`
+    ].filter(Boolean).join('\n');
+
+    try {
+      const res = await fetch(`${API_URL}/form`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          type: `Marketing Custom ${formData.planType.toUpperCase()} Plan`,
+          name: formData.name,
+          email: formData.email,
+          phone: fullPhone,
+          message: detailString
+        })
+      });
+
+      if (res.ok) {
+        toast.success('Your custom plan request has been submitted!');
+        setFormData({
+          planType: 'seo',
+          name: '',
+          email: '',
+          countryCode: '+91',
+          phone: '',
+          message: ''
+        });
+      } else {
+        toast.error('Failed to submit request. Please try again.');
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   // Load cart from localStorage on component mount
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
@@ -78,8 +142,14 @@ const PricingPage = () => {
     }
   }, []);
 
-  const seoPlans = MARKETING_PRICING_SEO_PLANS;
-  const smoPlans = MARKETING_PRICING_SMO_PLANS;
+  const seoPlans: Plan[] = MARKETING_PRICING_SEO_PLANS;
+  const smoPlans: Plan[] = MARKETING_PRICING_SMO_PLANS;
+
+  const standardSeoPlans = seoPlans.filter(p => !p.contactSales);
+  const customSeoPlan = seoPlans.find(p => p.contactSales);
+
+  const standardSmoPlans = smoPlans.filter(p => !p.contactSales);
+  const customSmoPlan = smoPlans.find(p => p.contactSales);
 
   const handleBuyNow = async (plan: Plan) => {
 
@@ -221,7 +291,7 @@ const PricingPage = () => {
 
           <h3 className="text-2xl font-bold text-gray-800 mb-2">{plan.name}</h3>
 
-          {plan.id === 'smo-enterprise' ? (
+          {plan.contactSales ? (
             <div className="mt-4 min-h-[72px] flex flex-col justify-center">
               <span className="text-4xl font-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
                 Contact Us
@@ -230,15 +300,23 @@ const PricingPage = () => {
             </div>
           ) : (
             <div className="mt-4">
-              <span className="text-5xl font-black bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                {getPriceDisplay()}
-              </span>
+              <div className="flex items-baseline gap-1.5 flex-wrap">
+                {plan.originalPrice && (
+                  <span className="text-xl font-medium text-gray-400 line-through">
+                    ${plan.originalPrice.toLocaleString()}
+                  </span>
+                )}
+                <span className="text-4xl font-extrabold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                  ${plan.price.toLocaleString()}
+                </span>
+                <span className="text-gray-500 text-sm font-semibold">/month</span>
+              </div>
               <p className="text-sm text-gray-500 mt-1">{getPriceNote()}</p>
             </div>
           )}
 
           {/* SEO-specific metrics */}
-          {type === 'seo' && (
+          {type === 'seo' && !plan.contactSales && (
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-3 text-center transition-all duration-300 hover:scale-105">
                 <p className="text-2xl font-bold text-blue-700">{plan.keywordLimit}+</p>
@@ -260,14 +338,14 @@ const PricingPage = () => {
           )}
 
           {/* SMO-specific metrics */}
-          {type === 'smo' && (
+          {type === 'smo' && !plan.contactSales && (
             <div className="mt-6 space-y-3 bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-4">
               <div className="flex items-start gap-4">
-                <span className="text-gray-600 font-medium min-w-[110px]">Platforms:</span>
+                <span className="text-gray-600 font-medium min-w-[80px]">Platforms:</span>
                 <span className="font-bold text-gray-900 leading-relaxed">
                   {Array.isArray(plan.platforms) ? plan.platforms.join(', ') : plan.platforms}
                   {plan.platformNote && (
-                    <span className="text-xs font-bold text-rose-600 ml-1.5 bg-rose-100 px-2 py-0.5 rounded inline-block uppercase tracking-wide">
+                    <span className="text-xs font-bold text-rose-600 ml-1.5 bg-rose-100 px-2 py-0.5 rounded inline-flex items-center uppercase tracking-wide whitespace-nowrap align-middle">
                       {plan.platformNote}
                     </span>
                   )}
@@ -292,7 +370,7 @@ const PricingPage = () => {
         <div className="p-8 flex-grow relative z-10">
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">What's included:</p>
           <ul className="space-y-3">
-            {plan.features.slice(0, 8).map((feature, idx) => (
+            {plan.features.map((feature, idx) => (
               <li key={idx} className="flex items-start group">
                 <svg
                   className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0 transition-transform group-hover:scale-110"
@@ -309,7 +387,7 @@ const PricingPage = () => {
         </div>
 
         <div className="p-8 pt-0 relative z-10 space-y-3">
-          {plan.id === 'smo-enterprise' ? (
+          {plan.contactSales ? (
             <button
               onClick={() => router.push('/contact')}
               className="w-full py-4 rounded-xl font-bold transition-all duration-300 transform bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105 cursor-pointer text-center"
@@ -330,8 +408,8 @@ const PricingPage = () => {
               <button
                 onClick={() => handleBuyNow(plan)}
                 className={`w-full py-4 rounded-xl font-bold transition-all duration-300 transform ${plan.popular
-                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:shadow-xl hover:scale-105'
-                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105'
+                  ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:shadow-xl hover:scale-105'
+                  : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105'
                   }`}
               >
                 ⚡ Buy Now
@@ -374,7 +452,7 @@ const PricingPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* ========== SECTION 1: SEO PLANS ========== */}
-        <section className="mb-32">
+        <section className="mb-16">
           <SectionHeader
             badge="Search Engine Optimization"
             icon="🔍"
@@ -382,7 +460,7 @@ const PricingPage = () => {
             description="Data-driven SEO strategies to boost your rankings, traffic, and conversions. Choose the plan that fits your business goals."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {seoPlans.map((plan) => (
+            {standardSeoPlans.map((plan) => (
               <PricingCard
                 key={plan.id}
                 plan={plan}
@@ -392,10 +470,22 @@ const PricingPage = () => {
               />
             ))}
           </div>
+          {customSeoPlan && (
+            <div className="mt-8 flex justify-start">
+              <div className="w-full md:w-[384px]">
+                <PricingCard
+                  plan={customSeoPlan}
+                  type="seo"
+                  isHovered={hoveredCard === customSeoPlan.id}
+                  onHover={setHoveredCard}
+                />
+              </div>
+            </div>
+          )}
         </section>
 
         {/* ========== SECTION 2: SMO PLANS ========== */}
-        <section className="mb-32">
+        <section className="mb-16">
           <SectionHeader
             badge="Social Media Optimization"
             icon="📱"
@@ -403,7 +493,7 @@ const PricingPage = () => {
             description="Boost engagement, grow your following, and build a powerful brand presence across all major social platforms with our data-driven SMO strategies."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {smoPlans.map((plan) => (
+            {standardSmoPlans.map((plan) => (
               <PricingCard
                 key={plan.id}
                 plan={plan}
@@ -412,6 +502,132 @@ const PricingPage = () => {
                 onHover={setHoveredCard}
               />
             ))}
+          </div>
+          {customSmoPlan && (
+            <div className="mt-8 flex justify-start">
+              <div className="w-full md:w-[384px]">
+                <PricingCard
+                  plan={customSmoPlan}
+                  type="smo"
+                  isHovered={hoveredCard === customSmoPlan.id}
+                  onHover={setHoveredCard}
+                />
+              </div>
+            </div>
+          )}
+        </section>
+
+        {/* ========== CUSTOM PLAN FORM SECTION ========== */}
+        <section className="mb-16 mt-16">
+          <SectionHeader
+            badge={MARKETING_PRICING_CUSTOM_FORM_HEADER.badge}
+            icon={MARKETING_PRICING_CUSTOM_FORM_HEADER.icon}
+            title={MARKETING_PRICING_CUSTOM_FORM_HEADER.title}
+            description={MARKETING_PRICING_CUSTOM_FORM_HEADER.description}
+          />
+
+          <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-blue-100 p-8 md:p-12 max-w-6xl mx-auto">
+            <form onSubmit={handleCustomPlanSubmit} className="space-y-8">
+              <div className="border-b border-gray-100 pb-6 mb-6">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+                  {MARKETING_PRICING_CUSTOM_FORM_HEADER.innerTitle || "Request a Custom Proposal"}
+                </h3>
+                <p className="text-sm text-gray-500 mt-1">
+                  {MARKETING_PRICING_CUSTOM_FORM_HEADER.innerSubtitle || "Please fill out this form and our marketing team will contact you shortly."}
+                </p>
+              </div>
+              {/* Service Type Dropdown Selector */}
+              <div>
+                <label className="block text-gray-700 font-semibold mb-2 text-sm">Select Service Needed *</label>
+                <select
+                  value={formData.planType}
+                  onChange={e => setFormData(prev => ({ ...prev, planType: e.target.value }))}
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                >
+                  <option value="seo">🔍 Search Engine Optimization (SEO) Service</option>
+                  <option value="smo">📱 Social Media Optimization (SMO) Service</option>
+                </select>
+              </div>
+
+              {/* User details */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-2 text-sm">Full Name *</label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                    placeholder="John Doe"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-2 text-sm">Email Address *</label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                    placeholder="john@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-2 text-sm">Phone Number</label>
+                  <div className="flex gap-2">
+                    <select
+                      value={formData.countryCode}
+                      onChange={e => setFormData(prev => ({ ...prev, countryCode: e.target.value }))}
+                      className="bg-gray-50 border border-gray-200 rounded-xl px-3 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm w-[90px]"
+                    >
+                      <option value="+91">🇮🇳 +91</option>
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+44">🇬🇧 +44</option>
+                      <option value="+61">🇦🇺 +61</option>
+                      <option value="+49">🇩🇪 +49</option>
+                      <option value="+33">🇫🇷 +33</option>
+                      <option value="+65">🇸🇬 +65</option>
+                      <option value="+971">🇦🇪 +971</option>
+                      <option value="+966">🇸🇦 +966</option>
+                      <option value="+81">🇯🇵 +81</option>
+                    </select>
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={e => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                      className="flex-1 min-w-0 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      placeholder="(123) 456-7890"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Custom message */}
+              <div>
+                <label className="block text-gray-700 font-semibold mb-2 text-sm">Describe Your Goals & Specific Requirements</label>
+                <textarea
+                  rows={4}
+                  value={formData.message}
+                  onChange={e => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  placeholder="Tell us about your industry, audience, or target results..."
+                />
+              </div>
+
+              {/* Submit Button */}
+              <div className="text-center pt-4">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-8 py-4 rounded-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 cursor-pointer text-base"
+                >
+                  {isSubmitting ? 'Submitting Request...' : '✉️ Request Custom Proposal'}
+                </button>
+              </div>
+            </form>
           </div>
         </section>
       </div>

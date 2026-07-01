@@ -15,12 +15,13 @@ import {
   Users,
   Headphones,
   FileText,
-  AlertCircle
+  AlertCircle,
+  Share2
 } from "lucide-react";
 
 interface FormSubmission {
   _id: string;
-  type: string;
+  type?: string;
   name: string;
   email: string;
   phone: string;
@@ -34,7 +35,7 @@ export default function AdminForms() {
   const [submissions, setSubmissions] = useState<FormSubmission[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [activeTab, setActiveTab] = useState<"finance" | "rpo" | "va">("finance");
+  const [activeTab, setActiveTab] = useState<"finance" | "rpo" | "va" | "seo" | "smo">("finance");
 
   const fetchSubmissions = async () => {
     try {
@@ -97,9 +98,16 @@ export default function AdminForms() {
     }
   };
 
-  // Classify submissions into Finance, RPO, and VA
-  const classifySubmission = (type: string) => {
+  // Classify submissions into Finance, RPO, VA, SEO, and SMO
+  const classifySubmission = (type?: string) => {
+    if (!type) return "finance";
     const t = type.toLowerCase();
+    if (t.includes("seo")) {
+      return "seo";
+    }
+    if (t.includes("smo")) {
+      return "smo";
+    }
     if (t === "tax" || t.includes("rpo") || t.includes("recruit")) {
       return "rpo";
     }
@@ -109,7 +117,15 @@ export default function AdminForms() {
     return "finance"; // Default: bookkeeping, financial-reporting, payroll, Accounting
   };
 
-  const getFriendlyType = (type: string) => {
+  const getFriendlyType = (type?: string) => {
+    if (!type) return "Accounting & Compliance";
+    const t = type.toLowerCase();
+    if (t.includes("marketing custom seo plan")) {
+      return "Custom SEO Plan Request";
+    }
+    if (t.includes("marketing custom smo plan")) {
+      return "Custom SMO Plan Request";
+    }
     switch (type) {
       case "bookkeeping":
         return "Bookkeeping";
@@ -142,6 +158,8 @@ export default function AdminForms() {
   const financeCount = submissions.filter((item) => classifySubmission(item.type) === "finance").length;
   const rpoCount = submissions.filter((item) => classifySubmission(item.type) === "rpo").length;
   const vaCount = submissions.filter((item) => classifySubmission(item.type) === "va").length;
+  const seoCount = submissions.filter((item) => classifySubmission(item.type) === "seo").length;
+  const smoCount = submissions.filter((item) => classifySubmission(item.type) === "smo").length;
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -248,6 +266,48 @@ export default function AdminForms() {
             </span>
             {activeTab === "va" && (
               <div className="absolute bottom-0 left-0 w-full h-[3px] bg-purple-400 rounded-t-full" />
+            )}
+          </button>
+
+          {/* Tab 4: SEO */}
+          <button
+            onClick={() => setActiveTab("seo")}
+            className={`pb-4 px-2 text-lg font-semibold relative transition-all flex items-center gap-2 ${
+              activeTab === "seo" ? "text-pink-400" : "text-gray-400 hover:text-white"
+            }`}
+          >
+            <Search className="h-5 w-5" />
+            <span>SEO Inquiries</span>
+            <span
+              className={`text-xs px-2.5 py-0.5 rounded-full font-bold ${
+                activeTab === "seo" ? "bg-pink-500/20 text-pink-400" : "bg-gray-800 text-gray-400"
+              }`}
+            >
+              {seoCount}
+            </span>
+            {activeTab === "seo" && (
+              <div className="absolute bottom-0 left-0 w-full h-[3px] bg-pink-400 rounded-t-full" />
+            )}
+          </button>
+
+          {/* Tab 5: SMO */}
+          <button
+            onClick={() => setActiveTab("smo")}
+            className={`pb-4 px-2 text-lg font-semibold relative transition-all flex items-center gap-2 ${
+              activeTab === "smo" ? "text-orange-400" : "text-gray-400 hover:text-white"
+            }`}
+          >
+            <Share2 className="h-5 w-5" />
+            <span>SMO Inquiries</span>
+            <span
+              className={`text-xs px-2.5 py-0.5 rounded-full font-bold ${
+                activeTab === "smo" ? "bg-orange-500/20 text-orange-400" : "bg-gray-800 text-gray-400"
+              }`}
+            >
+              {smoCount}
+            </span>
+            {activeTab === "smo" && (
+              <div className="absolute bottom-0 left-0 w-full h-[3px] bg-orange-400 rounded-t-full" />
             )}
           </button>
         </div>

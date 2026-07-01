@@ -28,7 +28,7 @@ jobs:
         with:
           name: node-app
           path: .
-          retention-days: 7
+          retention-days: 4
  
   deploy:
     runs-on: ubuntu-latest
