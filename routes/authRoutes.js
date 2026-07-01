@@ -80,6 +80,8 @@ router.post("/register", async (req, res) => {
 
     const hashed = await bcrypt.hash(password, 10);
 
+    const role = (adminCode && adminCode === (process.env.ADMIN_CODE || "V1S1ONARY_2026")) ? "admin" : "user";
+
     const user = await User.create({
       name: nameVal,
       firstName: firstName || "",
