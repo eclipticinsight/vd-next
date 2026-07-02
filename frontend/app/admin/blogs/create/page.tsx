@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-
+import Image from "next/image";
 
 
 // Dynamically import TinyMCE to avoid SSR issues
@@ -83,59 +83,59 @@ export default function CreateBlog() {
   // SUBMIT BLOG
   // =========================
   const handleSubmit = async (
-  e: React.FormEvent
-) => {
+    e: React.FormEvent
+  ) => {
 
-  e.preventDefault();
+    e.preventDefault();
 
-  const isLoggedIn =
-    localStorage.getItem("isLoggedIn") === "true";
+    const isLoggedIn =
+      localStorage.getItem("isLoggedIn") === "true";
 
-  if (!isLoggedIn) {
-    return alert("Login required");
-  }
-
-  try {
-
-    setLoading(true);
-
-    const response =
-      await fetch("/api/blogs", {
-
-        method:"POST",
-
-        headers:{
-          "Content-Type":"application/json",
-        },
-
-        credentials: "include",
-        body:JSON.stringify(form),
-      });
-
-    const data =
-      await response.json();
-
-    if (!response.ok) {
-      throw new Error(
-        data.msg || "Create failed"
-      );
+    if (!isLoggedIn) {
+      return alert("Login required");
     }
 
-    alert("Blog created");
+    try {
 
-    router.push("/blog");
+      setLoading(true);
 
-  } catch(error) {
+      const response =
+        await fetch("/api/blogs", {
 
-    console.error(error);
+          method: "POST",
 
-    alert("Create failed");
+          headers: {
+            "Content-Type": "application/json",
+          },
 
-  } finally {
+          credentials: "include",
+          body: JSON.stringify(form),
+        });
 
-    setLoading(false);
-  }
-};
+      const data =
+        await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.msg || "Create failed"
+        );
+      }
+
+      alert("Blog created");
+
+      router.push("/blog");
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert("Create failed");
+
+    } finally {
+
+      setLoading(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-[#0B1F3A] text-white flex justify-center items-center px-4 py-10">
       <form
@@ -222,10 +222,12 @@ export default function CreateBlog() {
         {/* IMAGE PREVIEW */}
         {form.image && (
           <div className="relative w-full h-64 rounded-xl overflow-hidden bg-white/5">
-            <img
+            <Image
               src={form.image}
               alt={form.imageAlt || "Preview"}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
         )}

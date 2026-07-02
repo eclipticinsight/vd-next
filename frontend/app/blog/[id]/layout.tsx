@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
 
-const getApiUrl = () => {
-  if (process.env.NODE_ENV === "development") {
-    return "http://localhost:5000/api";
-  }
-  return process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
-};
-
-const API_URL = getApiUrl();
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 const SITE_URL = "https://www.visionarydynamicsas.com";
 
 export async function generateMetadata({

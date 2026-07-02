@@ -28,7 +28,6 @@ export default function EditBlog() {
   const isAdmin = user && user.role === "admin";
   const [loadingData, setLoadingData] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [uploading, setUploading] = useState(false);
 
   const [form, setForm] = useState({
     title: "",
@@ -39,36 +38,6 @@ export default function EditBlog() {
     image: "",
     imageAlt: "",
   });
-
-  // =========================
-  // IMAGE UPLOAD
-  // =========================
-  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    try {
-      setUploading(true);
-      const formData = new FormData();
-      formData.append("image", file);
-
-      const response = await fetch("/api/blogs/upload", {
-        method: "POST",
-        body: formData,
-        credentials: "include",
-      });
-
-      if (!response.ok) throw new Error("Upload failed");
-
-      const data = await response.json();
-      setForm((prev) => ({ ...prev, image: data.imageUrl }));
-    } catch (err) {
-      console.error(err);
-      alert("Upload failed");
-    } finally {
-      setUploading(false);
-    }
-  };
 
   // =========================
   // PROTECT PAGE
@@ -191,26 +160,19 @@ export default function EditBlog() {
           }
         />
 
-        {/* IMAGE UPLOAD + URL */}
-        <div className="space-y-2">
-          <label className="text-sm text-white/70">Cover Image</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleUpload}
-            className="w-full p-2 rounded bg-white/10 border border-white/20 text-white file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:bg-sky-500 file:text-white cursor-pointer"
-          />
-          {uploading && <p className="text-yellow-400 text-sm">Uploading...</p>}
-          <input
-            type="text"
-            placeholder="Or paste Image URL"
-            value={form.image}
-            className="w-full p-3 rounded bg-white/10 border border-white/20"
-            onChange={(e) =>
-              setForm({ ...form, image: e.target.value })
-            }
-          />
-        </div>
+        {/* IMAGE URL */}
+        <input
+          type="text"
+          placeholder="Image URL"
+          value={form.image}
+          className="w-full p-3 rounded bg-white/10 border border-white/20"
+          onChange={(e) =>
+            setForm({
+              ...form,
+              image: e.target.value,
+            })
+          }
+        />
 
         {/* IMAGE PREVIEW */}
         {form.image && (
@@ -253,37 +215,37 @@ export default function EditBlog() {
           <option value="Marketing">Marketing</option>
         </select>
 
-       {/* EDITOR */}
-<div className="bg-white rounded-xl overflow-hidden">
+        {/* EDITOR */}
+        <div className="bg-white rounded-xl overflow-hidden">
 
-  <Editor
-    tinymceScriptSrc="/tinymce/tinymce.min.js"
-    licenseKey="gpl"
+          <Editor
+            tinymceScriptSrc="/tinymce/tinymce.min.js"
+            licenseKey="gpl"
 
-    value={form.content}
+            value={form.content}
 
-    onEditorChange={(content)=>
-      setForm({
-        ...form,
-        content,
-      })
-    }
+            onEditorChange={(content) =>
+              setForm({
+                ...form,
+                content,
+              })
+            }
 
-    init={{
-      height:500,
-      menubar:true,
+            init={{
+              height: 500,
+              menubar: true,
 
-      plugins:
-        "advlist autolink lists link image table code fullscreen preview",
+              plugins:
+                "advlist autolink lists link image table code fullscreen preview",
 
-      toolbar:
-        "undo redo | blocks | bold italic underline | " +
-        "alignleft aligncenter alignright | " +
-        "bullist numlist | image link table | code preview",
-    }}
-  />
+              toolbar:
+                "undo redo | blocks | bold italic underline | " +
+                "alignleft aligncenter alignright | " +
+                "bullist numlist | image link table | code preview",
+            }}
+          />
 
-</div>
+        </div>
 
         {/* BUTTON */}
         <button
