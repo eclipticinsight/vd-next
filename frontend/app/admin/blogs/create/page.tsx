@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-import Image from "next/image";
+
 
 
 // Dynamically import TinyMCE to avoid SSR issues
@@ -222,12 +222,10 @@ export default function CreateBlog() {
         {/* IMAGE PREVIEW */}
         {form.image && (
           <div className="relative w-full h-64 rounded-xl overflow-hidden bg-white/5">
-            <Image
+            <img
               src={form.image}
               alt={form.imageAlt || "Preview"}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="w-full h-full object-cover"
             />
           </div>
         )}
