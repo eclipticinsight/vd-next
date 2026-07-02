@@ -1,21 +1,17 @@
 const getApiUrl = () => {
   if (typeof window !== "undefined") {
-    // On localhost, always use local backend directly
     if (window.location.hostname === "localhost") {
       return "http://localhost:5000/api";
     }
-    // On production: use relative /api — handled by Next.js API proxy route
     return "/api";
   }
-  // SSR: use internal backend URL directly
-  return process.env.BACKEND_URL
-    ? `${process.env.BACKEND_URL}/api`
-    : process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+  return process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 };
 
 const BASE_URL = getApiUrl();
 
 export const API_URL = BASE_URL;
+
 
 export const API = {
 
@@ -152,4 +148,4 @@ export const API = {
       data: json,
     };
   },
-};
+};  

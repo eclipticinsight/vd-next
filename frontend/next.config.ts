@@ -11,25 +11,9 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname, ".."),
   },
-
-  // Proxy /api/* calls to the Express backend
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: "http://localhost:5000/api/:path*",
-      },
-    ];
-  },
-
   images: {
     // Required for standalone builds + fixes /_next/image proxy timeouts
     remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "localhost",
-        port: "5000",
-      },
       {
         protocol: "https",
         hostname: "images.unsplash.com",
@@ -56,3 +40,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+
