@@ -1,17 +1,19 @@
 const getApiUrl = () => {
   if (typeof window !== "undefined") {
+    // On localhost, always use local backend
     if (window.location.hostname === "localhost") {
       return "http://localhost:5000/api";
     }
-    return "/api";
+    // On production client-side, use the configured API URL
+    return process.env.NEXT_PUBLIC_API_URL || "https://api.visionarydynamicsas.com/api";
   }
+  // SSR fallback
   return process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 };
 
 const BASE_URL = getApiUrl();
 
 export const API_URL = BASE_URL;
-
 
 export const API = {
 
