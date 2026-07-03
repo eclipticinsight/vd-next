@@ -28,6 +28,7 @@ export default function EditBlog() {
   const isAdmin = user && user.role === "admin";
   const [loadingData, setLoadingData] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   const [form, setForm] = useState({
     title: "",
@@ -47,6 +48,42 @@ export default function EditBlog() {
       router.push("/blog");
     }
   }, [isAdmin, router]);
+
+  // =========================
+  // IMAGE UPLOAD
+  // =========================
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setUploading(true);
+
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const response = await fetch("/api/blogs/upload", {
+        method: "POST",
+        body: formData,
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error("Upload failed");
+      }
+
+      const data = await response.json();
+      setForm((prev) => ({
+        ...prev,
+        image: data.imageUrl,
+      }));
+    } catch (err) {
+      console.error(err);
+      alert("Upload failed");
+    } finally {
+      setUploading(false);
+    }
+  };
 
   // =========================
   // FETCH BLOG
@@ -159,6 +196,27 @@ export default function EditBlog() {
             })
           }
         />
+
+        {/* IMAGE UPLOAD */}
+        <div className="space-y-2">
+          <label className="block text-sm text-white/70">Featured Image (Upload new or use URL below)</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleUpload}
+            className="w-full p-3 rounded bg-white/10 border border-white/20 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sky-500 file:text-white hover:file:bg-sky-600"
+          />
+        </div>
+
+        {uploading && (
+          <p className="text-yellow-300 flex items-center gap-2">
+            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+            </svg>
+            Uploading image...
+          </p>
+        )}
 
         {/* IMAGE URL */}
         <input
