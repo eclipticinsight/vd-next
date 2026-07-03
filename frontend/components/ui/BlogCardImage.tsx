@@ -32,12 +32,19 @@ const getFallbackImage = (category?: string) => {
 const getImageUrl = (imageSrc?: string) => {
   if (!imageSrc) return "";
 
-  // Already an absolute URL — use directly
-  if (imageSrc.startsWith("http")) {
-    return imageSrc;
+  let url = imageSrc;
+
+  // If it's a localhost URL, strip the origin part so we can resolve it dynamically
+  if (url.includes("localhost:5000") || url.includes("127.0.0.1:5000")) {
+    url = url.replace(/^http:\/\/(localhost|127\.0\.0\.1):5000/, "");
   }
 
-  const match = imageSrc.match(/\/uploads\/(.+)$/);
+  // Already an absolute external URL — use directly
+  if (url.startsWith("http")) {
+    return url;
+  }
+
+  const match = url.match(/\/uploads\/(.+)$/);
   if (match) {
     const filename = match[1];
     if (typeof window !== "undefined" && window.location.hostname === "localhost") {
@@ -46,7 +53,7 @@ const getImageUrl = (imageSrc?: string) => {
     return `https://visionarydynamicsas.com/uploads/${filename}`;
   }
 
-  return imageSrc;
+  return url;
 };
 
 export default function BlogCardImage({
