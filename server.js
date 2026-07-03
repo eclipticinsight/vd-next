@@ -110,7 +110,7 @@ if (process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID) 
 
   console.log(`🚀 Starting Next.js standalone server on port ${nextPort}`);
   const nextProcess = fork(
-    path.join(__dirname, "frontend/next-server.js"),
+    path.join(__dirname, ".next/standalone/frontend/server.js"),
     [],
     {
       env: {
