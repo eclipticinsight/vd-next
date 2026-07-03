@@ -117,7 +117,7 @@ export default function CreateBlog() {
 
       if (!response.ok) {
         throw new Error(
-          data.msg || "Create failed"
+          data.message || data.msg || "Create failed"
         );
       }
 
@@ -125,11 +125,11 @@ export default function CreateBlog() {
 
       router.push("/blog");
 
-    } catch (error) {
+    } catch (error: any) {
 
       console.error(error);
 
-      alert("Create failed");
+      alert(`Create failed: ${error.message || "Unknown error"}`);
 
     } finally {
 

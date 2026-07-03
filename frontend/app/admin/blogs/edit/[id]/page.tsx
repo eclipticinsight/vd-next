@@ -127,9 +127,9 @@ export default function EditBlog() {
       await API.put(`/blogs/${id}`, form);
       alert("✅ Blog Updated!");
       router.push("/blog");
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert("❌ Update failed");
+      alert(`❌ Update failed: ${err.message || err.msg || "Unknown error"}`);
     } finally {
       setLoading(false);
     }
