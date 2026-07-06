@@ -109,8 +109,14 @@ if (process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID) 
   const nextPort = 3000;
 
   console.log(`🚀 Starting Next.js standalone server on port ${nextPort}`);
+  const fs = require("fs");
+  let frontendPath = path.join(__dirname, "frontend/server.js");
+  if (!fs.existsSync(frontendPath)) {
+    frontendPath = path.join(__dirname, ".next/standalone/frontend/server.js");
+  }
+
   const nextProcess = fork(
-    path.join(__dirname, ".next/standalone/frontend/server.js"),
+    frontendPath,
     [],
     {
       env: {
