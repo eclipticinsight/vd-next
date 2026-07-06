@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
  
-name: Build and deploy Node.js app to Azure Web App
+name: Build and deploy Node.js app to Azure Web App - Visionarydynamicsas
  
 on:
   push:
@@ -19,34 +19,15 @@ jobs:
       - uses: actions/checkout@v4
  
       - name: Set up Node.js version
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: package-lock.json
-
-      - name: Install all dependencies
-        run: npm install
-
-      - name: Build Next.js app
-        env:
-          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL || 'https://visionarydynamicsas-axbyczf9cnb8e4a8.eastus-01.azurewebsites.net/api' }}
-          NEXT_PUBLIC_TINYMCE_API_KEY: ${{ secrets.NEXT_PUBLIC_TINYMCE_API_KEY }}
-        run: npm run build
-
-      - name: Install production dependencies in standalone directory
-        run: |
-          cp package.json .next/standalone/package.json
-          cp package-lock.json .next/standalone/package-lock.json
-          cd .next/standalone
-          npm install --omit=dev
-
+          node-version: '24.x'
+ 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .next/standalone
-          retention-days: 4
+          path: .
  
   deploy:
     runs-on: ubuntu-latest
@@ -76,4 +57,6 @@ jobs:
           slot-name: 'Production'
           package: .
          
+ 
+
  

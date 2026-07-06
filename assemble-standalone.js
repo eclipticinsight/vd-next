@@ -52,33 +52,6 @@ async function main() {
 
   await copyRecursive(publicSrc, publicDest);
 
-  // Copy backend files to standalone directory
-  const backendFiles = [
-    "server.js",
-    "config",
-    "routes",
-    "models",
-    "middleware",
-    "uploads",
-  ];
-
-  for (const item of backendFiles) {
-    const srcPath = path.join(rootDir, item);
-    const destPath = path.join(standaloneDir, item);
-    if (fs.existsSync(srcPath)) {
-      console.log(`Copying backend item: ${item} -> ${destPath}`);
-      await copyRecursive(srcPath, destPath);
-    }
-  }
-
-  // Copy .env if it exists
-  const envSrc = path.join(rootDir, ".env");
-  const envDest = path.join(standaloneDir, ".env");
-  if (fs.existsSync(envSrc)) {
-    console.log(`Copying .env file to standalone`);
-    await fs.promises.copyFile(envSrc, envDest);
-  }
-
   console.log("Standalone assemble complete.");
 
 }
@@ -90,4 +63,3 @@ main().catch((error) => {
   process.exit(1);
 
 });
- 
