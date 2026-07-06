@@ -430,7 +430,7 @@ const PricingPage = () => {
         className="relative text-white overflow-hidden bg-cover bg-center pt-20 lg:pt-16"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2070&q=80')",
+            "url('/images/marketing-pricing-hero.png')",
         }}
       >
         {/* Dark Overlay */}
