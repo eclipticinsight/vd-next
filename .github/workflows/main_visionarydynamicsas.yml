@@ -36,6 +36,8 @@ jobs:
 
       - name: Install production dependencies in standalone directory
         run: |
+          cp package.json .next/standalone/package.json
+          cp package-lock.json .next/standalone/package-lock.json
           cd .next/standalone
           npm install --omit=dev
 
