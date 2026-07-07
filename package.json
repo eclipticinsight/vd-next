@@ -169,16 +169,16 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-      "build": "next build frontend",
+    "build": "next build frontend",
     "postbuild": "node assemble-standalone.js",
     "dev:backend": "nodemon server.js",
-     "dev:frontend": "next dev frontend",
+    "dev:frontend": "next dev frontend",
     "start:backend": "node server.js",
     "start:frontend": "node .next/standalone/frontend/server.js",
-    "lint": "eslint frontend"
+    "lint": "eslint frontend",
+    "start:all": "npm run start:backend & npm run start:frontend"
   },
   "keywords": [],
   "author": "",
   "license": "ISC"
 }
-
