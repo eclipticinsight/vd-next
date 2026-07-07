@@ -1,3 +1,4 @@
+// Force redeploy restart - 2026-07-07
 require("dotenv").config();
 
 const express = require("express");
