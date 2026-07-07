@@ -104,87 +104,87 @@ app.use(
 app.use(compression());
 
 // 🔥 Serve/Proxy Frontend in Production
-// if (process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID) {
-//   const { fork } = require("child_process");
-//   const http = require("http");
-//   const nextPort = 3000;
+if (process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID) {
+  const { fork } = require("child_process");
+  const http = require("http");
+  const nextPort = 3000;
 
-//   console.log(`🚀 Starting Next.js standalone server on port ${nextPort}`);
-//   const fs = require("fs");
-//   let frontendPath = path.join(__dirname, "frontend/server.js");
-//   if (!fs.existsSync(frontendPath)) {
-//     frontendPath = path.join(__dirname, ".next/standalone/frontend/server.js");
-//   }
+  console.log(`🚀 Starting Next.js standalone server on port ${nextPort}`);
+  const fs = require("fs");
+  let frontendPath = path.join(__dirname, "frontend/server.js");
+  if (!fs.existsSync(frontendPath)) {
+    frontendPath = path.join(__dirname, ".next/standalone/frontend/server.js");
+  }
 
-//   const nextProcess = fork(
-//     frontendPath,
-//     [],
-//     {
-//       env: {
-//         ...process.env,
-//         PORT: nextPort.toString(),
-//         HOSTNAME: "127.0.0.1",
-//       },
-//       stdio: "inherit",
-//     }
-//   );
+  const nextProcess = fork(
+    frontendPath,
+    [],
+    {
+      env: {
+        ...process.env,
+        PORT: nextPort.toString(),
+        HOSTNAME: "127.0.0.1",
+      },
+      stdio: "inherit",
+    }
+  );
 
-//   nextProcess.on("error", (err) => {
-//     console.error("❌ Failed to start Next.js server:", err);
-//   });
+  nextProcess.on("error", (err) => {
+    console.error("❌ Failed to start Next.js server:", err);
+  });
 
-//   // Clean up Next.js child process when Express exits
-//   const cleanup = () => {
-//     console.log("Stopping Next.js standalone server...");
-//     try {
-//       nextProcess.kill("SIGTERM");
-//     } catch (err) {
-//       // ignore
-//     }
-//   };
+  // Clean up Next.js child process when Express exits
+  const cleanup = () => {
+    console.log("Stopping Next.js standalone server...");
+    try {
+      nextProcess.kill("SIGTERM");
+    } catch (err) {
+      // ignore
+    }
+  };
 
-//   process.on("exit", cleanup);
-//   process.on("SIGINT", () => {
-//     cleanup();
-//     process.exit(0);
-//   });
-//   process.on("SIGTERM", () => {
-//     cleanup();
-//     process.exit(0);
-//   });
+  process.on("exit", cleanup);
+  process.on("SIGINT", () => {
+    cleanup();
+    process.exit(0);
+  });
+  process.on("SIGTERM", () => {
+    cleanup();
+    process.exit(0);
+  });
 
-//   // Proxy middleware for non-API routes (placed before body parsers)
-//   app.use((req, res, next) => {
-//     if (
-//       req.path.startsWith("/api") ||
-//       req.path.startsWith("/uploads") ||
-//       req.path === "/sitemap.xml"
-//     ) {
-//       return next();
-//     }
+  // Proxy middleware for non-API routes (placed before body parsers)
+  app.use((req, res, next) => {
+    if (
+      req.path.startsWith("/api") ||
+      req.path.startsWith("/uploads") ||
+      req.path === "/sitemap.xml"
+    ) {
+      return next();
+    }
 
-//     const proxyReq = http.request(
-//       {
-//         host: "127.0.0.1",
-//         port: nextPort,
-//         path: req.url,
-//         method: req.method,
-//         headers: req.headers,
-//       },
-//       (proxyRes) => {
-//         res.writeHead(proxyRes.statusCode, proxyRes.headers);
-//         proxyRes.pipe(res, { end: true });
-//       }
-//     );
+    const proxyReq = http.request(
+      {
+        host: "127.0.0.1",
+        port: nextPort,
+        path: req.url,
+        method: req.method,
+        headers: req.headers,
+      },
+      (proxyRes) => {
+        res.writeHead(proxyRes.statusCode, proxyRes.headers);
+        proxyRes.pipe(res, { end: true });
+      }
+    );
 
-//     req.pipe(proxyReq, { end: true });
+    req.pipe(proxyReq, { end: true });
 
-//     proxyReq.on("error", (err) => {
-//       console.error("❌ Frontend Proxy error:", err.message);
-//       res.status(500).send("Frontend Proxy Error");
-//     });
-//   });
-// }
+    proxyReq.on("error", (err) => {
+      console.error("❌ Frontend Proxy error:", err.message);
+      res.status(500).send("Frontend Proxy Error");
+    });
+  });
+}
 
 // 🔥 Body Parsers
 app.use(express.json({ limit: "50mb" }));
