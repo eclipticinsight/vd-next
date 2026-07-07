@@ -1192,7 +1192,7 @@ export const MARKETING_PRICING_SMO_PLANS = [
       'Paid Social Strategy & Ad Management',
       'Viral Content Strategy & A/B Testing',
       'Weekly In-Depth Analytics & ROI Tracking',
-      'Dedicated Social Media Manager',
+
     ],
     support: ['24/7 Priority Support', 'Dedicated Account Manager', 'SLA Agreement'],
     buttonText: 'Start Enterprise SMO',
