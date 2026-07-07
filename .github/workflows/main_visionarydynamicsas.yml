@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
  
-name: Build and deploy Node.js app to Azure Web App
+name: Build and deploy Node.js app to Azure Web App - Visionarydynamicsas
  
 on:
   push:
@@ -21,27 +21,13 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies (including devDependencies for build)
-        run: npm ci
-
-      - name: Build Next.js app
-        env:
-          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL || 'https://visionarydynamicsas.com/api' }}
-          NEXT_PUBLIC_TINYMCE_API_KEY: ${{ secrets.NEXT_PUBLIC_TINYMCE_API_KEY || 'ftshxt938szuy5c3ujish66wch6u58w61qg6uan1s6qfgrfl' }}
-        run: npm run build
-
-      - name: Prune devDependencies to reduce artifact size
-        run: npm prune --production
-
+          node-version: '24.x'
+ 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
           path: .
-          retention-days: 4
  
   deploy:
     runs-on: ubuntu-latest
