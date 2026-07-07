@@ -6,11 +6,10 @@ import {
   Shield,
   BarChart3,
   Clock,
- 
+
   Phone,
   ChevronRight,
-  CheckCircle,
-  TrendingUp,
+
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -28,8 +27,9 @@ interface WaveProps {
 
 export const WaveTransition = ({
   direction = "bottom",
-}: WaveProps) => {  const isTop = direction === "top";
- 
+}: WaveProps) => {
+  const isTop = direction === "top";
+
   return (
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
@@ -50,11 +50,11 @@ const BookkeepingPage = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
 
-if (!canvas) return;
+    if (!canvas) return;
 
-const ctx = canvas.getContext("2d")!;
+    const ctx = canvas.getContext("2d")!;
 
-if (!ctx) return;
+    if (!ctx) return;
     const particleCount = 25;
     const colors = [
       'rgba(59, 130, 246, 0.25)',
@@ -66,63 +66,63 @@ if (!ctx) return;
 
     const resizeCanvas = () => {
       canvas.width =
-  canvas.parentElement?.clientWidth || window.innerWidth;
+        canvas.parentElement?.clientWidth || window.innerWidth;
 
-canvas.height =
-  canvas.parentElement?.clientHeight || window.innerHeight;
+      canvas.height =
+        canvas.parentElement?.clientHeight || window.innerHeight;
     };
 
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-     const safeCanvas = canvas!;
+    const safeCanvas = canvas!;
 
     class Particle {
-  x:number;
-  y:number;
-  size:number;
-  speedX:number;
-  speedY:number;
-  color:string;
-  shape:string;
-  rotation:number;
-  rotationSpeed:number;
+      x: number;
+      y: number;
+      size: number;
+      speedX: number;
+      speedY: number;
+      color: string;
+      shape: string;
+      rotation: number;
+      rotationSpeed: number;
 
-  constructor() {
-this.x = Math.random() * safeCanvas.width;
-this.y = Math.random() * safeCanvas.height;
-    this.size = Math.random() * 15 + 3;
-    this.speedX = Math.random() * 0.4 - 0.2;
-    this.speedY = Math.random() * 0.4 - 0.2;
-    this.color = colors[Math.floor(Math.random() * colors.length)];
-    this.shape = Math.random() > 0.5 ? "circle" : "triangle";
-    this.rotation = Math.random() * Math.PI * 2;
-    this.rotationSpeed = Math.random() * 0.01 - 0.005;
-  }
+      constructor() {
+        this.x = Math.random() * safeCanvas.width;
+        this.y = Math.random() * safeCanvas.height;
+        this.size = Math.random() * 15 + 3;
+        this.speedX = Math.random() * 0.4 - 0.2;
+        this.speedY = Math.random() * 0.4 - 0.2;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.shape = Math.random() > 0.5 ? "circle" : "triangle";
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = Math.random() * 0.01 - 0.005;
+      }
 
-  update() {
-  this.x += this.speedX;
-  this.y += this.speedY;
-  this.rotation += this.rotationSpeed;
-}
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.rotation += this.rotationSpeed;
+      }
 
-draw() {
-  ctx.save();
-  ctx.translate(this.x, this.y);
-  ctx.rotate(this.rotation);
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
 
-  ctx.fillStyle = this.color;
-  ctx.globalAlpha = 0.06;
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = 0.06;
 
-  ctx.beginPath();
-  ctx.arc(0,0,this.size,0,Math.PI*2);
-  ctx.fill();
+        ctx.beginPath();
+        ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+        ctx.fill();
 
-  ctx.restore();
-}
-}
+        ctx.restore();
+      }
+    }
 
-const particles: Particle[] = [];
+    const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
@@ -252,22 +252,19 @@ const particles: Particle[] = [];
             )}
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div
-                className={`flex flex-col ${
-                  item.reverse ? "md:flex-row-reverse" : "md:flex-row"
-                } gap-8 md:gap-12 items-center`}
+                className={`flex flex-col ${item.reverse ? "md:flex-row-reverse" : "md:flex-row"
+                  } gap-8 md:gap-12 items-center`}
               >
                 <div className="w-full md:w-1/2">
                   <h2
-                    className={`text-2xl sm:text-3xl md:text-4xl font-semibold mb-3 sm:mb-4 ${
-                      item?.darkOverlay ? "text-white" : "text-gray-900"
-                    }`}
+                    className={`text-2xl sm:text-3xl md:text-4xl font-semibold mb-3 sm:mb-4 ${item?.darkOverlay ? "text-white" : "text-gray-900"
+                      }`}
                   >
                     {item.title}
                   </h2>
                   <p
-                    className={`leading-relaxed text-sm sm:text-base md:text-lg ${
-                      item.darkOverlay ? "text-gray-200" : "text-gray-600"
-                    }`}
+                    className={`leading-relaxed text-sm sm:text-base md:text-lg ${item.darkOverlay ? "text-gray-200" : "text-gray-600"
+                      }`}
                   >
                     {item.desc}
                   </p>
