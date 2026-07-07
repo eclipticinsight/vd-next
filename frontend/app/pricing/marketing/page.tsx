@@ -23,10 +23,10 @@ type Plan = {
   support: string[];
   buttonText: string;
   popular: boolean;
-  keywordLimit?: number;
-  backlinks?: number;
+  keywordLimit?: string | number;
+  backlinks?: string | number;
   gmb?: number;
-  guestPost?: number;
+  guestPost?: string | number;
   pressRelease?: number;
   platforms?: string[];
   platformNote?: string;
@@ -319,7 +319,9 @@ const PricingPage = () => {
           {type === 'seo' && !plan.contactSales && (
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-3 text-center transition-all duration-300 hover:scale-105">
-                <p className="text-2xl font-bold text-blue-700">{plan.keywordLimit}+</p>
+                <p className="text-2xl font-bold text-blue-700">
+                  {typeof plan.keywordLimit === 'number' ? `${plan.keywordLimit}+` : plan.keywordLimit}
+                </p>
                 <p className="text-gray-600 text-xs font-medium">Keywords</p>
               </div>
               <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-3 text-center transition-all duration-300 hover:scale-105">

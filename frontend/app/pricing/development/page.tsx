@@ -24,10 +24,10 @@ type Plan = {
   platform?: string;
   turnaround?: string;
   tech?: string;
-  keywordLimit?: number;
-  backlinks?: number;
-  gmb?: number;
-  guestPost?: number;
+  keywordLimit?: string | number;
+  backlinks?: string | number;
+  gmb?: string | number;
+  guestPost?: string | number;
   pressRelease?: number;
 };
 
