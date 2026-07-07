@@ -1,23 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect } from 'react';
-import {
-  TrendingUp,
-  ArrowUpRight,
-  Clock,
-  BarChart3,
-  LineChart,
-  Globe,
-  Sparkles,
-  ChevronRight,
-  MapPin,
-  DollarSign,
-  Briefcase,
-  Target,
-  Rocket,
-  Activity,
-  Wallet 
-} from 'lucide-react';
+
 import Image from 'next/image';
 import {
   FINANCIAL_REPORTING_PAGE_FEATURES,
@@ -28,7 +12,7 @@ import {
 // Wave Transition Component
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
- 
+
   return (
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
@@ -49,7 +33,7 @@ const FinancialReportingPage = () => {
 
 
   return (
-    <div className="min-h-screen bg-blue-50">  
+    <div className="min-h-screen bg-blue-50">
       {/* Hero Section */}
       <section className="relative pt-28 pb-22 md:pb-28 lg:pb-36 px-6 overflow-hidden">
         {/* Background Image */}
@@ -214,7 +198,7 @@ const FinancialReportingPage = () => {
         <div className="absolute top-0 left-0 w-full -mt-12 z-20">
           <WaveTransition direction="top" />
         </div>
-       
+
         {/* Background */}
         <div
           className="absolute inset-0 bg-cover bg-center"
