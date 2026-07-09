@@ -231,10 +231,11 @@ const PricingPage = () => {
                             ? `$${displayPrice.toLocaleString()}`
                             : displayPrice}
                         </h2>
-<p className="text-slate-500 text-sm mt-1">
-  per month
-</p>
-                        
+                        {section.id !== "taxation" && typeof displayPrice === "number" && (
+                          <p className="text-slate-500 text-sm mt-1">
+                            per month
+                          </p>
+                        )}
                       </div>
  
                       <div className="mt-6 space-y-3">

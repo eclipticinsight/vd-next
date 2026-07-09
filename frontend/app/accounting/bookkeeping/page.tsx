@@ -2,14 +2,8 @@
 
 import React, { useEffect, useRef } from "react";
 import {
-  Users,
-  Shield,
-  BarChart3,
-  Clock,
-
   Phone,
   ChevronRight,
-
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
