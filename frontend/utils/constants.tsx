@@ -1448,7 +1448,7 @@ export const ACCOUNTING_PRICING_SECTIONS = [
         popular: true,
         features: [
           "Tax Planning",
-          "Quarterly Filing",
+          "Annual State/Fedral filing",
           "Compliance",
           "Priority Support",
         ],
