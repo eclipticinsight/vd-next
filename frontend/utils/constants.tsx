@@ -1395,7 +1395,7 @@ export const ACCOUNTING_PRICING_SECTIONS = [
           "Basic Bookkeeping (40 hrs)",
           "Monthly Reports",
           "Bank Reconciliation",
-          "Payroll Support",
+          "Financial Reports",
         ],
       },
       {
@@ -1404,7 +1404,7 @@ export const ACCOUNTING_PRICING_SECTIONS = [
         popular: true,
         features: [
           "Bookkeeping (80 hrs)",
-          "Full Payroll",
+          "Monthly Reports",
           "Bank Reconciliation",
           "Financial Reports",
         ],
@@ -1414,7 +1414,7 @@ export const ACCOUNTING_PRICING_SECTIONS = [
         price: 1599,
         features: [
           "Complete Bookkeeping (160 hrs)",
-          "Payroll + Compliance",
+          "Everything in pro Pack",
           "Reports + Advisory",
           "Dedicated Accountant",
         ],
@@ -1438,7 +1438,6 @@ export const ACCOUNTING_PRICING_SECTIONS = [
         price: 299,
         features: [
           "Basic Tax Filing",
-          "GST Filing",
           "Tax Reports",
           "Email Support",
         ],
