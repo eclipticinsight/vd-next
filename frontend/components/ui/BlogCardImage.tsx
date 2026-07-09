@@ -50,7 +50,7 @@ const getImageUrl = (imageSrc?: string) => {
     if (typeof window !== "undefined" && window.location.hostname === "localhost") {
       return `http://localhost:5000/uploads/${filename}`;
     }
-    return `https://visionarydynamicsas.com/uploads/${filename}`;
+    return `https://www.visionarydynamicsas.com/uploads/${filename}`;
   }
 
   return url;

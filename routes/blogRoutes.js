@@ -56,7 +56,7 @@ router.post(
 
       const baseUrl =
         process.env.NODE_ENV === "production"
-          ? "https://visionarydynamicsas.com"
+          ? "https://www.visionarydynamicsas.com"
           : "http://localhost:5000";
 
       res.json({

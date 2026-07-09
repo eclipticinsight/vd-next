@@ -278,7 +278,7 @@ app.get("/", (req, res) => {
 app.get("/sitemap.xml", async (req, res) => {
   try {
     const smStream = new SitemapStream({
-      hostname: "https://visionarydynamicsas.com",
+      hostname: "https://www.visionarydynamicsas.com",
     });
 
     // Static Routes

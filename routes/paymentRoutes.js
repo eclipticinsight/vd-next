@@ -47,10 +47,10 @@ router.post("/create-checkout-session", async (req, res) => {
       },
 
       success_url:
-        "https://visionarydynamicsas.com/success",
+        "https://www.visionarydynamicsas.com/success",
 
       cancel_url:
-        "https://visionarydynamicsas.com/cancel",
+        "https://www.visionarydynamicsas.com/cancel",
     });
 
     // ✅ SAVE PAYMENT ENTRY
