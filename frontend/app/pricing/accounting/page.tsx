@@ -200,7 +200,7 @@ const PricingPage = () => {
                 return (
                   <div
                     key={index}
-                    className={`relative rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl ${
+                    className={`relative rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl flex flex-col h-full ${
                       isPopular
                         ? "bg-white shadow-xl ring-2 ring-offset-2 ring-slate-200"
                         : "bg-white/95 backdrop-blur-sm shadow-lg hover:shadow-xl"
@@ -216,7 +216,7 @@ const PricingPage = () => {
                       </div>
                     )}
  
-                    <div className="p-6 lg:p-8">
+                    <div className="p-6 lg:p-8 flex flex-col flex-1">
                       <div
                         className={`text-center p-4 -mt-2 -mx-2 rounded-xl bg-gradient-to-br ${section.bgLight}`}
                       >
@@ -267,7 +267,7 @@ const PricingPage = () => {
                         </ul>
                       </div>
  
-                      <div className="mt-8 flex gap-3">
+                      <div className="mt-auto pt-8 flex gap-3">
                         {typeof plan.price === "number" ? (
                           <>
                             {/* ADD TO CART */}
