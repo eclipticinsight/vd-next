@@ -3,10 +3,7 @@
 import React, { useRef, useEffect } from "react";
 import { Phone, MessageSquare, ChevronRight, Mail, MapPin, Clock, } from "lucide-react";
 import {
-  FaFacebook,
-  FaTwitter,
-  FaLinkedin,
-  FaInstagram
+
 } from "react-icons/fa";
 import Image from "next/image";
 import {
