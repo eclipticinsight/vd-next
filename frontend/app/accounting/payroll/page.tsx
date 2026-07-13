@@ -2,9 +2,6 @@
 
 import React, { useRef, useEffect } from "react";
 import { Phone, MessageSquare, ChevronRight, Mail, MapPin, Clock, } from "lucide-react";
-import {
-
-} from "react-icons/fa";
 import Image from "next/image";
 import {
   PAYROLL_PAGE_HERO_PARTICLES,
