@@ -108,6 +108,11 @@ if (process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID) 
   const { fork } = require("child_process");
   const http = require("http");
   const nextPort = 3000;
+  let nextProcess = null;
+  let isShuttingDown = false;
+  let restartAttempts = 0;
+  const maxRestartAttempts = 5;
+  const restartDelay = 2000;
 
   console.log(`🚀 Starting Next.js standalone server on port ${nextPort}`);
   const fs = require("fs");
@@ -116,30 +121,59 @@ if (process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID) 
     frontendPath = path.join(__dirname, ".next/standalone/frontend/server.js");
   }
 
-  const nextProcess = fork(
-    frontendPath,
-    [],
-    {
-      env: {
-        ...process.env,
-        PORT: nextPort.toString(),
-        HOSTNAME: "127.0.0.1",
-      },
-      stdio: "inherit",
-    }
-  );
+  function startNextServer() {
+    if (isShuttingDown) return;
 
-  nextProcess.on("error", (err) => {
-    console.error("❌ Failed to start Next.js server:", err);
-  });
+    nextProcess = fork(
+      frontendPath,
+      [],
+      {
+        env: {
+          ...process.env,
+          PORT: nextPort.toString(),
+          HOSTNAME: "127.0.0.1",
+        },
+        stdio: "inherit",
+      }
+    );
+
+    nextProcess.on("error", (err) => {
+      console.error("❌ Failed to start Next.js server:", err);
+    });
+
+    nextProcess.on("exit", (code, signal) => {
+      console.warn(`⚠️ Next.js server exited with code ${code} and signal ${signal}`);
+      if (!isShuttingDown) {
+        if (restartAttempts < maxRestartAttempts) {
+          restartAttempts++;
+          console.log(`🔄 Restarting Next.js server (attempt ${restartAttempts}/${maxRestartAttempts}) in ${restartDelay}ms...`);
+          setTimeout(startNextServer, restartDelay);
+        } else {
+          console.error("❌ Max Next.js server restart attempts reached. Giving up.");
+        }
+      }
+    });
+
+    // Reset restart attempts count if server runs successfully for 30s
+    setTimeout(() => {
+      if (nextProcess && !nextProcess.killed && nextProcess.exitCode === null) {
+        restartAttempts = 0;
+      }
+    }, 30000);
+  }
+
+  startNextServer();
 
   // Clean up Next.js child process when Express exits
   const cleanup = () => {
+    isShuttingDown = true;
     console.log("Stopping Next.js standalone server...");
-    try {
-      nextProcess.kill("SIGTERM");
-    } catch (err) {
-      // ignore
+    if (nextProcess) {
+      try {
+        nextProcess.kill("SIGTERM");
+      } catch (err) {
+        // ignore
+      }
     }
   };
 
@@ -163,26 +197,50 @@ if (process.env.NODE_ENV === "production" || !!process.env.WEBSITE_INSTANCE_ID) 
       return next();
     }
 
-    const proxyReq = http.request(
-      {
-        host: "127.0.0.1",
-        port: nextPort,
-        path: req.url,
-        method: req.method,
-        headers: req.headers,
-      },
-      (proxyRes) => {
-        res.writeHead(proxyRes.statusCode, proxyRes.headers);
-        proxyRes.pipe(res, { end: true });
+    const makeRequest = (attempt = 1) => {
+      const proxyReq = http.request(
+        {
+          host: "127.0.0.1",
+          port: nextPort,
+          path: req.url,
+          method: req.method,
+          headers: req.headers,
+        },
+        (proxyRes) => {
+          if (!res.headersSent) {
+            res.writeHead(proxyRes.statusCode, proxyRes.headers);
+            proxyRes.pipe(res, { end: true });
+          }
+        }
+      );
+
+      if (req.method !== "GET" && req.method !== "HEAD") {
+        req.pipe(proxyReq, { end: true });
+      } else {
+        proxyReq.end();
       }
-    );
 
-    req.pipe(proxyReq, { end: true });
+      proxyReq.on("error", (err) => {
+        console.error(`❌ Frontend Proxy error (attempt ${attempt}):`, err.message);
 
-    proxyReq.on("error", (err) => {
-      console.error("❌ Frontend Proxy error:", err.message);
-      res.status(500).send("Frontend Proxy Error");
-    });
+        const isRetryable = err.code === "ECONNREFUSED" || err.code === "ETIMEDOUT" || err.code === "ECONNRESET";
+        const maxAttempts = 10;
+
+        if (isRetryable && attempt < maxAttempts && (req.method === "GET" || req.method === "HEAD")) {
+          const delay = attempt * 150 + 50; // Backoff delay: 200ms, 350ms, 500ms...
+          console.log(`🔄 Retrying proxy request to port ${nextPort} in ${delay}ms...`);
+          setTimeout(() => {
+            makeRequest(attempt + 1);
+          }, delay);
+        } else {
+          if (!res.headersSent) {
+            res.status(502).send("Frontend Proxy Error: Next.js server is not reachable. Please try again shortly.");
+          }
+        }
+      });
+    };
+
+    makeRequest();
   });
 }
 
