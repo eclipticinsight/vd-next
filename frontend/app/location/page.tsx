@@ -244,8 +244,9 @@ export default function Locations() {
               Our Global Presence
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-blue-900/70 max-w-3xl mx-auto leading-relaxed px-4">
-              Strategic offices across key global markets, delivering exceptional CCCCCconsulting services worldwide
+              Strategic offices across key global markets, delivering exceptional consulting services worldwide
             </p>
+            <p> hlo world</p>
           </motion.div>
 
           {/* STATS BAR */}
