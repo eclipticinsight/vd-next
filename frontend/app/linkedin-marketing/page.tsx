@@ -136,11 +136,7 @@ export default function Home() {
                           <li key={fIdx} className="text-sm border-b border-gray-100 pb-3 last:border-0">
                             <div className="flex items-start gap-3">
                               <div className="flex-shrink-0 mt-1">
-                                {feature.premium ? (
-                                  <CheckCircle className="h-4 w-4 text-green-500" />
-                                ) : (
-                                  <div className="w-4 h-4 bg-gray-200 rounded-full"></div>
-                                )}
+                                <CheckCircle className="h-4 w-4 text-green-500" />
                               </div>
                               <div className="flex-1">
                                 <span className="font-semibold text-gray-900">{feature.name}</span>

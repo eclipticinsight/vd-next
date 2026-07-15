@@ -1901,18 +1901,18 @@ export const LINKEDIN_FEATURE_COMPARISON = [
     category: "Search & Filters",
     items: [
       { feature: "Basic Search Filters", premium: "15 filters", salesNav: "40+ filters" },
-      { feature: "Boolean Search", premium: "❌", salesNav: "✅" },
+      { feature: "Boolean Search", premium: "✅", salesNav: "✅" },
       { feature: "Saved Searches", premium: "5", salesNav: "Unlimited" },
-      { feature: "Search Alerts", premium: "❌", salesNav: "✅" }
+      { feature: "Search Alerts", premium: "✅", salesNav: "✅" }
     ]
   },
   {
     category: "Messaging",
     items: [
       { feature: "Monthly InMail Credits", premium: "15", salesNav: "50" },
-      { feature: "Message Templates", premium: "❌", salesNav: "✅" },
-      { feature: "InMail Analytics", premium: "❌", salesNav: "✅" },
-      { feature: "Smart Links", premium: "❌", salesNav: "✅" }
+      { feature: "Message Templates", premium: "✅", salesNav: "✅" },
+      { feature: "InMail Analytics", premium: "✅", salesNav: "✅" },
+      { feature: "Smart Links", premium: "✅", salesNav: "✅" }
     ]
   },
   {
@@ -1920,26 +1920,26 @@ export const LINKEDIN_FEATURE_COMPARISON = [
     items: [
       { feature: "Saved Leads", premium: "500", salesNav: "Unlimited" },
       { feature: "Lead Recommendations", premium: "Basic", salesNav: "AI-Powered" },
-      { feature: "Lead Lists", premium: "❌", salesNav: "✅" },
-      { feature: "Lead Alerts", premium: "❌", salesNav: "✅" }
+      { feature: "Lead Lists", premium: "✅", salesNav: "✅" },
+      { feature: "Lead Alerts", premium: "✅", salesNav: "✅" }
     ]
   },
   {
     category: "Company Intelligence",
     items: [
       { feature: "Company Insights", premium: "Basic", salesNav: "Advanced" },
-      { feature: "Company Alerts", premium: "❌", salesNav: "✅" },
-      { feature: "Org Charts", premium: "❌", salesNav: "✅" },
-      { feature: "Similar Companies", premium: "❌", salesNav: "✅" }
+      { feature: "Company Alerts", premium: "✅", salesNav: "✅" },
+      { feature: "Org Charts", premium: "✅", salesNav: "✅" },
+      { feature: "Similar Companies", premium: "✅", salesNav: "✅" }
     ]
   },
   {
     category: "Integration",
     items: [
-      { feature: "CRM Export", premium: "❌", salesNav: "✅" },
-      { feature: "CRM Sync", premium: "❌", salesNav: "✅" },
-      { feature: "API Access", premium: "❌", salesNav: "Limited" },
-      { feature: "Bulk Actions", premium: "❌", salesNav: "✅" }
+      { feature: "CRM Export", premium: "✅", salesNav: "✅" },
+      { feature: "CRM Sync", premium: "✅", salesNav: "✅" },
+      { feature: "API Access", premium: "✅", salesNav: "Limited" },
+      { feature: "Bulk Actions", premium: "✅", salesNav: "✅" }
     ]
   }
 ];
